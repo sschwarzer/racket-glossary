@@ -47,6 +47,9 @@ My current plan to build the glossary is:
    upon.
 3. Wait for contributors to offer pull requests. :-)
 
+I suggest doing step 1 on the [Racket
+Discourse](https://racket.discourse.group/) instance.
+
 ## License
 
 See the file [LICENSE](./LICENSE).
