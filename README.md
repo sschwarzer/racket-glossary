@@ -23,16 +23,11 @@ between them.
 I'd like to see this glossary end up in the Racket documentation, so eventually
 it needs to be converted to Racket's documentation language
 [Scribble](https://docs.racket-lang.org/scribble/). On the other hand, I think
-we should use a simpler format like Markdown for easier contributions until the
-content is good enough to be included in the Racket documentation.
+we maybe should use a simpler format like Markdown for easier contributions
+until the content is good enough to be included in the Racket documentation.
 
-Ideally, it would be great if there was a tool to convert Markdown to Scribble
-automatically. I haven't found one yet. The open source go-to tool for text
-format conversions is [Pandoc](https://pandoc.org/), but while it supports
-different Markdown dialects as input formats, it currently doesn't support
-Scribble as output format. However, it should be possible to write a [custom
-Pandoc writer](https://pandoc.org/custom-writers.html) to support Scribble as
-an output format. That's something for a different project though. ;-)
+Therefore, feel free to make contributions either in Markdown or Scribble,
+whatever you prefer.
 
 ## Contributions
 
