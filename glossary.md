@@ -94,6 +94,8 @@ impersonator
 
 inexact number → exact number
 
+inspector
+
 interface (API)
 
 interface (OOP)
@@ -212,6 +214,10 @@ thunk
 
 transparent → opaque
 
+trust level
+
+trusted code
+
 Typed Racket
 
 undefined (why do we need this if we have `void`?)
@@ -219,6 +225,8 @@ undefined (why do we need this if we have `void`?)
 unit
 
 unsafe operation
+
+untrusted code → trusted code
 
 value (sometimes "object", but may be confused with OOP concept)
 
