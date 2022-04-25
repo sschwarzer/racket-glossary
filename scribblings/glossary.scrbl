@@ -1,10 +1,7 @@
 #lang scribble/manual
-@require[@for-label[glossary
-                    racket/base]]
+@require[@for-label[racket/base]]
 
-@title{glossary}
-@author{schwa}
-
-@defmodule[glossary]
+@title{Glossary of Racket terms and concepts}
+@author{Stefan Schwarzer}
 
 Package Description Here
