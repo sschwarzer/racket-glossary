@@ -4,9 +4,28 @@
 @title{Glossary of Racket terms and concepts}
 @author{Stefan Schwarzer}
 
-Below are the terms I'd like to explain in the glossary.
+@;{A glossary entry might contain information that falls into multiple categories.
+   For example, basic macro stuff could be classified as "intermediate" and more
+   complex uses as "advanced."}
 
-assignment
+The glossary entries are categorized in three "levels":
+@itemlist[
+  @item{@bold{basic:} These are basic concepts you should know to write Racket
+    libraries and programs. If you're starting to learn Racket, focus on these
+    concepts.}
+  @item{@bold{intermediate:} You can write most Racket software without these
+    features, but you may need them depending on your problem. One example
+    would be threads to execute different tasks concurrently.}
+  @item{@bold{advanced:} Likely you won't need these features, but they can
+    improve your software. Look into this if you're comfortable with the
+    concepts from the "basic" and "intermediate" category.}]
+
+@; Below are the terms I'd like to explain in the glossary.
+
+@section{Assignment}
+
+@level-basic
+
 
 binding
 
