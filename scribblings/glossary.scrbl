@@ -1,5 +1,10 @@
 #lang scribble/manual
+
 @require[@for-label[racket/base]]
+
+@(define level-basic        @elem{@bold{Level:} basic})
+@(define level-intermediate @elem{@bold{Level:} intermediate})
+@(define level-advanced     @elem{@bold{Level:} advanced})
 
 @title{Glossary of Racket terms and concepts}
 @author{Stefan Schwarzer}
