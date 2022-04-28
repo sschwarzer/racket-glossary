@@ -82,6 +82,8 @@ environment
 
 exact number
 
+executor
+
 exception
 
 expression (always lvalue? may result in one or more values)
@@ -263,6 +265,8 @@ values (multiple values, as in `define-values` etc.)
 vector (mention growable vectors)
 
 void
+
+will
 
 write → display
 
