@@ -92,6 +92,8 @@ field
 
 fixnum
 
+flat contract
+
 flonum
 
 form
@@ -190,6 +192,10 @@ procedure application
 
 profiling
 
+prompt
+
+provide
+
 quasiquote
 
 quote
@@ -201,6 +207,8 @@ raco
 reader (for parsing code)
 
 record → struct
+
+require
 
 rule (in macros; probably other uses, which ones?)
 
