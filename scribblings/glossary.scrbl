@@ -9,9 +9,14 @@
 @title{Glossary of Racket terms and concepts}
 @author{Stefan Schwarzer}
 
+@section{Usage notes}
+
 @;{A glossary entry might contain information that falls into multiple categories.
    For example, basic macro stuff could be classified as "intermediate" and more
    complex uses as "advanced."}
+
+@;{Can we reduce the terms used? Using "terms", "concepts", "features" for
+   essentially the same meaning may be confusing.}
 
 The glossary entries are categorized in three "levels":
 @itemlist[
@@ -25,257 +30,257 @@ The glossary entries are categorized in three "levels":
     improve your software. Look into this if you're comfortable with the
     concepts from the "basic" and "intermediate" category.}]
 
-@; Below are the terms I'd like to explain in the glossary.
+@section{Entries}
 
-@section{Assignment}
+@subsection{Assignment}
 
 @level-basic
 
 
-binding
+@subsection{Binding}
 
-boolean
+@subsection{Boolean}
 
-box
+@subsection{Box}
 
-call → procedure application
+@subsection{Call → Procedure application}
 
-cell
+@subsection{Cell}
 
-channel
+@subsection{Channel}
 
-chaperone
+@subsection{Chaperone}
 
-class
+@subsection{Class}
 
-closure
+@subsection{Closure}
 
-collection
+@subsection{Collection}
 
-combinator
+@subsection{Combinator}
 
-comprehension
+@subsection{Comprehension}
 
-cons cell → pair
+@subsection{Cons cell → Pair}
 
-continuation
+@subsection{Continuation}
 
-contract
+@subsection{Contract}
 
-core form
+@subsection{Core form}
 
-currying
+@subsection{Currying}
 
-custodian
+@subsection{Custodian}
 
-debugging
+@subsection{Debugging}
 
-definition
+@subsection{Definition}
 
-display
+@subsection{Display}
 
-DrRacket
+@subsection{DrRacket}
 
-DSL
+@subsection{DSL}
 
-environment
+@subsection{Environment}
 
-exact number
+@subsection{Exact number}
 
-executor
+@subsection{Executor}
 
-exception
+@subsection{Exception}
 
-expression (always lvalue? may result in one or more values)
+@subsection{Expression (always lvalue? may result in one or more values)}
 
-field
+@subsection{Field}
 
-fixnum
+@subsection{Fixnum}
 
-flat contract
+@subsection{Flat contract}
 
-flonum
+@subsection{Flonum}
 
-form
+@subsection{Form}
 
-formatting (`format`, `~a` etc.)
+@subsection{Formatting (`format`, `~a` etc.)}
 
-function → procedure
+@subsection{Function → Procedure}
 
-functional programming (FP)
+@subsection{Functional programming (FP)}
 
-functional update
+@subsection{Functional update}
 
-future
+@subsection{Future}
 
-generator
+@subsection{Generator}
 
-generic API
+@subsection{Generic API}
 
-GUI programming
+@subsection{GUI programming}
 
-hash
+@subsection{Hash}
 
-hygiene
+@subsection{Hygiene}
 
-identifier (differences to identifiers in other languages)
+@subsection{Identifier (differences to identifiers in other languages)}
 
-identity (also refer to `eq?`)
+@subsection{Identity (also refer to `eq?`)}
 
-impersonator
+@subsection{Impersonator}
 
-inexact number → exact number
+@subsection{Inexact number → Exact number}
 
-inspector
+@subsection{Inspector}
 
-interface (API)
+@subsection{Interface (API)}
 
-interface (OOP)
+@subsection{Interface (OOP)}
 
-keyword arguments (positional and keyword args are separate)
+@subsection{Keyword arguments (positional and keyword args are separate)}
 
-lang (as in `#lang`)
+@subsection{Lang (as in `#lang`)}
 
-language-oriented programming
+@subsection{Language-oriented programming}
 
-let over lambda
+@subsection{Let over lambda}
 
-list (linked list, explain differences to arrays in other languages)
+@subsection{List (linked list, explain differences to arrays in other languages)}
 
-macro
+@subsection{Macro}
 
-match
+@subsection{Match}
 
-match transformer
+@subsection{Match transformer}
 
-method
+@subsection{Method}
 
-module
+@subsection{Module}
 
-named let
+@subsection{Named let}
 
-namespace
+@subsection{Namespace}
 
-naming conventions
+@subsection{Naming conventions}
 
-number
+@subsection{Number}
 
-numeric tower
+@subsection{Numeric tower}
 
-opaque
+@subsection{Opaque}
 
-package
+@subsection{Package}
 
-pair
+@subsection{Pair}
 
-parameter
+@subsection{Parameter}
 
-pattern (in regular expressions)
+@subsection{Pattern (in regular expressions)}
 
-pattern (in macro definitions)
+@subsection{Pattern (in macro definitions)}
 
-phase
+@subsection{Phase}
 
-place
+@subsection{Place}
 
-polymorphism (rarely used, compare with other languages; see also generic code)
+@subsection{Polymorphism (rarely used, compare with other languages; see also generic code)}
 
-port
+@subsection{Port}
 
-predicate
+@subsection{Predicate}
 
-print → display
+@subsection{Print → Display}
 
-procedure
+@subsection{Procedure}
 
-procedure application
+@subsection{Procedure application}
 
-profiling
+@subsection{Profiling}
 
-prompt
+@subsection{Prompt}
 
-provide
+@subsection{Provide}
 
-quasiquote
+@subsection{Quasiquote}
 
-quote
+@subsection{Quote}
 
-RnRS (as in R5RS, R6RS etc.)
+@subsection{RnRS (as in R5RS, R6RS etc.)}
 
-raco
+@subsection{Raco}
 
-reader (for parsing code)
+@subsection{Reader (for parsing code)}
 
-record → struct
+@subsection{Record → Struct}
 
-require
+@subsection{Require}
 
-rule (in macros; probably other uses, which ones?)
+@subsection{Rule (in macros; probably other uses, which ones?)}
 
-safe operation → unsafe operation
+@subsection{Safe operation → unsafe operation}
 
-Scheme
+@subsection{Scheme}
 
-Scribble
+@subsection{Scribble}
 
-sequence
+@subsection{Sequence}
 
-set
+@subsection{Set}
 
-shadowing
+@subsection{Shadowing}
 
-splicing
+@subsection{Splicing}
 
-SRFI
+@subsection{SRFI}
 
-standard library
+@subsection{Standard library}
 
-stream
+@subsection{Stream}
 
-string (strings vs. byte strings; handling encoding)
+@subsection{String (strings vs. byte strings; handling encoding)}
 
-struct
+@subsection{Struct}
 
-symbol
+@subsection{Symbol}
 
-syntactic form → form
+@subsection{Syntactic form → Form}
 
-syntax (different meanings)
+@subsection{Syntax (different meanings)}
 
-syntax transformer
+@subsection{Syntax transformer}
 
-tail call
+@subsection{Tail call}
 
-thread
+@subsection{Thread}
 
-thunk
+@subsection{Thunk}
 
-transparent → opaque
+@subsection{Transparent → Opaque}
 
-trust level
+@subsection{Trust level}
 
-trusted code
+@subsection{Trusted code}
 
-Typed Racket
+@subsection{Typed Racket}
 
-undefined (why do we need this if we have `void`?)
+@subsection{Undefined (why do we need this if we have `void`?)}
 
-unit
+@subsection{Unit}
 
-unsafe operation
+@subsection{Unsafe operation}
 
-untrusted code → trusted code
+@subsection{Untrusted code → trusted code}
 
-value (sometimes "object", but may be confused with OOP concept)
+@subsection{Value (sometimes "object", but may be confused with OOP concept)}
 
-values (multiple values, as in `define-values` etc.)
+@subsection{Values (multiple values, as in `define-values` etc.)}
 
-vector (mention growable vectors)
+@subsection{Vector (mention growable vectors)}
 
-void
+@subsection{Void}
 
-will
+@subsection{Will}
 
-write → display
+@subsection{Write → display}
 
-writer
+@subsection{Writer}
