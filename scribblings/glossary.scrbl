@@ -42,9 +42,9 @@ The glossary entries are categorized in three "levels":
   @item{@bold{intermediate:} You can write most Racket software without these
     features, but you may need them depending on your problem. One example
     would be threads to execute different tasks concurrently.}
-  @item{@bold{advanced:} Likely you won't need these features, but they can
-    improve your software. Look into this if you're comfortable with the
-    concepts from the "basic" and "intermediate" category.}]
+  @item{@bold{advanced:} Likely you won't need these features, but they may
+    improve your software. Look into these if you're comfortable with the
+    entries in the "basic" and "intermediate" categories.}]
 
 @section{Entries}
 
