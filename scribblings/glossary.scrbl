@@ -34,7 +34,7 @@
 @;{Can we reduce the terms used? Using "terms", "concepts", "features" for
    essentially the same meaning may be confusing.}
 
-The glossary entries are categorized in three "levels":
+The glossary entries are categorized in three ``levels'':
 @itemlist[
   @item{@bold{basic:} These are basic concepts you should know to write Racket
     libraries and programs. If you're starting to learn Racket, focus on these
@@ -44,7 +44,7 @@ The glossary entries are categorized in three "levels":
     would be threads to execute different tasks concurrently.}
   @item{@bold{advanced:} Likely you won't need these features, but they may
     improve your software. Look into these if you're comfortable with the
-    entries in the "basic" and "intermediate" categories.}]
+    entries in the ``basic'' and ``intermediate'' categories.}]
 
 @section{Entries}
 
