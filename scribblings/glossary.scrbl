@@ -85,6 +85,8 @@ The glossary entries are categorized in three "levels":
 
 @subsection{Environment}
 
+@subsection{Equality}
+
 @subsection{Exact number}
 
 @subsection{Executor}
