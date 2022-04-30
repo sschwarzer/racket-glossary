@@ -211,11 +211,11 @@ See @secref["Procedure"
 
 @level-basic
 
-As shown in
-@secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")],
-a procedure can be defined with @racket[define]. However, you can also define
-functions directly as values without giving them a name. This is the same function
-as in the 
+As shown in the
+@secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+entry, a procedure can be defined with @racket[define]. However, you can also
+define functions directly as values without giving them a name. This is the
+same function as in the 
 @secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 glossary entry:
 
