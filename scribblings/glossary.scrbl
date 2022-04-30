@@ -1,6 +1,7 @@
 #lang scribble/manual
 
 @(require
+  racket/function
   scribble/example
   (for-label racket/base))
 
@@ -17,6 +18,9 @@
 @(define in-g "in this glossary")
 @(define in-rg "in the Racket Guide")
 @(define in-rr "in the Racket Reference")
+
+@(define glossary-entry (curry subsection #:style 'unnumbered))
+
 
 @title{Glossary of Racket terms and concepts}
 @author{Stefan Schwarzer}
@@ -44,14 +48,14 @@ The glossary entries are categorized in three "levels":
 
 @section{Entries}
 
-@subsection{Assignment}
+@glossary-entry{Assignment}
 
 @level-basic
 
 
-@subsection{Binding}
+@glossary-entry{Binding}
 
-@subsection{Boolean}
+@glossary-entry{Boolean}
 
 @level-basic
 
@@ -73,7 +77,7 @@ interpreted as true.
 See also: @secref["booleans" #:doc '(lib
 "scribblings/reference/reference.scrbl")] @in-rr
 
-@subsection{Box}
+@glossary-entry{Box}
 
 @level-intermediate
 
@@ -98,112 +102,112 @@ immutable values to other immutable values.
 
 See also: @secref["boxes" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr
 
-@subsection{Call}
+@glossary-entry{Call}
 
 @level-basic
 
 See @secref["Procedure"
             #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
-@subsection{Cell}
+@glossary-entry{Cell}
 
-@subsection{Channel}
+@glossary-entry{Channel}
 
-@subsection{Chaperone}
+@glossary-entry{Chaperone}
 
-@subsection{Class}
+@glossary-entry{Class}
 
-@subsection{Closure}
+@glossary-entry{Closure}
 
-@subsection{Collection}
+@glossary-entry{Collection}
 
-@subsection{Combinator}
+@glossary-entry{Combinator}
 
-@subsection{Comprehension}
+@glossary-entry{Comprehension}
 
-@subsection{Cons cell → Pair}
+@glossary-entry{Cons cell → Pair}
 
-@subsection{Continuation}
+@glossary-entry{Continuation}
 
-@subsection{Contract}
+@glossary-entry{Contract}
 
-@subsection{Core form}
+@glossary-entry{Core form}
 
-@subsection{Currying}
+@glossary-entry{Currying}
 
-@subsection{Custodian}
+@glossary-entry{Custodian}
 
-@subsection{Debugging}
+@glossary-entry{Debugging}
 
-@subsection{Definition}
+@glossary-entry{Definition}
 
-@subsection{Display}
+@glossary-entry{Display}
 
-@subsection{DrRacket}
+@glossary-entry{DrRacket}
 
-@subsection{DSL}
+@glossary-entry{DSL}
 
-@subsection{Environment}
+@glossary-entry{Environment}
 
-@subsection{Equality}
+@glossary-entry{Equality}
 
-@subsection{Exact number}
+@glossary-entry{Exact number}
 
-@subsection{Executor}
+@glossary-entry{Executor}
 
-@subsection{Exception}
+@glossary-entry{Exception}
 
-@subsection{Expression (always lvalue? may result in one or more values)}
+@glossary-entry{Expression (always lvalue? may result in one or more values)}
 
-@subsection{Field}
+@glossary-entry{Field}
 
-@subsection{Fixnum}
+@glossary-entry{Fixnum}
 
-@subsection{Flat contract}
+@glossary-entry{Flat contract}
 
-@subsection{Flonum}
+@glossary-entry{Flonum}
 
-@subsection{Form}
+@glossary-entry{Form}
 
-@subsection{Formatting (`format`, `~a` etc.)}
+@glossary-entry{Formatting (`format`, `~a` etc.)}
 
-@subsection{Function → Procedure}
+@glossary-entry{Function → Procedure}
 
-@subsection{Functional programming (FP)}
+@glossary-entry{Functional programming (FP)}
 
-@subsection{Functional update}
+@glossary-entry{Functional update}
 
-@subsection{Future}
+@glossary-entry{Future}
 
-@subsection{Generator}
+@glossary-entry{Generator}
 
-@subsection{Generic API}
+@glossary-entry{Generic API}
 
-@subsection{GUI programming}
+@glossary-entry{GUI programming}
 
-@subsection{Hash}
+@glossary-entry{Hash}
 
-@subsection{Higher-order function}
+@glossary-entry{Higher-order function}
 
-@subsection{Hygiene}
+@glossary-entry{Hygiene}
 
-@subsection{Identifier (differences to identifiers in other languages)}
+@glossary-entry{Identifier (differences to identifiers in other languages)}
 
-@subsection{Identity (also refer to `eq?`)}
+@glossary-entry{Identity (also refer to `eq?`)}
 
-@subsection{Impersonator}
+@glossary-entry{Impersonator}
 
-@subsection{Inexact number → Exact number}
+@glossary-entry{Inexact number → Exact number}
 
-@subsection{Inspector}
+@glossary-entry{Inspector}
 
-@subsection{Interface (API)}
+@glossary-entry{Interface (API)}
 
-@subsection{Interface (OOP)}
+@glossary-entry{Interface (OOP)}
 
-@subsection{Keyword arguments (positional and keyword args are separate)}
+@glossary-entry{Keyword arguments (positional and keyword args are separate)}
 
-@subsection{Lambda}
+@glossary-entry{Lambda}
 
 @level-basic
 
@@ -241,61 +245,61 @@ See also:
   @item{@secref["lambda" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
   @item{@secref["lambda" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
 
-@subsection{Lang (as in `#lang`)}
+@glossary-entry{Lang (as in `#lang`)}
 
-@subsection{Language-oriented programming}
+@glossary-entry{Language-oriented programming}
 
-@subsection{Let}
+@glossary-entry{Let}
 
-@subsection{Let over lambda}
+@glossary-entry{Let over lambda}
 
-@subsection{List (linked list, explain differences to arrays in other languages)}
+@glossary-entry{List (linked list, explain differences to arrays in other languages)}
 
-@subsection{Macro}
+@glossary-entry{Macro}
 
-@subsection{Match}
+@glossary-entry{Match}
 
-@subsection{Match transformer}
+@glossary-entry{Match transformer}
 
-@subsection{Method}
+@glossary-entry{Method}
 
-@subsection{Module}
+@glossary-entry{Module}
 
-@subsection{Named let}
+@glossary-entry{Named let}
 
-@subsection{Namespace}
+@glossary-entry{Namespace}
 
-@subsection{Naming conventions}
+@glossary-entry{Naming conventions}
 
-@subsection{Number}
+@glossary-entry{Number}
 
-@subsection{Numeric tower}
+@glossary-entry{Numeric tower}
 
-@subsection{Opaque}
+@glossary-entry{Opaque}
 
-@subsection{Package}
+@glossary-entry{Package}
 
-@subsection{Pair}
+@glossary-entry{Pair}
 
-@subsection{Parameter}
+@glossary-entry{Parameter}
 
-@subsection{Pattern (in regular expressions)}
+@glossary-entry{Pattern (in regular expressions)}
 
-@subsection{Pattern (in macro definitions)}
+@glossary-entry{Pattern (in macro definitions)}
 
-@subsection{Phase}
+@glossary-entry{Phase}
 
-@subsection{Place}
+@glossary-entry{Place}
 
-@subsection{Polymorphism (rarely used, compare with other languages; see also generic code)}
+@glossary-entry{Polymorphism (rarely used, compare with other languages; see also generic code)}
 
-@subsection{Port}
+@glossary-entry{Port}
 
-@subsection{Predicate}
+@glossary-entry{Predicate}
 
-@subsection{Print → Display}
+@glossary-entry{Print → Display}
 
-@subsection{Procedure}
+@glossary-entry{Procedure}
 
 @level-basic
 
@@ -349,92 +353,92 @@ See also:
   @item{@secref["syntax-overview" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
   @item{@secref["define" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
 
-@subsection{Profiling}
+@glossary-entry{Profiling}
 
-@subsection{Prompt}
+@glossary-entry{Prompt}
 
-@subsection{Provide}
+@glossary-entry{Provide}
 
-@subsection{Quasiquote}
+@glossary-entry{Quasiquote}
 
-@subsection{Quote}
+@glossary-entry{Quote}
 
-@subsection{RnRS (as in R5RS, R6RS etc.)}
+@glossary-entry{RnRS (as in R5RS, R6RS etc.)}
 
-@subsection{Raco}
+@glossary-entry{Raco}
 
-@subsection{Reader (for parsing code)}
+@glossary-entry{Reader (for parsing code)}
 
-@subsection{Record → Struct}
+@glossary-entry{Record → Struct}
 
-@subsection{Require}
+@glossary-entry{Require}
 
-@subsection{Rule (in macros; probably other uses, which ones?)}
+@glossary-entry{Rule (in macros; probably other uses, which ones?)}
 
-@subsection{Safe operation → unsafe operation}
+@glossary-entry{Safe operation → unsafe operation}
 
-@subsection{Scheme}
+@glossary-entry{Scheme}
 
-@subsection{Scribble}
+@glossary-entry{Scribble}
 
-@subsection{Sequence}
+@glossary-entry{Sequence}
 
-@subsection{Set}
+@glossary-entry{Set}
 
-@subsection{Shadowing}
+@glossary-entry{Shadowing}
 
-@subsection{Splicing}
+@glossary-entry{Splicing}
 
-@subsection{SRFI}
+@glossary-entry{SRFI}
 
-@subsection{Standard library}
+@glossary-entry{Standard library}
 
-@subsection{Stream}
+@glossary-entry{Stream}
 
-@subsection{String (strings vs. byte strings; handling encoding)}
+@glossary-entry{String (strings vs. byte strings; handling encoding)}
 
-@subsection{Struct}
+@glossary-entry{Struct}
 
-@subsection{Symbol}
+@glossary-entry{Symbol}
 
-@subsection{Syntactic form → Form}
+@glossary-entry{Syntactic form → Form}
 
-@subsection{Syntax (different meanings)}
+@glossary-entry{Syntax (different meanings)}
 
-@subsection{Syntax transformer}
+@glossary-entry{Syntax transformer}
 
-@subsection{Tail call}
+@glossary-entry{Tail call}
 
-@subsection{Thread}
+@glossary-entry{Thread}
 
-@subsection{Thunk}
+@glossary-entry{Thunk}
 
-@subsection{Transparent → Opaque}
+@glossary-entry{Transparent → Opaque}
 
-@subsection{Trust level}
+@glossary-entry{Trust level}
 
-@subsection{Trusted code}
+@glossary-entry{Trusted code}
 
-@subsection{Typed Racket}
+@glossary-entry{Typed Racket}
 
-@subsection{Undefined (why do we need this if we have `void`?)}
+@glossary-entry{Undefined (why do we need this if we have `void`?)}
 
-@subsection{Unit}
+@glossary-entry{Unit}
 
-@subsection{Unsafe operation}
+@glossary-entry{Unsafe operation}
 
-@subsection{Untrusted code → trusted code}
+@glossary-entry{Untrusted code → trusted code}
 
-@subsection{Value (sometimes "object", but may be confused with OOP concept)}
+@glossary-entry{Value (sometimes "object", but may be confused with OOP concept)}
 
-@subsection{Values (multiple values, as in `define-values` etc.)}
+@glossary-entry{Values (multiple values, as in `define-values` etc.)}
 
-@subsection{Vector (mention growable vectors)}
+@glossary-entry{Vector (mention growable vectors)}
 
-@subsection{Void}
+@glossary-entry{Void}
 
-@subsection{Will}
+@glossary-entry{Will}
 
-@subsection{Write → display}
+@glossary-entry{Write → display}
 
-@subsection{Writer}
+@glossary-entry{Writer}
