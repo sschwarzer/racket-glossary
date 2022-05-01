@@ -25,16 +25,18 @@
 @title{Glossary of Racket terms and concepts}
 @author{Stefan Schwarzer}
 
-@section{Usage notes}
+@section{Introduction}
 
-@;{A glossary entry might contain information that falls into multiple categories.
-   For example, basic macro stuff could be classified as "intermediate" and more
-   complex uses as "advanced."}
+The Racket documentation describes a lot, often very abstract concepts. For someone
+starting with the language, it's often not clear which concepts are widely used
+and which aren't. It's quite easy to lose one's way by getting distracted by
+relatively obscure concepts.
 
-@;{Can we reduce the terms used? Using "terms", "concepts", "features" for
-   essentially the same meaning may be confusing.}
-
-The glossary entries are categorized in three ``levels'':
+This led to a @(hyperlink
+"https://racket.discourse.group/t/learning-racket-scheme-how-do-you-get-to-the-practicing-stage/901"
+"discussion") on the Racket forum and during this discussion to the plan to
+start this glossary. The intention is to list many concepts, even the obscure
+ones, together with their importance, given by these levels:
 @itemlist[
   @item{@bold{basic:} These are basic concepts you should know to write Racket
     libraries and programs. If you're starting to learn Racket, focus on these
@@ -45,6 +47,11 @@ The glossary entries are categorized in three ``levels'':
   @item{@bold{advanced:} Likely you won't need these features, but they may
     improve your software. Look into these if you're comfortable with the
     entries in the ``basic'' and ``intermediate'' categories.}]
+
+@; TODO: Improve wording.
+Not all Racket users will agree on this categorization and the assigned levels
+for individual terms, but the categorization should give you a rough idea
+which concepts are more foundational than others.
 
 @section{Entries}
 
