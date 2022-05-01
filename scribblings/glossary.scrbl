@@ -510,6 +510,20 @@ On the other hand, when using a function in another position, it's just a
   (procedure? add1)
   (list add1 add1)]
 
+As using too many brackets, using too few can lead to problems, although they
+tend to be less obvious:
+
+@examples[
+  #:eval helper-eval
+  (define (foo)
+    add1 2)
+  (foo)]
+
+You might have expected @racket[3] as the result of calling @racket[foo].
+However, since the parentheses around @code{add1 2} were missing and the result
+of a function is the value of the last expression, the function returned
+@racket[2].
+
 Depending on how a function is defined, it can take zero arguments to an almost
 unlimited number of arguments (usually done with a special syntax in the
 function definition).
