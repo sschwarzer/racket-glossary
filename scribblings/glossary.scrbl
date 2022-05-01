@@ -57,14 +57,15 @@ which concepts are more foundational than others.
 
 @glossary-entry{Assignment}
 
-@level-basic
-
+  @level-basic
 
 @glossary-entry{Binding}
 
+  @level-basic
+
 @glossary-entry{Boolean}
 
-@level-basic
+  @level-basic
 
 Booleans represent truth values. In some other languages this type is called
 @code{bool} or @code{boolean}. Racket has two boolean literals:
@@ -86,7 +87,7 @@ See also: @secref["booleans" #:doc '(lib
 
 @glossary-entry{Box}
 
-@level-intermediate
+  @level-intermediate
 
 A box is a container to essentially turn an immutable value into a mutable
 value. Passing a box as a function argument is similar to passing a value by
@@ -111,112 +112,219 @@ See also: @secref["boxes" #:doc '(lib "scribblings/reference/reference.scrbl")] 
 
 @glossary-entry{Call}
 
-@level-basic
+  @level-basic
 
 See @secref["Procedure"
             #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Cell}
 
+  @level-basic
+
 @glossary-entry{Channel}
+
+  @level-intermediate
 
 @glossary-entry{Chaperone}
 
+  @level-intermediate
+
 @glossary-entry{Class}
+
+  @level-intermediate
 
 @glossary-entry{Closure}
 
+  @level-basic
+
 @glossary-entry{Collection}
+
+  @level-basic
 
 @glossary-entry{Combinator}
 
+  @level-intermediate
+
 @glossary-entry{Comprehension}
 
-@glossary-entry{Cons cell → Pair}
+  @level-basic
+
+@glossary-entry{Cons cell}
+
+  @level-basic
+
+See @secref["Pair" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Continuation}
 
+  @level-advanced
+
 @glossary-entry{Contract}
+
+  @level-intermediate
 
 @glossary-entry{Core form}
 
+  @level-advanced
+
 @glossary-entry{Currying}
+
+  @level-basic
 
 @glossary-entry{Custodian}
 
+  @level-advanced
+
 @glossary-entry{Debugging}
+
+  @level-basic
 
 @glossary-entry{Definition}
 
+  @level-basic
+
 @glossary-entry{Display}
+
+  @level-basic
 
 @glossary-entry{DrRacket}
 
-@glossary-entry{DSL}
+  @level-basic
+
+@glossary-entry{DSL (domain-specific language)}
+
+  @level-advanced
 
 @glossary-entry{Environment}
 
+  @level-intermediate
+
 @glossary-entry{Equality}
+
+  @level-basic
 
 @glossary-entry{Exact number}
 
+  @level-basic
+
 @glossary-entry{Executor}
+
+  @level-advanced
 
 @glossary-entry{Exception}
 
+@; Or basic?
+  @level-intermediate
+
 @glossary-entry{Expression (always lvalue? may result in one or more values)}
+
+  @level-basic
 
 @glossary-entry{Field}
 
+  @level-basic
+
 @glossary-entry{Fixnum}
+
+  @level-basic
 
 @glossary-entry{Flat contract}
 
+  @level-advanced
+
 @glossary-entry{Flonum}
+
+  @level-basic
 
 @glossary-entry{Form}
 
+  @level-basic
+
 @glossary-entry{Formatting (`format`, `~a` etc.)}
 
-@glossary-entry{Function → Procedure}
+  @level-basic
+
+  @level-intermediate
+
+@glossary-entry{Function}
+
+  @level-basic
+
+See @secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Functional programming (FP)}
 
+  @level-basic
+
 @glossary-entry{Functional update}
+
+  @level-basic
 
 @glossary-entry{Future}
 
+  @level-advanced
+
 @glossary-entry{Generator}
+
+  @level-advanced
 
 @glossary-entry{Generic API}
 
+  @level-advanced
+
 @glossary-entry{GUI programming}
+
+  @level-intermediate
 
 @glossary-entry{Hash}
 
+  @level-basic
+
 @glossary-entry{Higher-order function}
+
+  @level-basic
 
 @glossary-entry{Hygiene}
 
+  @level-basic
+
 @glossary-entry{Identifier (differences to identifiers in other languages)}
+
+  @level-basic
 
 @glossary-entry{Identity (also refer to `eq?`)}
 
+  @level-basic
+
 @glossary-entry{Impersonator}
+
+@; May be important though. Maybe better "intermediate"?
+  @level-advanced
 
 @glossary-entry{Inexact number → Exact number}
 
+  @level-basic
+
 @glossary-entry{Inspector}
+
+  @level-advanced
 
 @glossary-entry{Interface (API)}
 
+  @level-basic
+
 @glossary-entry{Interface (OOP)}
+
+@; Or "advanced"?
+  @level-intermediate
 
 @glossary-entry{Keyword arguments (positional and keyword args are separate)}
 
+  @level-basic
+
 @glossary-entry{Lambda}
 
-@level-basic
+  @level-basic
 
 As shown in the
 @secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
@@ -254,61 +362,123 @@ See also:
 
 @glossary-entry{Lang (as in `#lang`)}
 
+  @level-advanced
+
 @glossary-entry{Language-oriented programming}
+
+  @level-advanced
 
 @glossary-entry{Let}
 
+  @level-basic
+
 @glossary-entry{Let over lambda}
+
+  @level-intermediate
 
 @glossary-entry{List (linked list, explain differences to arrays in other languages)}
 
+  @level-basic
+
 @glossary-entry{Macro}
+
+  @level-intermediate
+
+  @level-advanced
 
 @glossary-entry{Match}
 
+  @level-intermediate
+
 @glossary-entry{Match transformer}
+
+  @level-advanced
 
 @glossary-entry{Method}
 
+  @level-intermediate
+
 @glossary-entry{Module}
+
+  @level-basic
 
 @glossary-entry{Named let}
 
+  @level-intermediate
+
 @glossary-entry{Namespace}
+
+  @; Relationship to "environment"? How much has a "normal" user to know about
+  @; this outside of `eval`?
+  @level-intermediate
 
 @glossary-entry{Naming conventions}
 
+  @level-basic
+
 @glossary-entry{Number}
+
+  @level-basic
 
 @glossary-entry{Numeric tower}
 
+  @level-basic
+
 @glossary-entry{Opaque}
+
+  @level-intermediate
+
+See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Package}
 
+  @level-intermediate
+
 @glossary-entry{Pair}
+
+  @level-basic
 
 @glossary-entry{Parameter}
 
+  @level-basic
+
 @glossary-entry{Pattern (in regular expressions)}
+
+  @level-basic
 
 @glossary-entry{Pattern (in macro definitions)}
 
+  @level-intermediate
+
 @glossary-entry{Phase}
+
+  @level-advanced
 
 @glossary-entry{Place}
 
+  @level-advanced
+
 @glossary-entry{Polymorphism (rarely used, compare with other languages; see also generic code)}
+
+  @level-intermediate
 
 @glossary-entry{Port}
 
+  @level-basic
+
 @glossary-entry{Predicate}
 
-@glossary-entry{Print → Display}
+  @level-basic
+
+@glossary-entry{Print}
+
+  @level-basic
+
+See @secref["Display" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Procedure}
 
-@level-basic
+  @level-basic
 
 A procedure, also called a function, is a value that can be called at program
 runtime. If a procedure is used after an opening parenthesis, it introduces a
@@ -362,90 +532,192 @@ See also:
 
 @glossary-entry{Profiling}
 
+  @level-intermediate
+
 @glossary-entry{Prompt}
+
+  @level-advanced
 
 @glossary-entry{Provide}
 
+  @level-intermediate
+
 @glossary-entry{Quasiquote}
+
+  @level-intermediate
 
 @glossary-entry{Quote}
 
+  @level-basic
+
 @glossary-entry{RnRS (as in R5RS, R6RS etc.)}
+
+  @level-intermediate
 
 @glossary-entry{Raco}
 
+  @level-basic
+
 @glossary-entry{Reader (for parsing code)}
 
-@glossary-entry{Record → Struct}
+  @level-advanced
+
+@glossary-entry{Record}
+
+  @level-basic
+
+@secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Require}
 
+  @level-basic
+
 @glossary-entry{Rule (in macros; probably other uses, which ones?)}
 
-@glossary-entry{Safe operation → unsafe operation}
+  @level-intermediate
+
+@glossary-entry{Safe operation}
+
+  @level-intermediate
 
 @glossary-entry{Scheme}
 
+  @level-basic
+
 @glossary-entry{Scribble}
+
+  @level-intermediate
 
 @glossary-entry{Sequence}
 
+  @level-intermediate
+
 @glossary-entry{Set}
+
+  @level-basic
 
 @glossary-entry{Shadowing}
 
+  @level-basic
+
 @glossary-entry{Splicing}
+
+  @level-basic
 
 @glossary-entry{SRFI}
 
+  @level-intermediate
+
 @glossary-entry{Standard library}
+
+  @level-basic
 
 @glossary-entry{Stream}
 
+  @level-basic
+
 @glossary-entry{String (strings vs. byte strings; handling encoding)}
+
+  @level-basic
 
 @glossary-entry{Struct}
 
+  @level-basic
+
 @glossary-entry{Symbol}
 
-@glossary-entry{Syntactic form → Form}
+  @level-basic
+
+@glossary-entry{Syntactic form}
+
+  @level-basic
+
+See @secref["Form" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Syntax (different meanings)}
 
+  @level-intermediate
+
 @glossary-entry{Syntax transformer}
+
+  @level-intermediate
+
+See @secref["Macro" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Tail call}
 
+  @level-basic
+
 @glossary-entry{Thread}
+
+  @level-intermediate
 
 @glossary-entry{Thunk}
 
-@glossary-entry{Transparent → Opaque}
+  @level-basic
+
+@glossary-entry{Transparent}
+
+  @level-basic
+
+See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Trust level}
 
+  @level-advanced
+
 @glossary-entry{Trusted code}
+
+  @level-advanced
+
+See @secref["Untrusted_code" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Typed Racket}
 
+  @level-advanced
+
 @glossary-entry{Undefined (why do we need this if we have `void`?)}
+
+  @level-advanced
 
 @glossary-entry{Unit}
 
+  @level-advanced
+
 @glossary-entry{Unsafe operation}
 
-@glossary-entry{Untrusted code → trusted code}
+  @level-intermediate
+
+@glossary-entry{Untrusted code}
+
+  @level-advanced
 
 @glossary-entry{Value (sometimes "object", but may be confused with OOP concept)}
 
+  @level-basic
+
 @glossary-entry{Values (multiple values, as in `define-values` etc.)}
+
+  @level-basic
 
 @glossary-entry{Vector (mention growable vectors)}
 
+  @level-basic
+
 @glossary-entry{Void}
+
+  @level-basic
 
 @glossary-entry{Will}
 
-@glossary-entry{Write → display}
+  @level-advanced
+
+@glossary-entry{Write}
+
+  @level-basic
+
+See @secref["Display" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Writer}
+
+  @level-advanced
