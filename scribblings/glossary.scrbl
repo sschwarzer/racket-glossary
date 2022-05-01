@@ -59,9 +59,48 @@ which concepts are more foundational than others.
 
   @level-basic
 
+Assigning means the same as in most programming languages: changing the value
+of a variable. To change the value of a variable, use @racket[set!]:
+@examples[
+  #:eval helper-eval
+  (define my-variable 2)
+  (displayln my-variable)
+  (set! my-variable 5)
+  (displayln my-variable)
+]
+
+However, in Racket and other functional languages, assignment is used much less
+than in imperative languages. The ``normal'' approach in functional languages
+is to transform immutable values to other immutable values.
+
+To change a value via assignment, you need a name (binding) for it. Usually,
+the binding is created with @racket[define], but it can also be created by
+one of the @racket[let] forms.
+
+See also:
+@itemlist[
+  @item{@secref["Binding" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
+  @item{@secref["set!" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
+  @item{@secref["set!" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
+
 @glossary-entry{Binding}
 
   @level-basic
+
+A binding makes a value accessible via a name. Typically, bindings are created
+with the @racket[define] form:
+@examples[
+  #:eval helper-eval
+  (define x (+ 2 3))]
+binds the name @racket[x] to the value @racket[5].
+
+Note that the bound value is the @italic{result} of the expression, not the
+expression itself.
+
+See also:
+@itemlist[
+  @item{@secref["binding" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
+  @item{@secref["id-model" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
 
 @glossary-entry{Boolean}
 
@@ -376,7 +415,9 @@ See also:
 
   @level-intermediate
 
-@glossary-entry{List (linked list, explain differences to arrays in other languages)}
+@glossary-entry{List}
+
+(linked list, explain differences to arrays in other languages)}
 
   @level-basic
 
@@ -428,7 +469,7 @@ See also:
 
   @level-intermediate
 
-See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g
 
 @glossary-entry{Package}
 
@@ -437,6 +478,28 @@ See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 @glossary-entry{Pair}
 
   @level-basic
+
+Pairs are the building blocks of Scheme/Racket lists, but are also often used
+for combining any two values.
+
+Usually a pair is created with @racket[cons]:
+@examples[
+  #:eval helper-eval
+  (cons 1 "one")]
+
+Once a pair is created, you can access the first and second value of the pair with
+@racket[car] and @racket[cdr]:
+@examples[
+  #:eval helper-eval
+  (define a-pair (cons 1 "one"))
+  (car a-pair)
+  (cdr a-pair)]
+
+See also:
+@itemlist[
+  @item{@secref["List" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
+  @item{@secref["pairs" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
+  @item{@secref["pairs" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
 
 @glossary-entry{Parameter}
 
@@ -580,7 +643,7 @@ See also:
 
   @level-basic
 
-@secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Require}
 
@@ -593,6 +656,8 @@ See also:
 @glossary-entry{Safe operation}
 
   @level-intermediate
+
+See @secref["Unsafe_operation" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
 @glossary-entry{Scheme}
 
