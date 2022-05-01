@@ -502,7 +502,7 @@ call the result @racket[3] as a function, @racket[(3)], which gives an error
 saying that @racket[3] isn't callable.
 
 On the other hand, when using a function in another position, it's just a
-"passive" value:
+``passive'' value:
 
 @examples[
   #:eval helper-eval
