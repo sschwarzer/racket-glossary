@@ -39,6 +39,7 @@
       (secref term #:doc (list 'lib url)))
     ", "))
 
+@; ----------------------------------------------------------------------
 
 @title{Glossary of Racket terms and concepts}
 @author{Stefan Schwarzer}
