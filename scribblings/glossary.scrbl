@@ -138,7 +138,7 @@ interpreted as true.
 
 @examples[
   #:eval helper-eval
-  (for ([value '(#t 1 "false" map (void) #f)])
+  (for ([value '(#t 1 0 "false" '() map (void) #f)])
     (displayln (if value "true" "false")))]
 
 See also: @secref*["booleans" 'reference] @in-rr
