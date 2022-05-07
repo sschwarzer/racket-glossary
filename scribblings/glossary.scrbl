@@ -2,6 +2,7 @@
 
 @(require
   racket/function
+  racket/list
   racket/match
   scribble/example
   (for-label racket/base))
@@ -22,14 +23,21 @@
 
 @(define glossary-entry (curry subsection #:style 'unnumbered))
 
-@(define (secref* term document)
+@(define (secref* term-or-terms document)
+  (define terms
+    (if (list? term-or-terms)
+        term-or-terms
+        (list term-or-terms)))
   (define url
     (match document
       ['glossary  "racket-glossary/scribblings/glossary.scrbl"]
       ['guide     "scribblings/guide/guide.scrbl"]
       ['reference "scribblings/reference/reference.scrbl"]
-      [_          "INVALID"]))
-  @secref[term #:doc (list 'lib url)])
+      [_          (raise-user-error "invalid document type")]))
+  (add-between
+    (for/list ([term terms])
+      (secref term #:doc (list 'lib url)))
+    ", "))
 
 
 @title{Glossary of Racket terms and concepts}
