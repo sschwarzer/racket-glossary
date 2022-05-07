@@ -59,6 +59,8 @@ which concepts are more foundational than others.
 
   @level-basic
 
+@; Binding vs. location?
+
 Assigning means the same as in most programming languages: changing the value
 of a variable. To change the value of a variable, use @racket[set!]:
 @examples[
@@ -73,13 +75,15 @@ However, in Racket and other functional languages, assignment is used much less
 than in imperative languages. The ``normal'' approach in functional languages
 is to transform immutable values to other immutable values.
 
-To change a value via assignment, you need a name (binding) for it. Usually,
-the binding is created with @racket[define], but it can also be created by
-one of the @racket[let] forms.
+To change a value via assignment, you need a name (binding) and a storage
+location for it. Usually, the binding and location are created with
+@racket[define], but they can also be created by one of the @racket[let] forms.
 
 See also:
 @itemlist[
   @item{@secref["Binding" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
+  @item{@secref["Let" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
+  @item{@secref["Location" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
   @item{@secref["set!" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
   @item{@secref["set!" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
 
@@ -418,6 +422,10 @@ See also:
 @glossary-entry{List}
 
 (linked list, explain differences to arrays in other languages)}
+
+  @level-basic
+
+@glossary-entry{Location}
 
   @level-basic
 
