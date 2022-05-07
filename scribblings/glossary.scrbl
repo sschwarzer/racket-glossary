@@ -99,9 +99,7 @@ location for it. Usually, the binding and location are created with
 
 See also:
 @itemlist[
-  @item{@secref*["Binding" 'glossary] @in-g}
-  @item{@secref*["Let" 'glossary] @in-g}
-  @item{@secref*["Location" 'glossary] @in-g}
+  @item{@secref*['("Binding" "Let" "Location") 'glossary] @in-g}
   @item{@secref*["set!" 'guide] @in-rg}
   @item{@secref*["set!" 'reference] @in-rr}]
 
@@ -121,8 +119,8 @@ expression itself.
 
 See also:
 @itemlist[
-  @item{@secref["binding" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
-  @item{@secref["id-model" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
+  @item{@secref*["Binding" 'glossary] @in-rg}
+  @item{@secref*["id-model" 'reference] @in-rr}]
 
 @glossary-entry{Boolean}
 
@@ -143,8 +141,7 @@ interpreted as true.
   (for ([value '(#t 1 "false" map (void) #f)])
     (displayln (if value "true" "false")))]
 
-See also: @secref["booleans" #:doc '(lib
-"scribblings/reference/reference.scrbl")] @in-rr
+See also: @secref*["booleans" 'reference] @in-rr
 
 @glossary-entry{Box}
 
@@ -169,14 +166,13 @@ reference in other languages. However, in practice this isn't a problem since
 it's unidiomatic in Racket to use mutable values. Instead you usually transform
 immutable values to other immutable values.
 
-See also: @secref["boxes" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr
+See also: @secref*["boxes" 'reference] @in-rr
 
 @glossary-entry{Call}
 
   @level-basic
 
-See @secref["Procedure"
-            #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Procedure" 'glossary]
 
 @glossary-entry{Cell}
 
@@ -214,7 +210,7 @@ See @secref["Procedure"
 
   @level-basic
 
-See @secref["Pair" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Pair" 'glossary]
 
 @glossary-entry{Continuation}
 
@@ -311,7 +307,7 @@ See @secref["Pair" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
   @level-basic
 
-See @secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Procedure" 'glossary]
 
 @glossary-entry{Functional programming (FP)}
 
@@ -387,13 +383,10 @@ See @secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl"
 
   @level-basic
 
-As shown in the
-@secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
-entry, a procedure can be defined with @racket[define]. However, you can also
-define functions directly as values without giving them a name. This is the
-same function as in the
-@secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
-glossary entry:
+As shown in the @secref*["Procedure" 'glossary] entry, a procedure can be
+defined with @racket[define]. However, you can also define functions directly
+as values without giving them a name. This is the same function as in the
+@secref*["Procedure" 'glossary] glossary entry:
 
 @examples[
   #:eval helper-eval
@@ -407,19 +400,14 @@ The second example above defines and directly calls the function.
 
 The above examples are a bit artifical. Normally, you use a function defined
 with @racket[lambda] as a function argument for a
-@secref["Higher-order_function" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
-or in a @secref["Let" #:doc '(lib
-"racket-glossary/scribblings/glossary.scrbl")] expression.
+@secref*["Higher-order_function" 'glossary] or in a @secref*["Let" 'glossary]
+expression.
 
 See also:
 @itemlist[
-  @item{@secref["Definition" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
-    @in-g}
-  @item{@secref["Higher-order_function"
-                #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
-  @item{@secref["Let" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
-  @item{@secref["lambda" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
-  @item{@secref["lambda" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
+  @item{@secref*['("Definition" "Higher-order_function" "Let") 'glossary] @in-g}
+  @item{@secref*["lambda" 'guide] @in-rg}
+  @item{@secref*["lambda" 'reference] @in-rr}]
 
 @glossary-entry{Lang (as in `#lang`)}
 
@@ -495,7 +483,7 @@ See also:
 
   @level-intermediate
 
-See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g
+See @secref*["Struct" 'glossary] @in-g
 
 @glossary-entry{Package}
 
@@ -523,9 +511,9 @@ Once a pair is created, you can access the first and second value of the pair wi
 
 See also:
 @itemlist[
-  @item{@secref["List" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
-  @item{@secref["pairs" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
-  @item{@secref["pairs" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
+  @item{@secref*["List" 'glossary] @in-g}
+  @item{@secref*["pairs" 'guide] @in-rg}
+  @item{@secref*["pairs" 'reference] @in-rr}]
 
 @glossary-entry{Parameter}
 
@@ -563,7 +551,7 @@ See also:
 
   @level-basic
 
-See @secref["Display" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Display" 'glossary]
 
 @glossary-entry{Procedure}
 
@@ -629,9 +617,9 @@ greet someone:
 
 See also:
 @itemlist[
-  @item{@secref["Lambda" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
-  @item{@secref["syntax-overview" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
-  @item{@secref["define" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
+  @item{@secref*["Lambda" 'glossary] @in-g}
+  @item{@secref*["syntax-overview" 'guide] @in-rg}
+  @item{@secref*["define" 'reference] @in-rr}]
 
 @glossary-entry{Profiling}
 
@@ -669,7 +657,7 @@ See also:
 
   @level-basic
 
-See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Struct" 'glossary]
 
 @glossary-entry{Require}
 
@@ -683,7 +671,7 @@ See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
   @level-intermediate
 
-See @secref["Unsafe_operation" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Unsafe_operation" 'glossary]
 
 @glossary-entry{Scheme}
 
@@ -737,7 +725,7 @@ See @secref["Unsafe_operation" #:doc '(lib "racket-glossary/scribblings/glossary
 
   @level-basic
 
-See @secref["Form" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Form" 'glossary]
 
 @glossary-entry{Syntax (different meanings)}
 
@@ -747,7 +735,7 @@ See @secref["Form" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
   @level-intermediate
 
-See @secref["Macro" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Macro" 'glossary]
 
 @glossary-entry{Tail call}
 
@@ -765,7 +753,7 @@ See @secref["Macro" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
   @level-basic
 
-See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Struct" 'glossary]
 
 @glossary-entry{Trust level}
 
@@ -775,7 +763,7 @@ See @secref["Struct" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 
   @level-advanced
 
-See @secref["Untrusted_code" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Untrusted_code" 'glossary]
 
 @glossary-entry{Typed Racket}
 
@@ -821,7 +809,7 @@ See @secref["Untrusted_code" #:doc '(lib "racket-glossary/scribblings/glossary.s
 
   @level-basic
 
-See @secref["Display" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
+See @secref*["Display" 'glossary]
 
 @glossary-entry{Writer}
 
