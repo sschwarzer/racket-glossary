@@ -33,7 +33,7 @@
       ['glossary  "racket-glossary/scribblings/glossary.scrbl"]
       ['guide     "scribblings/guide/guide.scrbl"]
       ['reference "scribblings/reference/reference.scrbl"]
-      [_          (raise-user-error "invalid document type")]))
+      [_          (raise-user-error (format "invalid document type ~v" document))]))
   (add-between
     (for/list ([term terms])
       (secref term #:doc (list 'lib url)))
