@@ -2,6 +2,7 @@
 
 @(require
   racket/function
+  racket/match
   scribble/example
   (for-label racket/base))
 
@@ -20,6 +21,15 @@
 @(define in-rr "in the Racket Reference")
 
 @(define glossary-entry (curry subsection #:style 'unnumbered))
+
+@(define (secref* term document)
+  (define url
+    (match document
+      ['glossary  "racket-glossary/scribblings/glossary.scrbl"]
+      ['guide     "scribblings/guide/guide.scrbl"]
+      ['reference "scribblings/reference/reference.scrbl"]
+      [_          "INVALID"]))
+  @secref[term #:doc (list 'lib url)])
 
 
 @title{Glossary of Racket terms and concepts}
@@ -81,11 +91,11 @@ location for it. Usually, the binding and location are created with
 
 See also:
 @itemlist[
-  @item{@secref["Binding" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
-  @item{@secref["Let" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
-  @item{@secref["Location" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")] @in-g}
-  @item{@secref["set!" #:doc '(lib "scribblings/guide/guide.scrbl")] @in-rg}
-  @item{@secref["set!" #:doc '(lib "scribblings/reference/reference.scrbl")] @in-rr}]
+  @item{@secref*["Binding" 'glossary] @in-g}
+  @item{@secref*["Let" 'glossary] @in-g}
+  @item{@secref*["Location" 'glossary] @in-g}
+  @item{@secref*["set!" 'guide] @in-rg}
+  @item{@secref*["set!" 'reference] @in-rr}]
 
 @glossary-entry{Binding}
 
