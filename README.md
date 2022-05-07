@@ -31,19 +31,11 @@ whatever you prefer.
 
 ## Contributions
 
-At the moment, the file `glossary.md` contains only a list of terms to be
-included in the glossary.
+I'm still experimenting with the format and want to write more glossary entries
+myself before I settle.
 
-My current plan to build the glossary is:
-
-1. Get feedback on the selection of the terms. For example, is something
-   missing?
-2. Convert the terms to headings and add some of my thoughts as stubs to build
-   upon.
-3. Wait for contributors to offer pull requests. :-)
-
-I suggest doing step 1 on the [Racket
-Discourse](https://racket.discourse.group/) instance.
+At some point, I'll surely need feedback, especially on the intermediate and
+advanced entries.
 
 ## License
 
