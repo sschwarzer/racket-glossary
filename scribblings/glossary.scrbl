@@ -373,7 +373,7 @@ As shown in the
 @secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 entry, a procedure can be defined with @racket[define]. However, you can also
 define functions directly as values without giving them a name. This is the
-same function as in the 
+same function as in the
 @secref["Procedure" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 glossary entry:
 
@@ -388,7 +388,7 @@ glossary entry:
 The second example above defines and directly calls the function.
 
 The above examples are a bit artifical. Normally, you use a function defined
-with @racket[lambda] as a function argument for a 
+with @racket[lambda] as a function argument for a
 @secref["Higher-order_function" #:doc '(lib "racket-glossary/scribblings/glossary.scrbl")]
 or in a @secref["Let" #:doc '(lib
 "racket-glossary/scribblings/glossary.scrbl")] expression.
