@@ -426,6 +426,9 @@ See also:
 
   @level-intermediate
 
+"Let over lambda is a nickname given to a lexical closure." - Doug Hoyte, in @hyperlink["https://letoverlambda.com/textmode.cl/guest/chap2.html#sec_5doc"]{Let over Lambda} 
+
+
 @glossary-entry{List}
 
 (linked list, explain differences to arrays in other languages)}
