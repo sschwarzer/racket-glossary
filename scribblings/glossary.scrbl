@@ -344,7 +344,7 @@ See @secref*["Procedure" 'glossary]
 
 @glossary-entry{Hygiene}
 
-  @level-basic
+  @level-intermediate
 
 @glossary-entry{Identifier (differences to identifiers in other languages)}
 
