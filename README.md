@@ -29,13 +29,18 @@ until the content is good enough to be included in the Racket documentation.
 Therefore, feel free to make contributions either in Markdown or Scribble,
 whatever you prefer.
 
+Generally, information that isn't complete enough for the glossary itself
+should go into `glossary_notes.md`.
+
 ## Contributions
 
-I'm still experimenting with the format and want to write more glossary entries
-myself before I settle.
+I'm still experimenting with the writing approach and want to write more
+glossary entries myself before I settle.
 
-At some point, I'll surely need feedback, especially on the intermediate and
-advanced entries.
+I'll surely need some feedback, especially on the intermediate and advanced
+entries. I recommend that you, at least for now, make contributions as pull
+requests to the [glossary_notes.md file](./glossary_notes.md). See the
+beginning of that file for information on what to add there.
 
 ## License
 
