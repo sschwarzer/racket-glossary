@@ -41,7 +41,7 @@
 
 @; ----------------------------------------------------------------------
 
-@title{Glossary of Racket terms and concepts}
+@title{Glossary of Racket concepts}
 @author{Stefan Schwarzer}
 
 @section{Introduction}
