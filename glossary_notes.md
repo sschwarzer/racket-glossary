@@ -5,12 +5,15 @@ entries in the glossary. Having this auxiliary information in the
 glossary itself might be confusing.
 
 The notes can be anything that may be useful to write the actual
-glossary entries.
+glossary entries. If you have information that doesn't fit into a
+specific glossary entry, add it at the end of the document.
 
 The "natural" format for this document is Markdown, but it's fine to
 use Scribble notation. In this case, to have the content rendered
 properly in the Github web interface, put the Scribble code between
 triple backticks, i.e. mark them up as code.
+
+----
 
 ## Assignment
 
@@ -274,3 +277,7 @@ triple backticks, i.e. mark them up as code.
 ## Write
 
 ## Writer
+
+----
+
+## Information that doesn't fit into a specific glossary entry
