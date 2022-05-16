@@ -739,7 +739,7 @@ See @secref*["Form" 'glossary]
 
   @level-intermediate
 
-See @secref*["Macro" 'glossary]
+See also: @secref*["Macro" 'glossary] @in-g
 
 @glossary-entry{Tail call}
 
