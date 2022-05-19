@@ -51,6 +51,28 @@ triple backticks, i.e. mark them up as code.
 
 ## Currying
 
+Currying is the act of taking a function with some number of arguments and creating a new function that calls the first while hard coding some of the arguments.
+
+For example:
+
+```
+  (define (draw-line from-x from-y to-x to-y) ...) ; a function of 4 arguments
+  (define (draw-line-from-origin x y) (draw-line 0 0 x y)) ; a function of 2 arguments
+  (define draw-line-from-origin (lambda (x y) (draw-line 0 0 x y)))
+  (define draw-line-from-origin (curry draw-line 0 0)) 
+```
+
+The last three lines are equivalent.
+
+Racket has two separate currying functions: ```curry```, which hardcodes the leftmost arguments, and ```curryr``` which hardcodes the rightmost arguments.
+
+For example:
+
+```
+  (define draw-line-from-origin (curry draw-line 0 0)) ; same as (lambda (x y) (draw-line 0 0 x y))
+  (define draw-line-to-origin   (curryr draw-line 0 0) ; same as (lambda (x y) (draw-line x y 0 0))
+```
+
 ## Custodian
 
 ## Debugging
