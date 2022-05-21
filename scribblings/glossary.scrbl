@@ -39,8 +39,6 @@
       (secref term #:doc (list 'lib url)))
     ", "))
 
-@section-index{racket-glossary}
-
 @; ----------------------------------------------------------------------
 
 @title{Glossary of Racket concepts}
