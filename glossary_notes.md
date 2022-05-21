@@ -4,14 +4,19 @@ This document should be used to collect hints for writing the actual entries in
 the glossary. Having this auxiliary information in the glossary itself might be
 confusing.
 
-The notes can be anything that may be useful to write the actual glossary
-entries. If you have information that doesn't fit into a specific glossary
+The notes in this file can be anything to help write the actual glossary
+entries: definitions, examples, common pitfalls or other potentially useful
+information. If you have information that doesn't fit into a specific glossary
 entry, add it at the end of the document.
 
 The "natural" format for this document is Markdown, but it's fine to use
 Scribble notation. In this case, to have the content rendered properly in the
 Github web interface, put the Scribble code between triple backticks, i.e. mark
 them up as code.
+
+Additions should be made in bullet points. That is, the entries in this file
+shouldn't look like already finished glossary entries. Otherwise contributors
+may be discouraged to add more information.
 
 ----
 
