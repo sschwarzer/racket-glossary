@@ -46,20 +46,6 @@ If you want to remove the package, use
 
     raco pkg remove racket-glossary
 
-## Format
-
-I'd like to see this glossary end up in the Racket documentation, so eventually
-it needs to be converted to Racket's documentation language
-[Scribble](https://docs.racket-lang.org/scribble/). On the other hand, I think
-we maybe should use a simpler format like Markdown for easier contributions
-until the content is good enough to be included in the Racket documentation.
-
-Therefore, feel free to make contributions either in Markdown or Scribble,
-whatever you prefer.
-
-Generally, information that isn't complete enough for the glossary itself
-should go into `glossary_notes.md`.
-
 ## Contributions
 
 I'm still experimenting with the writing approach and want to write more
