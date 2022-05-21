@@ -51,27 +51,26 @@ them up as code.
 
 ## Currying
 
-Currying is the act of taking a function with some number of arguments and creating a new function that calls the first while hard coding some of the arguments.
+- Currying is the act of taking a function with some number of arguments and
+  creating a new function that calls the first while hard coding some of the
+  arguments.
 
-For example:
+- Example:
 
-```
-  (define (draw-line from-x from-y to-x to-y) ...) ; a function of 4 arguments
-  (define (draw-line-from-origin x y) (draw-line 0 0 x y)) ; a function of 2 arguments
-  (define draw-line-from-origin (lambda (x y) (draw-line 0 0 x y)))
-  (define draw-line-from-origin (curry draw-line 0 0)) 
-```
+      (define (draw-line from-x from-y to-x to-y) ...) ; a function of 4 arguments
+      (define (draw-line-from-origin x y) (draw-line 0 0 x y)) ; a function of 2 arguments
+      (define draw-line-from-origin (lambda (x y) (draw-line 0 0 x y)))
+      (define draw-line-from-origin (curry draw-line 0 0)) 
 
-The last three lines are equivalent.
+  The last three lines are equivalent.
 
-Racket has two separate currying functions: ```curry```, which hardcodes the leftmost arguments, and ```curryr``` which hardcodes the rightmost arguments.
+- Racket has two separate currying functions: ```curry```, which hardcodes the
+  leftmost arguments, and ```curryr``` which hardcodes the rightmost arguments.
 
-For example:
+  Example:
 
-```
-  (define draw-line-from-origin (curry draw-line 0 0)) ; same as (lambda (x y) (draw-line 0 0 x y))
-  (define draw-line-to-origin   (curryr draw-line 0 0) ; same as (lambda (x y) (draw-line x y 0 0))
-```
+      (define draw-line-from-origin (curry draw-line 0 0)) ; same as (lambda (x y) (draw-line 0 0 x y))
+      (define draw-line-to-origin   (curryr draw-line 0 0) ; same as (lambda (x y) (draw-line x y 0 0))
 
 ## Custodian
 
@@ -155,10 +154,10 @@ For example:
 
 ## Let over lambda
 
-```scribble
-"Let over lambda is a nickname given to a lexical closure." - Doug Hoyte, in
-@hyperlink["https://letoverlambda.com/textmode.cl/guest/chap2.html#sec_5doc"]{Let over Lambda} 
-```
+- ```scribble
+  "Let over lambda is a nickname given to a lexical closure." - Doug Hoyte, in
+  @hyperlink["https://letoverlambda.com/textmode.cl/guest/chap2.html#sec_5doc"]{Let over Lambda} 
+  ```
 
 ## List
 
