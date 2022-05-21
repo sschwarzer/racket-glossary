@@ -53,7 +53,7 @@ glossary entries myself before I settle.
 
 I'll surely need some feedback, especially on the intermediate and advanced
 entries. I recommend that you, at least for now, make contributions as pull
-requests to the [glossary_notes.md file](./glossary_notes.md). See the
+requests to the [glossary-notes.md file](./glossary-notes.md). See the
 beginning of that file for information on what to add there.
 
 Although not strictly necessary, I'd appreciate it if you wrote commit messages
