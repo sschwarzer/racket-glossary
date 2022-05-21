@@ -18,6 +18,34 @@ between them.
 - Provide context. So some entries may have more content than you'd usually
   expect from a glossary.
 
+## Preview
+
+This Racket glossary isn't available on the [Racket package
+server](https://pkgs.racket-lang.org/) yet. I plan to publish the glossary as a
+package when the "basic" category is about complete.
+
+In the meantime, you can preview the current glossary version as rendered HTML
+with:
+
+1. [Download and install Racket](https://pkgs.racket-lang.org/) (if not done
+   already)
+
+2. Install the glossary package
+
+       raco pkg install git+https://github.com/sschwarzer/racket-glossary
+
+3. Open the HTML version of the glossary
+
+       raco docs racket-glossary
+
+You can update the package with
+
+    raco pkg update git+https://github.com/sschwarzer/racket-glossary
+
+If you want to remove the package, use
+
+    raco pkg remove racket-glossary
+
 ## Format
 
 I'd like to see this glossary end up in the Racket documentation, so eventually
