@@ -278,6 +278,23 @@ may be discouraged to add more information.
 
 ## Struct
 
+- Although Racket has an object (OOP) system, usually data types are
+  implemented as `struct`s and functions operating on them.
+- Creating a struct auto-generates accessors (by default). Mutable structs also
+  have mutator accessors added.
+- Avoid mutation, prefer functional updates (reference "Functional update").
+  Mention `struct-copy`.
+- Usually use transparent structs although opaque is the default. With transparent
+  visibility,
+  - Printed information is more useful.
+  - Usually you want to compare struct values by values, not by identity. So using
+    `equal?` with opaque struct values can be confusing.
+- Field names are only available at compile time. At runtime only offsets are
+  available. But maybe this is a too low-level detail for the glossary?
+- Mention that inherited fields require the accessor functions of the supertype
+  (with example).
+- Any other gotchas?
+
 ## Symbol
 
 ## Syntactic form
