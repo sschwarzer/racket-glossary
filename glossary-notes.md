@@ -170,6 +170,13 @@ may be discouraged to add more information.
 
 ## Macro
 
+- Introductions/tutorials
+  - [Racket Guide](https://docs.racket-lang.org/guide/macros.html)
+  - [Fear of Macros](https://www.greghendershott.com/fear-of-macros/)
+  - [Mythical Macros](https://soegaard.github.io/mythical-macros/)
+  - [Macros and Languages in
+     Racket](https://rmculpepper.github.io/malr/index.html)
+
 ## Match
 
 ## Match transformer
