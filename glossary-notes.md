@@ -226,6 +226,10 @@ may be discouraged to add more information.
 
 ## Port
 
+- Like _file objects_ in "other" languages, but "port" is the common term for
+  the concept in Scheme and Racket.
+- Ports don't need to belong to files, sockets are also possible. (Check this!)
+
 ## Predicate
 
 ## Print
