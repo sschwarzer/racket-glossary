@@ -208,6 +208,8 @@ may be discouraged to add more information.
 
 ## Opaque
 
+- See "struct"
+
 ## Package
 
 ## Pair
@@ -334,6 +336,8 @@ may be discouraged to add more information.
 ## Thunk
 
 ## Transparent
+
+- See "struct"
 
 ## Trust level
 
