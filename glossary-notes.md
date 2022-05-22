@@ -282,6 +282,15 @@ may be discouraged to add more information.
 
 ## SRFI
 
+- "Scheme request for implementation"
+- Used to standardize functionality across different Scheme implementations.
+- They come with an example implementation, but such an implementation may need
+  changes to run on a different Scheme implementation than they were
+  implemented for.
+- Racket usually doesn't use SRFI, at least not explicitly. Racket has many
+  functions that are described in SRFIs, but the similarity to the SRFIs isn't
+  mentioned in the documentation.
+
 ## Standard library
 
 ## Stream
