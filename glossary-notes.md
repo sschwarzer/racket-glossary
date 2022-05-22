@@ -176,6 +176,17 @@ may be discouraged to add more information.
   - [Mythical Macros](https://soegaard.github.io/mythical-macros/)
   - [Macros and Languages in
      Racket](https://rmculpepper.github.io/malr/index.html)
+- Executed at compile time
+- Needed to access information that's only available at compile time, not
+  runtime. Example: `assert` macro to access an expression, not just it's
+  result at runtime.
+- Macros have control over when their arguments (correct term?) are evaluated.
+  For example, `and` must be able to control evaluation of its runtime
+  arguments to implement short-circuit behavior.
+- Show only relatively simple macro approaches in glossary? For example, focus
+  on pattern-bases macros instead of manipulating syntax values. On the other
+  hand, we don't want to hold back information on concepts that go beyond
+  simple macros.
 
 ## Match
 
