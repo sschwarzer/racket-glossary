@@ -202,6 +202,33 @@ may be discouraged to add more information.
 
 ## Naming conventions
 
+- Scheme and Racket allow more characters in identifiers than most other
+  languages.
+- Describe common conventions.
+  - Name parts are usually separated by `-` ("kebap case"). Camel case and
+    snake case (underscores) are almost never used.
+  - Abbreviations are rare, almost everything is "spelled out". This can result
+    in long names (somewhat extreme cases:
+    `make-input-port/read-to-peek`,
+    `write-bytes-avail/enable-break`,
+    `call-with-default-reading-parameterization`,
+    `file-or-directory-permissions`), but people mostly seem to be fine with
+    that.
+  - Suffix `?` for predicates. (Explain predicates. Do we need/want a dedicated
+    glossary entry for predicates?)
+  - Suffix `!` for mutating functions.
+    - Link to "Functional update"
+  - `/` often means "for" or "with", e.g. `for/vector`.
+  - `*` suffix
+    - repetition, e.g. `regexp-replace*`
+    - nesting, e.g. `let*`
+    - other variant of the name without `*`, e.g. `for*`, `call-with-output-file*`
+  - `->` for conversion, e.g. `vector->list`
+  - Type in front, e.g. `vector-ref`, auto-generated struct accessors.
+- I thought [How to Program Racket: a Style
+  Guide](https://docs.racket-lang.org/style/index.html) also contained
+  something about naming conventions, but it doesn't seem to be the case.
+
 ## Number
 
 ## Numeric tower
