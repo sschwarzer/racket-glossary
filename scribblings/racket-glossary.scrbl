@@ -30,7 +30,7 @@
         (list term-or-terms)))
   (define url
     (match document
-      ['glossary  "racket-glossary/scribblings/glossary.scrbl"]
+      ['glossary  "racket-glossary/scribblings/racket-glossary.scrbl"]
       ['guide     "scribblings/guide/guide.scrbl"]
       ['reference "scribblings/reference/reference.scrbl"]
       [_          (raise-user-error (format "invalid document type ~v" document))]))
