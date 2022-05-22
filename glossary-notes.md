@@ -262,6 +262,14 @@ may be discouraged to add more information.
 
 ## Sequence
 
+- Lazy evaluation, it's not necessary to build intermediate lists (compared to,
+  say, `map`).
+- Usually used implicitly in `for` forms.
+- Explain sequences vs. streams. When to use one or the other?
+- Refer to converters between sequences and streams.
+- Mention generators? They're related, but maybe this goes into too much
+  detail? Generators seem to be used much(?) less than sequences or streams.
+
 ## Set
 
 ## Shadowing
@@ -273,6 +281,9 @@ may be discouraged to add more information.
 ## Standard library
 
 ## Stream
+
+- Overlap with sequences (see also there).
+- Usually used with files.
 
 ## String (strings vs. byte strings; handling encoding)
 
