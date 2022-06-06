@@ -718,6 +718,109 @@ See @secref*["Unsafe_operation" 'glossary]
 
   @level-basic
 
+Although Racket has an OOP system, the primary way to group information for a
+type is using a @racket[struct] and functions related to it.
+
+@examples[
+  #:eval helper-eval
+  (struct person (name age))]
+
+Here, @racket[person] is the name of the struct and @racket[name] and
+@racket[age] are the @deftech{fields} of the struct.
+
+Creating a struct like above creates several bindings. One is for the
+name of the struct, which can be used to create instances of the
+struct:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define bilbo (person "Bilbo Baggins" 111))
+  bilbo]
+
+Moreover, each field results in a binding named
+@italic{@racketidfont{struct-name-field-name}} to access the value of
+each field in a given struct instance:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (person-name bilbo)
+  (person-age bilbo)]
+
+It's also possible to declare a struct as @deftech{mutable} by adding
+a @racketkeywordfont{#:mutable} keyword. This creates additional accessor
+functions to set values in a struct instance. However, you usually should
+avoid mutation in Racket. Instead, use @racket[struct-copy] to create
+a new struct instance based on another instance:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define younger-bilbo (struct-copy person bilbo [age 100]))
+  (person-name younger-bilbo)
+  (person-age younger-bilbo)]
+
+See also @secref*["Functional_update" 'glossary]. You can use more
+than one field name/value pair.
+
+By default, structs are created as @deftech{opaque}. This means that
+printing a struct instance doesn't show the values. More important is
+the gotcha that comparing opaque struct instances with @racket[equal?]
+compares by @italic{identity} (like @racket[eq?]), @italic{not} by
+@italic{field values}!
+
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (define bilbo2 (person "Bilbo Baggins" 111))
+  (equal? (person-name bilbo) (person-name bilbo2))
+  (equal? (person-age bilbo) (person-age bilbo2))
+  (equal? bilbo bilbo2)]
+
+Adding the @racketkeywordfont{#:transparent} keyword to the struct
+definition avoids this problem:
+
+@examples[
+  #:eval helper-eval
+  (struct person (name age)
+    #:transparent)
+  (define frodo (person "Frodo Baggins" 33))
+  frodo
+  (define frodo2 (person "Frodo Baggins" 33))
+  (equal? (person-name frodo) (person-name frodo2))
+  (equal? (person-age frodo) (person-age frodo2))
+  (equal? frodo frodo2)]
+
+Note two things:
+@itemlist[
+  @item{Printing @racket[frodo] shows the struct values.}
+  @item{Comparing two struct instances of the same
+    @italic{transparent} struct type with the same values with
+    @racket[equal?] gives @racket[#t].}]
+
+The latter is not only more intuitive, but it's also very useful when
+comparing actual and expected struct instances in automated tests.
+
+That said, values of different struct types compare as @racket[#f], even
+if the field names are the same (if you ignore struct inheritance, but
+this is beyond the scope of this glossary).
+
+Although Racket uses opaque structs for stronger encapsulation and
+backward-compatibility, many Racket users nowadays think that defining
+structs as transparent usually gives the better tradeoff.
+
+Note that field names are only known at compile time, not at
+runtime. This means that a function like Python's
+@hyperlink["https://docs.python.org/3/library/functions.html#getattr"]{@tt{getattr}}
+doesn't exist in Racket.
+
+See also:
+@itemlist[
+  @item{@secref*['("Binding" "Functional_update") 'glossary] @in-g}
+  @item{@secref*['("define-struct" "classes") 'guide] @in-rg}
+  @item{@secref*['("define-struct" "mzlib:class") 'reference] @in-rr}]
+
 @glossary-entry{Symbol}
 
   @level-basic
