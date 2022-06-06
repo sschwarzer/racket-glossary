@@ -428,7 +428,7 @@ See also:
 
 @glossary-entry{List}
 
-(linked list, explain differences to arrays in other languages)}
+(linked list, explain differences to arrays in other languages)
 
   @level-basic
 
