@@ -225,6 +225,7 @@ may be discouraged to add more information.
     - other variant of the name without `*`, e.g. `for*`, `call-with-output-file*`
   - `->` for conversion, e.g. `vector->list`
   - Type in front, e.g. `vector-ref`, auto-generated struct accessors.
+  - Trailing `%` for class names.
 - I thought [How to Program Racket: a Style
   Guide](https://docs.racket-lang.org/style/index.html) also contained
   something about naming conventions, but it doesn't seem to be the case.
