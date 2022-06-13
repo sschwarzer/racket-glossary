@@ -30,8 +30,6 @@ may be discouraged to add more information.
 
 ## Call
 
-## Cell
-
 ## Channel
 
 ## Chaperone

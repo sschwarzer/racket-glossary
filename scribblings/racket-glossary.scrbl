@@ -179,10 +179,6 @@ See also: @secref*["boxes" 'reference] @in-rr
 
 See @secref*["Procedure" 'glossary]
 
-@glossary-entry{Cell}
-
-  @level-basic
-
 @glossary-entry{Channel}
 
   @level-intermediate
