@@ -5,14 +5,18 @@
   racket/list
   racket/match
   scribble/example
-  (for-label racket/base))
+  (for-label
+    racket/base
+    racket/function))
 
 @(define helper-eval (make-base-eval))
 @examples[
   #:eval helper-eval
   #:hidden
-  (require racket/pretty
-           racket/string)]
+  (require
+    racket/function
+    racket/pretty
+    racket/string)]
 
 @(define level-basic        @elem{@bold{Level:} basic})
 @(define level-intermediate @elem{@bold{Level:} intermediate})
@@ -228,6 +232,54 @@ See @secref*["Pair" 'glossary]
 @glossary-entry{Currying}
 
   @level-basic
+
+Currying takes a function with some number of arguments and creates a
+new function that calls the original function while hard-coding some
+of the arguments.
+
+The following example defines a function @racket[draw-line] and a curried
+version @racket[draw-line-from-origin], which hard-codes the @racket[from-x] and
+@racket[from-y] arguments:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (draw-line from-x from-y to-x to-y)
+    (code:comment "Keep it simple; just print a string instead of drawing a line.")
+    (displayln (format "Drawing a line from (~a, ~a) to (~a, ~a)"
+                       from-x from-y to-x to-y)))
+  (draw-line 1 2 3 4)
+  (code:comment "Hard-code the first two arguments of `draw-line`.")
+  (define (draw-line-from-origin to-x to-y)
+    (draw-line 0 0 to-x to-y))
+  (draw-line-from-origin 2 3)]
+
+If the arguments to hard-code are all at the start of the function arguments,
+you can use the @racket[curry] function:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (require racket/function)
+  (code:comment "Hard-code the first two arguments of `draw-line`.")
+  (define draw-line-from-origin (curry draw-line 0 0))
+  (draw-line-from-origin 2 3)]
+
+The result of @racket[curry] already is the curried function. To hard-code
+arguments all on the right of an argument list, there's @racket[curryr].
+
+Unlike Haskell, Scheme/Racket doesn't have implicit currying, so the following
+code raises an exception:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (eval:error
+    (define draw-line-from-origin (draw-line 0 0)))]
+
+See also:
+@itemlist[
+  @item{@secref*["Procedure" 'glossary] @in-g}
+  @item{@racket[curry] and @racket[curryr] @in-rr}]
 
 @glossary-entry{Custodian}
 
