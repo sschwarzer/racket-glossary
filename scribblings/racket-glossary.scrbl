@@ -63,7 +63,12 @@ ones, together with their importance, given by these levels:
 @itemlist[
   @item{@bold{basic:} These are basic concepts you should know to write Racket
     libraries and programs. If you're starting to learn Racket, focus on these
-    concepts.}
+    concepts.
+
+    Note that ``basic'' here doesn't nessarily mean ``trivial.'' Don't be
+    discouraged if you don't understand these glossary entries immediately.
+    Experiment with the code examples or revisit the respective glossary entry
+    later when you have more Racket experience.}
   @item{@bold{intermediate:} You can write most Racket software without these
     features, but you may need them depending on your problem. One example
     would be threads to execute different tasks concurrently.}
