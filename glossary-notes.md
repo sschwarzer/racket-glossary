@@ -52,31 +52,6 @@ may be discouraged to add more information.
 
 ## Core form
 
-## Currying
-
-- Currying is the act of taking a function with some number of arguments and
-  creating a new function that calls the first while hard coding some of the
-  arguments.
-
-- Example:
-
-      (define (draw-line from-x from-y to-x to-y) ...) ; a function of 4 arguments
-      (define (draw-line-from-origin x y) (draw-line 0 0 x y)) ; a function of 2 arguments
-      (define draw-line-from-origin (lambda (x y) (draw-line 0 0 x y)))
-      (define draw-line-from-origin (curry draw-line 0 0)) 
-
-  The last three lines are equivalent.
-
-- Racket has two separate currying functions: ```curry```, which hardcodes the
-  leftmost arguments, and ```curryr``` which hardcodes the rightmost arguments.
-
-  Example:
-
-      (define draw-line-from-origin (curry draw-line 0 0)) ; same as (lambda (x y) (draw-line 0 0 x y))
-      (define draw-line-to-origin   (curryr draw-line 0 0) ; same as (lambda (x y) (draw-line x y 0 0))
-
-- Different from Haskell, Scheme/Racket don't curry automatically.
-
 ## Custodian
 
 ## Debugging
@@ -161,7 +136,7 @@ may be discouraged to add more information.
 
 - ```scribble
   "Let over lambda is a nickname given to a lexical closure." - Doug Hoyte, in
-  @hyperlink["https://letoverlambda.com/textmode.cl/guest/chap2.html#sec_5doc"]{Let over Lambda} 
+  @hyperlink["https://letoverlambda.com/textmode.cl/guest/chap2.html#sec_5doc"]{Let over Lambda}
   ```
 
 ## List
@@ -243,6 +218,31 @@ may be discouraged to add more information.
 ## Pair
 
 ## Parameter
+
+## Partial application and currying
+
+- Partial application is the act of taking a function with some number of
+  arguments and creating a new function that calls the first while hard coding
+  some of the arguments.
+
+- Example:
+
+      (define (draw-line from-x from-y to-x to-y) ...) ; a function of 4 arguments
+      (define (draw-line-from-origin x y) (draw-line 0 0 x y)) ; a function of 2 arguments
+      (define draw-line-from-origin (lambda (x y) (draw-line 0 0 x y)))
+      (define draw-line-from-origin (curry draw-line 0 0))
+
+  The last three lines are equivalent.
+
+- Racket has two separate currying functions: ```curry```, which hardcodes the
+  leftmost arguments, and ```curryr``` which hardcodes the rightmost arguments.
+
+  Example:
+
+      (define draw-line-from-origin (curry draw-line 0 0)) ; same as (lambda (x y) (draw-line 0 0 x y))
+      (define draw-line-to-origin   (curryr draw-line 0 0) ; same as (lambda (x y) (draw-line x y 0 0))
+
+- Different from Haskell, Scheme/Racket don't curry implicitly.
 
 ## Pattern (in regular expressions)
 
