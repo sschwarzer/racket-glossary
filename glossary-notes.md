@@ -77,6 +77,8 @@ may be discouraged to add more information.
       (define draw-line-from-origin (curry draw-line 0 0)) ; same as (lambda (x y) (draw-line 0 0 x y))
       (define draw-line-to-origin   (curryr draw-line 0 0) ; same as (lambda (x y) (draw-line x y 0 0))
 
+- Different from Haskell, Scheme/Racket don't curry automatically.
+
 ## Custodian
 
 ## Debugging
