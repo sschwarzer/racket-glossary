@@ -783,6 +783,7 @@ definition avoids this problem:
 
 @examples[
   #:eval helper-eval
+  #:label #f
   (struct person (name age)
     #:transparent)
   (define frodo (person "Frodo Baggins" 33))
@@ -794,17 +795,17 @@ definition avoids this problem:
 
 Note two things:
 @itemlist[
-  @item{Printing @racket[frodo] shows the struct values.}
+  @item{Printing @racket[frodo] shows the struct values, not just
+    @tt{#<person>}.}
   @item{Comparing two struct instances of the same
     @italic{transparent} struct type with the same values with
     @racket[equal?] gives @racket[#t].}]
 
 The latter is not only more intuitive, but it's also very useful when
-comparing actual and expected struct instances in automated tests.
+comparing calculated and expected struct instances in automated tests.
 
-That said, values of different struct types compare as @racket[#f], even
-if the field names are the same (if you ignore struct inheritance, but
-this is beyond the scope of this glossary).
+That said, values of @italic{different} struct types compare as
+@racket[#f], even if the field names are the same.
 
 Although Racket uses opaque structs for stronger encapsulation and
 backward-compatibility, many Racket users nowadays think that defining
