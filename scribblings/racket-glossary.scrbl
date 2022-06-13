@@ -484,6 +484,25 @@ See also:
 
   @level-basic
 
+A location is an implicitly created memory location. For example, this happens
+in @racket[define] or @racket[let] forms. A consequence of creating a location
+is that it can be modified with @racket[set!] or other mutating functions.
+
+@examples[
+  #:eval helper-eval
+  (define (change-argument arg)
+    (displayln arg)
+    (set! arg 5)
+    (displayln arg))
+  (change-argument 3)
+
+  (let ([v (vector 1 2 3)])
+    (displayln v)
+    (vector-set! v 2 5)
+    (displayln v))]
+
+However, usually you should avoid mutation in functional programming.
+
 @glossary-entry{Macro}
 
   @level-intermediate
