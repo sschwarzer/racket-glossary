@@ -38,6 +38,12 @@ may be discouraged to add more information.
 
 ## Closure
 
+- Fix one or more free variables of a function by defining them in a scope
+  outside the function.
+
+- The closure is the function, plus access to the bindings from the outer
+  scope.
+
 ## Collection
 
 ## Combinator

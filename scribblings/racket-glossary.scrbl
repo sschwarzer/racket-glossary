@@ -200,6 +200,28 @@ See @secref*["Procedure" 'glossary]
 
   @level-basic
 
+A closure combines a function with environment data from a scope outside the
+function.
+
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (define (make-incrementer increment)
+    (lambda (value)
+      (+ value increment)))
+  (define add3 (make-incrementer 3))
+  (add3 5)]
+
+The return value of @racket[make-incrementer] is the closure. The
+@racket[lambda] expression doesn't define the increment; the value is taken
+from the scope outside the lambda expression.
+
+See also:
+@itemize[
+  @item{@secref*["Let_over_lambda" 'glossary] @in-g}
+  @item{@hyperlink["https://en.wikipedia.org/wiki/Closure_(computer_programming)"]{Closure
+    Wikipedia entry}}]
+
 @glossary-entry{Collection}
 
   @level-basic
@@ -432,6 +454,22 @@ See also:
 @glossary-entry{Let over lambda}
 
   @level-intermediate
+
+``Let over lambda'' describes a common idiom to create a closure. The following
+example is similar to the one in the @secref*["Closure" 'glossary] entry:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define add3
+    (let ([increment 3])
+      (lambda (value)
+        (+ value increment))))
+  (add3 5)]
+
+Here, @racket[let] creates the outer environent whereas @racket[lambda] defines
+the function using that environment.
+
+See also: @secref*['("Procedure" "Lambda" "Closure") 'glossary]
 
 @glossary-entry{List}
 
