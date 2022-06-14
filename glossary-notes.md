@@ -207,6 +207,14 @@ may be discouraged to add more information.
   - `->` for conversion, e.g. `vector->list`
   - Type in front, e.g. `vector-ref`, auto-generated struct accessors.
   - Trailing `%` for class names.
+  - `make-something` for functions that create `something` structs or objects.
+    Example: `make-date`, `make-channel`.
+    When used to create containers, the function tends to take a size and a
+    default value. Examples: `make-list`, `make-vector`.
+  - `build-something`: similar to `make-something`, but instead of a default
+    value, the second argument is a function that maps an integer to a
+    container item value. Examples: `build-list`, `build-string`.
+
 - I thought [How to Program Racket: a Style
   Guide](https://docs.racket-lang.org/style/index.html) also contained
   something about naming conventions, but it doesn't seem to be the case.
