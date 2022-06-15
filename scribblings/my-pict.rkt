@@ -33,6 +33,13 @@
                ; overlap.
                (translate cdr-pict (- LINE-WIDTH) 0))))
 
+; Return sub-picts for left and right half of cons cell pict.
+(define (cons-cell-car cons-cell)
+  (child-pict (car (pict-children cons-cell))))
+
+(define (cons-cell-cdr cons-cell)
+  (child-pict (cadr (pict-children cons-cell))))
+
 ; Return pict of cons cells with an arrow between cdrs and their pointed-to
 ; cars.
 (define (cons-cells . the-cons-cells)
@@ -40,8 +47,7 @@
          [with-arrow (lambda (current-pict cc1 cc2)
                        (pin-arrow-line ARROW-SIZE
                                        current-pict
-                                       ; Right half of cons cell.
-                                       (child-pict (cadr (pict-children cc1))) cc-find
+                                       (cons-cell-cdr cc1) cc-find
                                        cc2 lc-find))])
     (let loop ([cons-cells the-cons-cells]
                [shifted-cons-cells (cdr the-cons-cells)]
