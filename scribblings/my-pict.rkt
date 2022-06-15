@@ -49,13 +49,7 @@
                                        current-pict
                                        (cons-cell-cdr cc1) cc-find
                                        cc2 lc-find))])
-    (let loop ([cons-cells the-cons-cells]
-               [shifted-cons-cells (cdr the-cons-cells)]
-               [current-pict all-cons-cells])
-      (cond
-        [(null? shifted-cons-cells)
-         current-pict]
-        [else
-         (loop (cdr cons-cells)
-               (cdr shifted-cons-cells)
-               (with-arrow current-pict (car cons-cells) (car shifted-cons-cells)))]))))
+    (for/fold ([current-pict all-cons-cells])
+              ([cons-cell1 the-cons-cells]
+               [cons-cell2 (cdr the-cons-cells)])
+      (with-arrow current-pict cons-cell1 cons-cell2))))
