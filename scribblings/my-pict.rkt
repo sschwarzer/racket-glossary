@@ -44,12 +44,10 @@
 ; cars.
 (define (cons-cells . the-cons-cells)
   (define all-cons-cells (apply hc-append PICT-DISTANCE the-cons-cells))
-  (define (with-arrow current-pict cons-cell1 cons-cell2)
-    (pin-arrow-line ARROW-SIZE
-                    current-pict
-                    (cons-cell-cdr cons-cell1) cc-find
-                    cons-cell2 lc-find))
   (for/fold ([current-pict all-cons-cells])
             ([cons-cell1 the-cons-cells]
              [cons-cell2 (cdr the-cons-cells)])
-    (with-arrow current-pict cons-cell1 cons-cell2)))
+    (pin-arrow-line ARROW-SIZE
+                    current-pict
+                    (cons-cell-cdr cons-cell1) cc-find
+                    cons-cell2 lc-find)))
