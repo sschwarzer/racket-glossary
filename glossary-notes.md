@@ -20,6 +20,8 @@ may be discouraged to add more information.
 
 ----
 
+## Arity
+
 ## Assignment
 
 ## Binding

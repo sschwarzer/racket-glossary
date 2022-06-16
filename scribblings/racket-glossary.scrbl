@@ -86,6 +86,17 @@ which concepts are more foundational than others.
 
 @section{Entries}
 
+@glossary-entry{Arity}
+
+  @level-basic
+
+The arity describes how many arguments a function can accept. Everything from
+zero to infinitely many arguments is possible.
+
+Arity refers only to positional arguments, not keyword arguments.
+
+See also: @secref*["Function" 'glossary] @in-g
+
 @glossary-entry{Assignment}
 
   @level-basic
