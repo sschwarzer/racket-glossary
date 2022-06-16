@@ -8,13 +8,16 @@
   text-rectangle-pict
   cons-cell-pict
   cons-cells-pict
-  list-pict)
+  list-pict
+  combined-lists-pict)
 
 (define LINE-WIDTH 1.5)
-(define RECTANGLE-WIDTH 40)
+(define RECTANGLE-WIDTH 30)
 (define RECTANGLE-HEIGHT 30)
-(define PICT-DISTANCE 60)
+(define PICT-DISTANCE 50)
 (define ARROW-SIZE 8)
+
+(define cons-cell-pict-hash (make-hash))
 
 ; Return pict with text centered inside rectangle.
 (define (text-rectangle-pict the-text)
@@ -29,10 +32,13 @@
   (define cdr-pict (if (void? cdr-value)
                        (text-rectangle-pict "")
                        (text-rectangle-pict (~a cdr-value))))
-  (hc-append car-pict
+  (define result
+    (hc-append car-pict
              ; Move right rectangle so that the borders of the two rectangles
              ; overlap.
              (translate cdr-pict (- LINE-WIDTH) 0)))
+  (hash-set! cons-cell-pict-hash car-value result)
+  result)
 
 ; Return sub-picts for left and right half of cons cell pict.
 (define (cons-cell-car-pict cons-cell-pict)
@@ -63,3 +69,34 @@
       (if (= index (sub1 the-list-length))
           (cons-cell-pict item '())
           (cons-cell-pict item)))))
+
+(define (combined-lists-pict top-left-list bottom-left-list right-list)
+  ; Get last items of left lists.
+  (define top-left-last-item (list-ref top-left-list
+                                       (sub1 (length top-left-list))))
+  (define bottom-left-last-item (list-ref bottom-left-list
+                                          (sub1 (length bottom-left-list))))
+  ; Create the three list subpicts.
+  (define top-left-list-pict (apply cons-cells-pict
+                                    (map cons-cell-pict top-left-list)))
+  (define bottom-left-list-pict (apply cons-cells-pict
+                                       (map cons-cell-pict bottom-left-list)))
+  (define right-list-pict (list-pict right-list))
+  ; Combine picts, including arrows.
+  (define left-pict (vr-append 50 top-left-list-pict bottom-left-list-pict))
+  (define lists-pict (hc-append 50 left-pict right-list-pict))
+  (define with-arrow1
+    (pin-arrow-line ARROW-SIZE
+                    lists-pict
+                    (cons-cell-cdr-pict (hash-ref cons-cell-pict-hash top-left-last-item))
+                    cc-find
+                    (hash-ref cons-cell-pict-hash (car right-list))
+                    lt-find))
+  (define with-arrow2
+    (pin-arrow-line ARROW-SIZE
+                    with-arrow1
+                    (cons-cell-cdr-pict (hash-ref cons-cell-pict-hash bottom-left-last-item))
+                    cc-find
+                    (hash-ref cons-cell-pict-hash (car right-list))
+                    lb-find))
+  with-arrow2)
