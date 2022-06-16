@@ -32,11 +32,18 @@ may be discouraged to add more information.
 
 ## Call
 
+-> Procedure
+
 ## Channel
 
 ## Chaperone
 
 ## Class
+
+- Classes and objects aren't as important in Racket as in OOP languages.
+- Typically structs and operations on them are used
+- -> Struct
+- Read more about the object system
 
 ## Closure
 
@@ -51,13 +58,28 @@ may be discouraged to add more information.
   vector, hash, set, maybe gvector?).
 - Maybe relevant: https://en.wikipedia.org/wiki/Linked_list#Tradeoffs
 - There's a [common collection API](https://docs.racket-lang.org/collections/index.html)
+- Similar: https://docs.racket-lang.org/reference/dicts.html
 - Mention https://alex-hhh.github.io/2019/02/racket-data-structures.html ?
+- Maybe take some inspiration from
+  https://docs.racket-lang.org/rebellion/Collections.html
 
 ## Combinator
 
 ## Comprehension
 
+- `for` forms that return a value.
+- `for` alone is only for side effects.
+- Similar to Python (list, dict, set) comprehensions, but can be extended to
+  other data types.
+- `for/list`, `for/vector` etc.
+- Forms without `*` iterate in parallel.
+- Forms with `*` nest loops.
+- `for/and` etc. aren't comprehensions. They return only one value from the
+  last executed iteration.
+
 ## Cons cell
+
+-> Pair
 
 ## Continuation
 
@@ -69,19 +91,59 @@ may be discouraged to add more information.
 
 ## Debugging
 
+- Debugging code that uses immutable values (pure functions) is often easier
+  than debugging in imperative languages with state changes.
+- Displayln is always possible
+- Tracing: <https://docs.racket-lang.org/reference/debugging.html>
+- No command line debugger, but see
+  <https://docs.racket-lang.org/debug/index.html#%28part._debug-repl%29>
+- Debugging in DrRacket
+- Research libraries
+  - <https://docs.racket-lang.org/debug/index.html>
+  - <https://docs.racket-lang.org/mischief/Structured_Debugging.html>
+
 ## Definition
+
+- `define`
+  - Define name/value binding
+  - Define functions (syntactic sugar for `define` name/value and `lambda`)
+- But also a multitude of other definion forms. Maybe only mention some without
+  a real explanation?
+- Or maybe there are a few definition forms that stand out and/or are often
+  useful?
 
 ## Display
 
+-> Format
+
 ## DrRacket
+
+- The closest thing to a Racket GUI
+- Describe a few features
+- Give an idea about what is possible
 
 ## DSL (domain-specific language)
 
 ## Environment
 
+- Names/values that can be accessed in a scope
+- Is this the usual definition or are there other meanings of "environment"?
+
 ## Equality
 
+- At least three different equality predicates. Explain them, at least
+  superficially.
+  - `equal?`
+  - `eq?`
+  - `eqv?`
+- `=` is for numbers only.
+- Custom equality comparisons typically have the form `type=?`, e.g. `string=?`.
+- But often `equal?` works well, for example for nested lists or structs.
+
 ## Exact number
+
+- Scheme has a distinction between exact and inexact numbers.
+- Check definition / read documentation
 
 ## Executor
 
@@ -91,11 +153,19 @@ may be discouraged to add more information.
 
 ## Field
 
+- Struct field
+- Just refer to "Struct"?
+- Or are there other definitions of "field"?
+
 ## Fixnum
+
+- "Machine" integer value, typically 64 bit
 
 ## Flat contract
 
 ## Flonum
+
+- "Machine" float value, typically 64 bit, IEEE 754
 
 ## Fold
 
@@ -114,9 +184,16 @@ may be discouraged to add more information.
 
 ## Function
 
+-> Procedure
+
 ## Functional programming (FP)
 
 ## Functional update
+
+- Don't mutate a value (e.g. hash) in-place
+- Instead leave the argument value unchanged and return a changed copy
+- Mutation in-place typically has an `!` at the end of the name.
+- For example, explain `hash-set` vs. `hash-set!`, with example code
 
 ## Future
 
@@ -128,17 +205,38 @@ may be discouraged to add more information.
 
 ## Hash
 
+- Also called "hash tables"
+- Map key to value
+- Keys and values can be arbitrary values.
+- There are quite a few kinds of hashes.
+  - Using different comparison functions for the keys (`equal?`, `eq?` or `eqv?`)
+  - Immutable or mutable
+  - Strong, weak or ephemerons for keys
+- Refer to functional update
+
 ## Higher-order function
+
+- Function that takes a function as an argument and/or returns a function
+- Very typical for FP languages
+- Examples: `map`, `filter`, `sort` (comparison procedure), `compose`.
 
 ## Hygiene
 
-## Identifier (differences to identifiers in other languages)
+## Identifier
+
+- Name of a binding
+- Differences to identifiers in other languages
+- Many more different characters allowed, e.g. all in `!@$%^&*-=+,.<>/?`
+  (however, check if this is actually true!)
+- -> "Binding", "Naming conventions"
 
 ## Identity (also refer to ‘eq?‘)
 
 ## Impersonator
 
-## Inexact number → Exact number
+## Inexact number
+
+-> Exact number
 
 ## Inspector
 
@@ -303,6 +401,10 @@ may be discouraged to add more information.
 ## Print
 
 ## Procedure
+
+- Describe synonym "function"
+  - Often a direct synonym
+  - Sometimes a procedure without side effects, a "pure function"
 
 ## Profiling
 
