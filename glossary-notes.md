@@ -40,11 +40,16 @@ may be discouraged to add more information.
 
 - Fix one or more free variables of a function by defining them in a scope
   outside the function.
-
 - The closure is the function, plus access to the bindings from the outer
   scope.
 
 ## Collection
+
+- Discuss uses and tradeoffs for different common data structures (list,
+  vector, hash, set, maybe gvector?).
+- Maybe relevant: https://en.wikipedia.org/wiki/Linked_list#Tradeoffs
+- There's a [common collection API](https://docs.racket-lang.org/collections/index.html)
+- Mention https://alex-hhh.github.io/2019/02/racket-data-structures.html ?
 
 ## Combinator
 
