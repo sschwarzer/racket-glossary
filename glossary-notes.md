@@ -147,6 +147,12 @@ may be discouraged to add more information.
 
 ## List
 
+- Show singly-linked list data structures.
+- Discusss data sharing if lists are "consed on."
+- Mention growable vectors for people looking for an equivalent of "lists" from
+  other languages. But mention that Racket lists are fine for many applications
+  and have much better library support than growable vectors.
+
 ## Location
 
 ## Macro

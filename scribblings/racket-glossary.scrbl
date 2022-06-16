@@ -5,9 +5,11 @@
   racket/list
   racket/match
   scribble/example
+  "my-pict.rkt"
   (for-label
     racket/base
-    racket/function))
+    racket/function
+    data/gvector))
 
 @(define helper-eval (make-base-eval))
 @examples[
@@ -473,9 +475,96 @@ See also: @secref*['("Procedure" "Lambda" "Closure") 'glossary]
 
 @glossary-entry{List}
 
-(linked list, explain differences to arrays in other languages)
-
   @level-basic
+
+Lists are the most widely used data structure in many functional programming
+languages, including Scheme and Racket.
+
+Scheme and Racket lists are implemented as singly-linked lists (with the
+exception of the empty list, which is an atomic value). Singly-linked lists
+consist of pairs where the first value of a pair is a list item and the second
+value of the pair points to the next pair. The end of the list is denoted by an
+empty list as the second value of the last pair.
+
+For example, the list @racket['(1 2 3 4)] can be drawn as
+
+@list-pict['(1 2 3 4)]
+
+This data structure looks much more complicated than an array, where items are
+stored in adjacent memory locations. A singly-linked list also has the
+disadvantage that accessing list items by index requires traversing the list
+until the pair with the given index is found.
+
+The reason why lists are still so widely used is that they make it easy to
+prepend items without changing the lists other references ``see.''
+For example, the code
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define list1 '(1 2 3))
+  (define list2 (cons 'a list1))
+  (define list3 (cons 'b (cdr list1)))]
+creates the following data structures:
+
+@tt{list1}@linebreak[]@list-pict['(1 2 3)]
+
+@tt{list2}@linebreak[]@list-pict['(a 1 2 3)]
+
+@tt{list3}@linebreak[]@list-pict['(b 2 3)]
+
+or, in one picture,
+
+@tt{list2@hspace[7]list1}@linebreak[]
+@combined-lists-pict['(a 1) '(b) '(2 3)]@linebreak[]
+@tt{@hspace[12]list3}
+
+So each of the lists looks as you would expect, but it's not necessary to make
+any copies of the list data. Instead the lists share some data, without this
+being visible to code that uses these lists. (An exception is if list items are
+changeable values, e.g. vectors, and are actually changed in-place. In that
+case, all lists that share this changed data ``see'' the change. But usually
+you should avoid mutating data, partly for this reason.)
+
+Changing lists with @racket[cons] maximizes the data that can be shared between
+lists. The situation is different if you change data ``further down'' the list.
+In this case, it may be necessary to copy a part of the list data.
+
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (define list1 '(1 2 3 4))
+  (define list2 (remove 2 list1))]
+creates the following structure:
+
+@tt{list1}@linebreak[]
+@combined-lists-pict['(1 2) '(1) '(3 4)]@linebreak[]
+@tt{@hspace[12]list2}
+
+Note that structure sharing depends only on the used list algorithms (e.g. in
+@racket[remove] above). There's no sophisticated algorithm that tries to
+``de-duplicate'' common data. For example,
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define list1 '(1 2 3))
+  (define list2 '(1 2 3))]
+creates two separate list data structures.
+
+Note that Scheme/Racket lists are different from ``lists'' in many other
+programming languages. Typically those lists store data in adjacent memory
+locations and have a fast append operation. Racket lists, on the other hand,
+are singly-linked lists and have a fast @italic{prepend} operation
+(@racket[cons]), but @italic{appending} items is rather slow because it has to
+iterate through the whole list and make a copy. The closest equivalent in
+Racket to the above-mentioned lists in some languages are called growable
+vectors (see @racket[gvector]). However, Racket lists are the idiomatic
+approach for most list processing, so use them if you can.
+
+See also:
+@itemize[
+  @item{@secref*['("Collection" "Functional_update" "Pair") 'glossary] @in-g}
+  @item{@secref*["pairs" 'guide] @in-rg}
+  @item{@secref*["pairs" 'reference] @in-rr}]
 
 @glossary-entry{Location}
 
