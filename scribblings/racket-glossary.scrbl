@@ -659,8 +659,8 @@ See @secref*["Struct" 'glossary] @in-g
 
   @level-basic
 
-Pairs are the building blocks of Scheme/Racket lists, but are also often used
-for combining any two values.
+Pairs, also called cons cells, are the building blocks of Scheme/Racket lists,
+but are also often used for combining any two values.
 
 Usually a pair is created with @racket[cons]:
 @examples[
