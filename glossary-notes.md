@@ -97,6 +97,17 @@ may be discouraged to add more information.
 
 ## Flonum
 
+## Fold
+
+- Take a list (or generally sequence) and combine ("fold") it into a single
+  result.
+- Example: Sum list items, return the sum.
+- Mention `foldl`, `foldr`
+- There are other functions or forms that do folding, e.g. `for/fold`,
+  `for/and`, `for/or`, `fold-files`, `sequence-fold`. (Probably not worth it to
+  mention all of these, though.)
+- https://en.wikipedia.org/wiki/Fold_(higher-order_function)
+
 ## Form
 
 ## Formatting (‘format‘, ‘~a‘ etc.)

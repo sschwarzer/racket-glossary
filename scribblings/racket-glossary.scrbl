@@ -337,6 +337,10 @@ See @secref*["Partial_application_and_currying" 'glossary]
 
   @level-basic
 
+@glossary-entry{Fold}
+
+  @level-basic
+
 @glossary-entry{Form}
 
   @level-basic
