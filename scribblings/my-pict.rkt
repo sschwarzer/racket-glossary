@@ -1,5 +1,13 @@
 #lang racket/base
 
+; Support code for the Racket glossary.
+;
+; This code is just enough to support the use cases in the glossary. Don't use
+; it in other contexts without being aware of the limitations.
+;
+; In particular, `combined-lists-pict` uses a module-global hash. This approach
+; may fail if any of the list arguments have any items in common.
+
 (require
   racket/format
   pict)
