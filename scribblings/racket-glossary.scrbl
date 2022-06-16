@@ -9,6 +9,7 @@
   (for-label
     racket/base
     racket/function
+    racket/vector
     data/gvector))
 
 @(define helper-eval (make-base-eval))
@@ -1118,9 +1119,54 @@ See @secref*["Untrusted_code" 'glossary]
 
   @level-basic
 
-@glossary-entry{Vector (mention growable vectors)}
+@glossary-entry{Vector}
 
   @level-basic
+
+Racket vectors are continuous arrays with indices starting at 0. An advantage
+of vectors over lists is that accessing a vector item at a random index takes
+constant time, i.e. is independent of the vector size and the index.
+
+Literal vectors can be written with a @tt{#(} prefix. Items in literal vectors
+are automatically quoted. The following examples use the @racket[vector-ref]
+function to retrieve an item at a given index.
+@examples[
+  #:eval helper-eval
+  (code:comment "Simple vector with some numbers.")
+  #(1 2 3)
+  (code:comment "Empty vector")
+  #()
+  (code:comment "Items are quoted. This vector does _not_ contain the `map` function.")
+  (define vec1 #(map))
+  (vector-ref vec1 0)
+  (code:comment "Use `vector` to avoid quoting.")
+  (define vec2 (vector map))
+  (vector-ref vec2 0)]
+
+Vectors can be mutable or immutable. Literal vectors and those created with
+@racket[vector-immutable] are immutable. Vectors created with @racket[vector]
+are mutable.
+@examples[
+  #:eval helper-eval
+  (define vec1 #(1 2 3))
+  (eval:error (vector-set! vec1 1 5))
+  (define vec2 (vector-immutable 1 2 3))
+  (eval:error (vector-set! vec2 1 5))
+  (define vec3 (vector 1 2 3))
+  (vector-set! vec3 1 5)
+  vec3]
+
+There are several vector functions (e.g. @racket[vector-map] or
+@racket[vector-filter]) that correspond to similar list functions. If the
+existing vector functions aren't enough, it may make sense to convert a vector
+to a list with @racket[vector->list], process the list with list functions and
+finally convert the list back to a vector with @racket[list->vector].
+
+See also:
+@itemize[
+  @item{@secref*["List" 'glossary] @in-g}
+  @item{@secref*["vectors" 'guide] @in-rg}
+  @item{@secref*["vectors" 'reference] @in-rr}]
 
 @glossary-entry{Void}
 

@@ -410,7 +410,13 @@ may be discouraged to add more information.
 
 ## Values (multiple values, as in ‘define-values‘ etc.)
 
-## Vector (mention growable vectors)
+## Vector
+
+- Fixed size
+- Items at adjacent memory locations
+- Mutable and immutable vectors
+- Access at random positions takes constant time.
+- Mention growable vectors
 
 ## Void
 
