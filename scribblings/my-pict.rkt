@@ -7,7 +7,8 @@
 (provide
   text-rectangle-pict
   cons-cell-pict
-  cons-cells-pict)
+  cons-cells-pict
+  list-pict)
 
 (define LINE-WIDTH 1.5)
 (define RECTANGLE-WIDTH 40)
@@ -51,3 +52,14 @@
                     current-pict
                     (cons-cell-cdr-pict cons-cell-pict1) cc-find
                     cons-cell-pict2 lc-find)))
+
+; Return pict of list `the-list`.
+(define (list-pict the-list)
+  (define the-list-length (length the-list))
+  (apply
+    cons-cells-pict
+    (for/list ([index (in-naturals)]
+               [item (in-list the-list)])
+      (if (= index (sub1 the-list-length))
+          (cons-cell-pict item '())
+          (cons-cell-pict item)))))
