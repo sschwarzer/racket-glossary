@@ -1148,12 +1148,24 @@ function to retrieve an item at a given index.
 @examples[
   #:eval helper-eval
   (code:comment "Simple vector with some numbers.")
-  #(1 2 3)
+  #(1 2 3)]
+
+@examples[
+  #:eval helper-eval
+  #:label #f
   (code:comment "Empty vector")
-  #()
+  #()]
+
+@examples[
+  #:eval helper-eval
+  #:label #f
   (code:comment "Items are quoted. This vector does _not_ contain the `map` function.")
   (define vec1 #(map))
-  (vector-ref vec1 0)
+  (vector-ref vec1 0)]
+
+@examples[
+  #:eval helper-eval
+  #:label #f
   (code:comment "Use `vector` to avoid quoting.")
   (define vec2 (vector map))
   (vector-ref vec2 0)]
@@ -1164,9 +1176,17 @@ are mutable.
 @examples[
   #:eval helper-eval
   (define vec1 #(1 2 3))
-  (eval:error (vector-set! vec1 1 5))
+  (eval:error (vector-set! vec1 1 5))]
+
+@examples[
+  #:eval helper-eval
+  #:label #f
   (define vec2 (vector-immutable 1 2 3))
-  (eval:error (vector-set! vec2 1 5))
+  (eval:error (vector-set! vec2 1 5))]
+
+@examples[
+  #:eval helper-eval
+  #:label #f
   (define vec3 (vector 1 2 3))
   (vector-set! vec3 1 5)
   vec3]
