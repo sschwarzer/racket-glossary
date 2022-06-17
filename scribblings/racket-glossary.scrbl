@@ -314,6 +314,62 @@ See @secref*["Partial_application_and_currying" 'glossary]
 
   @level-basic
 
+Scheme and Racket have three generic functions to determine if two values are
+equal:
+@itemize[
+  @item{@racket[equal?] checks for value equality. Most of the time, this is the
+    function you want. @racket[equal?] can also compare recursively, as long as
+    the participating types support @racket[equal?] comparisons. Examples:
+    @examples[
+      #:eval helper-eval
+      #:label #f
+      (equal? (+ 2 3) 5)
+      (equal? "foo" "foo")
+      (equal? "foo" "fox")
+      (equal? '(1 2 3) '(1 2 3))
+      (equal? '(1 2 ("foo" 3)) '(1 2 ("foo" 3)))
+      (equal? '(1 2 ("foo" 3)) '(1 2 ("bar" 3)))]}
+  @item{@racket[eq?] checks object identity, i.e. @racket[eq?] only returns
+    @racket[#t] if the two compared values are one and the same object. This is
+    especically important for mutable objects. For immutable values object
+    identity is less relevant. Examples:
+    @examples[
+      #:eval helper-eval
+      #:label #f
+      (code:comment "There's only one `#t` constant.")
+      (eq? #t #t)
+      (code:comment "Compare with the same list object.")
+      (define a-list '(1 2))
+      (eq? a-list a-list)
+      (code:comment "Two different list objects")
+      (eq? '(1 2) '(1 2))]}
+  @item{@racket[eqv?] behaves mostly like @racket[eq?], with the exception of
+    types that have a different implementation. This mainly applies to numbers,
+    but then you probably want to use @racket[=] anyway.}]
+
+Unless you need to distinguish between different number types, use @racket[=]
+instead of the three functions described above.
+
+The Racket standard library also has many functions of the form
+@racketidfont{@italic{type}=?}, for example @racket[string=?]. Often these
+functions are equivalent to @racket[equal?] for the same arguments. However,
+using the @racketidfont{@italic{type}=?} functions has two advantages:
+@itemize[
+  @item{The name makes it clear what's compared, without looking at surrounding
+    code.}
+  @item{Functions of this form provided by Racket check that the arguments
+    have the correct type, e.g. string for @racket[string=?].}]
+
+There's no @tt{==} function in Racket, but you could define a function with
+this name. (But probably you shouldn't.)
+
+The @racket[eq?] function is like the @tt{is} operator in Python.
+
+See also:
+@itemize[
+  @item{@secref*["Procedure" 'glossary] @in-g}
+  @item{@secref*["Equality" 'reference] @in-rr}]
+
 @glossary-entry{Exact number}
 
   @level-basic

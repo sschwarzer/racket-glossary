@@ -139,6 +139,14 @@ may be discouraged to add more information.
 - `=` is for numbers only.
 - Custom equality comparisons typically have the form `type=?`, e.g. `string=?`.
 - But often `equal?` works well, for example for nested lists or structs.
+- See also <https://racket.discourse.group/t/custom-equality-predicate/1086>
+- Caveats:
+  - Struct comparisons depends on whether a struct is transparent.
+  - Integer numbers may compare equal with `eq?`, even if they appear to be
+    different objects. Don't rely on comparing numbers with `eq?`. Again, `eq?`
+    is usually irrelevant for immutable objects. You should rather use `=`,
+    `equal?` or `eqv?`.
+- `eq?` is like Python's `is` operator.
 
 ## Exact number
 
