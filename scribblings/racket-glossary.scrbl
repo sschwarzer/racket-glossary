@@ -1316,7 +1316,7 @@ finally convert the list back to a vector with @racket[list->vector].
 
 See also:
 @itemize[
-  @item{@secref*["List" 'glossary] @in-g}
+  @item{@secref*['("Collection" "List") 'glossary] @in-g}
   @item{@secref*["vectors" 'guide] @in-rg}
   @item{@secref*["vectors" 'reference] @in-rr}]
 
