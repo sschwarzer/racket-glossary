@@ -368,7 +368,7 @@ There's no @tt{==} function in Racket, but you could define a function with
 this name. (But probably you shouldn't.)
 
 @other-languages{
-The @racket[eq?] function is like the @tt{is} operator in Python.}
+The @racket[eq?] function behaves like the @tt{is} operator in Python.}
 
 See also:
 @itemize[
