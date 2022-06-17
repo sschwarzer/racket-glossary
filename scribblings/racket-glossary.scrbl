@@ -46,6 +46,9 @@
       (secref term #:doc (list 'lib url)))
     ", "))
 
+@(define (other-languages . content)
+  @nested[#:style 'inset]{@bold{Other languages} @linebreak[] @content})
+
 @; ----------------------------------------------------------------------
 
 @title{Glossary of Racket concepts}
@@ -363,7 +366,8 @@ using the @racketidfont{@italic{type}=?} functions has two advantages:
 There's no @tt{==} function in Racket, but you could define a function with
 this name. (But probably you shouldn't.)
 
-The @racket[eq?] function is like the @tt{is} operator in Python.
+@other-languages{
+The @racket[eq?] function is like the @tt{is} operator in Python.}
 
 See also:
 @itemize[
@@ -632,6 +636,7 @@ Note that structure sharing depends only on the used list algorithms (e.g. in
   (define list2 '(1 2 3))]
 creates two separate list data structures.
 
+@other-languages{
 Note that Scheme/Racket lists are different from ``lists'' in many other
 programming languages. Typically those lists store data in adjacent memory
 locations and have a fast append operation. Racket lists, on the other hand,
@@ -640,7 +645,7 @@ are singly-linked lists and have a fast @italic{prepend} operation
 iterate through the whole list and make a copy. The closest equivalent in
 Racket to the above-mentioned lists in some languages are called growable
 vectors (see @racket[gvector]). However, Racket lists are the idiomatic
-approach for most list processing, so use them if you can.
+approach for most list processing, so use them if you can.}
 
 See also:
 @itemize[
@@ -809,13 +814,14 @@ Note that the last call passes @italic{two} arguments, @racket[3] and
 There's also a function @racket[curryr], which hard-codes arguments from the right
 instead of the left of the argument list.
 
+@other-languages{
 Unlike Haskell, Scheme/Racket doesn't have implicit currying, so the following
 code raises an exception:
 @examples[
   #:eval helper-eval
   #:label #f
   (eval:error
-    (define draw-line-from-origin (draw-line 0 0)))]
+    (define draw-line-from-origin (draw-line 0 0)))]}
 
 See also:
 @itemlist[
@@ -1113,10 +1119,11 @@ Although Racket uses opaque structs for stronger encapsulation and
 backward-compatibility, many Racket users nowadays think that defining
 structs as transparent usually gives the better tradeoff.
 
-Note that field names are only known at compile time, not at
-runtime. This means that a function like Python's
+@other-languages{
+Note that field names are only known at compile time, not at runtime. This
+means that a function like Python's
 @hyperlink["https://docs.python.org/3/library/functions.html#getattr"]{@tt{getattr}}
-doesn't exist in Racket.
+doesn't exist in Racket.}
 
 See also:
 @itemlist[
