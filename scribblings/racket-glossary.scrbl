@@ -96,11 +96,16 @@ mentioned. If you want all the details, check out the
   @level-basic
 
 The arity describes how many arguments a function can accept. Everything from
-zero to infinitely many arguments is possible.
+zero to infinitely many arguments is possible. Note that functions can have
+optional arguments, so even for a specific function, the arity may not be a
+single number.
 
 Arity refers only to positional arguments, not keyword arguments.
 
-See also: @secref*["Function" 'glossary] @in-g
+See also:
+@itemize[
+  @item{@secref*["Procedure" 'glossary] @in-g}
+  @item{@secref*["Keywords_and_Arity" 'reference] @in-rr}]
 
 @glossary-entry{Assignment}
 
