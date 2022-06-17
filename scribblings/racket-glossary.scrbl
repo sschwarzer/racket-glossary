@@ -396,6 +396,8 @@ See also:
 
   @level-basic
 
+See @secref*["Struct" 'glossary]
+
 @glossary-entry{Fixnum}
 
   @level-basic
@@ -558,7 +560,7 @@ example is similar to the one in the @secref*["Closure" 'glossary] entry:
 Here, @racket[let] creates the outer environent whereas @racket[lambda] defines
 the function using that environment.
 
-See also: @secref*['("Procedure" "Lambda" "Closure") 'glossary]
+See also: @secref*['("Procedure" "Lambda" "Closure") 'glossary] @in-g
 
 @glossary-entry{List}
 
@@ -766,7 +768,7 @@ See also:
 
   @level-intermediate
 
-See @secref*["Struct" 'glossary] @in-g
+See @secref*["Struct" 'glossary]
 
 @glossary-entry{Package}
 
@@ -1191,7 +1193,7 @@ See @secref*["Form" 'glossary]
 
   @level-intermediate
 
-See also: @secref*["Macro" 'glossary] @in-g
+See @secref*["Macro" 'glossary]
 
 @glossary-entry{Tail call}
 
