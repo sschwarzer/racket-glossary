@@ -243,8 +243,8 @@ from the scope outside the lambda expression.
 See also:
 @itemize[
   @item{@secref*["Let_over_lambda" 'glossary] @in-g}
-  @item{@hyperlink["https://en.wikipedia.org/wiki/Closure_(computer_programming)"]{Closure
-    Wikipedia entry}}]
+  @item{@hyperlink["https://en.wikipedia.org/wiki/Closure_(computer_programming)"]{Closure}
+    Wikipedia entry}]
 
 @glossary-entry{Collection}
 
