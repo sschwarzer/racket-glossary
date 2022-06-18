@@ -385,8 +385,9 @@ See also:
 
 @glossary-entry{Exception}
 
-@; Or basic?
   @level-intermediate
+
+@; Or basic?
 
 @glossary-entry{Expression (always lvalue? may result in one or more values)}
 
@@ -476,8 +477,9 @@ See @secref*["Procedure" 'glossary]
 
 @glossary-entry{Impersonator}
 
-@; May be important though. Maybe better "intermediate"?
   @level-advanced
+
+@; May be important though. Maybe better "intermediate"?
 
 @glossary-entry{Inexact number → Exact number}
 
@@ -493,8 +495,9 @@ See @secref*["Procedure" 'glossary]
 
 @glossary-entry{Interface (OOP)}
 
-@; Or "advanced"?
   @level-intermediate
+
+@; Or "advanced"?
 
 @glossary-entry{Keyword arguments (positional and keyword args are separate)}
 
@@ -707,9 +710,10 @@ However, usually you should avoid mutation in functional programming.
 
 @glossary-entry{Namespace}
 
-  @; Relationship to "environment"? How much has a "normal" user to know about
-  @; this outside of `eval`?
   @level-intermediate
+
+@; Relationship to "environment"? How much has a "normal" user to know about
+@; this outside of `eval`?
 
 @glossary-entry{Naming conventions}
 
