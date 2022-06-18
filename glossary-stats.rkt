@@ -30,6 +30,11 @@
             "^  @level-(.*)\\s*$"
             "((?s:.*)))"))
       entry-string))
+  (unless the-match
+    (raise-argument-error
+      'entry-string->entry
+      "valid entry string"
+      entry-string))
   (match-define (list _ title category raw-text) the-match)
   (unless (index-of CATEGORIES category)
     (raise-argument-error
