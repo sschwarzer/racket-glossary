@@ -4,6 +4,7 @@
   racket/file
   racket/format
   racket/function
+  racket/list
   racket/match
   racket/string)
 
@@ -30,6 +31,11 @@
             "((?s:.*)))"))
       entry-string))
   (match-define (list _ title category raw-text) the-match)
+  (unless (index-of CATEGORIES category)
+    (raise-argument-error
+      'entry-string->entry
+      (~a "valid category (one of " CATEGORIES ")")
+      entry-string))
   (define text
     ; Remove trailing spaces at end of line.
     (regexp-replace* " *\n" (string-trim raw-text) "\n"))
