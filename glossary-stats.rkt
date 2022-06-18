@@ -130,7 +130,12 @@
       (glossary-stats/category-done-count stats)
       "/"
       (glossary-stats/category-all-count stats)
-      " done, including "
+      " ("
+      (~r (* 100.0
+             (/ (glossary-stats/category-done-count stats)
+                (glossary-stats/category-all-count stats)))
+          #:precision 0)
+      " %) done, including "
       (glossary-stats/category-only-reference-count stats)
       " reference(s)"))
 
