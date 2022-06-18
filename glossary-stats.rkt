@@ -12,7 +12,12 @@
   entries-string->entries
   entry-paragraphs
   entry-paragraph-count
-  entry-only-reference?)
+  entry-only-reference?
+  make-glossary-stats/category
+  glossary-stats/category->string)
+
+; ----------------------------------------------------------------------
+; Entries parsing
 
 (define CATEGORIES '("basic" "intermediate" "advanced"))
 
@@ -73,3 +78,66 @@
 ; Return a list of `entry`s from a file path.
 (define (file->entries path)
   (entries-string->entries (file->string path)))
+
+; ----------------------------------------------------------------------
+; Statistics
+
+; Glossary stats for a single category.
+(struct glossary-stats/category
+   ; Category string.
+  (category
+   ; Total number of entries in category, including references.
+   all-count
+   ; Number of presumably finished entries, including references.
+   done-count
+   ; Number of entries that are only references to other entries and hence
+   ; don't require "real" work.
+   only-reference-count)
+  #:transparent)
+
+; Return `glossary-stats/category` for a given category.
+(define (make-glossary-stats/category entries category)
+  (define-values
+    (all-count done-count only-reference-count)
+    (for/fold ([all-count 0]
+               [done-count 0]
+               [only-reference-count 0])
+              ([entry entries])
+      (if (string=? (entry-category entry) category)
+          (values
+            (add1 all-count)
+            (+ done-count
+               (if (or (> (entry-paragraph-count entry) 1)
+                       (entry-only-reference? entry))
+                   1
+                   0))
+            (+ only-reference-count
+               (if (entry-only-reference? entry)
+                   1
+                   0)))
+          (values
+            all-count
+            done-count
+            only-reference-count))))
+  (glossary-stats/category category all-count done-count only-reference-count))
+
+; Format a given `glossary-stats/category` value.
+(define (glossary-stats/category->string stats)
+  (~a (glossary-stats/category-category stats)
+      ": "
+      (glossary-stats/category-done-count stats)
+      "/"
+      (glossary-stats/category-all-count stats)
+      " done, including "
+      (glossary-stats/category-only-reference-count stats)
+      " reference(s)"))
+
+; Print statistics for a `glossary-stats/category` to standard output.
+(define (print-stats path)
+  (define entries (file->entries path))
+  (for ([category CATEGORIES])
+    (define stats (make-glossary-stats/category entries category))
+    (displayln (glossary-stats/category->string stats))))
+
+(module+ main
+  (print-stats "scribblings/racket-glossary.scrbl"))
