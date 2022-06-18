@@ -107,6 +107,8 @@
           (values
             (add1 all-count)
             (+ done-count
+               ; If the entry has only one paragraph, it's likely that this is
+               ; just some form of comment and not the real entry.
                (if (or (> (entry-paragraph-count entry) 1)
                        (entry-only-reference? entry))
                    1
