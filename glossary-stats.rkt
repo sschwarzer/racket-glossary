@@ -125,18 +125,18 @@
 
 ; Format a given `glossary-stats/category` value.
 (define (glossary-stats/category->string stats)
-  (~a (glossary-stats/category-category stats)
+  (~a (~a (glossary-stats/category-category stats) #:width 12)
       ": "
-      (glossary-stats/category-done-count stats)
-      "/"
-      (glossary-stats/category-all-count stats)
+      (~a (glossary-stats/category-done-count stats) #:width 3 #:align 'right)
+      " /"
+      (~a (glossary-stats/category-all-count stats) #:width 3 #:align 'right)
       " ("
       (~r (* 100.0
              (/ (glossary-stats/category-done-count stats)
                 (glossary-stats/category-all-count stats)))
-          #:precision 0)
+          #:precision 0 #:min-width 3)
       " %) done, including "
-      (glossary-stats/category-only-reference-count stats)
+      (~a (glossary-stats/category-only-reference-count stats) #:width 2 #:align 'right)
       " reference(s)"))
 
 ; Print statistics for a `glossary-stats/category` to standard output.
