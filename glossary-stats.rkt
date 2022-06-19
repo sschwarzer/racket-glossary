@@ -54,7 +54,7 @@
 
 ; Return a list of paragraphs (strings).
 (define (entry-paragraphs entry)
-  (regexp-split "\n\n+" (entry-text entry)))
+  (regexp-split "\n\n" (entry-text entry)))
 
 ; Return number of paragraphs.
 (define (entry-paragraph-count entry)
