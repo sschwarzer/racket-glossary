@@ -16,8 +16,20 @@
 (struct entry (title category text)
   #:transparent)
 
+(define (normalize-string the-string)
+  ; Strip surrounding whitespace.
+  (define string1 (string-trim the-string))
+  ; Remove line comments. Don't try to remove multi-line comments because this
+  ; can't really be done reliably with just regular expressions.
+  (define string2 (regexp-replace* "(?m:^(.*?)@;[^{].*$)" string1 "\\1"))
+  ; Remove trailing spaces before line breaks.
+  (define string3 (regexp-replace* " *\n" string2 "\n"))
+  ; Collapse more than two linebreaks into two linebreaks.
+  (regexp-replace* "\n\n+" string3 "\n\n"))
+
 ; Return `entry` from entry string.
 (define (entry-string->entry entry-string)
+  (define normalized-entry-string (normalize-string entry-string))
   (define the-match
     (regexp-match
       (pregexp
@@ -26,22 +38,19 @@
             "\\s+"
             "^  @level-(.*)\\s*$"
             "((?s:.*)))"))
-      entry-string))
+      normalized-entry-string))
   (unless the-match
     (raise-argument-error
       'entry-string->entry
       "valid entry string"
       entry-string))
-  (match-define (list _ title category raw-text) the-match)
+  (match-define (list _ title category text) the-match)
   (unless (index-of CATEGORIES category)
     (raise-argument-error
       'entry-string->entry
       (~a "valid category (one of " CATEGORIES ")")
       entry-string))
-  (define text
-    ; Remove trailing spaces at end of line.
-    (regexp-replace* " *\n" (string-trim raw-text) "\n"))
-  (entry title category text))
+  (entry title category (string-trim text)))
 
 ; Return a list of paragraphs (strings).
 (define (entry-paragraphs entry)
@@ -149,6 +158,7 @@
 (module+ test
   (require
     rackunit
+    errortrace
     al2-test-runner)
 
   (run-tests
@@ -162,6 +172,31 @@
         (define input-string
           "@glossary-entry{Foo}\n\n  @level-basic\n\nFirst paragraph\n\nSecond paragraph")
         (define expected-entry (entry "Foo" "basic" "First paragraph\n\nSecond paragraph"))
+        (check-equal? (entry-string->entry input-string) expected-entry))
+      (test-case "Input normalization"
+        (define input-string
+          (~a ; Leading whitespace should be stripped.
+              "  \n"
+              "@glossary-entry{Foo}\n"
+              "\n"
+              ; Line comments should be removed.
+              "  @; Comment line 1\n"
+              "  @; Comment line 2\n"
+              ; Trailing spaces should be removed.
+              " \n"
+              "  @level-basic\n"
+              "\n"
+              "First paragraph\n"
+              ; More than one empty line should be collapsed into one empty line.
+              "\n"
+              "  \n"
+              "\n"
+              "Second paragraph\n"
+              "  \n"))
+        (define expected-entry
+          (entry "Foo"
+                 "basic"
+                 "First paragraph\n\nSecond paragraph"))
         (check-equal? (entry-string->entry input-string) expected-entry))
       ; Test invalid input.
       (test-exn "Empty string"
