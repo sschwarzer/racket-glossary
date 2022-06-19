@@ -8,14 +8,6 @@
   racket/match
   racket/string)
 
-(provide
-  entries-string->entries
-  entry-paragraphs
-  entry-paragraph-count
-  entry-only-reference?
-  make-glossary-stats/category
-  glossary-stats/category->string)
-
 ; ----------------------------------------------------------------------
 ; Entries parsing
 
