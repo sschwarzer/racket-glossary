@@ -142,3 +142,37 @@
 
 (module+ main
   (print-stats "scribblings/racket-glossary.scrbl"))
+
+; ----------------------------------------------------------------------
+; Tests
+
+(module+ test
+  (require
+    rackunit
+    al2-test-runner)
+
+  (run-tests
+    (test-suite "test-entry-string->entry"
+      ; Test simple input.
+      (test-case "Minimal string"
+        (define input-string "@glossary-entry{Foo}\n\n  @level-basic")
+        (define expected-entry (entry "Foo" "basic" ""))
+        (check-equal? (entry-string->entry input-string) expected-entry))
+      (test-case "Minimal string with actual text"
+        (define input-string
+          "@glossary-entry{Foo}\n\n  @level-basic\n\nFirst paragraph\n\nSecond paragraph")
+        (define expected-entry (entry "Foo" "basic" "First paragraph\n\nSecond paragraph"))
+        (check-equal? (entry-string->entry input-string) expected-entry))
+      ; Test invalid input.
+      (test-exn "Empty string"
+        exn:fail:contract?
+        (thunk (entry-string->entry "")))
+      (test-exn "Missing `glossary-entry`"
+        exn:fail:contract?
+        (thunk (entry-string->entry "  @level-basic")))
+      (test-exn "Invalid category"
+        exn:fail:contract?
+        (thunk (entry-string->entry "@glossary-entry{Foo}\n  @level-invalid")))
+
+  ))
+)
