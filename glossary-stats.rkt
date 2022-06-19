@@ -132,6 +132,8 @@
       " reference(s)"))
 
 ; Print statistics for a `glossary-stats/category` to standard output.
+; TODO: Add line for totals.
+; TODO: Option to exclude refs to give a more meaningful picture of what's done.
 (define (print-stats path)
   (define entries (file->entries path))
   (for ([category CATEGORIES])
