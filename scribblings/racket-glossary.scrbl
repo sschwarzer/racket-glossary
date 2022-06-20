@@ -1225,6 +1225,10 @@ See @secref*["Macro" 'glossary]
 
   @level-intermediate
 
+@glossary-entry{Tail position}
+
+  @level-intermediate
+
 @glossary-entry{Thread}
 
   @level-intermediate

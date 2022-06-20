@@ -528,6 +528,12 @@ may be discouraged to add more information.
 
 ## Tail call
 
+- Related:
+  - Tail position
+  - Tail call optimization
+
+## Tail position
+
 ## Thread
 
 ## Thunk
