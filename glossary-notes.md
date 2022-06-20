@@ -196,6 +196,20 @@ may be discouraged to add more information.
 
 ## Functional programming (FP)
 
+- Explain core ideas
+  - Mathematical functions (inputs -> outputs, no side effects)
+  - Expressions, not statements (example: `if`)
+- Separate pure and impure functions (procedures) to gain FP advantages, i.e.
+  easier reasoning and testing
+- Show some "typical idioms"
+  - Idea: Show how to do things "functionally" instead of "imperatively", so
+    newcomers don't try to program imperatively in Racket
+  - Recursion (`map` function)
+  - Higher-order functions (`map`, `filter`, `fold`)
+  - Comprehensions (for forms)
+  - Build an immutable hash
+  - Use an immutable hash as cache by passing it as argument
+
 ## Functional update
 
 - Don't mutate a value (e.g. hash) in-place
