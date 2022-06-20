@@ -213,14 +213,21 @@ may be discouraged to add more information.
 
 ## Hash
 
-- Also called "hash tables"
+- Also called hash table, hash map, map, dictionary
 - Map key to value
 - Keys and values can be arbitrary values.
-- There are quite a few kinds of hashes.
-  - Using different comparison functions for the keys (`equal?`, `eq?` or `eqv?`)
-  - Immutable or mutable
-  - Strong, weak or ephemerons for keys
-- Refer to functional update
+- Three "dimensions", i.e. 3x2x2=12 combinations
+  - Equality (equal?, eq?, eqv?, see Equality)
+  - Mutability (immutable, mutable)
+  - Strength (strong/weak/ephemerons)
+  - Emphasize what's usually needed:
+    `equal?`, `eq?` (symbol keys), immutable, mutable, strong
+- Different constructor types
+  - Keys and values one after another
+  - "Assocs"
+- Show examples
+  - Maybe: How to build an immutable hash (folding, e.g. for/fold)
+- See also Collection, Equality, Functional update
 
 ## Higher-order function
 
