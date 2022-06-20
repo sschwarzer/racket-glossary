@@ -1223,7 +1223,7 @@ See @secref*["Macro" 'glossary]
 
 @glossary-entry{Tail call}
 
-  @level-basic
+  @level-intermediate
 
 @glossary-entry{Thread}
 
