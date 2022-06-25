@@ -125,8 +125,8 @@
   (glossary-stats category all-count done-count only-reference-count))
 
 ; Characters for bar graph.
-(define BLACK-SQUARE #\u25fc)
-(define WHITE-SQUARE #\u25fb)
+(define DONE-CHAR #\u25a0)
+(define NOT-DONE-CHAR #\u00b7)
 
 ; Bar length in characters.
 (define TOTAL-BAR-LENGTH 50)
@@ -143,10 +143,10 @@
   ; due to rounding errors.
   (define rest-length (- TOTAL-BAR-LENGTH done-length))
   (~a (~a (glossary-stats-category stats) #:width 12)
-      " "
-      (make-string done-length BLACK-SQUARE)
-      (make-string rest-length WHITE-SQUARE)
-      " "
+      " |"
+      (make-string done-length DONE-CHAR)
+      (make-string rest-length NOT-DONE-CHAR)
+      "| "
       (~a done-count #:width 3 #:align 'right)
       " / "
       (~a all-count #:width 3 #:align 'right)
