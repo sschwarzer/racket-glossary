@@ -124,27 +124,40 @@
             only-reference-count))))
   (glossary-stats category all-count done-count only-reference-count))
 
+; Characters for bar graph.
+(define BLACK-SQUARE #\u25fc)
+(define WHITE-SQUARE #\u25fb)
+
+; Bar length in characters.
+(define TOTAL-BAR-LENGTH 50)
+
 ; Format a given `glossary-stats` value.
 (define (glossary-stats->string stats)
+  ; Counts _excluding_ references.
+  (define done-count (- (glossary-stats-done-count stats)
+                        (glossary-stats-only-reference-count stats)))
+  (define all-count (- (glossary-stats-all-count stats)
+                       (glossary-stats-only-reference-count stats)))
+  (define done-length (round (* (/ done-count all-count) TOTAL-BAR-LENGTH)))
+  ; Just subtract from total length to avoid that we get different bar lengths
+  ; due to rounding errors.
+  (define rest-length (- TOTAL-BAR-LENGTH done-length))
   (~a (~a (glossary-stats-category stats) #:width 12)
-      ": "
-      (~a (glossary-stats-done-count stats) #:width 3 #:align 'right)
-      " /"
-      (~a (glossary-stats-all-count stats) #:width 3 #:align 'right)
-      " ("
-      (~r (* 100.0
-             (/ (glossary-stats-done-count stats)
-                (glossary-stats-all-count stats)))
-          #:precision 0 #:min-width 3)
-      " %) done, including "
-      (~a (glossary-stats-only-reference-count stats) #:width 2 #:align 'right)
-      " reference(s)"))
+      " "
+      (make-string done-length BLACK-SQUARE)
+      (make-string rest-length WHITE-SQUARE)
+      " "
+      (~a done-count #:width 3 #:align 'right)
+      " / "
+      (~a all-count #:width 3 #:align 'right)
+      " done"))
 
 ; Print statistics for a `glossary-stats` to standard output.
 ; TODO: Add line for totals.
 ; TODO: Option to exclude refs to give a more meaningful picture of what's done.
 (define (print-stats path)
   (define entries (file->entries path))
+  (displayln "Completion stats, ignoring cross references:")
   (for ([category CATEGORIES])
     (define stats (make-glossary-stats entries category))
     (displayln (glossary-stats->string stats))))
@@ -208,6 +221,5 @@
       (test-exn "Invalid category"
         exn:fail:contract?
         (thunk (entry-string->entry "@glossary-entry{Foo}\n  @level-invalid")))
-
   ))
 )
