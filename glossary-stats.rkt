@@ -65,6 +65,14 @@
   (and (= (entry-paragraph-count entry) 1)
        (string-prefix? (entry-text entry) "See @secref*[")))
 
+; Return `#t` if the entry seems to be done (fully written, apart from later
+; improvements).
+(define (entry-done? entry)
+  ; If the entry has only one paragraph, it's likely that this is just some
+  ; form of comment and not the real entry.
+  (or (> (entry-paragraph-count entry) 1)
+      (entry-only-reference? entry)))
+
 ; Return list of `entry`s from a string multiple entries.
 (define (entries-string->entries entries-string)
   (define matches
@@ -98,26 +106,16 @@
 
 ; Return `glossary-stats` for a given category.
 (define (make-glossary-stats entries category)
-  (define-values
-    (all-count done-count only-reference-count)
+  (define-values (all-count done-count only-reference-count)
     (for/fold ([all-count 0]
                [done-count 0]
                [only-reference-count 0])
               ([entry entries])
       (if (string=? (entry-category entry) category)
           (values
-            (add1 all-count)
-            (+ done-count
-               ; If the entry has only one paragraph, it's likely that this is
-               ; just some form of comment and not the real entry.
-               (if (or (> (entry-paragraph-count entry) 1)
-                       (entry-only-reference? entry))
-                   1
-                   0))
-            (+ only-reference-count
-               (if (entry-only-reference? entry)
-                   1
-                   0)))
+            (+ all-count 1)
+            (+ done-count           (if (entry-done? entry)           1 0))
+            (+ only-reference-count (if (entry-only-reference? entry) 1 0)))
           (values
             all-count
             done-count
