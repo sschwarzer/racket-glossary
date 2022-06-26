@@ -125,8 +125,12 @@
   (glossary-stats category all-count done-count only-reference-count))
 
 ; Characters for bar graph.
-(define DONE-CHAR #\u25a0)
-(define NOT-DONE-CHAR #\u00b7)
+;
+; Intentionally repeat the code points in the comments so it's an _obvious_
+; contradiction if I change the code points for the constants and forget to
+; update the comment.
+(define DONE-CHAR #\u25a0)  ; 25a0 = BLACK SQUARE
+(define NOT-DONE-CHAR #\u00b7)  ; 00b7 = MIDDLE DOT
 
 ; Bar length in characters.
 (define TOTAL-BAR-LENGTH 50)
