@@ -152,7 +152,7 @@
       (make-string rest-length NOT-DONE-CHAR)
       "| "
       (~a done-count #:width 3 #:align 'right)
-      " / "
+      " of "
       (~a all-count #:width 3 #:align 'right)
       " done"))
 
