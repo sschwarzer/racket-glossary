@@ -55,6 +55,8 @@
 @title{Glossary of Racket concepts}
 @author{Stefan Schwarzer}
 
+This glossary is still very much work in progress. Many entries are missing.
+
 @section{Introduction}
 
 The Racket documentation describes a lot, often very abstract concepts. For someone
