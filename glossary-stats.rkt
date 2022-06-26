@@ -111,15 +111,17 @@
                [done-count 0]
                [only-reference-count 0])
               ([entry entries])
-      (if (string=? (entry-category entry) category)
-          (values
-            (+ all-count 1)
-            (+ done-count           (if (entry-done? entry)           1 0))
-            (+ only-reference-count (if (entry-only-reference? entry) 1 0)))
-          (values
-            all-count
-            done-count
-            only-reference-count))))
+      (cond
+        [(string=? (entry-category entry) category)
+         (values
+           (+ all-count 1)
+           (+ done-count           (if (entry-done? entry)           1 0))
+           (+ only-reference-count (if (entry-only-reference? entry) 1 0)))]
+        [else
+         (values
+           all-count
+           done-count
+           only-reference-count)])))
   (glossary-stats category all-count done-count only-reference-count))
 
 ; Characters for bar graph.
