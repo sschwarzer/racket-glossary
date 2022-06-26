@@ -170,8 +170,6 @@
   (glossary-stats "total" all-count done-count only-reference-count))
 
 ; Print statistics for a `glossary-stats` to standard output.
-; TODO: Add line for totals.
-; TODO: Option to exclude refs to give a more meaningful picture of what's done.
 (define (print-stats path)
   (define entries (file->entries path))
   (define glossary-stats/categories
