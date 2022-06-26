@@ -135,22 +135,29 @@
 ; Bar length in characters.
 (define TOTAL-BAR-LENGTH 50)
 
-; Format a given `glossary-stats` value.
+; Return a progress bar string for a given ratio. The length of the bar
+; including the "|" delimiters is `TOTAL-BAR-LENGTH + 2`.
+(define (bar-graph-string ratio)
+  (define done-length (round (* ratio TOTAL-BAR-LENGTH)))
+  ; Just subtract from total length to avoid that we get different bar lengths
+  ; due to rounding errors.
+  (define rest-length (- TOTAL-BAR-LENGTH done-length))
+  (~a "|"
+      (make-string done-length DONE-CHAR)
+      (make-string rest-length NOT-DONE-CHAR)
+      "|"))
+
+; Return a given `glossary-stats` value as a progress string.
 (define (glossary-stats->string stats)
   ; Counts _excluding_ references.
   (define done-count (- (glossary-stats-done-count stats)
                         (glossary-stats-only-reference-count stats)))
   (define all-count (- (glossary-stats-all-count stats)
                        (glossary-stats-only-reference-count stats)))
-  (define done-length (round (* (/ done-count all-count) TOTAL-BAR-LENGTH)))
-  ; Just subtract from total length to avoid that we get different bar lengths
-  ; due to rounding errors.
-  (define rest-length (- TOTAL-BAR-LENGTH done-length))
   (~a (~a (glossary-stats-category stats) #:width 12)
-      " |"
-      (make-string done-length DONE-CHAR)
-      (make-string rest-length NOT-DONE-CHAR)
-      "| "
+      " "
+      (bar-graph-string (/ done-count all-count))
+      " "
       (~a done-count #:width 3 #:align 'right)
       " of "
       (~a all-count #:width 3 #:align 'right)
