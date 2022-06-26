@@ -156,15 +156,33 @@
       (~a all-count #:width 3 #:align 'right)
       " done"))
 
+; Return `glossary-stats` from summing the fields in a list of
+; `glossary-stats`.
+(define (total-glossary-stats stats-list)
+  (define-values (all-count done-count only-reference-count)
+    (for/fold ([all-count 0]
+               [done-count 0]
+               [only-reference-count 0])
+              ([stats stats-list])
+      (values (+ all-count (glossary-stats-all-count stats))
+              (+ done-count (glossary-stats-done-count stats))
+              (+ only-reference-count (glossary-stats-only-reference-count stats)))))
+  (glossary-stats "total" all-count done-count only-reference-count))
+
 ; Print statistics for a `glossary-stats` to standard output.
 ; TODO: Add line for totals.
 ; TODO: Option to exclude refs to give a more meaningful picture of what's done.
 (define (print-stats path)
   (define entries (file->entries path))
-  (displayln "Completion stats, ignoring cross references:")
-  (for ([category CATEGORIES])
-    (define stats (make-glossary-stats entries category))
-    (displayln (glossary-stats->string stats))))
+  (define glossary-stats/categories
+    (for/list ([category CATEGORIES])
+      (make-glossary-stats entries category)))
+  (displayln "Completion stats, ignoring cross references:\n")
+  (for ([stats glossary-stats/categories])
+    (displayln (glossary-stats->string stats)))
+  (define glossary-stats/total (total-glossary-stats glossary-stats/categories))
+  (displayln "")
+  (displayln (glossary-stats->string glossary-stats/total)))
 
 (module+ main
   (print-stats "scribblings/racket-glossary.scrbl"))
