@@ -42,9 +42,10 @@ I'm still experimenting with the writing approach and want to write more
 glossary entries myself before I settle.
 
 I'll surely need some feedback, especially on the intermediate and advanced
-entries. I recommend that you, at least for now, make contributions as pull
-requests to the [glossary-notes.md file](./glossary-notes.md). See the
-beginning of that file for information on what to add there.
+entries. I recommend that you, at least for now, make contributions as [pull
+requests](https://github.com/sschwarzer/racket-glossary) to the
+[glossary-notes.md file](./glossary-notes.md). See the beginning of that file
+for information on what to add there.
 
 Although not strictly necessary, I'd appreciate it if you wrote commit messages
 according to [these rules](https://cbea.ms/git-commit/#seven-rules).
