@@ -20,31 +20,21 @@ between them.
 
 ## Preview
 
-This Racket glossary isn't available on the [Racket package
-server](https://pkgs.racket-lang.org/) yet. I plan to publish the glossary as a
-package when the "basic" category is about complete.
+You can see the current state of the glossary on the [Racket package
+server](https://docs.racket-lang.org/racket-glossary/).
 
-In the meantime, you can preview the current glossary version as rendered HTML
-with:
+At the moment, the completion state (generated with the
+[glossary-stats.rkt](./glossary-stats.rkt) script) is:
 
-1. [Download and install Racket](https://pkgs.racket-lang.org/) (if not done
-   already)
+```text
+Completion stats, ignoring cross references:
 
-2. Install the glossary package
+basic        |■■■■■■■■■■■■······································|  15 of  60 done
+intermediate |■■■···············································|   2 of  33 done
+advanced     |··················································|   0 of  25 done
 
-       raco pkg install git+https://github.com/sschwarzer/racket-glossary
-
-3. Open the HTML version of the glossary
-
-       raco docs racket-glossary
-
-You can update the package with
-
-    raco pkg update git+https://github.com/sschwarzer/racket-glossary
-
-If you want to remove the package, use
-
-    raco pkg remove racket-glossary
+total        |■■■■■■■···········································|  17 of 118 done
+```
 
 ## Contributions
 
