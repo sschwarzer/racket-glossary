@@ -15,8 +15,8 @@ between them.
   Therefore, some entries may contain comparisons with related features in
   other programming languages.
 
-- Provide context. So some entries may have more content than you'd usually
-  expect from a glossary.
+- Provide context. Most entries have more content than you'd usually expect
+  from a glossary.
 
 ## Preview
 
