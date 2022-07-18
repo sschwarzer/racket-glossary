@@ -255,8 +255,7 @@ may be discouraged to add more information.
 
 - Name of a binding
 - Differences to identifiers in other languages
-- Many more different characters allowed, e.g. all in `!@$%^&*-=+,.<>/?`
-  (however, check if this is actually true!)
+- Many more different characters allowed, e.g. all in `!@$%^&*-=+.<>/?`
 - -> "Binding", "Naming conventions"
 
 ## Identity (also refer to ‘eq?‘)
