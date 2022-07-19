@@ -521,6 +521,19 @@ may be discouraged to add more information.
 
 ## Symbol
 
+- Not usually found in other programming languages
+- Symbols are often used for enumerations, for example in `open-output-file`,
+  <https://docs.racket-lang.org/reference/file-ports.html#%28def._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._open-output-file%29%29>.
+- Used to process code as data, e.g. `'(map pred? a-list)` is a list of
+  symbols. (Note the quote character `'`.)
+- _By default_, symbols are interned. This means the same symbol literal refers
+  to the same object. `(eq? 'foo 'foo)` -> `#t`.
+- It's possible to convert between strings and symbols with `string->symbol`
+  and `symbol->string`.
+- Since the "same" symbols compare `eq?`, hashes with symbols as keys are usually
+  created with `hasheq` and variants, so the lookup is faster (it's just a
+  pointer comparison).
+
 ## Syntactic form
 
 ## Syntax (different meanings)
