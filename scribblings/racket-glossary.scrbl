@@ -1167,7 +1167,7 @@ See @secref*["Unsafe_operation" 'glossary]
 
 @glossary-entry{Set}
 
-  @level-basic
+  @level-intermediate
 
 @glossary-entry{Shadowing}
 
