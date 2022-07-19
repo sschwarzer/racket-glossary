@@ -284,9 +284,11 @@ may be discouraged to add more information.
 
 ## Let over lambda
 
-- ```scribble
+-
+  ```scribble
   "Let over lambda is a nickname given to a lexical closure." - Doug Hoyte, in
-  @hyperlink["https://letoverlambda.com/textmode.cl/guest/chap2.html#sec_5doc"]{Let over Lambda}
+  @hyperlink["https://letoverlambda.com/textmode.cl/guest/chap2.html#sec_5doc"]{Let
+  over Lambda}
   ```
 
 ## List
@@ -398,8 +400,8 @@ may be discouraged to add more information.
 
   The last three lines are equivalent.
 
-- Racket has two separate currying functions: ```curry```, which hardcodes the
-  leftmost arguments, and ```curryr``` which hardcodes the rightmost arguments.
+- Racket has two separate currying functions: `curry`, which hardcodes the
+  leftmost arguments, and `curryr` which hardcodes the rightmost arguments.
 
   Example:
 
