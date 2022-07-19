@@ -465,6 +465,100 @@ See @secref*["Procedure" 'glossary]
 
   @level-basic
 
+Hashes, also called hash tables, hash maps or dictionaries, map keys to values.
+For example, the following hash table maps numbers to symbols:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define my-hash
+    (hash 1 'a
+          2 'b
+          3 'c))
+  (code:comment "Look up the value for the key 2.")
+  (hash-ref my-hash 2)]
+Keys and values can be arbitrary values:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define my-hash
+    (hash #(1 2 3) '(a b c)
+          '(1 2)   #t
+          #f       map))
+  (hash-ref my-hash #(1 2 3))
+  (hash-ref my-hash '(1 2))
+  (hash-ref my-hash #f)]
+However, usually all keys are of the same type and all values are of the same
+type.
+
+The API for hashes in Racket is more complicated than for the other compound
+data structures like lists and vectors. Hashes can differ in the following
+criteria; all of the combinations are possible:
+@itemize[
+  @item{Comparison for keys: @racket[equal?], @racket[eq?], @racket[eqv?]}
+  @item{Mutability: immutable, mutable@linebreak{}
+    Mutability applies to the hash as a whole, not to the mutability of the
+    keys or the values.}
+  @item{Strength: strong, weak, ephemerons@linebreak{}
+    This influences when hash entries can be garbage-collected.}]
+These are 3×2×3 = 18 combinations, but in practice you can almost always get by
+with this list of just four combinations:
+@itemize[
+  @item{Comparison for keys: @racket[equal?], @racket[eq?]}
+  @item{Mutability: immutable, mutable}
+  @item{Strength: strong}]
+
+Here's an overview of the most important APIs for these four
+equality/mutability combinations:
+@tabular[#:sep @hspace[1]
+         #:cell-properties '((baseline))
+  (list
+    (list @bold{Combination}
+          @nonbreaking{@bold{Construction} @smaller{(1)}}
+          @nonbreaking{@bold{Set or update value} @smaller{(2)}}
+          @bold{Get value})
+    (list @elem{@racket[equal?]/immutable}
+          @elem{@tt{(@racket[hash] @ti{key1 value1 key2 value2} ...)}
+                @linebreak{}or@linebreak{}
+                @tt{(@racket[make-immutable-hash] @ti{pair1 pair2} ...)}}
+          @tt{(@racket[hash-set] @ti{hash key value})}
+          @tt{(@racket[hash-ref] @ti{hash key})})
+    (list @elem{@racket[eq?]/immutable}
+          @elem{@tt{(@racket[hasheq] @ti{key1 value1 key2 value2} ...)}
+                @linebreak{}or@linebreak{}
+                @tt{(@racket[make-immutable-hasheq] @ti{pair1 pair2} ...)}}
+          @tt{(@racket[hash-set] @ti{hash key value})}
+          @tt{(@racket[hash-ref] @ti{hash key})})
+    (list @elem{@racket[equal?]/mutable}
+          @tt{(@racket[make-hash] @ti{pair1 pair2} ...)}
+          @tt{(@racket[hash-set!] @ti{hash key value})}
+          @tt{(@racket[hash-ref] @ti{hash key})})
+    (list @elem{@racket[eq?]/mutable}
+          @tt{(@racket[make-hasheq] @ti{pair1 pair2} ...)}
+          @tt{(@racket[hash-set!] @ti{hash key value})}
+          @tt{(@racket[hash-ref] @ti{hash key})}))]
+@smaller{(1)} A @italic{pair} here is a regular Scheme/Racket pair, for example
+@racket[(cons 1 'a)]. Pairs that contain only literals can also be written as
+@racket['(1 . a)].
+
+@smaller{(2)} Setting or updating a value in an immutable hash may sound
+contradictory. The solution is that @racket[hash-set] causes a so-called
+functional update. That is, it returns a new hash with the modification applied
+and leaves the @ti{hash} @italic{argument} unchanged. This is the same
+principle that @racket[cons] or @racket[struct-copy] use.
+
+@bold{Warnings:}
+@itemize[
+  @item{If a hash entry has a mutable key (for example a vector) don't change
+    the key in-place.}
+  @item{Don't change a hash while iterating over it.}]
+
+See also:
+@itemize[
+  @item{@secref*['("Collection" "Equality" "Functional_update" "List" "Pair"
+                   "Struct" "Vector") 'glossary] @in-g}
+  @item{@secref*["hash-tables" 'guide] @in-rg}
+  @item{@secref*["hashtables" 'reference] @in-rr}]
+
 @glossary-entry{Higher-order function}
 
   @level-basic
