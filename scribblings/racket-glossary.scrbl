@@ -31,6 +31,11 @@
 
 @(define glossary-entry (curry subsection #:style 'unnumbered))
 
+@; For whatever reason, `italic` deactivates an outer `tt`, so wrap the
+@; argument in another `tt`.
+@(define (ti value)
+   (italic (tt value)))
+
 @(define (secref* term-or-terms document)
   (define terms
     (if (list? term-or-terms)
@@ -752,10 +757,10 @@ Additionally, there are some widely-used naming patterns:
     (list @tt{@italic{@tt{name}}!}
           "Mutation"
           @elem{@racket[set!], @racket[vector-set!]})
-    (list @tt{@italic{@tt{name}}*}
+    (list @tt{@ti{name}*}
           "Repetition"
           @elem{@racket[regexp-replace*] vs. @racket[regexp-replace]})
-    (list @tt{@italic{@tt{name}}*}
+    (list @tt{@ti{name}*}
           "Nesting"
           @elem{@racket[for*] vs. @racket[for]})
     (list @tt{@italic{@tt{name}}*}
@@ -771,7 +776,7 @@ Additionally, there are some widely-used naming patterns:
     (list @tt{@italic{@tt{type}}->@italic{@tt{other-type}}}
           "Conversion"
           @racket[vector->list])
-    (list @tt{@tt{make}-@italic{@tt{type}}}
+    (list @tt{@tt{make}-@ti{type}}
           "Create new value of type"
           @elem{@racket[make-base-namespace], @racket[make-channel]}))]
 
