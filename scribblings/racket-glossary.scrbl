@@ -395,7 +395,7 @@ See also:
   @; Or basic?
   @level-intermediate
 
-@glossary-entry{Expression (always lvalue? may result in one or more values)}
+@glossary-entry{Expression (always rvalue? may result in one or more values)}
 
   @level-basic
 
