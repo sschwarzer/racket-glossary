@@ -493,6 +493,9 @@ may be discouraged to add more information.
 
 ## Standard library
 
+- Everything installed by the official installers.
+- "Package `base`? See <https://pkgs.racket-lang.org/package/base>
+
 ## Stream
 
 - Overlap with sequences (see also there).
