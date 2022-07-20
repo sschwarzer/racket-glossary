@@ -6,8 +6,8 @@
 scribble:
 	@# The `raco setup` command won't work unless `racket-glossary` is already
 	@# installed.
-	-@raco pkg install
-	raco setup --only racket-glossary
+	-@raco pkg install -j 1
+	raco setup -j 1 --only racket-glossary
 
 .PHONY: print-doc-url
 print-doc-url:
