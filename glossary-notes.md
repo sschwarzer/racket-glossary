@@ -476,6 +476,11 @@ may be discouraged to add more information.
 
 ## Set
 
+- Can be used as a generic term, see
+  <https://docs.racket-lang.org/reference/sets.html>
+- Or specifically in the sense of "hash set" (similar to hash tables), see
+  <https://docs.racket-lang.org/reference/sets.html#%28part._.Hash_.Sets%29>
+
 ## Shadowing
 
 ## Splicing
