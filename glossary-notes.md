@@ -506,10 +506,36 @@ may be discouraged to add more information.
 - Overlap with sequences (see also there).
 - Usually used with files.
 
-## String
+## String / byte string / character
 
-- strings vs. byte strings
-- encoding handling
+- Don't go into too much detail! What would be especially of interest for a new
+  user of Racket? What _tasks_ are interesting?
+  - Creating strings
+  - Printing strings
+  - Convert strings between encodings? Or assume UTF-8 by default?
+- Semantics
+  - Strings for most processing of human-readable strings
+  - Characters as units of strings. Characters correspond to code points.
+  - Byte strings as encoded representation of strings.
+    "Other languagges": Different from, say, Python, bytes aren't used for
+    arbitrary binary data.
+- Input syntax for strings, byte strings and characters
+  - `"foo"` for strings. Backslash-escaping for `"` and some special
+    characters, say, `"\n"`.
+  - `#"foo"` for byte strings, quoting as for strings.
+  - `#\A` (character), `#\007` (octal), `#\u1234` (hex) or `#\U12345678` (hex)
+    for characters
+- String positions correspond to code points, not necessarily graphemes
+  ("characters"). A string position/code point is only identical to a grapheme
+  if the code points itself has a grapheme representation.
+- Unicode normalization functions in the standard library, e.g.
+  <https://docs.racket-lang.org/reference/strings.html#%28def._%28%28quote._~23~25kernel%29._string-normalize-nfd%29%29>
+- Strings and byte strings can be mutable or immutable
+- String and byte string literals are immutable
+- Strings and characters are encoding-agnostic (since they only store code
+  points).
+- Encoding handling
+- `string-ref` uses 0-based indexing, as other "ref functions" on containers.
 
 ## Struct
 
