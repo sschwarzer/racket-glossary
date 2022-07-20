@@ -498,7 +498,10 @@ may be discouraged to add more information.
 - Overlap with sequences (see also there).
 - Usually used with files.
 
-## String (strings vs. byte strings; handling encoding)
+## String
+
+- strings vs. byte strings
+- encoding handling
 
 ## Struct
 

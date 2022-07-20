@@ -1189,9 +1189,11 @@ See @secref*["Unsafe_operation" 'glossary]
 
   @level-basic
 
-@glossary-entry{String (strings vs. byte strings; handling encoding)}
+@glossary-entry{String}
 
   @level-basic
+
+ (strings vs. byte strings; handling encoding)
 
 @glossary-entry{Struct}
 
