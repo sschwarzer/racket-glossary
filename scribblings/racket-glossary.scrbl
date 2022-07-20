@@ -95,7 +95,7 @@ Not all Racket users will agree on this categorization and the assigned levels
 for individual terms, but the categorization should give you a rough idea
 which concepts are more foundational than others.
 
-This glossary isn't a book for learning Racket nor is it a reference. Some
+This glossary isn't a book for learning Racket, nor is it a reference. Some
 information may be simplified, for example some special cases may not be
 mentioned. If you want all the details, check out the
 @hyperlink["https://docs.racket-lang.org/reference/"]{Racket Reference}.
