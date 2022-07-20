@@ -22,13 +22,23 @@ may be discouraged to add more information.
 
 ## Arity
 
+Done
+
 ## Assignment
+
+Done
 
 ## Binding
 
+Done
+
 ## Boolean
 
+Done
+
 ## Box
+
+Done
 
 ## Call
 
@@ -276,6 +286,8 @@ may be discouraged to add more information.
 
 ## Lambda
 
+Done
+
 ## Lang (as in ‘\#lang‘)
 
 ## Language-oriented programming
@@ -300,6 +312,8 @@ may be discouraged to add more information.
   and have much better library support than growable vectors.
 
 ## Location
+
+Done
 
 ## Macro
 
@@ -382,6 +396,8 @@ may be discouraged to add more information.
 ## Package
 
 ## Pair
+
+Done
 
 ## Parameter
 
