@@ -1308,6 +1308,45 @@ See also:
 
   @level-basic
 
+Symbols are a data type that isn't found in most programming languages.
+Symbols are somewhat similar to strings:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  "a-string"
+  'a-symbol]
+
+There are several differences, though:
+@itemize[
+  @item{Symbols are idiomatically used for enumeration values. See the
+    @racket[open-output-file] function for an example, which uses symbols for
+    the @racketkeywordfont{mode} and @racketkeywordfont{exists} keyword
+    arguments.}
+  @item{By default, symbols which have the same characters are interned, while
+    there's no such guarantee for strings. Interning has the consequence that
+    two ``same'' symbols compare equal with @racket[eq?], not just with
+    @racket[equal?]. Therefore, hashes that have symbols as keys can use the
+    @racket[eq?] variants, which speeds up changes to the hash.}
+  @item{Because of the different uses of strings and symbols, there are no
+    APIs to search in symbols or concatenate them. If you need such
+    functionality, you can convert between symbols and strings with
+    @racket[symbol->string] and @racket[string->symbol].}]
+
+Symbols occur naturally when processing Racket code as data.
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (+ 3 4)
+  (define expression '(+ 3 4))
+  (car expression)
+  (symbol? (car expression))]
+
+See also:
+@itemlist[
+  @item{@secref*['("Equality" "Hash" "String") 'glossary] @in-g}
+  @item{@secref*["symbols" 'guide] @in-rg}
+  @item{@secref*["symbols" 'reference] @in-rr}]
+
 @glossary-entry{Syntactic form}
 
   @level-basic
