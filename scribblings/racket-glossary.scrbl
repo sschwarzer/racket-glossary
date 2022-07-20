@@ -513,8 +513,8 @@ equality/mutability combinations:
          #:cell-properties '((baseline))
   (list
     (list @bold{Combination}
-          @nonbreaking{@bold{Construction} @smaller{(1)}}
-          @nonbreaking{@bold{Set or update value} @smaller{(2)}}
+          @nonbreaking{@bold{Construction} @smaller{(1, 2)}}
+          @nonbreaking{@bold{Set or update value} @smaller{(3)}}
           @bold{Get value})
     (list @elem{@racket[equal?]/immutable}
           @elem{@tt{(@racket[hash] @ti{key1 value1 key2 value2} ...)}
@@ -536,11 +536,16 @@ equality/mutability combinations:
           @tt{(@racket[make-hasheq] @ti{pair1 pair2} ...)}
           @tt{(@racket[hash-set!] @ti{hash key value})}
           @tt{(@racket[hash-ref] @ti{hash key})}))]
-@smaller{(1)} A @italic{pair} here is a regular Scheme/Racket pair, for example
+
+@smaller{(1)} You can create empty hashes by calling the constructor without
+arguments. For example, @racket[(hash)] creates an empty immutable hash with
+@racket[equal?] key comparison.
+
+@smaller{(2)} A @italic{pair} here is a regular Scheme/Racket pair, for example
 @racket[(cons 1 'a)]. Pairs that contain only literals can also be written as
 @racket['(1 . a)].
 
-@smaller{(2)} Setting or updating a value in an immutable hash may sound
+@smaller{(3)} Setting or updating a value in an immutable hash may sound
 contradictory. The solution is that @racket[hash-set] causes a so-called
 functional update. That is, it returns a new hash with the modification applied
 and leaves the @ti{hash} @italic{argument} unchanged. This is the same
