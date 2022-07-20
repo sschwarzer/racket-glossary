@@ -637,6 +637,16 @@ Done
 
 ## Void
 
+- See <https://docs.racket-lang.org/reference/void.html>
+- Special value that is returned in cases where there's no interesting
+  result (procedures with side effects).
+- Also default result if no `cond` or `case` clause matches.
+- Can be created with `(void)`.
+- Can be a useful "not set" value if `#f` is a valid value.
+- Since the `#<void>` value isn't printed, `(void expression)` can be useful if
+  you want to evaluate an expression on the top level without showing its
+  result.
+
 ## Will
 
 ## Write
