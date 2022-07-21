@@ -11,6 +11,7 @@
     racket/file
     racket/function
     racket/gui
+    racket/string
     racket/vector
     data/gvector))
 
@@ -1261,13 +1262,67 @@ string more clearly with @racket[bytes->list]:
   #:label #f
   (bytes->list encoded-string)]
 
-@; 🇩🇪
+Both strings and byte strings come in mutable and immutable versions. Literals,
+e.g. @racket["foo"] or @racket[#"foo"], are immutable.
+
+The previous paragraphs explained how the string and character data types in
+Racket are related. However, for most text processing you'll be fine with
+functions that operate on strings. Here are a few of these functions (but also
+check out the others in @secref*["strings" 'reference] @in-rr).
+@itemize[
+  @item{@racket[string-length]}
+  @item{@racket[string-ref]}
+  @item{@racket[substring]}
+  @item{@racket[string-append]}
+  @item{@racket[string-join]}
+  @item{@racket[string-replace]}
+  @item{@racket[string-split]}
+  @item{@secref*["String_Comparisons" 'reference]}
+]
+
+As mentioned above, strings consist of unicode code points. Unicode is rather
+complex and subtle, so the following caveats are shared by programming
+languages whose strings consist of code points:
+@itemize[
+  @item{The term ``character'' is ambiguous in the unicode context. It can
+    mean a code point (as in Racket), but also a symbol on the screen that's
+    perceived as self-contained. The second meaning is sometimes called a
+    ``grapheme`` or ``grapheme cluster.''}
+  @item{The distinction between the meanings of ``character'' are important
+    because not all grapheme clusters can be expressed in a single code point.
+    For example, the German flag
+    🇩🇪
+    consists of @italic{two} code points:
+    @examples[
+      #:eval helper-eval
+      #:label #f
+      (string->list "🇩🇪")]}
+  @item{In some cases, the same grapheme cluster can be expressed in different
+    code point combinations. For example, the string @racket["ü"] from above
+    can be expressed in a single code point, but alternatively in two code
+    points, where the first is for the letter @racket["u"] and the second for
+    the diacritic (the dots above the u). So two strings that @italic{look} the
+    same on the screen may not be the same according to Racket's
+    @racket[string=?] function, which works on code point sequences.
+
+    The
+    @hyperlink["https://docs.racket-lang.org/reference/strings.html#%28def._%28%28quote._~23~25kernel%29._string-normalize-nfd%29%29"]{normalization
+    functions} can convert strings so that they have the ``combined'' or the
+    ``separate'' code points and can be meaningfully compared with
+    @racket[string=?].}]
+The above list may sound intimidating, but it isn't as long as you don't rely on
+wrong assumptions (e.g. that the same ``character'' is always expressed by the
+same code points). For example, you can safely split a string at newline
+characters or other ASCII separators like colons without applying any of the
+normalizations.
 
 See also:
 @itemlist[
   @item{@secref*['("Formatting" "Port") 'glossary] @in-g}
   @item{@secref*['("strings" "bytestrings") 'guide] @in-rg}
-  @item{@secref*['("strings" "bytestrings" "characters" "encodings") 'reference] @in-rr}]
+  @item{@secref*['("strings" "bytestrings" "characters" "encodings") 'reference] @in-rr}
+  @item{@hyperlink["https://unicode.org/faq/normalization.html"]{Unicode normalization FAQ}}
+  @item{@hyperlink["https://manishearth.github.io/blog/2017/01/14/stop-ascribing-meaning-to-unicode-code-points/"]{Let's stop ascribing meaning to code points}}]
 
 @glossary-entry{Struct}
 
