@@ -215,6 +215,12 @@ immutable values to other immutable values.
 
 See also: @secref*["boxes" 'reference] @in-rr
 
+@glossary-entry{Byte string}
+
+  @level-basic
+
+See @secref*["String__character__byte_string" 'glossary]
+
 @glossary-entry{Call}
 
   @level-basic
@@ -228,6 +234,12 @@ See @secref*["Procedure" 'glossary]
 @glossary-entry{Chaperone}
 
   @level-intermediate
+
+@glossary-entry{Character}
+
+  @level-basic
+
+See @secref*["String__character__byte_string" 'glossary]
 
 @glossary-entry{Class}
 
