@@ -8,6 +8,7 @@
   "my-pict.rkt"
   (for-label
     racket/base
+    racket/file
     racket/function
     racket/gui
     racket/vector
@@ -425,11 +426,13 @@ See @secref*["Struct" 'glossary]
 
   @level-basic
 
-@glossary-entry{Formatting (`format`, `~a` etc.)}
+@glossary-entry{Formatting}
 
   @level-basic
 
   @level-intermediate
+
+(`format`, `~a` etc.
 
 @glossary-entry{Function}
 
@@ -1194,11 +1197,77 @@ See @secref*["Unsafe_operation" 'glossary]
 
   @level-basic
 
-@glossary-entry{String}
+@glossary-entry{String, character, byte string}
 
   @level-basic
 
- (strings vs. byte strings; handling encoding)
+The string, byte string and character data types are used for text processing.
+
+Strings represent human-readable text; they're what you likely want if you do
+text processing.
+@examples[
+  #:eval helper-eval
+  (code:comment "String content enclosed in quotes")
+  "a string"
+  (string? "a string")
+  (code:comment "A quote inside a string literal can be escaped with a backslash.")
+  "a string \"with\" quotes"
+  (string-length "\"foo\"")
+  (code:comment "Concatenate strings with `string-append`.")
+  (string-append "Hello " "world" "!")
+  (code:comment "Strings can contain non-ASCII characters.")
+  "Michael Müller"
+  (string-length "Michael Müller")]
+
+A string consists of characters, which represent unicode code points:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "You can get individual characters with `string-ref`.")
+  (string-ref "Müller" 1)
+  (char? #\ü)
+  (code:comment "Convert a string to a character list and back.")
+  (string->list "Müller")
+  (list->string '(#\M #\ü #\l #\l #\e #\r))]
+That said, usually you don't need to deal with individual characters. Most
+string processing works on substrings rather than characters.
+
+To convert a string to bytes that can be written to a file or sent over a
+network socket, the string needs to be encoded to a byte string:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Not the only encoding function in the standard library")
+  (define encoded-string (string->bytes/utf-8 "Müller"))
+  (code:comment "ü has been encoded to two bytes.")
+  encoded-string
+  (bytes? encoded-string)]
+Conversely, byte strings can be decoded to strings:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Not the only decoding function in the standard library")
+  (bytes->string/utf-8 encoded-string)]
+
+Fortunately, as long as the content is in UTF-8 encoding, you don't need to
+encode or decode it yourself. For example, @racket[file->string] decodes the
+file contents implicitly.
+
+A byte string consists of bytes. ``Byte'' isn't a ``real'' data type, but
+just means integers from 0 to 255. You can see the bytes/integers in a byte
+string more clearly with @racket[bytes->list]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (bytes->list encoded-string)]
+
+@; 🇩🇪
+
+See also:
+@itemlist[
+  @item{@secref*['("Formatting" "Port") 'glossary] @in-g}
+  @item{@secref*['("strings" "bytestrings") 'guide] @in-rg}
+  @item{@secref*['("strings" "bytestrings" "characters" "encodings") 'reference] @in-rr}]
 
 @glossary-entry{Struct}
 
@@ -1351,7 +1420,8 @@ Symbols occur naturally when processing Racket code as data.
 
 See also:
 @itemlist[
-  @item{@secref*['("Equality" "Hash" "Quote" "String") 'glossary] @in-g}
+  @item{@secref*['("Equality" "Hash" "Quote" "String__character__byte_string") 'glossary]
+        @in-g}
   @item{@secref*["symbols" 'guide] @in-rg}
   @item{@secref*["symbols" 'reference] @in-rr}]
 
