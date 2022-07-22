@@ -474,6 +474,14 @@ Done
 
 ## Predicate
 
+- Procedure taking one argument and returning `#t` or `#f`.
+- Typically used to make a decision on values.
+- Examples:
+  - [filter](https://docs.racket-lang.org/reference/pairs.html#%28def._%28%28lib._racket%2Fprivate%2Flist..rkt%29._filter%29%29)
+  - [takef](https://docs.racket-lang.org/reference/pairs.html#%28def._%28%28lib._racket%2Flist..rkt%29._takef%29%29)
+- See also:
+  - Procedure
+
 ## Print
 
 ## Procedure

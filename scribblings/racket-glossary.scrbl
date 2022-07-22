@@ -11,6 +11,7 @@
     racket/file
     racket/function
     racket/gui
+    racket/list
     racket/string
     racket/vector
     data/gvector))
@@ -21,6 +22,7 @@
   #:hidden
   (require
     racket/function
+    racket/list
     racket/pretty
     racket/string)]
 
@@ -1047,6 +1049,43 @@ See also:
 @glossary-entry{Predicate}
 
   @level-basic
+
+A predicate is a procedure that takes one argument and returns a boolean.
+
+Examples:
+@itemize[
+  @item{Checking for a type: @racket[procedure?], @racket[string?],
+    @racket[symbol?], ...}
+  @item{Checking properties: @racket[even?], @racket[immutable?],
+    @racket[char-lower-case?], ...}
+  @item{Others: @racket[directory-exists?], @racket[file-exists?], ...}]
+
+Predicates can be used on their own or as arguments for higher-order functions
+like @racket[filter] or @racket[takef]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (filter string? '(2 "foo" bar 7))
+  (takef '(2 6 -4 3 5 4) even?)]
+
+If you have a procedure that's ``almost'' a predicate, you can use partial
+application to turn it into a predicate.
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (define (greater-than-two? number)
+    (> number 2))
+  (filter greater-than-two? '(1 3 -1 5 2))
+  (code:comment "Equivalent: define an anonymous procedure.")
+  (filter
+    (lambda (number)
+      (> number 2))
+    '(1 3 -1 5 2))]
+
+See also:
+@itemlist[
+  @item{@secref*['("Lambda" "Partial_application_and_currying" "Procedure") 'glossary]
+        @in-g}]
 
 @glossary-entry{Print}
 
