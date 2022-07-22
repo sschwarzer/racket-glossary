@@ -39,23 +39,23 @@
    (italic (tt value)))
 
 @(define (secref* term-or-terms document)
-  (define terms
-    (if (list? term-or-terms)
-        term-or-terms
-        (list term-or-terms)))
-  (define url
-    (match document
-      ['glossary  "racket-glossary/scribblings/racket-glossary.scrbl"]
-      ['guide     "scribblings/guide/guide.scrbl"]
-      ['reference "scribblings/reference/reference.scrbl"]
-      [_          (raise-user-error (format "invalid document type ~v" document))]))
-  (add-between
-    (for/list ([term terms])
-      (secref term #:doc (list 'lib url)))
-    ", "))
+   (define terms
+     (if (list? term-or-terms)
+         term-or-terms
+         (list term-or-terms)))
+   (define url
+     (match document
+       ['glossary  "racket-glossary/scribblings/racket-glossary.scrbl"]
+       ['guide     "scribblings/guide/guide.scrbl"]
+       ['reference "scribblings/reference/reference.scrbl"]
+       [_          (raise-user-error (format "invalid document type ~v" document))]))
+   (add-between
+     (for/list ([term terms])
+       (secref term #:doc (list 'lib url)))
+     ", "))
 
 @(define (other-languages . content)
-  @nested[#:style 'inset]{@bold{Other languages} @linebreak[] @content})
+   @nested[#:style 'inset]{@bold{Other languages} @linebreak[] @content})
 
 @; ----------------------------------------------------------------------
 
