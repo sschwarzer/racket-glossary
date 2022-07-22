@@ -1,9 +1,11 @@
 #lang scribble/manual
 
 @(require
+  racket/format
   racket/function
   racket/list
   racket/match
+  racket/runtime-path
   scribble/example
   "my-pict.rkt"
   (for-label
@@ -58,6 +60,19 @@
 
 @(define (other-languages . content)
    @nested[#:style 'inset]{@bold{Other languages} @linebreak[] @content})
+
+@(define-runtime-path scribblings-directory ".")
+
+@(define (svg-image path)
+   (image
+     ; Since `image` uses paths relative to the current directory, this code
+     ; only works if the document build is started from the root of the Git
+     ; repository.
+     (~a (build-path scribblings-directory path) ".svg")
+     ; Scale the image so that text in the image is about the same size as
+     ; the regular document text. For this to work, make sure the text size
+     ; is the same for all exported images.
+     #:scale 4))
 
 @; ----------------------------------------------------------------------
 
@@ -1312,6 +1327,10 @@ string more clearly with @racket[bytes->list]:
   #:eval helper-eval
   #:label #f
   (bytes->list encoded-string)]
+
+The following diagram shows the relationships between the types:
+
+@svg-image{string-types}
 
 Both strings and byte strings come in mutable and immutable versions. Literals,
 e.g. @racket["foo"] or @racket[#"foo"], are immutable.
