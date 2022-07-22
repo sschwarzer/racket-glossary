@@ -1641,6 +1641,54 @@ See also:
 
   @level-basic
 
+@(define void-text @racketresultfont{#<void>})
+
+The constant @void-text is used as a return value if there's no
+other sensible value. This applies to functions that exist only for their side
+effects or if no branch in a @racket[cond] or @racket[case] form matches.
+
+Experimenting with @void-text can be confusing because the Racket REPL
+(interactive interpreter) doesn't show it, but you can check the result for
+being @void-text with the @racket[void?] predicate.
+
+@examples[
+  #:eval helper-eval
+  (define foo 2)
+  (void? (set! foo 3))
+  (void? (display ""))
+  (void?
+    (cond
+      [(= 1 2) #f]))]
+
+Another curiosity is that you can't enter the @void-text value in source code
+or the REPL. However, you can create the value with the @racket[void] function.
+
+@other-languages{
+Python has a value @tt{None}, whose semantics is similar to @elem{@void-text}.
+However, while the use of @tt{None} in Python is idiomatic to denote an unset
+optional argument, Scheme and Racket code typically uses @racket[#f] for
+the same purpose.
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (define (hello [who #f])
+    (string-append
+      "Hello, "
+      (if who who "world")
+      "!"))
+  (hello)
+  (hello "Mike")]
+Since @racket[#f] is the only value that's treated as false in conditions,
+this usage normally makes sense.
+
+That said, it's fine to use @racket[(void)] and check the argument with
+@racket[void?] if @racket[#f] could be an actual value for the argument.}
+
+See also:
+@itemize[
+  @item{@secref*["Boolean" 'glossary] @in-g}
+  @item{@secref*["void" 'reference] @in-rr}]
+
 @glossary-entry{Will}
 
   @level-advanced
