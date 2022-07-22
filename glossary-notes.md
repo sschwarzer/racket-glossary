@@ -387,6 +387,36 @@ Done
 
 ## Number
 
+- Number data types
+  - integer
+  - rational
+  - real
+  - complex
+  - As far as predicates like `integer?`, `rational?`, `real?` and `complex?`
+    go, if a predicate gives `#t` for a given number, the predicates further
+    down also give `#t` for the same number. (I suppose that's the "numeric
+    tower" thing at work.)
+- Number predicates don't check just the type!
+  - For example, `(integer? 2.0)` is `#t`!
+  - However, `fixnum?` and `flonum?` _do_ react to the type.
+- Depending on exactness, operations can have different results. Examples:
+  - `(real? 1.0+0i)` returns `#t`, but `(real? 1.0+0.0i)` returns `#f`.
+  - `(/ 1 0)` raises an exception, but `(/ 1 0.0)` returns `+inf.0`. Yikes!
+  - `(/ 0.0 0)` raises an exception, but `(/ 0.0 0.0)` returns `+nan.0`.
+- Other (potentially) surprising behavior:
+  - `(inexact->exact 1.2)` doesn't round or gives an exception, but tries to
+    approximate with a rational number and returns
+    5404319552844595/4503599627370496. This _kind of_ makes sense, but may not
+    be what a user expects.
+  - A fixnum doesn't necessarily fit in 32 or 64 bits (because some bits are
+    used as flags).
+- I posted a related message on the Racket Discourse:
+  <https://racket.discourse.group/t/number-oddities/1171>
+- See also:
+  - Numeric tower
+  - Exact/inexact
+  - Fixnum/flonum
+
 ## Numeric tower
 
 ## Opaque
