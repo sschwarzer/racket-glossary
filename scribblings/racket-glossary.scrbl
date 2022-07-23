@@ -478,6 +478,54 @@ See @secref*["Procedure" 'glossary]
 
   @level-basic
 
+Compared to an ``imperative update,'' as used in many programming languages, a
+``functional update'' doesn't modifiy a value in place, but instead returns a
+modified copy.
+
+Here's an example of an imperative update:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Create a hash table for imperative updates.")
+  (define imperative-hash (make-hash '((1 . a) (2 . b))))
+  imperative-hash
+  (code:comment "Modify the hash by storing another pair in it.")
+  (code:comment "The exclamation point at the end of `hash-set!` means")
+  (code:comment "that the hash is modified in-place.")
+  (hash-set! imperative-hash 3 'c)
+  imperative-hash]
+With an imperative update, every piece of code that has a binding to the hash
+will see any changes to the hash. Depending on your design, this can be good or
+bad. In any case you have to be careful that all locations where the hash is used
+are prepared for a change ``under their feet.''
+
+On the other hand, here's a corresponding functional update:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Create a hash table for functional updates.")
+  (define functional-hash (make-immutable-hash '((1 . a) (2 . b))))
+  functional-hash
+  (code:comment "Return a modified copy of the hash.")
+  (define new-hash (hash-set functional-hash 3 'c))
+  (code:comment "The original hash is unchanged.")
+  functional-hash
+  (code:comment "The change is only visible in the new value.")
+  new-hash
+  (code:comment "Besides, immutable hashes don't allow imperative changes")
+  (code:comment "(as you probably expected).")
+  (eval:error (hash-set! functional-hash 4 'd))]
+A functional update has the advantage that you can more easily control which
+code ``sees'' which value.
+
+The concept of functional updates doesn't only apply to hashes, but is very
+common in Functional Programming in general.
+
+See also:
+@itemize[
+  @item{@secref*['("Binding" "Functional_programming__FP_" "Hash" "Naming_conventions")
+                 'glossary] @in-g}]
+
 @glossary-entry{Future}
 
   @level-advanced
