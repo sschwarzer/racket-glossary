@@ -284,6 +284,36 @@ Done
 
 ## Keyword arguments (positional and keyword args are separate)
 
+- Be careful with the terminology, "parameter" (in signature) vs. "argument"
+  (in call). Racket only uses "keyword", I think, not "keyword argument."
+  -> Check this in the Racket documentation.
+- Functions can take keyword arguments.
+- Keywords look like `#:keyword argument-name`.
+- The argument name can be different from the keyword name, but typically
+  they're the same. (Using different names just would be mental overhead.)
+  Having different names for keywords and arguments also means that the
+  keyword names are part of the API, but parameter names aren't.
+- In procedure applications, keywords/value pairs can be listed in any order;
+  and they can be mixed with positional arguments (but positional arguments are
+  assigned in the same order as in the parameters in the function signature.
+  (Show examples.)
+- Keyword arguments are completely separate from positional arguments.
+  There's no way pass an argument declared as positional argument with
+  a keyword. Conversely, there's no way to pass a keyword argument without
+  the keyword.
+- Therefore, keyword arguments and argument defaults are separate concepts.
+  You can have positional arguments with defaults and keyword arguments without
+  defaults. (But defaults for keyword arguments are much more common than for
+  positional arguments.)
+- Other languages: compare with Python
+  - (Unless `/` and `*` are used) arguments can be passed as positional or
+    keyword arguments and vice versa.
+  - When passing a keyword argument, the key is the same as the argument name,
+    whereas in Racket the keyword name and argument name are unrelated.
+  - Careful: Don't write _too_ much about how Racket differs from Python. If
+    Python's semantics is explained in too much detail, readers may later
+    confuse Python's and Racket's semantics!
+
 ## Lambda
 
 Done
