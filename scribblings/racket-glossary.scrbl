@@ -1280,6 +1280,9 @@ text processing.
   (code:comment "A quote inside a string literal can be escaped with a backslash.")
   "a string \"with\" quotes"
   (string-length "\"foo\"")
+  (code:comment "Use `display` or `displayln` to output a string for human readers.")
+  (code:comment "`displayln` adds a newline.")
+  (displayln "a string \"with\" quotes")
   (code:comment "Concatenate strings with `string-append`.")
   (string-append "Hello " "world" "!")
   (code:comment "Strings can contain non-ASCII characters.")
