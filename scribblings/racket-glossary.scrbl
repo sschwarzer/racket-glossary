@@ -72,7 +72,7 @@
      ; Scale the image so that text in the image is about the same size as
      ; the regular document text. For this to work, make sure the text size
      ; is the same for all exported images.
-     #:scale 0.9))
+     #:scale 0.85))
 
 @; ----------------------------------------------------------------------
 
@@ -764,7 +764,7 @@ empty list as the second value of the last pair.
 
 For example, the list @racket['(1 2 3 4)] can be drawn as
 
-@list-pict['(1 2 3 4)]
+@png-image{list-1234}
 
 This data structure looks much more complicated than an array, where items are
 stored in adjacent memory locations. A singly-linked list also has the
@@ -782,17 +782,11 @@ For example, the code
   (define list3 (cons 'b (cdr list1)))]
 creates the following data structures:
 
-@tt{list1}@linebreak[]@list-pict['(1 2 3)]
-
-@tt{list2}@linebreak[]@list-pict['(a 1 2 3)]
-
-@tt{list3}@linebreak[]@list-pict['(b 2 3)]
+@png-image{list-3-lists}
 
 or, in one picture,
 
-@tt{list2@hspace[7]list1}@linebreak[]
-@combined-lists-pict['(a 1) '(b) '(2 3)]@linebreak[]
-@tt{@hspace[12]list3}
+@png-image{list-3-lists-combined}
 
 So each of the lists looks as you would expect, but it's not necessary to make
 any copies of the list data. Instead the lists share some data, without this
@@ -812,9 +806,7 @@ In this case, it may be necessary to copy a part of the list data.
   (define list2 (remove 2 list1))]
 creates the following structure:
 
-@tt{list1}@linebreak[]
-@combined-lists-pict['(1 2) '(1) '(3 4)]@linebreak[]
-@tt{@hspace[12]list2}
+@png-image{list-remove}
 
 Note that structure sharing depends only on the used list algorithms (e.g. in
 @racket[remove] above). There's no sophisticated algorithm that tries to
