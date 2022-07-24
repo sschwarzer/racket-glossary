@@ -38,12 +38,25 @@ total        |■■■■■■■■■■··················
 
 ## Contributions
 
-I'm still experimenting with the writing approach and want to write more
-glossary entries myself before I settle.
-
 I'll surely need some feedback, especially on the intermediate and advanced
-entries. I recommend that you, at least for now, make contributions as [pull
-requests](https://github.com/sschwarzer/racket-glossary) to the
+entries. There are several contribution channels:
+
+- [Send feedback](mailto:~sschwarzer/racket-glossary@lists.sr.ht) to the
+  [mailing list](https://lists.sr.ht/~sschwarzer/racket-glossary) (no list
+  subscription necessary).
+
+If you want to send specific commits, you can:
+
+- Send diffs (for example, created with `git diff`) to the mailing list (see
+  above).
+
+- Send a URL for a public repository of yours to the mailing list (see
+  above). I'll pull from there and contact you with feedback, if necessary.
+
+- Enter a [pull request](https://github.com/sschwarzer/racket-glossary) on
+  Github.
+
+I recommend that you, at least for now, make contributions to the
 [glossary-notes.md file](./glossary-notes.md). See the beginning of that file
 for information on what to add there.
 
