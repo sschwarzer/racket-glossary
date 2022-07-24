@@ -530,6 +530,20 @@ Done
 
 ## Quote
 
+- Quoting causes the quoted content to be "taken literally."
+- Syntax `(quote ...)` looks less "special," but `'content` is _much_ more
+  common.
+- Careful with "double quoting", e.g. `'(1 2 'a)`.
+- Frequent uses:
+  - Symbols `'foo`
+  - List of literal values, e.g. numbers or strings
+- Mention quasiquoting and splice quoting? Maybe only mention it, so that
+  readers know where to look when they come across those concepts/syntaxes.
+
+See also
+- List
+- Symbol
+
 ## RnRS (as in R5RS, R6RS etc.)
 
 ## Raco
