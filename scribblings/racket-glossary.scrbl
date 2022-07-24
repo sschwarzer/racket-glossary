@@ -7,7 +7,6 @@
   racket/match
   racket/runtime-path
   scribble/example
-  "my-pict.rkt"
   (for-label
     racket/base
     racket/file
