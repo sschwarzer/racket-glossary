@@ -29,11 +29,11 @@ At the moment, the completion state (generated with the
 ```text
 Completion stats, ignoring cross references:
 
-basic        |■■■■■■■■■■■■······································|  15 of  60 done
-intermediate |■■■···············································|   2 of  33 done
+basic        |■■■■■■■■■■■■■■■■■■■·······························|  22 of  59 done
+intermediate |■■■···············································|   2 of  34 done
 advanced     |··················································|   0 of  25 done
 
-total        |■■■■■■■···········································|  17 of 118 done
+total        |■■■■■■■■■■········································|  24 of 118 done
 ```
 
 ## Contributions
