@@ -364,6 +364,9 @@ Done
   on pattern-bases macros instead of manipulating syntax values. On the other
   hand, we don't want to hold back information on concepts that go beyond
   simple macros.
+- A macro question, with several solutions:
+  [Macro Template Syntax Quasi-Quote with
+  Ellipses](https://racket.discourse.group/t/macro-template-syntax-quasi-quote-with-ellipses/1179/4)
 
 ## Match
 
