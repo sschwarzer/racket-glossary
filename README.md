@@ -45,7 +45,7 @@ entries. There are several contribution channels:
   [mailing list](https://lists.sr.ht/~sschwarzer/racket-glossary) (no list
   subscription necessary).
 
-If you want to send specific commits, you can:
+If you want to send commits, you can:
 
 - Send diffs (for example, created with `git diff`) to the mailing list (see
   above).
