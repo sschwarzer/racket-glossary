@@ -54,6 +54,8 @@ Done
 - Typically structs and operations on them are used
 - -> Struct
 - Read more about the object system
+- Recommended object creation is with `new`:
+  [New vs instantiate vs make-object](https://racket.discourse.group/t/new-vs-instantiate-vs-make-object/1230/1)
 
 ## Closure
 
@@ -687,6 +689,9 @@ See also
 ## Tail position
 
 ## Thread
+
+- [Recommended Approach to Locks](https://racket.discourse.group/t/recommended-approach-to-locks/1228)
+  especially Simon's post
 
 ## Thunk
 
