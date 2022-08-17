@@ -16,3 +16,7 @@ print-doc-url:
 .PHONY: stats
 stats:
 	racket glossary-stats.rkt
+
+.PHONY: local-http-server
+local-http-server:
+	( cd doc && python -m http.server >/dev/null 2>&1 ) &
