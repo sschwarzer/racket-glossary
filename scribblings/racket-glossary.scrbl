@@ -970,6 +970,71 @@ See also:
 
   @level-basic
 
+@bold{Number types}
+
+Racket and most Scheme implementations have the following number types:
+@itemize[
+  @item{integer}
+  @item{rational}
+  @item{real}
+  @item{complex}]
+The type of a number can be checked with the predicates @racket[integer?],
+@racket[rational?], @racket[real?] and @racket[complex?], respectively.
+
+Different from many other programming languages, Scheme/Racket number types
+don't directly correspond to how they might be stored on the machine level.
+Instead, Scheme/Racket number types are closer to the mathematical meanings.
+
+For example, @racket[2] is considered an integer, but so are @racket[2.0]
+and @code{6/3}:
+@examples[
+  #:label #f
+  (integer? 2)
+  (integer? 2.0)
+  (eval:alts (unsyntax (code "(integer? 6/3)")) (integer? 6/3))]
+All these numbers are mathematically the integer 2.
+
+Besides, in Racket, @code{6/3} isn't the operation of dividing 6 by 3,
+which would be @racket[(/ 6 3)], but a fraction:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Simplified and rendered as 2.")
+  (eval:alts (unsyntax (code "6/3")) 6/3)
+  (code:comment "Can't be simplified and remains a fraction.")
+  6/7]
+
+Here are a few other examples for the number types:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Any integer number is also a rational number, a real number")
+  (code:comment "and a complex number.")
+  (eval:alts
+    (map rational? '(0 1 -2 2.0 (unsyntax (code "6/3"))))
+    (map rational? '(0 1 -2 2.0 6/3)))
+  (eval:alts
+    (map real? '(0 1 -2 2.0 (unsyntax (code "6/3"))))
+    (map real? '(0 1 -2 2.0 6/3)))
+  (eval:alts
+    (map complex? '(0 1 -2 2.0 (unsyntax (code "6/3"))))
+    (map complex? '(0 1 -2 2.0 6/3)))
+
+
+]
+
+
+
+@bold{Exactness}
+
+@bold{Tips}
+
+See also:
+@itemize[
+  @item{@secref*['("Functional_update" "Predicate" "Struct") 'glossary] @in-g}
+  @item{@hyperlink["https://docs.racket-lang.org/style/"]{Racket Style Guide}
+  for other Racket coding conventions}]
+
 @glossary-entry{Numeric tower}
 
   @level-basic
