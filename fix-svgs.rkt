@@ -3,7 +3,9 @@
 (require
   racket/file
   racket/format
+  racket/function
   racket/match
+  racket/string
   xml
   xml/path)
 
@@ -118,10 +120,23 @@
     (with-input-from-file path read-xml))
   (cond
     [(needs-fixing? document)
+     (printf "Fixing ~a for dark mode~n" path)
      (define fixed-document (fix-document document))
-     (parameterize ([empty-tag-shorthand 'always])
-       (display-xml fixed-document (current-output-port) #:indentation 'none))]
+     (with-output-to-file
+       path
+       (thunk
+         (parameterize ([empty-tag-shorthand 'always])
+           (display-xml fixed-document (current-output-port) #:indentation 'none)))
+       #:exists 'truncate)]
     [else
-     (printf "path ~a is already fixed" path)]))
+     (printf "~a is already fixed~n" path)]))
 
-(fix-svg "scribblings/list-1234.svg")
+(define SVG-DIRECTORY "scribblings")
+
+(define (fix-svgs)
+  (for ([path (directory-list SVG-DIRECTORY #:build? #t)])
+    (when (string-suffix? (path->string path) ".svg")
+      (fix-svg path))))
+
+(module+ main
+  (fix-svgs))
