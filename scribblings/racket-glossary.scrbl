@@ -73,6 +73,12 @@
      ; is the same for all exported images.
      #:scale 0.85))
 
+@; See comments in `png-image`.
+@(define (svg-image path)
+   (image
+     (~a (build-path scribblings-directory path) ".svg")
+     #:scale 4))
+
 @; ----------------------------------------------------------------------
 
 @title{Glossary of Racket concepts}
@@ -763,7 +769,7 @@ empty list as the second value of the last pair.
 
 For example, the list @racket['(1 2 3 4)] can be drawn as
 
-@png-image{list-1234}
+@svg-image{list-1234}
 
 This data structure looks much more complicated than an array, where items are
 stored in adjacent memory locations. A singly-linked list also has the
@@ -781,11 +787,11 @@ For example, the code
   (define list3 (cons 'b (cdr list1)))]
 creates the following data structures:
 
-@png-image{list-3-lists}
+@svg-image{list-3-lists}
 
 or, in one picture,
 
-@png-image{list-3-lists-combined}
+@svg-image{list-3-lists-combined}
 
 So each of the lists looks as you would expect, but it's not necessary to make
 any copies of the list data. Instead the lists share some data, without this
@@ -805,7 +811,7 @@ In this case, it may be necessary to copy a part of the list data.
   (define list2 (remove 2 list1))]
 creates the following structure:
 
-@png-image{list-remove}
+@svg-image{list-remove}
 
 Note that structure sharing depends only on the used list algorithms (e.g. in
 @racket[remove] above). There's no sophisticated algorithm that tries to
@@ -1372,7 +1378,7 @@ string more clearly with @racket[bytes->list]:
 
 The following diagram shows the relationships between the types:
 
-@png-image{string-types}
+@svg-image{string-types}
 
 Both strings and byte strings come in mutable and immutable versions. Literals,
 e.g. @racket["foo"] or @racket[#"foo"], are immutable.
