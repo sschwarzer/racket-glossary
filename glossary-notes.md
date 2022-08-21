@@ -422,7 +422,17 @@ Done
 
 ## Number
 
-- Number data types
+- Confusing: "integer" can mean something like 123456789 (no decimal point),
+  but it may also refer to the `integer?` predicate result. So in a way, 2.0
+  may not be an integer even though `(integer? 2.0)` is `#t`!
+
+  What about real numbers vs. `real?`? "Real" literals are typically called
+  float, but there's potential for confusion because in the context of other
+  languages (and perhaps even in the context of Scheme and Racket?) "float" and
+  "real" may be used synonymously.
+
+  It's a mess. :-/
+- Number data types (Should we actually call these "data types"? See above.)
   - integer
   - rational
   - real
@@ -431,9 +441,13 @@ Done
     go, if a predicate gives `#t` for a given number, the predicates further
     down also give `#t` for the same number. (I suppose that's the "numeric
     tower" thing at work.)
-- Number predicates don't check just the type!
+- Number predicates don't check just the machine type!
   - For example, `(integer? 2.0)` is `#t`!
   - However, `fixnum?` and `flonum?` _do_ react to the type.
+- As I understand <https://docs.racket-lang.org/reference/numbers.html>,
+  a complex number isn't a flonum, but its real/imaginary _parts_ may be.
+- Behavior of different equality functions (`eq?`, `equal?`, `eqv?`, `=`)?
+  Only use `=` (and `>`, `>=` etc.) for numerical comparisons.
 - Depending on exactness, operations can have different results. Examples:
   - `(real? 1.0+0i)` returns `#t`, but `(real? 1.0+0.0i)` returns `#f`.
   - `(/ 1 0)` raises an exception, but `(/ 1 0.0)` returns `+inf.0`. Yikes!
@@ -447,6 +461,11 @@ Done
     used as flags).
 - I posted a related message on the Racket Discourse:
   <https://racket.discourse.group/t/number-oddities/1171>
+- Instead of explaining everything (types, exactness, fixnums, flonums) in
+  detail, "just" give practical tips?
+  - Ensure that input data is converted to the exactness you want the result to
+    have. See my example in the Discourse post
+    <https://racket.discourse.group/t/number-oddities/1171/5>.
 - See also:
   - Numeric tower
   - Exact/inexact
