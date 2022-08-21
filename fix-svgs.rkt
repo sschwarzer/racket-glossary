@@ -119,7 +119,8 @@
   (cond
     [(needs-fixing? document)
      (define fixed-document (fix-document document))
-     (write-xml fixed-document (current-output-port))]
+     (parameterize ([empty-tag-shorthand 'always])
+       (display-xml fixed-document (current-output-port) #:indentation 'none))]
     [else
      (printf "path ~a is already fixed" path)]))
 
