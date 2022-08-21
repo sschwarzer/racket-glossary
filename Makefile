@@ -9,6 +9,10 @@ scribble:
 	-@raco pkg install -j 1
 	raco setup -j 1 --only racket-glossary
 
+.PHONY: fix-svgs
+fix-svgs:
+	racket fix-svgs.rkt
+
 .PHONY: print-doc-url
 print-doc-url:
 	@echo "file://${PWD}/doc/racket-glossary/index.html"
