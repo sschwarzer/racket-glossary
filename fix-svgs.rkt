@@ -114,7 +114,7 @@
 ;
 ; "Fixing" implies:
 ; - If the file doesn't yet contain color style information, add it.
-; - Change attribute values `stroke="rgb(0,0,0)"` to `stroke="currentColor"`.
+; - Change attribute values "rgb(0,0,0)" to "currentColor".
 (define (fix-svg path)
   (define document
     (with-input-from-file path read-xml))
