@@ -6,7 +6,7 @@
 scribble:
 	@# The `raco setup` command won't work unless `racket-glossary` is already
 	@# installed.
-	-@raco pkg install -j 1
+	@# -@raco pkg install -j 1
 	raco setup -j 1 --only racket-glossary
 
 .PHONY: fix-svgs
