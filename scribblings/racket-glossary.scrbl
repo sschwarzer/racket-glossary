@@ -35,6 +35,7 @@
 @(define in-rr "in the Racket Reference")
 
 @(define glossary-entry (curry subsection #:style 'unnumbered))
+@(define (entry-subsection text) (bold text))
 
 @; For whatever reason, `italic` deactivates an outer `tt`, so wrap the
 @; argument in another `tt`.
@@ -970,70 +971,178 @@ See also:
 
   @level-basic
 
-@bold{Number types}
-
 Racket and most Scheme implementations have the following number types:
 @itemize[
   @item{integer}
   @item{rational}
   @item{real}
   @item{complex}]
-The type of a number can be checked with the predicates @racket[integer?],
-@racket[rational?], @racket[real?] and @racket[complex?], respectively.
+However, these names can mean different things in different contexts. To
+understand the differences, it's useful to view the number types under a
+``technical'' and a ``mathematical'' aspect.
 
-Different from many other programming languages, Scheme/Racket number types
-don't directly correspond to how they might be stored on the machine level.
-Instead, Scheme/Racket number types are closer to the mathematical meanings.
+@entry-subsection{``Technical'' number types}
 
-For example, @racket[2] is considered an integer, but so are @racket[2.0]
-and @code{6/3}:
+@itemize[
+  @item{An ``integer'' is an integer number with arbitrarily many digits.
+    Examples: @racket[-123], @racket[0], @racket[2], @racket[12345],
+    @racket[26525285981219105863630848].}
+  @item{A ``rational'' number consists of an integer nominator and a positive integer
+    denominator. Examples: @racket[-123/12], @racket[-2/3],
+    @racket[5854679515581645/4503599627370496].}
+  @item{A ``float'' number is an (IEEE 754) floating point number. Examples:
+    @racket[-12.34] (=@code{-1.234e1}=@code{0.1234e2} etc.), @racket[0.0],
+    @racket[0.0123], @racket[2.0]. Float numbers also include the special
+    values @racket[-inf.0] (–∞), @racket[+inf.0] (+∞), @racket[-nan.0] (–nan)
+    and @racket[+nan.0] (+nan).}
+  @item{A ``complex'' number has a real and an imaginary part. If one part is
+    a float value, the other part must also be a float value. Otherwise the
+    real and imaginary parts can be integer or rational numbers. Examples:
+    @racket[1+2i], @racket[2+3/4i], @code{1.0+2i} (immediately converted to
+    @racket[1.0+2.0i]).}]
+
+Integer and rational numbers are called @bold{exact} because they can use
+arbitrarily many digits for calculations and therefore aren't affected by
+rounding errors (as long as operations involve only exact values, of course).
+Float values are called @bold{inexact} because many float operations lead to
+rounding errors.
+
+A complex number is exact if both the real and the imaginary part are exact,
+otherwise the complex number is inexact.
+
+@entry-subsection{``Mathematical'' number types}
+
+Racket and many Scheme implementations have the predicates
+@itemize[
+  @item{@racket[integer?]}
+  @item{@racket[rational?]}
+  @item{@racket[real?]}
+  @item{@racket[complex?]}]
+However, these predicates don't test for the technical types with the same
+or similarly-named types described above. Instead, the predicates work in a
+mathematical sense.
+
 @examples[
-  #:label #f
-  (integer? 2)
+  #:eval helper-eval
+  (code:comment "2.0 is the same as the integer 2.")
   (integer? 2.0)
-  (eval:alts (unsyntax (code "(integer? 6/3)")) (integer? 6/3))]
-All these numbers are mathematically the integer 2.
+  (code:comment "1.23 is mathematically the same as 123/100, which is a")
+  (code:comment "rational (and a real) number.")
+  (rational? 1.23)
+  (real? 1.23)
+  (code:comment "However, special values like `+inf.0` are `real?`, but not")
+  (code:comment "`rational?`.")
+  (rational? +inf.0)
+  (real? +inf.0)
+  (code:comment "All integer and real values are also complex values.")
+  (complex? 2)
+  (complex? 2.0)
+  (complex? 1.23)
+  (complex? +inf.0)
+  (code:comment "Numbers with a non-zero imaginary part are obviously")
+  (code:comment "complex values.")
+  (complex? 1+2i)]
 
-Besides, in Racket, @code{6/3} isn't the operation of dividing 6 by 3,
-which would be @racket[(/ 6 3)], but a fraction:
-@examples[
-  #:eval helper-eval
-  #:label #f
-  (code:comment "Simplified and rendered as 2.")
-  (eval:alts (unsyntax (code "6/3")) 6/3)
-  (code:comment "Can't be simplified and remains a fraction.")
-  6/7]
+@entry-subsection{Type notions combined}
 
-Here are a few other examples for the number types:
-@examples[
-  #:eval helper-eval
-  #:label #f
-  (code:comment "Any integer number is also a rational number, a real number")
-  (code:comment "and a complex number.")
-  (eval:alts
-    (map rational? '(0 1 -2 2.0 (unsyntax (code "6/3"))))
-    (map rational? '(0 1 -2 2.0 6/3)))
-  (eval:alts
-    (map real? '(0 1 -2 2.0 (unsyntax (code "6/3"))))
-    (map real? '(0 1 -2 2.0 6/3)))
-  (eval:alts
-    (map complex? '(0 1 -2 2.0 (unsyntax (code "6/3"))))
-    (map complex? '(0 1 -2 2.0 6/3)))
+In Racket discussions, ``integer'' is usually understood as the technical type,
+i.e. an exact integer. Use ``exact integer'' as an exact wording. ;-) For the
+technical floating point type the term ``float'' avoids ambiguities with the
+mathematical ``real'' type.
 
+You can express the technical types in terms of the mathematical predicates
+if necessary (@racket[v] means ``value''):
 
-]
+@tabular[#:sep @hspace[1]
+  (list
+    (list @bold{Technical type}
+          @bold{Predicate combination})
+    (list "integer"
+          @elem{@racket[(and (exact? v) (integer? v))] = @racket[(exact-integer? v)]})
+    (list "rational"
+          @racket[(and (exact? v) (not (integer? v)))])
+    (list "float"
+          @elem{@racket[(and (inexact? v) (real? v))] = @racket[(inexact-real? v)]})
+    (list "complex"
+          @racket[(and (complex? v) (not (real? v)))])
+    (list "exact complex"
+          @racket[(and (exact? v) (complex? v) (not (real? v)))])
+    (list "inexact complex"
+          @racket[(and (inexact? v) (complex? v) (not (real? v)))]))]
 
+@entry-subsection{Tips and gotchas}
 
+@itemize[
+  @item{Use exact integers for counts, or indices for lists and vectors.
+    Actually, there's a special predicate @racket[exact-nonnegative-integer?]
+    to check for numbers that can be used as an index.}
+  @item{Use floats for physical properties like lengths, times and so on.}
+  @item{Use floats for values that come from measurements or non-trivial calculations,
+    especially if they involve physical properties. Such numbers are bound to
+    be inexact.}
+  @item{Use fractions if you want exact calculations, but exact integers
+    aren't enough. Note, however, that many non-basic operations return an
+    inexact result even for most exact arguments. For example, Racket evaluates
+    @racket[(sin 1)] to @racket[0.8414709848078965].}
+  @item{Related to the previous point, it's not always obvious when a Racket
+    function will return an exact or inexact result. For example, @racket[(sin 1)],
+    as shown above, is inexact, but @racket[(sin 0)] gives an exact @racket[0].}
+  @item{When using floats, beware of rounding errors, including overflow and
+    underflow. ``Overflow'' means that a result can't be represented as a
+    ``normal'' float and becomes +∞ or –∞. ``Underflow'' means that a result
+    evaluates to @racket[0.0], even if it wouldn't be zero in terms of an exact
+    mathematical calculation.
+    @examples[
+      #:eval helper-eval
+      (define one-sixth (/ 1.0 6.))
+      (code:comment "6 times 1/6 should be 1.")
+      @; This is supposed to be rendered as 0.9999999999999999.
+      (+ one-sixth one-sixth one-sixth one-sixth one-sixth one-sixth)
+      (code:comment "Overflow")
+      (* 1e200 1e200)
+      (code:comment "Underflow")
+      (* 1e-200 1e-200)]}
+  @item{The behavior of division by zero differs depending on whether the
+    denominator is exact or inexact:
+    @examples[
+      #:eval helper-eval
+      (eval:error (/ 1 0))
+      (eval:error (/ 1.0 0))
+      (/ 1 0.0)
+      (/ 1.0 0.0)]
+    Usually it's better not to rely on a particular behavior for division by
+    zero. Instead test the denominator and handle zero values explicitly.}
+  @item{You can use the prefixes @tt{#e} and @tt{#i} to evaluate literal numbers
+    to exact and inexact values, respectively. For example, @code{#e1e3}
+    is exact @racket[1000] and @code{#i5} is inexact @racket[5.0].}
+  @item{To ensure that a value is exact or inexact, you can use
+    @racket[inexact->exact] and @racket[exact->inexact], respectively. Despite
+    the names of these functions, you can feed them any number. For example,
+    @racket[(inexact->exact 1)] just returns an exact @racket[1].}
+  @item{When reading numbers from a text file, you can convert them to actual
+    numbers with @racket[string->number]. The function handles the same syntaxes
+    that you can use in Racket code.}
+  @item{In addition to the previous tip, convert input numbers to the
+    types/exactness they're supposed to have. Assume you have the following
+    data, where each row represents a set of input data to the same
+    calculation:
+@nested[#:style 'code-inset @verbatim{1  2    3
+4  5.6  7}]
+  Since all inputs in the first row are exact, the calculation may
+  give @racket[361419657752/6547349568252]
+  whereas the data from the second row may give @racket[6.468137108187422].
 
-@bold{Exactness}
-
-@bold{Tips}
+  If the second column is supposed to contain float values, you should ensure
+  this with @racket[exact->inexact]. In some situations, you may want to signal
+  an error instead of converting a number. For example, if a number is supposed
+  to be an integer (for example a count), you proabably shouldn't accept a
+  float instead.}]
 
 See also:
 @itemize[
-  @item{@secref*['("Functional_update" "Predicate" "Struct") 'glossary] @in-g}
-  @item{@hyperlink["https://docs.racket-lang.org/style/"]{Racket Style Guide}
-  for other Racket coding conventions}]
+  @item{@secref*['("Fixnum" "Flonum" "Numeric_tower") 'glossary] @in-g}
+  @item{@secref*["numbers" 'guide] @in-rg}
+  @item{@secref*["numbers" 'reference] @in-rr}]
 
 @glossary-entry{Numeric tower}
 
