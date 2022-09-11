@@ -423,6 +423,8 @@ See also:
 
   @level-basic
 
+See @secref*["Number" 'glossary]
+
 @glossary-entry{Executor}
 
   @level-advanced
@@ -672,9 +674,11 @@ See also:
   @; May be important though. Maybe better "intermediate"?
   @level-advanced
 
-@glossary-entry{Inexact number → Exact number}
+@glossary-entry{Inexact number}
 
   @level-basic
+
+See @secref*["Number" 'glossary]
 
 @glossary-entry{Inspector}
 
