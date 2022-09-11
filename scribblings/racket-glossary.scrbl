@@ -1014,6 +1014,10 @@ rounding errors.
 A complex number is exact if both the real and the imaginary part are exact,
 otherwise the complex number is inexact.
 
+The following diagram shows the relationships between the technical types.
+
+@svg-image{number-types}
+
 @entry-subsection{``Mathematical'' number types}
 
 Racket and many Scheme implementations have the predicates
