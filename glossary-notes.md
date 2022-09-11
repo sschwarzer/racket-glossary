@@ -74,6 +74,7 @@ Done
 - Mention https://alex-hhh.github.io/2019/02/racket-data-structures.html ?
 - Maybe take some inspiration from
   https://docs.racket-lang.org/rebellion/Collections.html
+- https://github.com/racket/racket/wiki/Choosing-a-data-structure
 
 ## Combinator
 
@@ -369,6 +370,31 @@ Done
 - A macro question, with several solutions:
   [Macro Template Syntax Quasi-Quote with
   Ellipses](https://racket.discourse.group/t/macro-template-syntax-quasi-quote-with-ellipses/1179/4)
+- From Racket Slack:
+  sorawee
+    I think a good practice for Racket macros is syntax/parse, and there are
+    two styles:
+
+    - Auto-adding #' variant: use define-syntax-parse-rule
+    - Explicit #' variant: use define-syntax + syntax-parse
+
+    I usually default to auto-adding #', since you can escape from the syntax
+    template back to Racket world with #:with anyway
+
+    ```
+    #lang racket
+
+    (require syntax/parse/define)
+
+    (define xs (list 1 2 3))
+
+    (define-syntax-parse-rule (uncons (var rest) body ...)
+      #:with ooo (quote-syntax ...)
+        (match xs
+            [(list var rest ooo) body ...]))
+
+            (uncons (1 a) 42)
+    ```
 
 ## Match
 
@@ -441,6 +467,8 @@ Done
     go, if a predicate gives `#t` for a given number, the predicates further
     down also give `#t` for the same number. (I suppose that's the "numeric
     tower" thing at work.)
+- Suggestion from Philip McGrath on Slack: Treat fixnums only as implementation
+  detail. → Don't discuss them in the Numbers entry.
 - Number predicates don't check just the machine type!
   - For example, `(integer? 2.0)` is `#t`!
   - However, `fixnum?` and `flonum?` _do_ react to the type.
