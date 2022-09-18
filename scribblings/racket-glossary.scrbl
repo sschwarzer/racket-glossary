@@ -6,7 +6,9 @@
   racket/list
   racket/match
   racket/runtime-path
+  scribble/core
   scribble/example
+  scribble/html-properties
   (for-label
     racket/base
     racket/file
@@ -34,8 +36,19 @@
 @(define in-rg "in the Racket Guide")
 @(define in-rr "in the Racket Reference")
 
-@(define glossary-entry (curry subsection #:style 'unnumbered))
-@(define (entry-subsection text) (bold text))
+@(define entry-subsection-style
+   (make-style
+     #f
+     (list ; 'unnumbered
+           (attributes (list (cons 'style (string-append "font-family: Fira, sans-serif; "
+                                                         "font-weight: 300; "
+                                                         "font-size: 1.4rem; ")))))))
+
+@(define (glossary-entry text)
+   (subsection #:style 'unnumbered text))
+
+@(define (entry-subsection text)
+   (elem #:style entry-subsection-style text)))
 
 @; For whatever reason, `italic` deactivates an outer `tt`, so wrap the
 @; argument in another `tt`.
