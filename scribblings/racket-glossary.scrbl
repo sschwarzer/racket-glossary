@@ -40,9 +40,11 @@
    (make-style
      #f
      (list ; 'unnumbered
-           (attributes (list (cons 'style (string-append "font-family: Fira, sans-serif; "
-                                                         "font-weight: 300; "
-                                                         "font-size: 1.4rem; ")))))))
+           (alt-tag "h5")
+           (attributes '((style . "border: none;
+                                   padding-top: 0px;
+                                   margin-top: 1em;
+                                   font-size: 1.4rem;"))))))
 
 @(define (glossary-entry text)
    (subsection #:style 'unnumbered text))
