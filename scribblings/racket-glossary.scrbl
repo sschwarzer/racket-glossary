@@ -465,7 +465,32 @@ See @secref*["Struct" 'glossary]
 
 @glossary-entry{Fixnum}
 
-  @level-basic
+  @level-intermediate
+
+A fixnum is a ``small'' integer that can be processed with CPU instructions
+for integers.
+
+Note that fixnums in various Scheme implementations or in Racket @italic{can't}
+store 32 or 64 bits. Some of the bits are used as flags that distinguish
+fixnums from other values. Even for the same Racket version, different
+platforms may have a different number of available fixnum bits.
+
+Usually, you should use regular integers and consider the existence of fixnums
+an implementation detail. That said, using fixnum-specific operations can help
+with runtime optimizations. Then again, don't optimize anything until you have
+profiled your software and therefore are sure that the specific integer
+calculation is an actual bottleneck.
+
+@other-languages{Especially statically-typed languages often have integer types
+corresponding to 8, 16, 32 and 64@|~|bits. However, in Racket you can't expect
+that all bits of a machine integer (for example with 64@|~|bits) are available
+for calculations (see above).}
+
+See also:
+@itemize[
+  @item{@secref*["Number" 'glossary] @in-g}
+  @item{@secref*["fixnums+flonums" 'guide] @in-rg}
+  @item{@secref*["fixnums" 'reference] @in-rr}]
 
 @glossary-entry{Flat contract}
 
@@ -473,7 +498,16 @@ See @secref*["Struct" 'glossary]
 
 @glossary-entry{Flonum}
 
-  @level-basic
+  @level-intermediate
+
+A flonum is an IEEE 754 floating point value. In Racket, this is a value of the
+``technical'' float type (see the @secref*["Number" 'glossary] entry).
+
+See also:
+@itemize[
+  @item{@secref*["Number" 'glossary] @in-g}
+  @item{@secref*["fixnums+flonums" 'guide] @in-rg}
+  @item{@secref*["flonums" 'reference] @in-rr}]
 
 @glossary-entry{Fold}
 

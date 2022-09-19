@@ -181,6 +181,9 @@ Done
 ## Fixnum
 
 - "Machine" integer value, typically 64 bit
+- But not in Racket, see
+  <https://docs.racket-lang.org/guide/performance.html#%28tech._fixnum%29> and
+  <https://docs.racket-lang.org/reference/fixnums.html>
 
 ## Flat contract
 
