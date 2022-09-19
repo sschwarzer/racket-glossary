@@ -50,7 +50,7 @@
    (subsection #:style 'unnumbered text))
 
 @(define (entry-subsection text)
-   (elem #:style entry-subsection-style text)))
+   (elem #:style entry-subsection-style text))
 
 @; For whatever reason, `italic` deactivates an outer `tt`, so wrap the
 @; argument in another `tt`.
