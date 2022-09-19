@@ -226,7 +226,9 @@ interpreted as true.
   (for ([value '(#t 1 0 "false" '() map (void) #f)])
     (displayln (if value "true" "false")))]
 
-See also: @secref*["booleans" 'reference] @in-rr
+See also:
+@itemize[
+  @item{@secref*["booleans" 'reference] @in-rr}]
 
 @glossary-entry{Box}
 
@@ -251,7 +253,9 @@ reference in other languages. However, in practice this isn't a problem since
 it's unidiomatic in Racket to use mutable values. Instead you usually transform
 immutable values to other immutable values.
 
-See also: @secref*["boxes" 'reference] @in-rr
+See also:
+@itemize[
+  @item{@secref*["boxes" 'reference] @in-rr}]
 
 @glossary-entry{Byte string}
 
@@ -772,7 +776,9 @@ example is similar to the one in the @secref*["Closure" 'glossary] entry:
 Here, @racket[let] creates the outer environent whereas @racket[lambda] defines
 the function using that environment.
 
-See also: @secref*['("Procedure" "Lambda" "Closure") 'glossary] @in-g
+See also:
+@itemize[
+  @item{@secref*['("Procedure" "Lambda" "Closure") 'glossary] @in-g}]
 
 @glossary-entry{List}
 
