@@ -485,7 +485,7 @@ See @secref*["Struct" 'glossary]
 
   @level-intermediate
 
-(`format`, `~a` etc.
+(`format`, `~a` etc.)
 
 @glossary-entry{Function}
 
