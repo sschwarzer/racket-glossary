@@ -1211,6 +1211,23 @@ See also:
 
   @level-basic
 
+The numeric tower, sometimes called ``numerical tower,'' is an analogy for how
+the ``mathematical'' number types include each other (see @secref*["Number"
+'glossary]):
+
+@svg-image{numeric-tower}
+
+For example, for every number for which @racket[rational?] gives @racket[#t],
+@racket[real?] and @racket[complex?] also give @racket[#t].
+
+You could add ``number'' as the bottom of the tower, but at least in Racket,
+@racket[number?] is equivalent to @racket[complex?].
+
+See also:
+@itemize[
+  @item{@secref*["Number" 'glossary] @in-g}
+  @item{@hyperlink["https://en.wikipedia.org/wiki/Numerical_tower"]{Wikipedia article}}]
+
 @glossary-entry{Opaque}
 
   @level-intermediate

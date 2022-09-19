@@ -504,6 +504,11 @@ Done
 
 ## Numeric tower
 
+- Types "including" other types.
+- For example, `rational` includes `integer` and `real` includes `rational`.
+- `complex` includes every "mathematical" number type.
+- [Wikipedia article](https://en.wikipedia.org/wiki/Numerical_tower)
+
 ## Opaque
 
 - See "struct"
