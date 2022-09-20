@@ -1743,9 +1743,9 @@ languages whose strings consist of code points:
     functions} can convert strings so that they have the ``combined'' or the
     ``separate'' code points and can be meaningfully compared with
     @racket[string=?].}]
-The above list may sound intimidating, but it isn't as long as you don't rely on
-wrong assumptions (e.g. that the same ``character'' is always expressed by the
-same code points). For example, you can safely split a string at newline
+The above list may sound intimidating, but it isn't, as long as you don't rely
+on wrong assumptions (e.g. that the same ``character'' is always expressed by
+the same code points). For example, you can safely split a string at newline
 characters or other ASCII separators like colons without applying any of the
 normalizations.
 
