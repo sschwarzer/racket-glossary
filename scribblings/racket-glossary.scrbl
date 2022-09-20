@@ -1534,7 +1534,7 @@ greet someone:
 
 See also:
 @itemlist[
-  @item{@secref*["Lambda" 'glossary] @in-g}
+  @item{@secref*['("Keyword" "Lambda") 'glossary] @in-g}
   @item{@secref*["syntax-overview" 'guide] @in-rg}
   @item{@secref*["define" 'reference] @in-rr}]
 
