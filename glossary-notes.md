@@ -141,6 +141,7 @@ Done
 
 - Names/values that can be accessed in a scope
 - Is this the usual definition or are there other meanings of "environment"?
+- Relationship to "namespace"?
 
 ## Equality
 
@@ -410,6 +411,8 @@ Done
 ## Named let
 
 ## Namespace
+
+- Relationship to "environment"?
 
 ## Naming conventions
 
