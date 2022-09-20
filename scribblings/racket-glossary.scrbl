@@ -15,8 +15,10 @@
     racket/function
     racket/gui
     racket/list
+    racket/runtime-path
     racket/string
     racket/vector
+    rackunit
     data/gvector))
 
 @(define helper-eval (make-base-eval))
@@ -360,6 +362,65 @@ See @secref*["Partial_application_and_currying" 'glossary]
 @glossary-entry{Definition}
 
   @level-basic
+
+A definition binds an expression result to a new name. In other words, a
+definition creates a binding.
+
+By far the two most used ways to define something use @racket[define], but in
+different ways.
+
+First,
+@specform[(define name expression)]{}
+evaluates the @racketvarfont{expression} and binds it to @racketvarfont{name}:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define two 2)
+  two
+  (define six (* 3 two))
+  six]
+
+Second,
+@specform[(define (name arguments) body)]{}
+creates a procedure with the name @racketvarfont{name}, arguments
+@racketvarfont{arguments} and the code to execute, @racketvarfont{body}.
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (define (hello who)
+    (displayln (string-append "Hello, " who "!")))
+  (hello "Mike")]
+See the @secref*["Procedure" 'glossary] entry for more.
+
+Apart from those two definition forms, there are many more. Here are a few
+examples:
+@itemize[
+  @item{@racket[define-values] is similar to the first @racket[define] form
+    above, but it can create several bindings at the same time in case a
+    procedure returns more than one value.}
+  @item{@racket[define-syntax] defines macros. (But there are many more ways
+    to define macros.)}
+  @item{@racket[define-check] defines custom checks for automated tests.}
+  @item{@racket[define-runtime-path] defines runtime paths.}
+  @item{@racket[define/public] defines a public method for a class.}]
+
+Although many names of definition forms start with @tt{define-} or
+@tt{define/}, this isn't required. In a loose sense you could consider anything
+that creates a new binding as a definition. For example, @racket[struct]
+creates not only a constructor, but also accessor functions:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (struct point (x y))
+  point-x
+  point-y]
+
+See also:
+@itemize[
+  @item{@secref*['("Assignment" "Binding" "Let" "Macro" "Procedure" "Struct" "Values")
+                 'glossary] @in-g}
+  @item{@secref*["define" 'guide] @in-rg}
+  @item{@secref*["define" 'reference] @in-rr}]
 
 @glossary-entry{Display}
 
@@ -1924,9 +1985,11 @@ See @secref*["Untrusted_code" 'glossary]
 
   @level-basic
 
-@glossary-entry{Values (multiple values, as in `define-values` etc.)}
+@glossary-entry{Values}
 
   @level-basic
+
+@; multiple values, as in `define-values` etc.
 
 @glossary-entry{Vector}
 
