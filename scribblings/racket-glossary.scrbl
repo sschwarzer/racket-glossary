@@ -807,9 +807,11 @@ See @secref*["Number" 'glossary]
   @; Or "advanced"?
   @level-intermediate
 
-@glossary-entry{Keyword arguments (positional and keyword args are separate)}
+@glossary-entry{Keyword}
 
   @level-basic
+
+@; positional and keyword args are separate
 
 @glossary-entry{Lambda}
 
