@@ -1630,6 +1630,8 @@ See @secref*["Unsafe_operation" 'glossary]
 
 The string, byte string and character data types are used for text processing.
 
+@entry-subsection{Strings and characters}
+
 Strings represent human-readable text; they're what you likely want if you do
 text processing.
 @examples[
@@ -1662,6 +1664,8 @@ A string consists of characters, which represent unicode code points:
 That said, usually you don't need to deal with individual characters. Most
 string processing works on substrings rather than characters.
 
+@entry-subsection{Byte strings, bytes and encodings}
+
 To convert a string to bytes that can be written to a file or sent over a
 network socket, the string needs to be encoded to a byte string:
 @examples[
@@ -1691,12 +1695,16 @@ string more clearly with @racket[bytes->list]:
   #:label #f
   (bytes->list encoded-string)]
 
+@entry-subsection{Type relationships}
+
 The following diagram shows the relationships between the types:
 
 @svg-image{string-types}
 
 Both strings and byte strings come in mutable and immutable versions. Literals,
 e.g. @racket["foo"] or @racket[#"foo"], are immutable.
+
+@entry-subsection{String functions}
 
 The previous paragraphs explained how the string and character data types in
 Racket are related. However, for most text processing you'll be fine with
@@ -1712,6 +1720,8 @@ check out the others in @secref*["strings" 'reference] @in-rr).
   @item{@racket[string-split]}
   @item{@secref*["String_Comparisons" 'reference]}
 ]
+
+@entry-subsection{Caveats}
 
 As mentioned above, strings consist of unicode code points. Unicode is rather
 complex and subtle, so the following caveats are shared by programming
