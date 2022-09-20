@@ -331,6 +331,35 @@ Done
 
 ## Let
 
+- Different forms
+  - `let`
+    - Bindings can't reference others
+  - `let*`
+    - Bindings _can_ reference other bindings.
+    - Think `let*` as nested `let` forms.
+  - `letrec`
+  - "named let" - has its own entry. Or maybe it _should_ be explained in the
+    "Let" entry? I'm not sure yet inhowfar "named let" is "fundamentally
+    different" enough to have its dedicated entry. At least "named let" is more
+    complicated than the other forms.
+    - Compromise: Explain "named let" in the "Let" entry and make "Named let" a
+      cross reference to "Let".
+- Different coding styles
+  - Prefer `let` forms over internal `define`
+    - Makes scope more explicit
+    - But can make code look more convoluted
+  vs.
+  - Prefer internal `define` over `let` forms (recommended by [Racket coding
+    conventions](https://docs.racket-lang.org/style/index.html)).
+    - Scopes are less explicit
+    - Usually looks cleaner though
+- `let` forms in the Racket guide:
+  <https://docs.racket-lang.org/guide/let.html>
+- `let` forms in the Racket reference:
+  <https://docs.racket-lang.org/reference/let.html>
+- Explain/mention `let-values` etc.? I think that's too specialized for the
+  glossary.
+
 ## Let over lambda
 
 -
