@@ -48,8 +48,19 @@
                                    margin-top: 1em;
                                    font-size: 1.4rem;"))))))
 
+@; TODO: To be superseded by `glossary-entry2` below.
 @(define (glossary-entry text)
    (subsection #:style 'unnumbered text))
+
+@(define (glossary-entry2 #:cross-reference? [cross-reference? #f]
+                          #:stub? [stub? #f]
+                          title-text
+                          level
+                          . text)
+   (list
+     (subsection #:style 'unnumbered title-text)
+     (paragraph plain (elem (bold "Level: ") (symbol->string level)))
+     text))
 
 @(define (entry-subsection text)
    (elem #:style entry-subsection-style text))
@@ -144,9 +155,7 @@ mentioned. If you want all the details, check out the
 
 @section{Entries}
 
-@glossary-entry{Arity}
-
-  @level-basic
+@glossary-entry2["Arity" 'basic]{
 
 The arity describes how many arguments a function can accept. Everything from
 zero to infinitely many arguments is possible. Note that functions can have
@@ -159,6 +168,7 @@ See also:
 @itemize[
   @item{@secref*["Procedure" 'glossary] @in-g}
   @item{@secref*["Keywords_and_Arity" 'reference] @in-rr}]
+}
 
 @glossary-entry{Assignment}
 
