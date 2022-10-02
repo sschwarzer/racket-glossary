@@ -6,13 +6,18 @@
   racket/function
   racket/list
   racket/match
-  racket/string)
+  racket/string
+  ; Implicitly generate stats.
+  "scribblings/racket-glossary.scrbl")
 
 ; ----------------------------------------------------------------------
 ; Entries parsing
 
-(define CATEGORIES '("basic" "intermediate" "advanced"))
+(define LEVELS '("basic" "intermediate" "advanced"))
 
+(displayln stats-hash)
+
+#|
 (struct entry (title category text)
   #:transparent)
 
@@ -250,3 +255,4 @@
         (thunk (entry-string->entry "@glossary-entry{Foo}\n  @level-invalid")))
   ))
 )
+|#

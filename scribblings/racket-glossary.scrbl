@@ -31,6 +31,12 @@
     racket/pretty
     racket/string)]
 
+@(provide stats-hash)
+
+@(define stats-hash (make-hash))
+
+@(struct entry (title level cross-reference? stub?) #:transparent)
+
 @(define level-basic        @elem{@bold{Level:} basic})
 @(define level-intermediate @elem{@bold{Level:} intermediate})
 @(define level-advanced     @elem{@bold{Level:} advanced})
@@ -57,6 +63,8 @@
                           title-text
                           level
                           . text)
+   ; Store entry data for `glossary-stats.rkt` script.
+   (hash-set! stats-hash title-text (entry title-text level cross-reference? stub?)))
    (list
      (subsection #:style 'unnumbered title-text)
      (paragraph plain (elem (bold "Level: ") (symbol->string level)))
