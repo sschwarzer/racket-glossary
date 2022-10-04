@@ -21,6 +21,8 @@
     rackunit
     data/gvector))
 
+@(provide stats-hash)
+
 @(define helper-eval (make-base-eval))
 @examples[
   #:eval helper-eval
@@ -30,12 +32,6 @@
     racket/list
     racket/pretty
     racket/string)]
-
-@(provide stats-hash)
-
-@(define stats-hash (make-hash))
-
-@(struct entry (title level cross-reference? stub?) #:transparent)
 
 @(define level-basic        @elem{@bold{Level:} basic})
 @(define level-intermediate @elem{@bold{Level:} intermediate})
@@ -57,6 +53,10 @@
 @; TODO: To be superseded by `glossary-entry2` below.
 @(define (glossary-entry text)
    (subsection #:style 'unnumbered text))
+
+@(define stats-hash (make-hash))
+
+@(struct entry (title level cross-reference? stub?) #:transparent)
 
 @(define (glossary-entry2 #:cross-reference? [cross-reference? #f]
                           #:stub? [stub? #f]
