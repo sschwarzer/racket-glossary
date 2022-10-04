@@ -58,11 +58,16 @@
 
 @(struct entry (title level cross-reference? stub?) #:transparent)
 
+@(define LEVELS '(basic intermediate advanced))
+
 @(define (glossary-entry2 #:cross-reference? [cross-reference? #f]
                           #:stub? [stub? #f]
                           title-text
                           level
                           . text)
+   (when (not (index-of LEVELS level))
+     (raise-argument-error
+       'glossary-entry "one of 'basic, 'intermediate, 'advanced" level))
    ; Store entry data for `glossary-stats.rkt` script.
    (hash-set! stats-hash title-text (entry title-text level cross-reference? stub?)))
    (list
