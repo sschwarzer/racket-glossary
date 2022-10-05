@@ -33,9 +33,6 @@
     racket/pretty
     racket/string)]
 
-@(define level-basic        @elem{@bold{Level:} basic})
-@(define level-intermediate @elem{@bold{Level:} intermediate})
-@(define level-advanced     @elem{@bold{Level:} advanced})
 @(define in-g "in this glossary")
 @(define in-rg "in the Racket Guide")
 @(define in-rr "in the Racket Reference")
