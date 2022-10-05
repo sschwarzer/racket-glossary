@@ -274,28 +274,28 @@ See also:
   @item{@secref*["boxes" 'reference] @in-rr}]
 }
 
-@glossary-entry["Byte string" 'basic]{
+@glossary-entry["Byte string" 'basic #:cross-reference? #t]{
 
 See @secref*["String__character__byte_string" 'glossary]
 }
 
-@glossary-entry["Call" 'basic]{
+@glossary-entry["Call" 'basic #:cross-reference? #t]{
 
 See @secref*["Procedure" 'glossary]
 }
 
-@glossary-entry["Channel" 'intermediate]{
+@glossary-entry["Channel" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Chaperone" 'intermediate]{
+@glossary-entry["Chaperone" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Character" 'basic]{
+@glossary-entry["Character" 'basic #:cross-reference? #t]{
 
 See @secref*["String__character__byte_string" 'glossary]
 }
 
-@glossary-entry["Class" 'intermediate]{
+@glossary-entry["Class" 'intermediate #:stub? #t]{
 }
 
 @glossary-entry["Closure" 'basic]{
@@ -323,38 +323,38 @@ See also:
     Wikipedia entry}]
 }
 
-@glossary-entry["Collection" 'basic]{
+@glossary-entry["Collection" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Combinator" 'intermediate]{
+@glossary-entry["Combinator" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Comprehension" 'basic]{
+@glossary-entry["Comprehension" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Cons cell" 'basic]{
+@glossary-entry["Cons cell" 'basic #:cross-reference? #t]{
 
 See @secref*["Pair" 'glossary]
 }
 
-@glossary-entry["Continuation" 'advanced]{
+@glossary-entry["Continuation" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Contract" 'intermediate]{
+@glossary-entry["Contract" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Core form" 'advanced]{
+@glossary-entry["Core form" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Currying" 'basic]{
+@glossary-entry["Currying" 'basic #:cross-reference? #t]{
 
 See @secref*["Partial_application_and_currying" 'glossary]
 }
 
-@glossary-entry["Custodian" 'advanced]{
+@glossary-entry["Custodian" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Debugging" 'basic]{
+@glossary-entry["Debugging" 'basic #:stub? #t]{
 }
 
 @glossary-entry["Definition" 'basic]{
@@ -419,16 +419,16 @@ See also:
   @item{@secref*["define" 'reference] @in-rr}]
 }
 
-@glossary-entry["Display" 'basic]{
+@glossary-entry["Display" 'basic #:stub? #t]{
 }
 
-@glossary-entry["DrRacket" 'basic]{
+@glossary-entry["DrRacket" 'basic #:stub? #t]{
 }
 
-@glossary-entry["DSL (domain-specific language)" 'advanced]{
+@glossary-entry["DSL (domain-specific language)" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Environment" 'intermediate]{
+@glossary-entry["Environment" 'intermediate #:stub? #t]{
 }
 
 @glossary-entry["Equality" 'basic]{
@@ -491,21 +491,22 @@ See also:
   @item{@secref*["Equality" 'reference] @in-rr}]
 }
 
-@glossary-entry["Exact number" 'basic]{
+@glossary-entry["Exact number" 'basic #:cross-reference? #t]{
 
 See @secref*["Number" 'glossary]
 }
 
-@glossary-entry["Executor" 'advanced]{
+@glossary-entry["Executor" 'advanced #:stub? #t]{
+}
 
 @; Or basic?
-@glossary-entry["Exception" 'intermediate]{
+@glossary-entry["Exception" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Expression (always rvalue? may result in one or more values)" 'basic]{
+@glossary-entry["Expression (always rvalue? may result in one or more values)" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Field" 'basic]{
+@glossary-entry["Field" 'basic #:cross-reference? #t]{
 
 See @secref*["Struct" 'glossary]
 }
@@ -538,7 +539,7 @@ See also:
   @item{@secref*["fixnums" 'reference] @in-rr}]
 }
 
-@glossary-entry["Flat contract" 'advanced]{
+@glossary-entry["Flat contract" 'advanced #:stub? #t]{
 }
 
 @glossary-entry["Flonum" 'intermediate]{
@@ -553,21 +554,23 @@ See also:
   @item{@secref*["flonums" 'reference] @in-rr}]
 }
 
-@glossary-entry["Fold" 'basic]{
+@glossary-entry["Fold" 'basic #:stub? #t]{
+}
 
-@glossary-entry["Form" 'basic]{
+@glossary-entry["Form" 'basic #:stub? #t]{
+}
 
-@glossary-entry["Formatting" 'basic]{
+@glossary-entry["Formatting" 'basic #:stub? #t]{
 
 (`format`, `~a` etc.)
 }
 
-@glossary-entry["Function" 'basic]{
+@glossary-entry["Function" 'basic #:cross-reference? #t]{
 
 See @secref*["Procedure" 'glossary]
 }
 
-@glossary-entry["Functional programming (FP)" 'basic]{
+@glossary-entry["Functional programming (FP)" 'basic #:stub? #t]{
 }
 
 @glossary-entry["Functional update" 'basic]{
@@ -621,16 +624,16 @@ See also:
                  'glossary] @in-g}]
 }
 
-@glossary-entry["Future" 'advanced]{
+@glossary-entry["Future" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Generator" 'advanced]{
+@glossary-entry["Generator" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Generic API" 'advanced]{
+@glossary-entry["Generic API" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["GUI programming" 'intermediate]{
+@glossary-entry["GUI programming" 'intermediate #:stub? #t]{
 }
 
 @glossary-entry["Hash" 'basic]{
@@ -735,38 +738,40 @@ See also:
   @item{@secref*["hashtables" 'reference] @in-rr}]
 }
 
-@glossary-entry["Higher-order function" 'basic]{
+@glossary-entry["Higher-order function" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Hygiene" 'intermediate]{
+@glossary-entry["Hygiene" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Identifier (differences to identifiers in other languages)" 'basic]{
+@glossary-entry["Identifier" 'basic #:stub? #t]{
+@; describe differences to identifiers in other languages
 }
 
-@glossary-entry["Identity (also refer to `eq?`)" 'basic]{
+@glossary-entry["Identity" 'basic #:stub? #t]{
+@; also refer to `eq?`
 }
 
 @; May be important for contracts though. Maybe better "intermediate"?
-@glossary-entry["Impersonator" 'advanced]{
+@glossary-entry["Impersonator" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Inexact number" 'basic]{
+@glossary-entry["Inexact number" 'basic #:cross-reference? #t]{
 
 See @secref*["Number" 'glossary]
 }
 
-@glossary-entry["Inspector" 'advanced]{
+@glossary-entry["Inspector" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Interface (API)" 'basic]{
+@glossary-entry["Interface (API)" 'basic #:stub? #t]{
 }
 
 @; Or "advanced"?
-@glossary-entry["Interface (OOP)" 'intermediate]{
+@glossary-entry["Interface (OOP)" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Keyword" 'basic]{
+@glossary-entry["Keyword" 'basic #:stub? #t]{
 
 @; positional and keyword args are separate
 }
@@ -800,13 +805,13 @@ See also:
   @item{@secref*["lambda" 'reference] @in-rr}]
 }
 
-@glossary-entry["Lang (as in `#lang`)" 'advanced]{
+@glossary-entry["Lang (as in `#lang`)" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Language-oriented programming" 'advanced]{
+@glossary-entry["Language-oriented programming" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Let" 'basic]{
+@glossary-entry["Let" 'basic #:stub? #t]{
 }
 
 @glossary-entry["Let over lambda" 'intermediate]{
@@ -938,26 +943,25 @@ However, usually you should avoid mutation in functional programming.
 }
 
 @; Intermediate or advanced?
-@glossary-entry["Macro" 'intermediate]{
+@glossary-entry["Macro" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Match" 'intermediate]{
+@glossary-entry["Match" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Match transformer" 'advanced]{
+@glossary-entry["Match transformer" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Method" 'intermediate]{
+@glossary-entry["Method" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Module" 'basic]{
+@glossary-entry["Module" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Named let" 'intermediate]{
+@glossary-entry["Named let" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Namespace" 'intermediate]{
-}
+@glossary-entry["Namespace" 'intermediate #:stub? #t]{
 
 @; Relationship to "environment"? How much has a "normal" user to know about
 @; this outside of `eval`?
@@ -1232,12 +1236,12 @@ See also:
   @item{@hyperlink["https://en.wikipedia.org/wiki/Numerical_tower"]{Wikipedia article}}]
 }
 
-@glossary-entry["Opaque" 'intermediate]{
+@glossary-entry["Opaque" 'intermediate #:cross-reference? #t]{
 
 See @secref*["Struct" 'glossary]
 }
 
-@glossary-entry["Package" 'intermediate]{
+@glossary-entry["Package" 'intermediate #:stub? #t]{
 }
 
 @glossary-entry["Pair" 'basic]{
@@ -1265,7 +1269,7 @@ See also:
   @item{@secref*["pairs" 'reference] @in-rr}]
 }
 
-@glossary-entry["Parameter" 'basic]{
+@glossary-entry["Parameter" 'basic #:stub? #t]{
 }
 
 @glossary-entry["Partial application and currying" 'basic]{
@@ -1335,22 +1339,23 @@ See also:
   @item{@racket[curry] and @racket[curryr] @in-rr}]
 }
 
-@glossary-entry["Pattern (in regular expressions)" 'basic]{
+@glossary-entry["Pattern (in regular expressions)" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Pattern (in macro definitions)" 'intermediate]{
+@glossary-entry["Pattern (in macro definitions)" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Phase" 'advanced]{
+@glossary-entry["Phase" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Place" 'advanced]{
+@glossary-entry["Place" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Polymorphism (rarely used, compare with other languages; see also generic code)" 'intermediate]{
+@glossary-entry["Polymorphism" 'intermediate #:stub? #t]{
+@; rarely used, compare with other languages; see also generic code
 }
 
-@glossary-entry["Port" 'basic]{
+@glossary-entry["Port" 'basic #:stub? #t]{
 }
 
 @glossary-entry["Predicate" 'basic]{
@@ -1393,7 +1398,7 @@ See also:
         @in-g}]
 }
 
-@glossary-entry["Print" 'basic]{
+@glossary-entry["Print" 'basic #:cross-reference? #t]{
 
 See @secref*["Display" 'glossary]
 }
@@ -1465,72 +1470,71 @@ See also:
   @item{@secref*["define" 'reference] @in-rr}]
 }
 
-@glossary-entry["Profiling" 'intermediate]{
+@glossary-entry["Profiling" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Prompt" 'advanced]{
+@glossary-entry["Prompt" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Provide" 'intermediate]{
+@glossary-entry["Provide" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Quasiquote" 'intermediate]{
+@glossary-entry["Quasiquote" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Quote" 'basic]{
+@glossary-entry["Quote" 'basic #:stub? #t]{
 }
 
-@glossary-entry["RnRS (as in R5RS, R6RS etc.)" 'intermediate]{
+@glossary-entry["RnRS (as in R5RS, R6RS etc.)" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Raco" 'basic]{
+@glossary-entry["Raco" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Reader (for parsing code)" 'advanced]{
+@glossary-entry["Reader (for parsing code)" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Record" 'basic]{
-}
+@glossary-entry["Record" 'basic #:cross-reference? #t]{
 
 See @secref*["Struct" 'glossary]
 }
 
-@glossary-entry["Require" 'basic]{
+@glossary-entry["Require" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Rule (in macros; probably other uses, which ones?)" 'intermediate]{
+@glossary-entry["Rule (in macros; probably other uses, which ones?)" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Safe operation" 'intermediate]{
+@glossary-entry["Safe operation" 'intermediate #:cross-reference? #t]{
 
 See @secref*["Unsafe_operation" 'glossary]
 }
 
-@glossary-entry["Scheme" 'basic]{
+@glossary-entry["Scheme" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Scribble" 'intermediate]{
+@glossary-entry["Scribble" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Sequence" 'intermediate]{
+@glossary-entry["Sequence" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Set" 'intermediate]{
+@glossary-entry["Set" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Shadowing" 'basic]{
+@glossary-entry["Shadowing" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Splicing" 'basic]{
+@glossary-entry["Splicing" 'basic #:stub? #t]{
 }
 
-@glossary-entry["SRFI" 'intermediate]{
+@glossary-entry["SRFI" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Standard library" 'basic]{
+@glossary-entry["Standard library" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Stream" 'basic]{
+@glossary-entry["Stream" 'basic #:stub? #t]{
 }
 
 @glossary-entry["String, character, byte string" 'basic]{
@@ -1829,65 +1833,65 @@ See also:
   @item{@secref*["symbols" 'reference] @in-rr}]
 }
 
-@glossary-entry["Syntactic form" 'basic]{
+@glossary-entry["Syntactic form" 'basic #:cross-reference? #t]{
 
 See @secref*["Form" 'glossary]
 }
 
-@glossary-entry["Syntax (different meanings)" 'intermediate]{
+@glossary-entry["Syntax (different meanings)" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Syntax transformer" 'intermediate]{
+@glossary-entry["Syntax transformer" 'intermediate #:cross-reference? #t]{
 
 See @secref*["Macro" 'glossary]
 }
 
-@glossary-entry["Tail call" 'intermediate]{
+@glossary-entry["Tail call" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Tail position" 'intermediate]{
+@glossary-entry["Tail position" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Thread" 'intermediate]{
+@glossary-entry["Thread" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Thunk" 'basic]{
+@glossary-entry["Thunk" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Transparent" 'basic]{
-}
+@glossary-entry["Transparent" 'basic #:cross-reference? #t]{
 
 See @secref*["Struct" 'glossary]
 }
 
-@glossary-entry["Trust level" 'advanced]{
+@glossary-entry["Trust level" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Trusted code" 'advanced]{
+@glossary-entry["Trusted code" 'advanced #:cross-reference? #t]{
 
 See @secref*["Untrusted_code" 'glossary]
 }
 
-@glossary-entry["Typed Racket" 'advanced]{
+@glossary-entry["Typed Racket" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Undefined (why do we need this if we have `void`?)" 'advanced]{
+@glossary-entry["Undefined" 'advanced #:stub? #t]{
+@; why do we need this if we have `void`?
 }
 
-@glossary-entry["Unit" 'advanced]{
+@glossary-entry["Unit" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Unsafe operation" 'intermediate]{
+@glossary-entry["Unsafe operation" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Untrusted code" 'advanced]{
+@glossary-entry["Untrusted code" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Value" 'basic]{
+@glossary-entry["Value" 'basic #:stub? #t]{
 @; sometimes "object", but may be confused with OOP concept
 }
 
-@glossary-entry["Values" 'basic]{
+@glossary-entry["Values" 'basic #:stub? #t]{
 
 @; multiple values, as in `define-values` etc.
 }
@@ -2011,13 +2015,13 @@ See also:
   @item{@secref*["void" 'reference] @in-rr}]
 }
 
-@glossary-entry["Will" 'advanced]{
+@glossary-entry["Will" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Write" 'basic]{
+@glossary-entry["Write" 'basic #:cross-reference? #t]{
 
 See @secref*["Display" 'glossary]
 }
 
-@glossary-entry["Writer" 'advanced]{
+@glossary-entry["Writer" 'advanced #:stub? #t]{
 }
