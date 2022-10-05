@@ -21,7 +21,12 @@
     rackunit
     data/gvector))
 
-@(provide stats-hash)
+@(provide
+  LEVELS
+  entry-cross-reference?
+  entry-level
+  entry-stub?
+  stats-hash)
 
 @(define helper-eval (make-base-eval))
 @examples[
