@@ -50,26 +50,22 @@
                                    margin-top: 1em;
                                    font-size: 1.4rem;"))))))
 
-@; TODO: To be superseded by `glossary-entry2` below.
-@(define (glossary-entry text)
-   (subsection #:style 'unnumbered text))
-
 @(define stats-hash (make-hash))
 
 @(struct entry (title level cross-reference? stub?) #:transparent)
 
 @(define LEVELS '(basic intermediate advanced))
 
-@(define (glossary-entry2 #:cross-reference? [cross-reference? #f]
-                          #:stub? [stub? #f]
-                          title-text
-                          level
-                          . text)
+@(define (glossary-entry #:cross-reference? [cross-reference? #f]
+                         #:stub? [stub? #f]
+                         title-text
+                         level
+                         . text)
    (when (not (index-of LEVELS level))
      (raise-argument-error
        'glossary-entry "one of 'basic, 'intermediate, 'advanced" level))
    ; Store entry data for `glossary-stats.rkt` script.
-   (hash-set! stats-hash title-text (entry title-text level cross-reference? stub?)))
+   (hash-set! stats-hash title-text (entry title-text level cross-reference? stub?))
    (list
      (subsection #:style 'unnumbered title-text)
      (paragraph plain (elem (bold "Level: ") (symbol->string level)))
@@ -168,7 +164,7 @@ mentioned. If you want all the details, check out the
 
 @section{Entries}
 
-@glossary-entry2["Arity" 'basic]{
+@glossary-entry["Arity" 'basic]{
 
 The arity describes how many arguments a function can accept. Everything from
 zero to infinitely many arguments is possible. Note that functions can have
@@ -183,9 +179,7 @@ See also:
   @item{@secref*["Keywords_and_Arity" 'reference] @in-rr}]
 }
 
-@glossary-entry{Assignment}
-
-  @level-basic
+@glossary-entry["Assignment" 'basic]{
 
 @; Binding vs. location?
 
@@ -212,10 +206,9 @@ See also:
   @item{@secref*['("Binding" "Let" "Location") 'glossary] @in-g}
   @item{@secref*["set!" 'guide] @in-rg}
   @item{@secref*["set!" 'reference] @in-rr}]
+}
 
-@glossary-entry{Binding}
-
-  @level-basic
+@glossary-entry["Binding" 'basic]{
 
 A binding makes a value accessible via a name. Typically, bindings are created
 with the @racket[define] form:
@@ -231,10 +224,9 @@ See also:
 @itemlist[
   @item{@secref*["Binding" 'glossary] @in-rg}
   @item{@secref*["id-model" 'reference] @in-rr}]
+}
 
-@glossary-entry{Boolean}
-
-  @level-basic
+@glossary-entry["Boolean" 'basic]{
 
 Booleans represent truth values. In some other languages this type is called
 @code{bool} or @code{boolean}. Racket has two boolean literals:
@@ -254,10 +246,9 @@ interpreted as true.
 See also:
 @itemize[
   @item{@secref*["booleans" 'reference] @in-rr}]
+}
 
-@glossary-entry{Box}
-
-  @level-intermediate
+@glossary-entry["Box" 'intermediate]{
 
 A box is a container to essentially turn an immutable value into a mutable
 value. Passing a box as a function argument is similar to passing a value by
@@ -281,40 +272,33 @@ immutable values to other immutable values.
 See also:
 @itemize[
   @item{@secref*["boxes" 'reference] @in-rr}]
+}
 
-@glossary-entry{Byte string}
-
-  @level-basic
+@glossary-entry["Byte string" 'basic]{
 
 See @secref*["String__character__byte_string" 'glossary]
+}
 
-@glossary-entry{Call}
-
-  @level-basic
+@glossary-entry["Call" 'basic]{
 
 See @secref*["Procedure" 'glossary]
+}
 
-@glossary-entry{Channel}
+@glossary-entry["Channel" 'intermediate]{
+}
 
-  @level-intermediate
+@glossary-entry["Chaperone" 'intermediate]{
+}
 
-@glossary-entry{Chaperone}
-
-  @level-intermediate
-
-@glossary-entry{Character}
-
-  @level-basic
+@glossary-entry["Character" 'basic]{
 
 See @secref*["String__character__byte_string" 'glossary]
+}
 
-@glossary-entry{Class}
+@glossary-entry["Class" 'intermediate]{
+}
 
-  @level-intermediate
-
-@glossary-entry{Closure}
-
-  @level-basic
+@glossary-entry["Closure" 'basic]{
 
 A closure combines a function with environment data from a scope outside the
 function.
@@ -337,54 +321,43 @@ See also:
   @item{@secref*["Let_over_lambda" 'glossary] @in-g}
   @item{@hyperlink["https://en.wikipedia.org/wiki/Closure_(computer_programming)"]{Closure}
     Wikipedia entry}]
+}
 
-@glossary-entry{Collection}
+@glossary-entry["Collection" 'basic]{
+}
 
-  @level-basic
+@glossary-entry["Combinator" 'intermediate]{
+}
 
-@glossary-entry{Combinator}
+@glossary-entry["Comprehension" 'basic]{
+}
 
-  @level-intermediate
-
-@glossary-entry{Comprehension}
-
-  @level-basic
-
-@glossary-entry{Cons cell}
-
-  @level-basic
+@glossary-entry["Cons cell" 'basic]{
 
 See @secref*["Pair" 'glossary]
+}
 
-@glossary-entry{Continuation}
+@glossary-entry["Continuation" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["Contract" 'intermediate]{
+}
 
-@glossary-entry{Contract}
+@glossary-entry["Core form" 'advanced]{
+}
 
-  @level-intermediate
-
-@glossary-entry{Core form}
-
-  @level-advanced
-
-@glossary-entry{Currying}
-
-  @level-basic
+@glossary-entry["Currying" 'basic]{
 
 See @secref*["Partial_application_and_currying" 'glossary]
+}
 
-@glossary-entry{Custodian}
+@glossary-entry["Custodian" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["Debugging" 'basic]{
+}
 
-@glossary-entry{Debugging}
-
-  @level-basic
-
-@glossary-entry{Definition}
-
-  @level-basic
+@glossary-entry["Definition" 'basic]{
 
 A definition binds an expression result to a new name. In other words, a
 definition creates a binding.
@@ -444,26 +417,21 @@ See also:
                  'glossary] @in-g}
   @item{@secref*["define" 'guide] @in-rg}
   @item{@secref*["define" 'reference] @in-rr}]
+}
 
-@glossary-entry{Display}
+@glossary-entry["Display" 'basic]{
+}
 
-  @level-basic
+@glossary-entry["DrRacket" 'basic]{
+}
 
-@glossary-entry{DrRacket}
+@glossary-entry["DSL (domain-specific language)" 'advanced]{
+}
 
-  @level-basic
+@glossary-entry["Environment" 'intermediate]{
+}
 
-@glossary-entry{DSL (domain-specific language)}
-
-  @level-advanced
-
-@glossary-entry{Environment}
-
-  @level-intermediate
-
-@glossary-entry{Equality}
-
-  @level-basic
+@glossary-entry["Equality" 'basic]{
 
 Scheme and Racket have three generic functions to determine if two values are
 equal:
@@ -521,35 +489,28 @@ See also:
 @itemize[
   @item{@secref*["Procedure" 'glossary] @in-g}
   @item{@secref*["Equality" 'reference] @in-rr}]
+}
 
-@glossary-entry{Exact number}
-
-  @level-basic
+@glossary-entry["Exact number" 'basic]{
 
 See @secref*["Number" 'glossary]
+}
 
-@glossary-entry{Executor}
+@glossary-entry["Executor" 'advanced]{
 
-  @level-advanced
+@; Or basic?
+@glossary-entry["Exception" 'intermediate]{
+}
 
-@glossary-entry{Exception}
+@glossary-entry["Expression (always rvalue? may result in one or more values)" 'basic]{
+}
 
-  @; Or basic?
-  @level-intermediate
-
-@glossary-entry{Expression (always rvalue? may result in one or more values)}
-
-  @level-basic
-
-@glossary-entry{Field}
-
-  @level-basic
+@glossary-entry["Field" 'basic]{
 
 See @secref*["Struct" 'glossary]
+}
 
-@glossary-entry{Fixnum}
-
-  @level-intermediate
+@glossary-entry["Fixnum" 'intermediate]{
 
 A fixnum is a ``small'' integer that can be processed with CPU instructions
 for integers.
@@ -575,14 +536,12 @@ See also:
   @item{@secref*["Number" 'glossary] @in-g}
   @item{@secref*["fixnums+flonums" 'guide] @in-rg}
   @item{@secref*["fixnums" 'reference] @in-rr}]
+}
 
-@glossary-entry{Flat contract}
+@glossary-entry["Flat contract" 'advanced]{
+}
 
-  @level-advanced
-
-@glossary-entry{Flonum}
-
-  @level-intermediate
+@glossary-entry["Flonum" 'intermediate]{
 
 A flonum is an IEEE 754 floating point value. In Racket, this is a value of the
 ``technical'' float type (see the @secref*["Number" 'glossary] entry).
@@ -592,36 +551,26 @@ See also:
   @item{@secref*["Number" 'glossary] @in-g}
   @item{@secref*["fixnums+flonums" 'guide] @in-rg}
   @item{@secref*["flonums" 'reference] @in-rr}]
+}
 
-@glossary-entry{Fold}
+@glossary-entry["Fold" 'basic]{
 
-  @level-basic
+@glossary-entry["Form" 'basic]{
 
-@glossary-entry{Form}
-
-  @level-basic
-
-@glossary-entry{Formatting}
-
-  @level-basic
-
-  @level-intermediate
+@glossary-entry["Formatting" 'basic]{
 
 (`format`, `~a` etc.)
+}
 
-@glossary-entry{Function}
-
-  @level-basic
+@glossary-entry["Function" 'basic]{
 
 See @secref*["Procedure" 'glossary]
+}
 
-@glossary-entry{Functional programming (FP)}
+@glossary-entry["Functional programming (FP)" 'basic]{
+}
 
-  @level-basic
-
-@glossary-entry{Functional update}
-
-  @level-basic
+@glossary-entry["Functional update" 'basic]{
 
 Compared to an ``imperative update,'' as used in many programming languages, a
 ``functional update'' doesn't modifiy a value in place, but instead returns a
@@ -670,26 +619,21 @@ See also:
 @itemize[
   @item{@secref*['("Binding" "Functional_programming__FP_" "Hash" "Naming_conventions")
                  'glossary] @in-g}]
+}
 
-@glossary-entry{Future}
+@glossary-entry["Future" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["Generator" 'advanced]{
+}
 
-@glossary-entry{Generator}
+@glossary-entry["Generic API" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["GUI programming" 'intermediate]{
+}
 
-@glossary-entry{Generic API}
-
-  @level-advanced
-
-@glossary-entry{GUI programming}
-
-  @level-intermediate
-
-@glossary-entry{Hash}
-
-  @level-basic
+@glossary-entry["Hash" 'basic]{
 
 Hashes, also called hash tables, hash maps or dictionaries, map keys to values.
 For example, the following hash table maps numbers to symbols:
@@ -789,56 +733,45 @@ See also:
                    "Struct" "Vector") 'glossary] @in-g}
   @item{@secref*["hash-tables" 'guide] @in-rg}
   @item{@secref*["hashtables" 'reference] @in-rr}]
+}
 
-@glossary-entry{Higher-order function}
+@glossary-entry["Higher-order function" 'basic]{
+}
 
-  @level-basic
+@glossary-entry["Hygiene" 'intermediate]{
+}
 
-@glossary-entry{Hygiene}
+@glossary-entry["Identifier (differences to identifiers in other languages)" 'basic]{
+}
 
-  @level-intermediate
+@glossary-entry["Identity (also refer to `eq?`)" 'basic]{
+}
 
-@glossary-entry{Identifier (differences to identifiers in other languages)}
+@; May be important for contracts though. Maybe better "intermediate"?
+@glossary-entry["Impersonator" 'advanced]{
+}
 
-  @level-basic
-
-@glossary-entry{Identity (also refer to `eq?`)}
-
-  @level-basic
-
-@glossary-entry{Impersonator}
-
-  @; May be important though. Maybe better "intermediate"?
-  @level-advanced
-
-@glossary-entry{Inexact number}
-
-  @level-basic
+@glossary-entry["Inexact number" 'basic]{
 
 See @secref*["Number" 'glossary]
+}
 
-@glossary-entry{Inspector}
+@glossary-entry["Inspector" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["Interface (API)" 'basic]{
+}
 
-@glossary-entry{Interface (API)}
+@; Or "advanced"?
+@glossary-entry["Interface (OOP)" 'intermediate]{
+}
 
-  @level-basic
-
-@glossary-entry{Interface (OOP)}
-
-  @; Or "advanced"?
-  @level-intermediate
-
-@glossary-entry{Keyword}
-
-  @level-basic
+@glossary-entry["Keyword" 'basic]{
 
 @; positional and keyword args are separate
+}
 
-@glossary-entry{Lambda}
-
-  @level-basic
+@glossary-entry["Lambda" 'basic]{
 
 As shown in the @secref*["Procedure" 'glossary] entry, a procedure can be
 defined with @racket[define]. However, you can also define functions directly
@@ -865,22 +798,18 @@ See also:
   @item{@secref*['("Definition" "Higher-order_function" "Let") 'glossary] @in-g}
   @item{@secref*["lambda" 'guide] @in-rg}
   @item{@secref*["lambda" 'reference] @in-rr}]
+}
 
-@glossary-entry{Lang (as in `#lang`)}
+@glossary-entry["Lang (as in `#lang`)" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["Language-oriented programming" 'advanced]{
+}
 
-@glossary-entry{Language-oriented programming}
+@glossary-entry["Let" 'basic]{
+}
 
-  @level-advanced
-
-@glossary-entry{Let}
-
-  @level-basic
-
-@glossary-entry{Let over lambda}
-
-  @level-intermediate
+@glossary-entry["Let over lambda" 'intermediate]{
 
 ``Let over lambda'' describes a common idiom to create a closure. The following
 example is similar to the one in the @secref*["Closure" 'glossary] entry:
@@ -899,10 +828,9 @@ the function using that environment.
 See also:
 @itemize[
   @item{@secref*['("Procedure" "Lambda" "Closure") 'glossary] @in-g}]
+}
 
-@glossary-entry{List}
-
-  @level-basic
+@glossary-entry["List" 'basic]{
 
 Lists are the most widely used data structure in many functional programming
 languages, including Scheme and Racket.
@@ -985,10 +913,9 @@ See also:
   @item{@secref*['("Collection" "Functional_update" "Pair") 'glossary] @in-g}
   @item{@secref*["pairs" 'guide] @in-rg}
   @item{@secref*["pairs" 'reference] @in-rr}]
+}
 
-@glossary-entry{Location}
-
-  @level-basic
+@glossary-entry["Location" 'basic]{
 
 A location is an implicitly created memory location. For example, this happens
 in @racket[define] or @racket[let] forms. A consequence of creating a location
@@ -1008,43 +935,35 @@ is that it can be modified with @racket[set!] or other mutating functions.
     (displayln v))]
 
 However, usually you should avoid mutation in functional programming.
+}
 
-@glossary-entry{Macro}
+@; Intermediate or advanced?
+@glossary-entry["Macro" 'intermediate]{
+}
 
-  @level-intermediate
+@glossary-entry["Match" 'intermediate]{
+}
 
-  @level-advanced
+@glossary-entry["Match transformer" 'advanced]{
+}
 
-@glossary-entry{Match}
+@glossary-entry["Method" 'intermediate]{
+}
 
-  @level-intermediate
+@glossary-entry["Module" 'basic]{
+}
 
-@glossary-entry{Match transformer}
+@glossary-entry["Named let" 'intermediate]{
+}
 
-  @level-advanced
-
-@glossary-entry{Method}
-
-  @level-intermediate
-
-@glossary-entry{Module}
-
-  @level-basic
-
-@glossary-entry{Named let}
-
-  @level-intermediate
-
-@glossary-entry{Namespace}
-
-  @level-intermediate
+@glossary-entry["Namespace" 'intermediate]{
+}
 
 @; Relationship to "environment"? How much has a "normal" user to know about
 @; this outside of `eval`?
+}
 
-@glossary-entry{Naming conventions}
-
-  @level-basic
+@glossary-entry["Naming conventions" 'basic]{
 
 As usual for programming languages, Racket code uses some conventions. As with
 all conventions, there's no law enforcing them, but you should follow them if
@@ -1111,10 +1030,9 @@ See also:
   @item{@secref*['("Functional_update" "Predicate" "Struct") 'glossary] @in-g}
   @item{@hyperlink["https://docs.racket-lang.org/style/"]{Racket Style Guide}
   for other Racket coding conventions}]
+}
 
-@glossary-entry{Number}
-
-  @level-basic
+@glossary-entry["Number" 'basic]{
 
 Racket and most Scheme implementations have the following number types:
 @itemize[
@@ -1292,10 +1210,9 @@ See also:
   @item{@secref*['("Fixnum" "Flonum" "Numeric_tower") 'glossary] @in-g}
   @item{@secref*["numbers" 'guide] @in-rg}
   @item{@secref*["numbers" 'reference] @in-rr}]
+}
 
-@glossary-entry{Numeric tower}
-
-  @level-basic
+@glossary-entry["Numeric tower" 'basic]{
 
 The numeric tower, sometimes called ``numerical tower,'' is an analogy for how
 the ``mathematical'' number types include each other (see @secref*["Number"
@@ -1313,20 +1230,17 @@ See also:
 @itemize[
   @item{@secref*["Number" 'glossary] @in-g}
   @item{@hyperlink["https://en.wikipedia.org/wiki/Numerical_tower"]{Wikipedia article}}]
+}
 
-@glossary-entry{Opaque}
-
-  @level-intermediate
+@glossary-entry["Opaque" 'intermediate]{
 
 See @secref*["Struct" 'glossary]
+}
 
-@glossary-entry{Package}
+@glossary-entry["Package" 'intermediate]{
+}
 
-  @level-intermediate
-
-@glossary-entry{Pair}
-
-  @level-basic
+@glossary-entry["Pair" 'basic]{
 
 Pairs, also called cons cells, are the building blocks of Scheme/Racket lists,
 but are also often used for combining any two values.
@@ -1349,14 +1263,12 @@ See also:
   @item{@secref*["List" 'glossary] @in-g}
   @item{@secref*["pairs" 'guide] @in-rg}
   @item{@secref*["pairs" 'reference] @in-rr}]
+}
 
-@glossary-entry{Parameter}
+@glossary-entry["Parameter" 'basic]{
+}
 
-  @level-basic
-
-@glossary-entry{Partial application and currying}
-
-  @level-basic
+@glossary-entry["Partial application and currying" 'basic]{
 
 Partial application takes a function with some number of arguments and creates
 a new function that calls the original function while hard-coding some of the
@@ -1421,34 +1333,27 @@ See also:
 @itemlist[
   @item{@secref*["Procedure" 'glossary] @in-g}
   @item{@racket[curry] and @racket[curryr] @in-rr}]
+}
 
-@glossary-entry{Pattern (in regular expressions)}
+@glossary-entry["Pattern (in regular expressions)" 'basic]{
+}
 
-  @level-basic
+@glossary-entry["Pattern (in macro definitions)" 'intermediate]{
+}
 
-@glossary-entry{Pattern (in macro definitions)}
+@glossary-entry["Phase" 'advanced]{
+}
 
-  @level-intermediate
+@glossary-entry["Place" 'advanced]{
+}
 
-@glossary-entry{Phase}
+@glossary-entry["Polymorphism (rarely used, compare with other languages; see also generic code)" 'intermediate]{
+}
 
-  @level-advanced
+@glossary-entry["Port" 'basic]{
+}
 
-@glossary-entry{Place}
-
-  @level-advanced
-
-@glossary-entry{Polymorphism (rarely used, compare with other languages; see also generic code)}
-
-  @level-intermediate
-
-@glossary-entry{Port}
-
-  @level-basic
-
-@glossary-entry{Predicate}
-
-  @level-basic
+@glossary-entry["Predicate" 'basic]{
 
 A predicate is a procedure that takes one argument and returns a boolean.
 
@@ -1486,16 +1391,14 @@ See also:
 @itemlist[
   @item{@secref*['("Lambda" "Partial_application_and_currying" "Procedure") 'glossary]
         @in-g}]
+}
 
-@glossary-entry{Print}
-
-  @level-basic
+@glossary-entry["Print" 'basic]{
 
 See @secref*["Display" 'glossary]
+}
 
-@glossary-entry{Procedure}
-
-  @level-basic
+@glossary-entry["Procedure" 'basic]{
 
 A procedure, also called a function, is a value that can be called at program
 runtime. If a procedure is used after an opening parenthesis, it introduces a
@@ -1560,98 +1463,77 @@ See also:
   @item{@secref*['("Keyword" "Lambda") 'glossary] @in-g}
   @item{@secref*["syntax-overview" 'guide] @in-rg}
   @item{@secref*["define" 'reference] @in-rr}]
+}
 
-@glossary-entry{Profiling}
+@glossary-entry["Profiling" 'intermediate]{
+}
 
-  @level-intermediate
+@glossary-entry["Prompt" 'advanced]{
+}
 
-@glossary-entry{Prompt}
+@glossary-entry["Provide" 'intermediate]{
+}
 
-  @level-advanced
+@glossary-entry["Quasiquote" 'intermediate]{
+}
 
-@glossary-entry{Provide}
+@glossary-entry["Quote" 'basic]{
+}
 
-  @level-intermediate
+@glossary-entry["RnRS (as in R5RS, R6RS etc.)" 'intermediate]{
+}
 
-@glossary-entry{Quasiquote}
+@glossary-entry["Raco" 'basic]{
+}
 
-  @level-intermediate
+@glossary-entry["Reader (for parsing code)" 'advanced]{
+}
 
-@glossary-entry{Quote}
-
-  @level-basic
-
-@glossary-entry{RnRS (as in R5RS, R6RS etc.)}
-
-  @level-intermediate
-
-@glossary-entry{Raco}
-
-  @level-basic
-
-@glossary-entry{Reader (for parsing code)}
-
-  @level-advanced
-
-@glossary-entry{Record}
-
-  @level-basic
+@glossary-entry["Record" 'basic]{
+}
 
 See @secref*["Struct" 'glossary]
+}
 
-@glossary-entry{Require}
+@glossary-entry["Require" 'basic]{
+}
 
-  @level-basic
+@glossary-entry["Rule (in macros; probably other uses, which ones?)" 'intermediate]{
+}
 
-@glossary-entry{Rule (in macros; probably other uses, which ones?)}
-
-  @level-intermediate
-
-@glossary-entry{Safe operation}
-
-  @level-intermediate
+@glossary-entry["Safe operation" 'intermediate]{
 
 See @secref*["Unsafe_operation" 'glossary]
+}
 
-@glossary-entry{Scheme}
+@glossary-entry["Scheme" 'basic]{
+}
 
-  @level-basic
+@glossary-entry["Scribble" 'intermediate]{
+}
 
-@glossary-entry{Scribble}
+@glossary-entry["Sequence" 'intermediate]{
+}
 
-  @level-intermediate
+@glossary-entry["Set" 'intermediate]{
+}
 
-@glossary-entry{Sequence}
+@glossary-entry["Shadowing" 'basic]{
+}
 
-  @level-intermediate
+@glossary-entry["Splicing" 'basic]{
+}
 
-@glossary-entry{Set}
+@glossary-entry["SRFI" 'intermediate]{
+}
 
-  @level-intermediate
+@glossary-entry["Standard library" 'basic]{
+}
 
-@glossary-entry{Shadowing}
+@glossary-entry["Stream" 'basic]{
+}
 
-  @level-basic
-
-@glossary-entry{Splicing}
-
-  @level-basic
-
-@glossary-entry{SRFI}
-
-  @level-intermediate
-
-@glossary-entry{Standard library}
-
-  @level-basic
-
-@glossary-entry{Stream}
-
-  @level-basic
-
-@glossary-entry{String, character, byte string}
-
-  @level-basic
+@glossary-entry["String, character, byte string" 'basic]{
 
 The string, byte string and character data types are used for text processing.
 
@@ -1791,10 +1673,9 @@ See also:
   @item{@secref*['("strings" "bytestrings" "characters" "encodings") 'reference] @in-rr}
   @item{@hyperlink["https://unicode.org/faq/normalization.html"]{Unicode normalization FAQ}}
   @item{@hyperlink["https://manishearth.github.io/blog/2017/01/14/stop-ascribing-meaning-to-unicode-code-points/"]{Let's stop ascribing meaning to code points}}]
+}
 
-@glossary-entry{Struct}
-
-  @level-basic
+@glossary-entry["Struct" 'basic]{
 
 Although Racket has an OOP system, the primary way to group information for a
 type is using a @racket[struct] and functions related to it.
@@ -1900,10 +1781,9 @@ See also:
   @item{@secref*['("Binding" "Functional_update") 'glossary] @in-g}
   @item{@secref*['("define-struct" "classes") 'guide] @in-rg}
   @item{@secref*['("define-struct" "mzlib:class") 'reference] @in-rr}]
+}
 
-@glossary-entry{Symbol}
-
-  @level-basic
+@glossary-entry["Symbol" 'basic]{
 
 Symbols are a data type that doesn't exist in most programming languages.
 Symbols are similar to strings:
@@ -1947,88 +1827,72 @@ See also:
         @in-g}
   @item{@secref*["symbols" 'guide] @in-rg}
   @item{@secref*["symbols" 'reference] @in-rr}]
+}
 
-@glossary-entry{Syntactic form}
-
-  @level-basic
+@glossary-entry["Syntactic form" 'basic]{
 
 See @secref*["Form" 'glossary]
+}
 
-@glossary-entry{Syntax (different meanings)}
+@glossary-entry["Syntax (different meanings)" 'intermediate]{
+}
 
-  @level-intermediate
-
-@glossary-entry{Syntax transformer}
-
-  @level-intermediate
+@glossary-entry["Syntax transformer" 'intermediate]{
 
 See @secref*["Macro" 'glossary]
+}
 
-@glossary-entry{Tail call}
+@glossary-entry["Tail call" 'intermediate]{
+}
 
-  @level-intermediate
+@glossary-entry["Tail position" 'intermediate]{
+}
 
-@glossary-entry{Tail position}
+@glossary-entry["Thread" 'intermediate]{
+}
 
-  @level-intermediate
+@glossary-entry["Thunk" 'basic]{
+}
 
-@glossary-entry{Thread}
-
-  @level-intermediate
-
-@glossary-entry{Thunk}
-
-  @level-basic
-
-@glossary-entry{Transparent}
-
-  @level-basic
+@glossary-entry["Transparent" 'basic]{
+}
 
 See @secref*["Struct" 'glossary]
+}
 
-@glossary-entry{Trust level}
+@glossary-entry["Trust level" 'advanced]{
+}
 
-  @level-advanced
-
-@glossary-entry{Trusted code}
-
-  @level-advanced
+@glossary-entry["Trusted code" 'advanced]{
 
 See @secref*["Untrusted_code" 'glossary]
+}
 
-@glossary-entry{Typed Racket}
+@glossary-entry["Typed Racket" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["Undefined (why do we need this if we have `void`?)" 'advanced]{
+}
 
-@glossary-entry{Undefined (why do we need this if we have `void`?)}
+@glossary-entry["Unit" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["Unsafe operation" 'intermediate]{
+}
 
-@glossary-entry{Unit}
+@glossary-entry["Untrusted code" 'advanced]{
+}
 
-  @level-advanced
+@glossary-entry["Value" 'basic]{
+@; sometimes "object", but may be confused with OOP concept
+}
 
-@glossary-entry{Unsafe operation}
-
-  @level-intermediate
-
-@glossary-entry{Untrusted code}
-
-  @level-advanced
-
-@glossary-entry{Value (sometimes "object", but may be confused with OOP concept)}
-
-  @level-basic
-
-@glossary-entry{Values}
-
-  @level-basic
+@glossary-entry["Values" 'basic]{
 
 @; multiple values, as in `define-values` etc.
+}
 
-@glossary-entry{Vector}
-
-  @level-basic
+@glossary-entry["Vector" 'basic]{
 
 Racket vectors are continuous arrays with indices starting at 0. An advantage
 of vectors over lists is that accessing a vector item at a random index takes
@@ -2094,12 +1958,11 @@ See also:
   @item{@secref*['("Collection" "List") 'glossary] @in-g}
   @item{@secref*["vectors" 'guide] @in-rg}
   @item{@secref*["vectors" 'reference] @in-rr}]
-
-@glossary-entry{Void}
-
-  @level-basic
+}
 
 @(define void-text @racketresultfont{#<void>})
+
+@glossary-entry["Void" 'basic]{
 
 The constant @void-text is used as a return value if there's no
 other sensible value. This applies to functions that exist only for their side
@@ -2146,17 +2009,15 @@ See also:
 @itemize[
   @item{@secref*["Boolean" 'glossary] @in-g}
   @item{@secref*["void" 'reference] @in-rr}]
+}
 
-@glossary-entry{Will}
+@glossary-entry["Will" 'advanced]{
+}
 
-  @level-advanced
-
-@glossary-entry{Write}
-
-  @level-basic
+@glossary-entry["Write" 'basic]{
 
 See @secref*["Display" 'glossary]
+}
 
-@glossary-entry{Writer}
-
-  @level-advanced
+@glossary-entry["Writer" 'advanced]{
+}
