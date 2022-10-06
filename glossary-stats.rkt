@@ -117,5 +117,26 @@
   (displayln "")
   (displayln (glossary-stats->string glossary-stats/total)))
 
+; Print titles of entries to be written.
+(define (print-stub-titles levels)
+  (define entries (hash-values stats-hash))
+  (for ([level levels])
+    (displayln (~a "Missing entries for level " level ":"))
+    (define stub-entries
+      (filter
+        (lambda (entry)
+          (and (eq? (entry-level entry) level)
+               (entry-stub? entry)))
+        entries))
+    (define stub-titles
+      (sort
+        (map entry-title stub-entries)
+        string<?))
+    (for ([title stub-titles])
+      (displayln (~a "  " title)))
+  (displayln "")))
+
 (module+ main
-  (print-stats))
+  (print-stats)
+  (displayln "")
+  (print-stub-titles '(basic)))

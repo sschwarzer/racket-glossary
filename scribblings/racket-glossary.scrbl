@@ -26,6 +26,7 @@
   entry-cross-reference?
   entry-level
   entry-stub?
+  entry-title
   stats-hash)
 
 @(define helper-eval (make-base-eval))
