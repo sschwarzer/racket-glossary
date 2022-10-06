@@ -114,7 +114,7 @@
   (for ([stats glossary-stats/levels])
     (displayln (glossary-stats->string stats)))
   (define glossary-stats/total (total-glossary-stats glossary-stats/levels))
-  (displayln "")
+  (newline)
   (displayln (glossary-stats->string glossary-stats/total)))
 
 ; Print titles of entries to be written.
@@ -134,9 +134,9 @@
         string<?))
     (for ([title stub-titles])
       (displayln (~a "  " title)))
-  (displayln "")))
+  (newline)))
 
 (module+ main
   (print-stats)
-  (displayln "")
+  (newline)
   (print-stub-titles '(basic)))
