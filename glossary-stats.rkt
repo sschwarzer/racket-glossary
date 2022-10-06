@@ -105,7 +105,7 @@
   (glossary-stats "total" all-count done-count only-reference-count))
 
 ; Print statistics for a `glossary-stats` to standard output.
-(define (print-stats path)
+(define (print-stats)
   (define entries (hash-values stats-hash))
   (define glossary-stats/levels
     (for/list ([level LEVELS])
@@ -118,4 +118,4 @@
   (displayln (glossary-stats->string glossary-stats/total)))
 
 (module+ main
-  (print-stats "scribblings/racket-glossary.scrbl"))
+  (print-stats))
