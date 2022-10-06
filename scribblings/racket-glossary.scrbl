@@ -17,6 +17,7 @@
     racket/list
     racket/runtime-path
     racket/string
+    racket/undefined
     racket/vector
     rackunit
     data/gvector))
@@ -506,8 +507,72 @@ See @secref*["Number" 'glossary]
 @glossary-entry["Exception" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Expression" 'basic #:stub? #t]{
-@; always rvalue? may result in one or more values
+@glossary-entry["Expression" 'basic]{
+As in other languages, a Racket expression is code that can be evaluated to a
+result. The result may be @racketresultfont{#<void>} or @racket[undefined], but
+that's still a result. Different from other languages, an expression may
+evaluate to more than one value. See the @secref*["Values" 'glossary] entry
+for more information on this.
+
+Examples of expressions are:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Literal values")
+  3
+  "foo"
+  (code:comment "A name bound to a value")
+  (define foo 3)
+  foo
+  (code:comment "Functions are just a special case of this.")
+  +
+  map
+  (code:comment "Function application")
+  (+ 2 3)
+  (even? 6)
+  (code:comment "Macro applications that evaluate to a value")
+  (or #t #f)
+  (if (> 5 2) "foo" "bar")
+  (code:comment "Combinations")
+  (* (+ 2 3) (- 7 3))
+  (map even? '(1 2 3))]
+
+A way to test if something is an expression is to feed it to a function that
+accepts an expression regardless of its type. If you don't get an exception,
+the argument is an expression. We don't care about the return value of the
+function for the test.
+
+Here we use @racket[number?] as an example of such a function.
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Actual expressions")
+  (number? 2)
+  (number? "foo")
+  (number? map)
+  (number? (or #t #f))
+  (code:comment "No expressions")
+  (eval:error (number? if))
+  (eval:error (number? (define foo 3)))]
+
+However, the opposite isn't necessarily true. You can get an exception even for
+an expression:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "The expression itself raises an exception.")
+  (eval:error (number? (/ 1 0)))
+  (code:comment "The expression returns multiple values.")
+  (eval:error (number? (values 3 4)))]
+
+Note: Although many expressions don't have a side effect, some do. Therefore,
+don't evaluate expressions if they may have ``dangerous'' side effects, like
+deleting a file (unless that's what you want, of course).
+
+See also:
+@itemize[
+  @item{@secref*['("Macro" "Values") 'glossary] @in-g}
+  @item{@secref*["eval-model" 'reference] @in-rr}]
 }
 
 @glossary-entry["Field" 'basic #:cross-reference? #t]{

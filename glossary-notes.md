@@ -171,7 +171,25 @@ Done
 
 ## Exception
 
-## Expression (always lvalue? may result in one or more values)
+## Expression
+
+- Everything that can be evaluated to a result (even if the result is `void` or
+  `undefined`)
+- Examples:
+  - Literals, e.g. 3, "foo", 'bar
+  - Functions, e.g. `+`, `map`, `filter`, `sort`
+  - Function application, e.g. `(+ 2 3)`
+  - Forms that have a result, e.g. `(and #t #f)`, `(if condition? 1 2)`
+- Some forms don't have result, e.g. `(define foo (define bar 2))` gives
+  `define: not allowed in an expression context`. Show Racket example.
+- To check whether something is an expression, you can assign it with `define`:
+  `(define foo presumable-expression)`.
+  - Or not. This has lots of caveats. If you get an error message here, it
+    could be because of many other reasons.
+- Safer: use a predicate that accepts any value, e.g. `number?`
+- Although most expressions result in exactly one value, an expression can
+  result in more than one value. See `Values` entry.
+- See also <https://docs.racket-lang.org/reference/eval-model.html>
 
 ## Field
 
