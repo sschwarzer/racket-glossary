@@ -506,7 +506,8 @@ See @secref*["Number" 'glossary]
 @glossary-entry["Exception" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Expression (always rvalue? may result in one or more values)" 'basic #:stub? #t]{
+@glossary-entry["Expression" 'basic #:stub? #t]{
+@; always rvalue? may result in one or more values
 }
 
 @glossary-entry["Field" 'basic #:cross-reference? #t]{
