@@ -1969,9 +1969,74 @@ See @secref*["Untrusted_code" 'glossary]
 @; sometimes "object", but may be confused with OOP concept
 }
 
-@glossary-entry["Values" 'basic #:stub? #t]{
+@glossary-entry["Values" 'basic]{
 
-@; multiple values, as in `define-values` etc.
+Different from most other languages, a function in Scheme and Racket can return
+multiple values. The most basic function that can do this is @racket[values]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (values 1 2)]
+
+The output here consists of two values, the values passed to @racket[values].
+This is @emph{not} a compound value like a pair or a list. Along these lines,
+you can't assign multiple return values to a single name:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (eval:error (define a-name (values 1 2)))]
+
+To assign several values at once, instead use @racket[define-values]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define-values (foo bar) (values 1 2))
+  foo
+  bar]
+
+The equivalent @code{let} form is @racket[let-values]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (let-values ([(foo bar) (values 1 2)])
+    (+ foo bar))]
+
+By far the most functions in the standard library return a single value. Some
+functions that return multiple values, apart from @racket[values], are
+@racket[split-at], @racket[drop-common-prefix] and
+@racket[split-common-prefix].
+
+If you accidentally use multiple values instead of a single value somewhere,
+the error message can be confusing. This is most obvious with functions that
+accept an arbitrary number of arguments, for example @racket[list]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (list)
+  (list 1)
+  (list 1 2)
+  (eval:error (list (values 1 2)))]
+Therefore, if you get an exception about an arity mismatch, it @emph{might} be
+that some code passed multiple values instead of a single value.
+
+@other-languages{Some documentation on other programming languages, for example
+Python, sometimes use the term ``multiple values'' to mean a single compound
+value, usually a tuple. This is different from the ``multiple values'' concept
+in Scheme and Racket.
+
+Here's a Python example:
+@verbatim{
+def return_tuple():
+    return 1, 2
+
+result = return_tuple()
+print(type(result))  # tuple
+print(result[0])     # 1
+print(result[1])     # 2}}
+
+See also:
+@itemize[
+  @item{@secref*['("Definition" "Let") 'glossary] @in-g}]
 }
 
 @glossary-entry["Vector" 'basic]{

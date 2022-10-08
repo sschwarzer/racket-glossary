@@ -822,6 +822,20 @@ See also
 
 ## Values (multiple values, as in ‘define-values‘ etc.)
 
+- Typically, expressions evaluate to a single value.
+- However, expressions can evaluate to multiple values.
+- Show examples of functions that return multiple values.
+  - `values`
+  - others
+- Show tools to work with multiple values
+  - `define-values`
+  - `let-values`
+  - `match`?
+  - others?
+- The concept isn't present in most languages. In most languages, "multiple
+  values" means a single value (e.g. tuple or list) with multiple items.
+  Put this under "Other languages."
+
 ## Vector
 
 - Fixed size
