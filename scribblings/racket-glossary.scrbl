@@ -398,8 +398,8 @@ examples:
   @item{@racket[define-values] is similar to the first @racket[define] form
     above, but it can create several bindings at the same time in case a
     procedure returns more than one value.}
-  @item{@racket[define-syntax] defines macros. (But there are many more ways
-    to define macros.)}
+  @item{@racket[define-syntax] defines macros (forms). (But there are many more
+    ways to define macros.)}
   @item{@racket[define-check] defines custom checks for automated tests.}
   @item{@racket[define-runtime-path] defines runtime paths.}
   @item{@racket[define/public] defines a public method for a class.}]
@@ -417,7 +417,7 @@ creates not only a constructor, but also accessor functions:
 
 See also:
 @itemize[
-  @item{@secref*['("Assignment" "Binding" "Let" "Macro" "Procedure" "Struct" "Values")
+  @item{@secref*['("Assignment" "Binding" "Form" "Let" "Procedure" "Struct" "Values")
                  'glossary] @in-g}
   @item{@secref*["define" 'guide] @in-rg}
   @item{@secref*["define" 'reference] @in-rr}]
@@ -508,6 +508,7 @@ See @secref*["Number" 'glossary]
 }
 
 @glossary-entry["Expression" 'basic]{
+
 As in other languages, a Racket expression is code that can be evaluated to a
 result. The result may be @racketresultfont{#<void>} or @racket[undefined], but
 that's still a result. Different from other languages, an expression may
@@ -571,7 +572,7 @@ deleting a file (unless that's what you want, of course).
 
 See also:
 @itemize[
-  @item{@secref*['("Macro" "Values") 'glossary] @in-g}
+  @item{@secref*['("Form" "Values") 'glossary] @in-g}
   @item{@secref*["eval-model" 'reference] @in-rr}]
 }
 
@@ -1021,7 +1022,9 @@ However, usually you should avoid mutation in functional programming.
 @; macros.
 @;
 @; Intermediate or advanced?
-@glossary-entry["Macro" 'intermediate #:stub? #t]{
+@glossary-entry["Macro" 'intermediate #:cross-reference? #t]{
+
+See @secref*["Form" 'glossary]
 }
 
 @glossary-entry["Match" 'intermediate #:stub? #t]{
@@ -1921,7 +1924,7 @@ See @secref*["Form" 'glossary]
 
 @glossary-entry["Syntax transformer" 'intermediate #:cross-reference? #t]{
 
-See @secref*["Macro" 'glossary]
+See @secref*["Form" 'glossary]
 }
 
 @glossary-entry["Tail call" 'intermediate #:stub? #t]{
