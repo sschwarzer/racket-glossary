@@ -89,7 +89,12 @@
       (~a done-count #:width 3 #:align 'right)
       " of "
       (~a all-count #:width 3 #:align 'right)
-      " done"))
+      "  ("
+      (~r (* 100.0 (/ done-count all-count))
+          #:precision 0
+          #:min-width 2)
+      " %)"
+      "  done"))
 
 ; Return `glossary-stats` from summing the fields in a list of
 ; `glossary-stats`.
