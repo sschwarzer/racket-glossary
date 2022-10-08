@@ -100,7 +100,7 @@
      ", "))
 
 @(define (other-languages . content)
-   @nested[#:style 'inset]{@bold{Other languages} @linebreak[] @content})
+   @nested[#:style 'inset]{@paragraph[plain @bold{Other languages}] @content})
 
 @(define-runtime-path scribblings-directory ".")
 
