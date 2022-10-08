@@ -818,8 +818,25 @@ See also:
 @glossary-entry["Hygiene" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Identifier" 'basic #:stub? #t]{
-@; describe differences to identifiers in other languages
+@glossary-entry["Identifier" 'basic]{
+
+As in other programming languages, an identifier is a name assigned to a value
+(or a form). Compared to most languages, identifiers can contain a lot more
+characters. In Racket, all of the following identifier names are valid:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define a-name 2)
+  a-name
+  (define predicate/with/slashes? (lambda (v) (and (even? v) (> v 4))))
+  predicate/with/slashes?
+  (define obscure-name-!$%^&*-_=+<.>/? "a string")
+  obscure-name-!$%^&*-_=+<.>/?]
+
+See also:
+@itemize[
+  @item{@secref*['("Binding" "Form" "Naming_conventions") 'glossary] @in-g}
+  @item{@secref*["Identifiers" 'guide] @in-rg}]
 }
 
 @glossary-entry["Identity" 'basic]{
