@@ -293,7 +293,11 @@ Done
 - Many more different characters allowed, e.g. all in `!@$%^&*-=+.<>/?`
 - -> "Binding", "Naming conventions"
 
-## Identity (also refer to ‘eq?‘)
+## Identity
+
+- one and the same object
+- can be checked with `eq?`
+- important when the object(s) in question are mutable (example: vectors)
 
 ## Impersonator
 

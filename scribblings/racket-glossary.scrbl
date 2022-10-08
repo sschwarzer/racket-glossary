@@ -822,8 +822,45 @@ See also:
 @; describe differences to identifiers in other languages
 }
 
-@glossary-entry["Identity" 'basic #:stub? #t]{
-@; also refer to `eq?`
+@glossary-entry["Identity" 'basic]{
+
+Two objects are identical if they're actually one and the same value. Given two
+objects, you can check whether they're identical with the @racket[eq?]
+function.
+
+@examples[
+  #:eval helper-eval
+  (code:comment "Obviously identical")
+  (define list1 '(1 2 3))
+  (eq? list1 list1)
+  (code:comment "`list2` refers to the same list object.")
+  (define list2 list1)
+  (eq? list1 list2)
+  (code:comment "`list3` and `list2` are _equal_, but not identical.")
+  (define list3 '(1 2 3))
+  (eq? list1 list3)]
+
+If the compared objects are immutable, it's not that important if they're
+identical. However, for mutable objects, modifications via one reference become
+visible in any other references to the same object:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Changes in one vector are reflected in the \"other\" vector.")
+  (define vector1 (vector 1 2 3))
+  (define vector2 vector1)
+  (eq? vector1 vector2)
+  (vector-set! vector1 0 4)
+  vector1
+  vector2
+  (code:comment "These vectors are equal, but not identical, so changes to one")
+  (code:comment "vector don't affect the other vector.")
+  (define vector3 (vector 1 2 3))
+  (define vector4 (vector 1 2 3))
+  (eq? vector3 vector4)
+  (vector-set! vector3 0 4)
+  vector3
+  vector4]
 }
 
 @; May be important for contracts though. Maybe better "intermediate"?
