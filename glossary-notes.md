@@ -173,7 +173,7 @@ Done
 
 ## Expression
 
-- Everything that can be evaluated to a result (even if the result is `void` or
+- Code that can be evaluated to a result (even if the result is `void` or
   `undefined`)
 - Examples:
   - Literals, e.g. 3, "foo", 'bar
