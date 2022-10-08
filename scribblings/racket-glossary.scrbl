@@ -626,6 +626,10 @@ See also:
 @glossary-entry["Fold" 'basic #:stub? #t]{
 }
 
+@; Naming: Although "form" and "macro" IMHO are synonyms, "form" is
+@; mostly used when describing pre-existing forms (`if` etc.), while
+@; "macros" is more often used in the context of writing your own
+@; macros.
 @glossary-entry["Form" 'basic #:stub? #t]{
 }
 
@@ -1011,6 +1015,11 @@ is that it can be modified with @racket[set!] or other mutating functions.
 However, usually you should avoid mutation in functional programming.
 }
 
+@; Naming: Although "form" and "macro" IMHO are synonyms, "form" is
+@; mostly used when describing pre-existing forms (`if` etc.), while
+@; "macros" is more often used in the context of writing your own
+@; macros.
+@;
 @; Intermediate or advanced?
 @glossary-entry["Macro" 'intermediate #:stub? #t]{
 }
