@@ -1979,8 +1979,8 @@ multiple values. The most basic function that can do this is @racket[values]:
   (values 1 2)]
 
 The output here consists of two values, the values passed to @racket[values].
-This is @emph{not} a compound value like a pair or a list. Along these lines,
-you can't assign multiple return values to a single name:
+The result is @emph{not} a compound value like a pair or a list. Along these
+lines, you can't assign multiple return values to a single name:
 @examples[
   #:eval helper-eval
   #:label #f
