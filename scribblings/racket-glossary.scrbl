@@ -62,6 +62,12 @@
 
 @(define LEVELS '(basic intermediate advanced))
 
+@(define omit-stub-entries?
+   (string=? (or (getenv "OMIT_STUB_ENTRIES") "") "1"))
+
+@; If the environment variable `OMIT_STUB_ENTRIES` is set to "1", only register
+@; the glossary entry, but don't typeset it. If the environment variable isn't
+@; "1", register and typeset the entry.
 @(define (glossary-entry #:cross-reference? [cross-reference? #f]
                          #:stub? [stub? #f]
                          title-text
@@ -72,10 +78,11 @@
        'glossary-entry "one of 'basic, 'intermediate, 'advanced" level))
    ; Store entry data for `glossary-stats.rkt` script.
    (hash-set! stats-hash title-text (entry title-text level cross-reference? stub?))
-   (list
-     (subsection #:style 'unnumbered title-text)
-     (paragraph plain (elem (bold "Level: ") (symbol->string level)))
-     text))
+   (when (not (and omit-stub-entries? stub?))
+     (list
+       (subsection #:style 'unnumbered title-text)
+       (paragraph plain (elem (bold "Level: ") (symbol->string level)))
+       text)))
 
 @(define (entry-subsection text)
    (elem #:style entry-subsection-style text))
