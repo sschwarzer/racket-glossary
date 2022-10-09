@@ -24,11 +24,11 @@
 
 @(provide
   LEVELS
+  entries
   entry-cross-reference?
   entry-level
   entry-stub?
-  entry-title
-  stats-hash)
+  entry-title)
 
 @(define helper-eval (make-base-eval))
 @examples[
@@ -55,6 +55,8 @@
                                    font-size: 1.4rem;"))))))
 
 @(define stats-hash (make-hash))
+@(define (entries)
+   (hash-values stats-hash))
 
 @(struct entry (title level cross-reference? stub?) #:transparent)
 

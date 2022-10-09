@@ -111,10 +111,9 @@
 
 ; Print statistics for a `glossary-stats` to standard output.
 (define (print-stats)
-  (define entries (hash-values stats-hash))
   (define glossary-stats/levels
     (for/list ([level LEVELS])
-      (make-glossary-stats entries level)))
+      (make-glossary-stats (entries) level)))
   (displayln "Completion stats, ignoring cross references:\n")
   (for ([stats glossary-stats/levels])
     (displayln (glossary-stats->string stats)))
@@ -124,7 +123,6 @@
 
 ; Print titles of entries to be written.
 (define (print-stub-titles levels)
-  (define entries (hash-values stats-hash))
   (for ([level levels])
     (displayln (~a "Missing entries for level " level ":"))
     (define stub-entries
@@ -132,7 +130,7 @@
         (lambda (entry)
           (and (eq? (entry-level entry) level)
                (entry-stub? entry)))
-        entries))
+        (entries)))
     (define stub-titles
       (sort
         (map entry-title stub-entries)
