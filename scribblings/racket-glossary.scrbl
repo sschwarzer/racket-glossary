@@ -1138,16 +1138,16 @@ Additionally, there are some widely-used naming patterns:
     (list @bold{Pattern}
           @bold{Meaning}
           @bold{Examples})
-    (list @tt{@italic{@tt{name}}?}
+    (list @tt{@ti{name}?}
           @elem{Predicate @smaller{(1)}}
           @elem{@racket[string?], @racket[null?]})
-    (list @tt{@italic{@tt{name}}=?}
+    (list @tt{@ti{name}=?}
           @elem{Comparison predicate @smaller{(1)}}
           @racket[string=?])
     (list @tt{@ti{name}/c}
           @elem{Contract predicate @smaller{(1)}}
           @elem{@racket[or/c], @racket[one-of/c]})
-    (list @tt{@italic{@tt{name}}!}
+    (list @tt{@ti{name}!}
           "Mutation"
           @elem{@racket[set!], @racket[vector-set!]})
     (list @tt{@ti{name}*}
@@ -1156,20 +1156,20 @@ Additionally, there are some widely-used naming patterns:
     (list @tt{@ti{name}*}
           "Nesting"
           @elem{@racket[for*] vs. @racket[for]})
-    (list @tt{@italic{@tt{name}}*}
+    (list @tt{@ti{name}*}
           "Other variant"
           @elem{@racket[vector*-length] vs. @racket[vector-length]})
-    (list @tt{@italic{@tt{name}}%}
+    (list @tt{@ti{name}%}
           "Class name"
           @racket[frame%])
-    (list @tt{@italic{@tt{part}}/@italic{@tt{part}}}
+    (list @tt{@ti{part}/@ti{part}}
           @elem{``for`` or ``with``}
           @elem{@racket[call/cc], @racket[define/match],@linebreak[]
                 @racket[for/fold/derived]})
-    (list @tt{@italic{@tt{type}}->@italic{@tt{other-type}}}
+    (list @tt{@ti{type}->@ti{other-type}}
           "Conversion"
           @racket[vector->list])
-    (list @tt{@tt{make}-@ti{type}}
+    (list @tt{make-@ti{type}}
           "Create new value of type"
           @elem{@racket[make-base-namespace], @racket[make-channel]}))]
 
