@@ -1144,6 +1144,9 @@ Additionally, there are some widely-used naming patterns:
     (list @tt{@italic{@tt{name}}=?}
           @elem{Comparison predicate @smaller{(1)}}
           @racket[string=?])
+    (list @tt{@ti{name}/c}
+          @elem{Contract predicate @smaller{(1)}}
+          @elem{@racket[or/c], @racket[one-of/c]})
     (list @tt{@italic{@tt{name}}!}
           "Mutation"
           @elem{@racket[set!], @racket[vector-set!]})
@@ -1170,12 +1173,12 @@ Additionally, there are some widely-used naming patterns:
           "Create new value of type"
           @elem{@racket[make-base-namespace], @racket[make-channel]}))]
 
-@smaller{(1)} Since the question mark already identifies a predicate, using
-prefixes like ``is-'', ``has-'' etc. is redundant.
+@smaller{(1)} Since the @tt{?} or @tt{/c} suffix already identifies a
+predicate, using prefixes like ``is-'', ``has-'' etc. is redundant.
 
 See also:
 @itemize[
-  @item{@secref*['("Functional_update" "Predicate" "Struct") 'glossary] @in-g}
+  @item{@secref*['("Contract" "Functional_update" "Predicate" "Struct") 'glossary] @in-g}
   @item{@hyperlink["https://docs.racket-lang.org/style/"]{Racket Style Guide}
   for other Racket coding conventions}]
 }
