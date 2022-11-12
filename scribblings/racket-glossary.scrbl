@@ -1794,7 +1794,22 @@ See @secref*["Unsafe_operation" 'glossary]
 @glossary-entry["SRFI" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Standard library" 'basic #:stub? #t]{
+@glossary-entry["Standard library" 'basic]{
+
+Typically, everything that's installed by the Racket distributions from the
+@hyperlink["https://download.racket-lang.org/"]{Racket download page} is called
+the Racket standard library. Apart from what's documented in the Racket
+Reference this includes, for example, the
+@hyperlink["https://docs.racket-lang.org/drracket/"]{DrRacket IDE}, the
+@hyperlink["https://docs.racket-lang.org/scribble/"]{Scribble documentation
+tool} and the @hyperlink["https://docs.racket-lang.org/ts-guide/"]{Typed Racket
+library}.
+
+See also:
+@itemlist[
+  @item{@other-doc['(lib "scribblings/reference/reference.scrbl")]}
+  @item{@hyperlink["https://pkgs.racket-lang.org/package/main-distribution"]{@tt{main-distribuition}
+    package}}]
 }
 
 @glossary-entry["Stream" 'basic #:stub? #t]{

@@ -710,8 +710,14 @@ See also
 
 ## Standard library
 
-- Everything installed by the official installers.
+- Everything installed by the official installers and explained in the Racket
+  Reference.
 - "Package `base`? See <https://pkgs.racket-lang.org/package/base>
+- Discussion at
+  <https://racket.discourse.group/t/whats-official-racket-and-whats-not/1447>
+  The thread refers to a ticket that lists the contents of the main
+  distribution here:
+  <https://pkgs.racket-lang.org/package/main-distribution>
 
 ## Stream
 
