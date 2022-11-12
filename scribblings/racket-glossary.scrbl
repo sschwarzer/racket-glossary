@@ -200,6 +200,7 @@ Assigning means the same as in most programming languages: changing the value
 of a variable. To change the value of a variable, use @racket[set!]:
 @examples[
   #:eval helper-eval
+  #:label #f
   (define my-variable 2)
   (displayln my-variable)
   (set! my-variable 5)
@@ -227,6 +228,7 @@ A binding makes a value accessible via a name. Typically, bindings are created
 with the @racket[define] form:
 @examples[
   #:eval helper-eval
+  #:label #f
   (define x (+ 2 3))]
 binds the name @racket[x] to the value @racket[5].
 
@@ -269,6 +271,7 @@ reference in some other languages.
 
 @examples[
   #:eval helper-eval
+  #:label "Example:"
   (define (func value-box)
     (define old-value (unbox value-box))
     (set-box! value-box (add1 old-value)))
@@ -451,10 +454,9 @@ equal:
 @itemize[
   @item{@racket[equal?] checks for value equality. Most of the time, this is the
     function you want. @racket[equal?] can also compare recursively, as long as
-    the participating types support @racket[equal?] comparisons. Examples:
+    the participating types support @racket[equal?] comparisons.
     @examples[
       #:eval helper-eval
-      #:label #f
       (equal? (+ 2 3) 5)
       (equal? "foo" "foo")
       (equal? "foo" "fox")
@@ -464,10 +466,9 @@ equal:
   @item{@racket[eq?] checks object identity, i.e. @racket[eq?] only returns
     @racket[#t] if the two compared values are one and the same object. This is
     especically important for mutable objects. For immutable values object
-    identity is less relevant. Examples:
+    identity is less relevant.
     @examples[
       #:eval helper-eval
-      #:label #f
       (code:comment "There's only one `#t` constant.")
       (eq? #t #t)
       (code:comment "Compare with the same list object.")
@@ -552,7 +553,7 @@ accepts an expression regardless of its type. If you don't get an exception,
 the argument is an expression. We don't care about the return value of the
 function for the test.
 
-Here we use @racket[number?] as an example of such a function.
+Here we use @racket[number?] as an example of such a function:
 @examples[
   #:eval helper-eval
   #:label #f
@@ -922,6 +923,7 @@ as values without giving them a name. This is the same function as in the
 
 @examples[
   #:eval helper-eval
+  #:label #f
   (lambda ([name "world"])
     (string-append "Hello " name "!"))
   ((lambda ([name "world"])
@@ -1321,7 +1323,7 @@ if necessary (@racket[v] means ``value''):
       (code:comment "Underflow")
       (* 1e-200 1e-200)]}
   @item{The behavior of division by zero differs depending on whether the
-    denominator is exact or inexact:
+    denominator is exact or inexact.
     @examples[
       #:eval helper-eval
       (eval:error (/ 1 0))
@@ -1399,12 +1401,14 @@ but are also often used for combining any two values.
 Usually a pair is created with @racket[cons]:
 @examples[
   #:eval helper-eval
+  #:label #f
   (cons 1 "one")]
 
 Once a pair is created, you can access the first and second value of the pair with
 @racket[car] and @racket[cdr]:
 @examples[
   #:eval helper-eval
+  #:label #f
   (define a-pair (cons 1 "one"))
   (car a-pair)
   (cdr a-pair)]
@@ -1559,6 +1563,7 @@ its argument:
 
 @examples[
   #:eval helper-eval
+  #:label #f
   (add1 2)]
 
 If a function should be called without arguments, it's written @racket[(func)].
@@ -1567,6 +1572,7 @@ expressions. For example,
 
 @examples[
   #:eval helper-eval
+  #:label #f
   (eval:error ((add1 2)))]
 
 calculates @racket[3] through the function call @racket[(add1 2)] and tries to
@@ -1578,6 +1584,7 @@ On the other hand, when using a function in another position, it's just a
 
 @examples[
   #:eval helper-eval
+  #:label #f
   add1
   (procedure? add1)
   (list add1 add1)]
@@ -1587,6 +1594,7 @@ tend to be less obvious:
 
 @examples[
   #:eval helper-eval
+  #:label #f
   (define (foo)
     add1 2)
   (foo)]
@@ -1605,6 +1613,7 @@ greet someone:
 
 @examples[
   #:eval helper-eval
+  #:label #f
   (define (greeting [name "world"])
     (string-append "Hello " name "!"))
   (greeting)
