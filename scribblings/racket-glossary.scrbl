@@ -2207,7 +2207,7 @@ being @void-text with the @racket[void?] predicate.
       [(= 1 2) #f]))]
 
 Another curiosity is that you can't enter the @void-text value in source code
-or the REPL. However, you can create the value with the @racket[void] function.
+or the REPL. However, you can create the value with @racket[(void)].
 
 @other-languages{
 Python has a value @tt{None}, whose semantics is similar to @elem{@void-text}.
@@ -2227,8 +2227,8 @@ the same purpose.
 Since @racket[#f] is the only value that's treated as false in conditions,
 this usage normally makes sense.
 
-That said, it's fine to use @racket[(void)] and check the argument with
-@racket[void?] if @racket[#f] could be an actual value for the argument.}
+That said, it's fine to use @racket[(void)] as default and check the argument
+with @racket[void?] if @racket[#f] could be an actual value for the argument.}
 
 See also:
 @itemize[
