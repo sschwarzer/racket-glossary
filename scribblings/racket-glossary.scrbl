@@ -12,6 +12,7 @@
   (for-label
     racket/base
     racket/file
+    racket/format
     racket/function
     racket/gui
     racket/list
@@ -35,6 +36,7 @@
   #:eval helper-eval
   #:hidden
   (require
+    racket/format
     racket/function
     racket/list
     racket/pretty
@@ -909,9 +911,114 @@ See @secref*["Number" 'glossary]
 @glossary-entry["Interface (OOP)" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Keyword" 'basic #:stub? #t]{
+@glossary-entry["Keyword" 'basic]{
 
-@; positional and keyword args are separate
+Procedures can be defined and then called with positional arguments, but also
+with keyword arguments.
+
+As an example, the following procedure takes a keyword argument to control
+whether an exclamation point should be added at the end of a greeting:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (greeting name #:exclamation? exclamation?)
+    (string-append
+      "Hello "
+      name
+      (if exclamation?
+          "!"
+          "")))
+  (greeting "Alice" #:exclamation? #f)
+  (greeting "Alice" #:exclamation? #t)]
+
+Like positional arguments, keyword arguments can be defined as optional:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (greeting name #:exclamation? [exclamation? #f])
+    (string-append
+      "Hello "
+      name
+      (if exclamation?
+          "!"
+          "")))
+  (greeting "Bob")]
+
+It's conventional to use the same name for the keyword and the argument name,
+but it's not required.
+
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (define (greeting name #:exclamation? [exclamation-flag #f])
+    (string-append
+      "Hello "
+      name
+      (if exclamation-flag
+          "!"
+          "")))
+  (greeting "Mike")
+  (greeting "Mike" #:exclamation? #t)]
+
+Note that the call uses the keyword name (@code{#:exclamation?}), but the
+function body uses the argument name (@code{exclamation-flag}).
+
+If a function allows several keyword arguments, they can be specified in any
+order, and they can be interleaved with positional arguments. For example,
+consider the function @racket[~r] in the Racket standard library, which is used
+for formatting numbers:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (~r 1.2345)
+  (~r 1.2345 #:precision 2)
+  (~r #:precision 2 1.2345)
+  (~r #:precision 2 1.2345 #:min-width 10)]
+
+That said, usually the code is easier to read if all the positional arguments
+occur before all the keyword arguments:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (~r 1.2345 #:precision 2 #:min-width 10)]
+
+Racket clearly distinguishes between positional and keyword arguments. You
+can't use a positional arguments in place of a keyword argument and vice versa:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (greeting name #:exclamation? exclamation?)
+    (string-append
+      "Hello "
+      name
+      (if exclamation?
+          "!"
+          "")))
+  (greeting "Bob" #:exclamation? #t)
+  (eval:error (greeting "Bob" #t))
+  (eval:error (greeting #:name "Bob" #:exclamation? #t))]
+
+@other-languages{
+Unlike Racket, many languages don't have a clear distinction between positional
+and keyword arguments. For example, the following Python code is valid:
+@verbatim{
+def greeting(name, exclamation):
+    suffix = "!" if exclamation else ""
+    return "Hello {name}{suffix}"
+
+greeting("Bob", exclamation=True)
+}}
+
+See also:
+@itemlist[
+  @item{@secref*["Procedure" 'glossary] @in-g}
+  @item{@secref*["keyword-args" 'guide] @in-rg}
+  @item{@secref*["keywords" 'reference] @in-rr}]
 }
 
 @glossary-entry["Lambda" 'basic]{
