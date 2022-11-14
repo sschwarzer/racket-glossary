@@ -810,6 +810,19 @@ See also
 
 ## Thunk
 
+- Technically, a function without arguments
+- Control (e.g. delay/prevent) the execution of some code conditionally
+  - Relationship to higher-order functions?
+- Example uses:
+  - <https://docs.racket-lang.org/reference/file-ports.html#%28def._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._with-input-from-file%29%29>
+  - <https://docs.racket-lang.org/reference/file-ports.html#%28def._%28%28lib._racket%2Fprivate%2Fbase..rkt%29._with-input-from-file%29%29>
+- See also:
+  - <https://en.wikipedia.org/wiki/Thunk>
+  - <https://stackoverflow.com/questions/925365/>
+  - <https://www.cs.rhodes.edu/~kirlinp/rhodes/proglang/s13/360-lect12-slides.pdf>
+  - <https://academic.udayton.edu/saverioperugini/courses/cps343/lecture_notes/lazyevaluation.html>
+  - <https://www.scheme.com/tspl4/start.html> (search for "thunk")
+
 ## Transparent
 
 - See "struct"

@@ -2133,7 +2133,73 @@ See @secref*["Form" 'glossary]
 @glossary-entry["Thread" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Thunk" 'basic #:stub? #t]{
+@glossary-entry["Thunk" 'basic]{
+
+A thunk is a function that takes no arguments. Thunks are typically used to
+evaluate some code conditionally or at a later time (``lazily''). For example,
+assume that we want a variant of the @racket[if] form that prints whether it
+evaluates the first or the second branch. Defining @code{verbose-if} like
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (verbose-if condition true-branch false-branch)
+    (if condition
+      (begin
+        (displayln "condition is true")
+        true-branch)
+      (begin
+        (displayln "condition is false")
+        false-branch)))
+
+  (verbose-if (> 5 4)
+              (displayln "yes")
+              (displayln "no"))]
+
+doesn't work because in the call of @code{verbose-if} both the
+@code{true-branch} and the @code{false-branch} are already evaluated before
+executing the body of @code{verbose-if}.
+
+However, you can control the execution of the @code{true-branch} and the
+@code{false-branch} by turning them into thunks:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (verbose-if condition true-branch false-branch)
+    (if condition
+      (begin
+        (displayln "condition is true")
+        (true-branch))
+      (begin
+        (displayln "condition is false")
+        (false-branch))))
+
+  (verbose-if (> 5 4)
+              (lambda () (displayln "yes"))
+              (lambda () (displayln "no")))]
+
+Note that you need to change both the function and the use of it.
+
+Even if the thunks need data from the surrounding scope, you don't need to
+define and pass arguments because the thunks still have access to that scope
+even if they're executed in @code{verbose-if}:
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (call-verbose-if)
+    (define true-string "yes")
+    (define false-string "no")
+    (verbose-if (> 5 4)
+                (lambda () (displayln true-string))
+                (lambda () (displayln false-string))))
+  (call-verbose-if)]
+
+See also:
+@itemlist[
+  @item{@secref*['("Closure" "Procedure") 'glossary] @in-g}
+  @item{@racket[thunk] @in-rr}]
 }
 
 @glossary-entry["Transparent" 'basic #:cross-reference? #t]{
