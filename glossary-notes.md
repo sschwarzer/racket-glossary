@@ -640,7 +640,11 @@ Done
 
 ## Provide
 
-## Quasiquote
+## Quasiquote and unquote
+
+- `quasiquote` = backtick
+- `unquote` = `,`
+- `unquote` is only valid inside `quasiquote`
 
 ## Quote
 

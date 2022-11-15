@@ -1742,10 +1742,105 @@ See also:
 @glossary-entry["Provide" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Quasiquote" 'intermediate #:stub? #t]{
+@glossary-entry["Quasiquote and unquote" 'intermediate]{
+
+A variant of @racket[quote] is @racket[quasiquote], usually written as a
+backtick, @tt{`}. At first sight, @racket[quasiquote] behaves exactly as
+@racket[quote]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  '(+ 3 4)
+  `(+ 3 4)
+  'map
+  `map]
+
+However, different from @racket[quote], you can use @racket[unquote], usually
+written as a comma, @tt{,}, inside @racket[quasiquote] to ``escape'' the
+quoting. This is useful to write lists that include literals and expressions
+that should be evaluated:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  `(1 2 ,(+ 1 1 1))]
+
+See also:
+@itemlist[
+  @item{@secref*['("Quote") 'glossary] @in-g}
+  @item{@racket[quasiquote] and @racket[unquote] @in-rr}]
 }
 
-@glossary-entry["Quote" 'basic #:stub? #t]{
+@glossary-entry["Quote" 'basic]{
+
+Quoting with @racket[quote] prevents a quoted expression from being evaluated.
+Compare
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (+ 3 4)
+  (quote (+ 3 4))
+  map
+  (quote map)]
+
+A single apostrophe can be used instead of spelling out @racket[quote]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (+ 3 4)
+  '(+ 3 4)
+  map
+  'map]
+
+Quoted literal values like numbers, strings, characters and booleans are the
+values themselves:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  '123
+  '"foo"
+  '#\space
+  '#t]
+
+Typical use cases for quoting are writing symbols and lists of literals:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  'truncate
+  '(1 2 3)
+  '("foo" "bar" "baz")]
+
+Pay attention to avoid ``double quoting.'' For example, assume you've
+originally written
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (list 1 2 'foo)]
+and try to simplify the list as
+@examples[
+  #:eval helper-eval
+  #:label #f
+  '(1 2 'foo)]
+
+With this change, you get an expression @code{''foo}, which is @emph{not} the
+same as @code{'foo}:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define my-list '(1 2 'foo))
+  (list-ref my-list 2)
+  (equal? ''foo 'foo)]
+
+Although the expression @code{''foo} looks like @code{foo} ``quoted twice,''
+@hyperlink["https://racket.discourse.group/t/questions-on-quoting/1472"]{it's
+more complicated}.
+
+If you see an expression starting with two apostrophes, it's most likely a bug.
+
+See also:
+@itemlist[
+  @item{@secref*['("Procedure" "Quasiquote" "Symbol") 'glossary] @in-g}
+  @item{@secref*["quote" 'guide] @in-rg}
+  @item{@secref*["quote" 'reference] @in-rr}]
 }
 
 @glossary-entry["RnRS (as in R5RS, R6RS etc.)" 'intermediate #:stub? #t]{
