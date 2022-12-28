@@ -1838,7 +1838,7 @@ If you see an expression starting with two apostrophes, it's most likely a bug.
 
 See also:
 @itemlist[
-  @item{@secref*['("Procedure" "Quasiquote" "Symbol") 'glossary] @in-g}
+  @item{@secref*['("Procedure" "Quasiquote_and_unquote" "Symbol") 'glossary] @in-g}
   @item{@secref*["quote" 'guide] @in-rg}
   @item{@secref*["quote" 'reference] @in-rr}]
 }
