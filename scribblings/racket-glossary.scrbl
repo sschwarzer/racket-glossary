@@ -696,7 +696,100 @@ See also:
   @item{@secref*["flonums" 'reference] @in-rr}]
 }
 
-@glossary-entry["Fold" 'basic #:stub? #t]{
+@glossary-entry["Fold" 'basic]{
+
+Folding means taking a sequence and combining its elements into a new value.
+
+Racket provides the @racket[foldl] and @racket[foldr] functions for this. In
+Scheme implementations, these functions may be called differently. Both
+@code{fold} variants take a function, an initial value and one or more lists.
+To keep things simple, let's discuss the case of @racket[foldl] with a single
+list argument first.
+
+The provided function is first called with the first list item and the initial
+value and must return an accumulated value for these arguments. For each
+subsequent item from the input list the provided function is called again with
+the list item and the so-far accumulated value.
+
+Here's an example for calculating the sum from a list of numbers:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (foldl + 0 '(1 2 3 4 5))]
+which corresponds to
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (+ 5 (+ 4 (+ 3 (+ 2 (+ 1 0)))))]
+
+The difference between @racket[foldl] and @racket[foldr] is that for
+@racket[foldl] the input list is processed from left to right and for
+@racket[foldr] from right to left.
+
+This difference doesn't matter for summing numbers as above, but it does for
+creating a new list:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (foldl cons '() '(1 2 3 4 5))
+  (foldr cons '() '(1 2 3 4 5))]
+
+The fold functions are quite general. For example, the functions @racket[map]
+and @racket[filter] can be expressed in terms of @racket[foldr]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (map-foldr func lst)
+    (foldr
+      (lambda (item current-list)
+        (cons (func item) current-list))
+      '()
+      lst))
+  (map-foldr add1 '(1 2 3 4 5))]
+
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (filter-foldr pred? lst)
+    (foldr
+      (lambda (item current-list)
+        (if (pred? item)
+            (cons item current-list)
+            current-list))
+      '()
+      lst))
+  (filter-foldr even? '(1 2 3 4 5))]
+
+If @racket[foldl] or @racket[foldr] get multiple list arguments, they're
+iterated over in parallel and the provided function receives corresponding
+items from the lists:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (foldr
+    (lambda (item1 item2 current-list)
+      (cons (+ item1 item2) current-list))
+    '()
+    '(1 2 3 4 5)
+    '(1 3 5 7 9))] 
+
+Racket also has a @racket[for/fold] form which often is easier to use. For
+example, @racket[map] could be implemented as
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (map-for/fold func lst)
+    (for/fold ([current-list '()])
+              ([item (reverse lst)])
+      (cons (func item) current-list)))
+  (map-for/fold add1 '(1 2 3 4 5))]
+Note the @racket[reverse] call because the list is iterated over from left to
+right, as in @racket[foldl].
+
+See also:
+@itemize[
+  @item{@secref*["Comprehension" 'glossary] @in-g}
+  @item{@racket[foldl], @racket[foldr] and @racket[for/fold] @in-rr}]
 }
 
 @; Naming: Although "form" and "macro" IMHO are synonyms, "form" is
