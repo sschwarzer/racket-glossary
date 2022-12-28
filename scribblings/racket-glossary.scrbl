@@ -347,7 +347,67 @@ See also:
 @glossary-entry["Combinator" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Comprehension" 'basic #:stub? #t]{
+@glossary-entry["Comprehension" 'basic]{
+
+In Racket, a comprehension is a form that maps one or more sequences to another
+sequence as described by an expression. Typically, this definition means the
+@code{for} forms that create sequences, like lists or vectors.
+
+For example, here's a simple list comprehension:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (for/list ([i (in-range 5)])
+    (* 2 i))]
+
+The comprehension forms can be classified by two criteria:
+@itemize[
+  @item{@bold{Type of the generated sequence}. For example, @racket[for/list]
+    creates a list and @racket[for/vector] creates a vector.}
+  @item{@bold{Parallel or nested iteration}. This is only relevant if the
+    form uses more than one input sequence. The @code{for} forms iterate in
+    parallel; the @code{for*} forms iterate in a nested fashion.}]
+
+Here are two more examples to illustrate these criteria:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Parallel iteration creating a list.")
+  (for/list ([index (in-range 1 4)]
+             [word '("one" "two" "three")])
+    (format "~a/~a" index word))
+  (code:comment "Nested iteration creating a vector. Note the `*` in `for*/vector`.")
+  (for*/vector ([color '("green" "red")]
+                [fruit '("apple" "berry")])
+    (format "~a ~a" color fruit))]
+
+A few more details:
+@itemize[
+  @item{There are a lot of sequences that can be iterated over,
+    for example, strings (iterating over characters) or ports (iterating over
+    characters, bytes or lines).}
+  @item{The ``loop body'' doesn't have to be single expression. See the examples
+    in the Racket Guide.}
+  @item{If sequences are iterated over in parallel, the @emph{shortest} input
+    sequence determines the elements used for the comprehension.}
+  @item{The @code{for} forms support several keyword arguments. For example,
+    @code{#:when} makes it possible to include only certain elements in the
+    result sequence.}
+  @;{
+  @item{Forms like @racket[for] or @racket[for/and] aren't comprehensions
+    because they don't map input elements to output elements but only create
+    a single element.}
+  }
+  @item{Despite the usage of the term ``map'', an applicaton of @racket[map]
+    is @emph{not} considered a comprehension, although the structure is
+    similar.}
+]
+
+See also:
+@itemize[
+  @item{@secref*['("Form" "Sequence") 'glossary] @in-g}
+  @item{@secref*["for" 'guide] @in-rg}
+  @item{@secref*["for" 'reference] @in-rr}]
 }
 
 @glossary-entry["Cons cell" 'basic #:cross-reference? #t]{

@@ -89,6 +89,10 @@ Done
 - Forms with `*` nest loops.
 - `for/and` etc. aren't comprehensions. They return only one value from the
   last executed iteration.
+- `for` forms support a lot of keywords. Possible approach: Remember only the
+  most frequently used keywords and otherwise use `map`, `filter` and named
+  `let`.
+- Example showing the same functionality with different forms/approaches?
 
 ## Cons cell
 
