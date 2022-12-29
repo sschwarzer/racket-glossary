@@ -398,9 +398,6 @@ A few more details:
     because they don't map input elements to output elements but only create
     a single element.}
   }
-  @item{Despite the usage of the term ``map'', an applicaton of @racket[map]
-    is @emph{not} considered a comprehension, although the structure is
-    similar.}
 ]
 
 See also:
