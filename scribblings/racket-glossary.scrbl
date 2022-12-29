@@ -768,7 +768,7 @@ items from the lists:
       (cons (+ item1 item2) current-list))
     '()
     '(1 2 3 4 5)
-    '(1 3 5 7 9))] 
+    '(1 3 5 7 9))]
 
 Racket also has a @racket[for/fold] form which often is easier to use. For
 example, @racket[map] could be implemented as
