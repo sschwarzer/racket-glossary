@@ -975,7 +975,27 @@ See also:
   @item{@secref*["hashtables" 'reference] @in-rr}]
 }
 
-@glossary-entry["Higher-order function" 'basic #:stub? #t]{
+@glossary-entry["Higher-order function" 'basic]{
+
+A higher-order function is a function that takes a function as an argument
+and/or returns a function. This approach is very common in functional
+programming.
+
+Here are a few examples of higher-order functions:
+@itemize[
+  @item{@racket[map] takes a function that transforms a list item to another
+    item for the result list.}
+  @item{@racket[filter] takes a predicate function that determines which list
+    items should be included in the returned list.}
+  @item{@racket[sort] takes a comparison function that determines the sort order
+    of the returned list.}
+  @item{@racket[compose] takes one or more functions and returns a function that
+    applies the functions one after another.}]
+
+See also:
+@itemize[
+  @item{@secref*['("Function" "Functional_programming" "Predicate" "Procedure")
+                 'glossary] @in-g}]
 }
 
 @glossary-entry["Hygiene" 'intermediate #:stub? #t]{
