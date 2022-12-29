@@ -393,11 +393,10 @@ A few more details:
   @item{The @code{for} forms support several keyword arguments. For example,
     @code{#:when} makes it possible to include only certain elements in the
     result sequence.}
-  @;{
-  @item{Forms like @racket[for] or @racket[for/and] aren't comprehensions
-    because they don't map input elements to output elements but only create
-    a single element.}
-  }
+  @item{Forms like @racket[for], @racket[for/fold] or @racket[for/and] may not
+    be considered comprehensions because they don't map input elements to
+    output elements but only create a single element. But of course these forms
+    can be useful, too.}
 ]
 
 See also:
