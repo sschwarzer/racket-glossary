@@ -1228,7 +1228,111 @@ See also:
 @glossary-entry["Language-oriented programming" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Let" 'basic #:stub? #t]{
+@glossary-entry["Let" 'basic]{
+
+Scheme and Racket support a variety of @code{let} forms.
+
+The @racket[let] form allows the definition of bindings that are valid for the
+body of @racket[let]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (let ([x 2]
+        [y 3])
+    (+ x y))]
+
+However, it's @emph{not} possible to reference previous bindings as in
+@codeblock{
+  (let ([x 2]
+        [y (add1 x)])
+    (+ x y))}
+
+On the other hand, this is possible with the @racket[let*] form:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (let* ([x 2]
+         [y (add1 x)])
+    (+ x y))]
+
+You can think of @racket[let*] as nested @racket[let] forms, so the previous
+@racket[let*] expression could be written as
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (let ([x 2])
+    (let ([y (add1 x)])
+      (+ x y)))]
+
+Still, @racket[let*] doesn't allow to access later bindings from earlier
+bindings as in
+@codeblock{
+  (let* ([y (add1 x)]
+         [x 2])
+    (+ x y))}
+
+On the other hand, this is possible with @racket[letrec]. This form can be used
+to define mutually recursive functions (i.e. functions calling each other):
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "These `even?` and `odd?` functions are only valid for n >= 0")
+  (letrec ([even? (lambda (n)
+                    (if (= n 0)
+                        #t
+                        (odd? (sub1 n))))]
+           [odd?  (lambda (n)
+                    (if (= n 0)
+                        #f
+                        (even? (sub1 n))))])
+    (even? 6))]
+
+There's also a ``named let'' form which uses the name @code{let}, but has the
+list of bindings prefixed with a name. Essentially, this form defines a --
+usually recursive -- function and calls it. The result of the named let
+expression is the return value of the outermost function call.
+
+For example, defining and calling a recursive factorial function could look
+like this:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (let factorial ([n 10])
+    (if (= n 0)
+        1
+        (* n (factorial (sub1 n)))))]
+
+This is equivalent to
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (factorial n)
+    (if (= n 0)
+        1
+        (* n (factorial (sub1 n)))))
+  (factorial 10)]
+with the exception that for the named let form the @code{factorial} function is
+no longer accessible after the expression is calculated.
+
+Here's a summary of the different @code{let} forms:
+@itemize[
+  @item{@racket[let] creates ``parallel'' bindings, i.e. the bindings can't
+    refer to each other.}
+  @item{@racket[let*] creates nested bindings, i.e. later bindings can refer
+    to earlier bindings.}
+  @item{@racket[letrec] creates bindings where all bindings can refer to all
+    others (even themselves).}
+  @item{A named @racket[let] defines a function and calls it. The bindings
+    specify the arguments for the initial call.}]
+
+Racket has a few more @code{let} forms, in particular for handling multiple
+values. See the below sections in the Racket Guide and the Racket Reference.
+
+See also:
+@itemize[
+  @item{@secref*['("Binding" "Location") 'glossary] @in-g}
+  @item{@secref*["let" 'guide] @in-rg}
+  @item{@secref*["let" 'reference] @in-rr}]
 }
 
 @glossary-entry["Let over lambda" 'intermediate]{
@@ -1382,7 +1486,9 @@ See @secref*["Form" 'glossary]
 @glossary-entry["Module" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Named let" 'intermediate #:stub? #t]{
+@glossary-entry["Named let" 'basic #:cross-reference? #t]{
+
+See @secref*["Let" 'glossary]
 }
 
 @glossary-entry["Namespace" 'intermediate #:stub? #t]{
