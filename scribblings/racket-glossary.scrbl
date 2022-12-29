@@ -72,6 +72,7 @@
 @; "1", register and typeset the entry.
 @(define (glossary-entry #:cross-reference? [cross-reference? #f]
                          #:stub? [stub? #f]
+                         #:tag [tag #f]
                          title-text
                          level
                          . text)
@@ -82,7 +83,7 @@
    (hash-set! stats-hash title-text (entry title-text level cross-reference? stub?))
    (when (not (and omit-stub-entries? stub?))
      (list
-       (subsection #:style 'unnumbered title-text)
+       (subsection #:tag tag #:style 'unnumbered title-text)
        (paragraph plain (elem (bold "Level: ") (symbol->string level)))
        text)))
 
@@ -805,7 +806,8 @@ See also:
 See @secref*["Procedure" 'glossary]
 }
 
-@glossary-entry["Functional programming (FP)" 'basic #:stub? #t]{
+@glossary-entry[#:tag "Functional_programming"
+                "Functional programming (FP)" 'basic #:stub? #t]{
 }
 
 @glossary-entry["Functional update" 'basic]{
@@ -855,7 +857,7 @@ common in Functional Programming in general.
 
 See also:
 @itemize[
-  @item{@secref*['("Binding" "Functional_programming__FP_" "Hash" "Naming_conventions")
+  @item{@secref*['("Binding" "Functional_programming" "Hash" "Naming_conventions")
                  'glossary] @in-g}]
 }
 
