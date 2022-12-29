@@ -703,6 +703,10 @@ See also
 
 ## Shadowing
 
+- Binding with the same name shadows a binding with the same name in an
+  enclosing scope.
+- Show example with `let`
+
 ## Splicing
 
 ## SRFI

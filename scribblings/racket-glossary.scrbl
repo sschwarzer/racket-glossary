@@ -2051,7 +2051,25 @@ See @secref*["Unsafe_operation" 'glossary]
 @glossary-entry["Set" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Shadowing" 'basic #:stub? #t]{
+@glossary-entry["Shadowing" 'basic]{
+
+Shadowing means that a binding prevents access to another binding with the same
+name in an enclosing scope.
+
+For example, in
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (let ([x 2])
+    (displayln x)
+    (let ([x 3])
+      (displayln x)))]
+the inner @code{x} binding (value 3) shadows the outer @code{x} binding
+(value 2).
+
+See also:
+@itemlist[
+  @item{@secref*["Binding" 'glossary] @in-g}]
 }
 
 @glossary-entry["Splicing" 'basic #:stub? #t]{
