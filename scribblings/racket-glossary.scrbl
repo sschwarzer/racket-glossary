@@ -1766,7 +1766,8 @@ You could add ``number'' as the bottom of the tower, but at least in Racket,
 See also:
 @itemize[
   @item{@secref*["Number" 'glossary] @in-g}
-  @item{@hyperlink["https://en.wikipedia.org/wiki/Numerical_tower"]{Wikipedia article}}]
+  @item{@hyperlink["https://en.wikipedia.org/wiki/Numerical_tower"]{Numerical tower}
+        Wikipedia article}]
 }
 
 @glossary-entry["Opaque" 'intermediate #:cross-reference? #t]{
