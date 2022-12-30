@@ -807,7 +807,82 @@ See @secref*["Procedure" 'glossary]
 }
 
 @glossary-entry[#:tag "Functional_programming"
-                "Functional programming (FP)" 'basic #:stub? #t]{
+                "Functional programming (FP)" 'basic]{
+
+The core idea of functional programming is that a program should behave like a
+mathematical function. That is, a program consists of nested expressions that
+are evaluated to get a result, instead of changing state as in imperative
+programming.
+
+For example, this is imperative code to set a variable depending on a condition:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "The actual value of `condition` doesn't matter for the example.")
+  (define condition #t)
+  (define number 0)
+  (if condition
+      (set! number 1)
+      (set! number 2))
+  number]
+
+However, this is very atypical code for a functional programming language. In
+Scheme or Racket you'd write this code more like this:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define number
+    (if condition
+        1
+        2))
+  number]
+In the second example, the value of @code{number} is only set once.
+
+In imperative languages, loops typically update one or more values during
+each loop iteration. On the other hand, in functional programming languages,
+it's typical to use recursion, as in this factorial function:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (factorial n)
+    (if (= n 0)
+        1
+        (* n (factorial (sub1 n)))))
+  (factorial 10)]
+Note that this code doesn't use any variables. The @racket[if] form calculates
+an expression and this is also the return value of the function. (Note: You can
+often avoid explicit recursion by using higher-order functions and
+comprehensions; see the cross references.)
+
+A desired property of a function is that it's ``pure'', that is, it always
+returns the same result if it's called with the same arguments, and the
+function doesn't have any side effects (like I/O). That way, it's easier to
+reason about and test the code. However, since a program that doesn't have any
+effects on the outside world is useless, some side effects are needed. To still
+make the most of pure functions, try to put as much code as possible into pure
+functions and use them from the code with side effects.
+
+Another feature of functional programming languages is that functions can
+be used in expressions (also without calling them). In the following example,
+the @racket[if] expression evaluates to a function and this function is used to
+calculate the final result.
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define my-function
+    (if condition
+        (lambda (x) (+ x 2))
+        (lambda (x) (- x 3))))
+  (my-function 3)]
+
+
+See also:
+@itemize[
+  @item{@secref*['("Comprehension" "Fold" "Functional_update" "Higher-order_function" "Let")
+                 'glossary] @in-g}
+  @item{@hyperlink["https://en.wikipedia.org/wiki/Functional_programming"]{Functional
+                   programming}
+    Wikipedia article}]
 }
 
 @glossary-entry["Functional update" 'basic]{

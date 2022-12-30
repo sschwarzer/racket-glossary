@@ -240,6 +240,9 @@ Done
   - Expressions, not statements (example: `if`)
 - Separate pure and impure functions (procedures) to gain FP advantages, i.e.
   easier reasoning and testing
+- Recursion instead of loops
+  - Big stack sizes
+  - Tail call optimization
 - Show some "typical idioms"
   - Idea: Show how to do things "functionally" instead of "imperatively", so
     newcomers don't try to program imperatively in Racket
