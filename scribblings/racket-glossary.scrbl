@@ -1880,7 +1880,48 @@ See also:
   @item{@secref*["pairs" 'reference] @in-rr}]
 }
 
-@glossary-entry["Parameter" 'basic #:stub? #t]{
+@glossary-entry["Parameter" 'basic]{
+
+Apart from the meaning in function definitions, a Racket parameter is a
+thread-local variable. A few examples are @racket[current-output-port],
+@racket[current-command-line-arguments] and
+@racket[current-environment-variables].
+
+To create custom parameters, use the @racket[make-parameter] function. The
+value of the parameter is accessible by calling the created parameter function
+without arguments:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "The `make-parameter` argument is the initial value.")
+  (define new-parameter (make-parameter 3))
+  (new-parameter)]
+
+You can set a parameter by calling the parameter function with an argument:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (new-parameter 4)
+  (new-parameter)]
+
+However, normally you should use the @racket[parameterize] form to change the
+parameter value temporarily:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (new-parameter)
+  (parameterize ([new-parameter 5])
+    (new-parameter))
+  (new-parameter)]
+Using @racket[parameterize] makes it clearer where the parameter value is
+changed. Another advantage is that the original parameter value is also
+restored if the body of @racket[parameterize] raises an exception.
+
+See also:
+@itemlist[
+  @item{@secref*["Thread" 'glossary] @in-g}
+  @item{@secref*["parameterize" 'guide] @in-rg}
+  @item{@secref*["parameters" 'reference] @in-rr}]
 }
 
 @glossary-entry["Partial application and currying" 'basic]{

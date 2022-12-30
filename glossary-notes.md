@@ -582,6 +582,18 @@ Done
 
 ## Parameter
 
+- Thread-local variable
+- Define with `(make-parameter parameter-name)`
+- Set with `(parameter-name new-value)`
+- Query with `(parameter-name)`
+- Use `parameterize` to temporarily set a parameter
+- `parameterize` is somewhat similar to the `let` forms
+- Typical examples (often starting with `current-`):
+  - `current-output-port`
+  - `current-command-line-arguments`
+  - `current-directory`
+  - `current-environment-variables`
+
 ## Partial application and currying
 
 - Partial application is the act of taking a function with some number of
