@@ -986,7 +986,7 @@ criteria; all of the combinations are possible:
   @item{Strength: strong, weak, ephemerons@linebreak{}
     This influences when hash entries can be garbage-collected.}]
 These are 3×2×3 = 18 combinations, but in practice you can almost always get by
-with this list of just four combinations:
+with these four combinations:
 @itemize[
   @item{Comparison for keys: @racket[equal?], @racket[eq?]}
   @item{Mutability: immutable, mutable}
