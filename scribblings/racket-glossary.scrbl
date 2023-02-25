@@ -2905,7 +2905,7 @@ Another curiosity is that you can't enter the @void-text value in source code
 or the REPL. However, you can create the value with @racket[(void)].
 
 @other-languages{
-Python has a value @tt{None}, whose semantics is similar to @elem{@void-text}.
+Python has a value @tt{None}, whose semantics are similar to @elem{@void-text}.
 However, while the use of @tt{None} in Python is idiomatic to denote an unset
 optional argument, Scheme and Racket code typically uses @racket[#f] for
 the same purpose.
