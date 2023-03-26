@@ -23,4 +23,5 @@ stats:
 
 .PHONY: local-http-server
 local-http-server:
-	( cd doc && python -m http.server >/dev/null 2>&1 ) &
+	@echo "Listening on port 8000"
+	( cd doc && python -m http.server 8000 >/dev/null 2>&1 ) &
