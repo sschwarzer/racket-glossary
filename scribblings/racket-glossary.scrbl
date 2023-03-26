@@ -67,12 +67,14 @@
 @(define omit-stub-entries?
    (string=? (or (getenv "OMIT_STUB_ENTRIES") "") "1"))
 
+@(define (title->tag title)
+   (regexp-replace* #px"[^A-Za-z0-9]+" title "_"))
+
 @; If the environment variable `OMIT_STUB_ENTRIES` is set to "1", only register
 @; the glossary entry, but don't typeset it. If the environment variable isn't
 @; "1", register and typeset the entry.
 @(define (glossary-entry #:cross-reference? [cross-reference? #f]
                          #:stub? [stub? #f]
-                         #:tag [tag #f]
                          title-text
                          level
                          . text)
@@ -83,7 +85,9 @@
    (hash-set! stats-hash title-text (entry title-text level cross-reference? stub?))
    (when (not (and omit-stub-entries? stub?))
      (list
-       (subsection #:tag tag #:style 'unnumbered title-text)
+       (subsection
+         #:tag (title->tag title-text)
+         #:style 'unnumbered title-text)
        (paragraph plain (elem (bold "Level: ") (symbol->string level)))
        text)))
 
@@ -295,7 +299,7 @@ See also:
 
 @glossary-entry["Byte string" 'basic #:cross-reference? #t]{
 
-See @secref*["String__character__byte_string" 'glossary]
+See @secref*["String_character_byte_string" 'glossary]
 }
 
 @glossary-entry["Call" 'basic #:cross-reference? #t]{
@@ -311,7 +315,7 @@ See @secref*["Procedure" 'glossary]
 
 @glossary-entry["Character" 'basic #:cross-reference? #t]{
 
-See @secref*["String__character__byte_string" 'glossary]
+See @secref*["String_character_byte_string" 'glossary]
 }
 
 @glossary-entry["Class" 'intermediate #:stub? #t]{
@@ -806,8 +810,7 @@ See also:
 See @secref*["Procedure" 'glossary]
 }
 
-@glossary-entry[#:tag "Functional_programming"
-                "Functional programming (FP)" 'basic]{
+@glossary-entry["Functional programming (FP)" 'basic]{
 
 The core idea of functional programming is that a program should behave like a
 mathematical function. That is, a program consists of nested expressions that
@@ -878,7 +881,7 @@ calculate the final result.
 
 See also:
 @itemize[
-  @item{@secref*['("Comprehension" "Fold" "Functional_update" "Higher-order_function" "Let")
+  @item{@secref*['("Comprehension" "Fold" "Functional_update" "Higher_order_function" "Let")
                  'glossary] @in-g}
   @item{@hyperlink["https://en.wikipedia.org/wiki/Functional_programming"]{Functional
                    programming}
@@ -932,7 +935,7 @@ common in Functional Programming in general.
 
 See also:
 @itemize[
-  @item{@secref*['("Binding" "Functional_programming" "Hash" "Naming_conventions")
+  @item{@secref*['("Binding" "Functional_programming_FP_" "Hash" "Naming_conventions")
                  'glossary] @in-g}]
 }
 
@@ -1069,7 +1072,7 @@ Here are a few examples of higher-order functions:
 
 See also:
 @itemize[
-  @item{@secref*['("Function" "Functional_programming" "Predicate" "Procedure")
+  @item{@secref*['("Function" "Functional_programming_FP_" "Predicate" "Procedure")
                  'glossary] @in-g}]
 }
 
@@ -1287,12 +1290,12 @@ The second example above defines and directly calls the function.
 
 The above examples are a bit artifical. Normally, you use a function defined
 with @racket[lambda] as a function argument for a
-@secref*["Higher-order_function" 'glossary] or in a @secref*["Let" 'glossary]
+@secref*["Higher_order_function" 'glossary] or in a @secref*["Let" 'glossary]
 expression.
 
 See also:
 @itemlist[
-  @item{@secref*['("Definition" "Higher-order_function" "Let") 'glossary] @in-g}
+  @item{@secref*['("Definition" "Higher_order_function" "Let") 'glossary] @in-g}
   @item{@secref*["lambda" 'guide] @in-rg}
   @item{@secref*["lambda" 'reference] @in-rr}]
 }
@@ -2612,7 +2615,7 @@ Symbols occur naturally when processing Racket code as data.
 
 See also:
 @itemlist[
-  @item{@secref*['("Equality" "Hash" "Quote" "String__character__byte_string") 'glossary]
+  @item{@secref*['("Equality" "Hash" "Quote" "String_character_byte_string") 'glossary]
         @in-g}
   @item{@secref*["symbols" 'guide] @in-rg}
   @item{@secref*["symbols" 'reference] @in-rr}]
