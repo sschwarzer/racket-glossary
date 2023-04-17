@@ -229,6 +229,9 @@ Done
 
 ## Formatting (‘format‘, ‘~a‘ etc.)
 
+- https://docs.racket-lang.org/reference/printing.html (mentioned on Racket
+  Slack)
+
 ## Function
 
 -> Procedure
