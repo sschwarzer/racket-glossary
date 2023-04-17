@@ -94,8 +94,8 @@
 @(define (entry-subsection text)
    (elem #:style entry-subsection-style text))
 
-@; For whatever reason, `italic` deactivates an outer `tt`, so wrap the
-@; argument in another `tt`.
+@; For whatever reason, `italic` deactivates an outer `tt`, so put the `tt`
+@; application inside the `italic` application.
 @(define (ti value)
    (italic (tt value)))
 
