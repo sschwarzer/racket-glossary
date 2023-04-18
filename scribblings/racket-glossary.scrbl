@@ -115,6 +115,23 @@
        (secref term #:doc (list 'lib url)))
      ", "))
 
+@; Return a link to a glossary entry `term`, using the link text `text`. If
+@; `text` isn't given, use `term` with the first character in lowercase.
+@(define (glossary-inline-link term [text #f])
+   (define url (string-append
+                 "#(part._."
+                 (title->tag term)
+                 ")"))
+   (define link-text
+     (or text
+         (let ([first (substring term 0 1)]
+               [rest  (substring term 1)])
+           (string-append (string-downcase first) rest))))
+   (hyperlink url link-text))
+
+@; Less clear, but shorter.
+@(define inline-link glossary-inline-link)
+
 @(define (other-languages . content)
    @nested[#:style 'inset]{@paragraph[plain @bold{Other languages}] @content})
 
