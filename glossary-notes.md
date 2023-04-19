@@ -131,6 +131,11 @@ Done
 
 ## Display
 
+- I don't know yet if "Display" and "Format" should be separate entries or if
+  "Display" should be a reference to "Format", where everything is explained.
+- For now collect bullet points under "Format" until I have a better
+  understanding of the relationships.
+
 -> Format
 
 ## DrRacket
@@ -229,8 +234,48 @@ Done
 
 ## Formatting (‘format‘, ‘~a‘ etc.)
 
-- https://docs.racket-lang.org/reference/printing.html (mentioned on Racket
-  Slack)
+- https://docs.racket-lang.org/guide/read-write.html has a comparison of
+  `print`, `write` and `display` with examples.
+  - `print` shows data as in the REPL ("only" by default?)
+    - corresponds to `~v`
+  - `write` shows data in a way that can be read back into Racket
+    - However, `(write 'foo)` emits `foo`. Shouldn't it emit `'foo`, since this
+      is the format the reader would read?
+    - corresponds to `~s`
+  - `display` shows data for end users. For example, quotes around strings are
+    omitted.
+    - corresponds to `~a`
+- Under "Language Model"
+  - https://docs.racket-lang.org/reference/reader.html
+    (since reading and writing are quite related)
+  - https://docs.racket-lang.org/reference/printing.html
+- Under "Input and output"
+  - https://docs.racket-lang.org/reference/Reading.html
+  - https://docs.racket-lang.org/reference/Writing.html
+- https://docs.racket-lang.org/reference/strings.html#%28mod-path._racket%2Fformat%29
+  discusses `~a`, `~v` etc.
+- Questions
+  - Why doesn't `(write 'foo)` show `'foo`?
+  - What are "quoting depth" and "quotable"? The paragraph at
+    https://docs.racket-lang.org/reference/printing.html#%28tech._quoting._depth%29
+    isn't really helpful. What's the meaning/purpose of these concepts or the
+    values 0 or 1 for the quoting depth?
+
+    I experimented with different settings of the quoting depth in `print`, but
+    didn't see a difference. Are there examples to see the effect of the
+    quoting depth and what "quotable" means?
+  - Why are there so many parameters for reading and writing? See the
+    parameters listed under
+    https://docs.racket-lang.org/reference/Reading.html#%28def._%28%28quote._~23~25kernel%29._read-case-sensitive%29%29
+    and
+    https://docs.racket-lang.org/reference/Writing.html#%28def._%28%28quote._~23~25kernel%29._print-pair-curly-braces%29%29
+    Having so many parameters looks overengineered.
+- Use `display`/`~a` for end-user output
+- `print` is only available in Racket, `display` and `write` also in Scheme
+- In the REPL, it's helpful to have data printed as it's written in code, for
+  example to distinguish the string `"foo"` from the symbol `'foo`. `display`
+  generates the same output for both the string and the symbol.
+- Mention pretty-printing, at least a bit about it.
 
 ## Function
 
