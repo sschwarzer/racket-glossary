@@ -253,7 +253,17 @@ Done
   - https://docs.racket-lang.org/reference/Reading.html
   - https://docs.racket-lang.org/reference/Writing.html
 - https://docs.racket-lang.org/reference/strings.html#%28mod-path._racket%2Fformat%29
-  discusses `~a`, `~v` etc.
+  discusses the _functions_ `~a`, `~v` etc.
+- Use `display`/`~a` for end-user output
+- `print` is only available in Racket, `display` and `write` also in Scheme.
+- In the REPL, it's helpful to have data printed as it's written in code, for
+  example to distinguish the string `"foo"` from the symbol `'foo`. `display`
+  generates the same output for both the string and the symbol.
+- Mention pretty-printing. Include one or more examples.
+- Explain difference between the _placeholders_ (like `~a`) and the _function_
+  with the same name. Even better: `display` vs. function `~a` vs. placeholder
+  `~a`.
+- Organize some of the information in one or more tables.
 - Questions
   - Why doesn't `(write 'foo)` show `'foo`?
   - What are "quoting depth" and "quotable"? The paragraph at
@@ -270,12 +280,6 @@ Done
     and
     https://docs.racket-lang.org/reference/Writing.html#%28def._%28%28quote._~23~25kernel%29._print-pair-curly-braces%29%29
     Having so many parameters looks overengineered.
-- Use `display`/`~a` for end-user output
-- `print` is only available in Racket, `display` and `write` also in Scheme
-- In the REPL, it's helpful to have data printed as it's written in code, for
-  example to distinguish the string `"foo"` from the symbol `'foo`. `display`
-  generates the same output for both the string and the symbol.
-- Mention pretty-printing, at least a bit about it.
 
 ## Function
 
