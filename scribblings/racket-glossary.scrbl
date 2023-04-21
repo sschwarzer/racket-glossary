@@ -1633,7 +1633,7 @@ to define mutually recursive functions (i.e. functions calling each other):
 There's also a ``named let'' form which uses the name @code{let}, but has the
 list of bindings prefixed with a name. Essentially, this form defines a --
 usually recursive -- function and calls it. The result of the named let
-expression is the return value of the outermost function call.
+expression is the return value of the function call that started the recursion.
 
 For example, defining and calling a recursive factorial function could look
 like this:
