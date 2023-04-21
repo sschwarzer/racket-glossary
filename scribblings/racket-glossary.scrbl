@@ -2535,6 +2535,9 @@ See @secref*["Unsafe_operation" 'glossary]
 @glossary-entry["Scheme" 'basic #:stub? #t]{
 }
 
+@glossary-entry["Scope" 'basic #:stub? #t]{
+}
+
 @glossary-entry["Scribble" 'intermediate #:stub? #t]{
 }
 

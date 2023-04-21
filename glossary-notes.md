@@ -751,6 +751,8 @@ See also
 
 ## Scheme
 
+## Scope
+
 ## Scribble
 
 ## Sequence
