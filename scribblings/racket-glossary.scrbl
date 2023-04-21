@@ -516,7 +516,9 @@ See also:
   @item{@secref*["define" 'reference] @in-rr}]
 }
 
-@glossary-entry["Display" 'basic #:stub? #t]{
+@glossary-entry["Display" 'basic #:cross-reference? #t]{
+
+See @secref*["Formatting_and_output" 'glossary]
 }
 
 @glossary-entry["DrRacket" 'basic #:stub? #t]{
@@ -2319,7 +2321,7 @@ See also:
 
 @glossary-entry["Print" 'basic #:cross-reference? #t]{
 
-See @secref*["Display" 'glossary]
+See @secref*["Formatting_and_output" 'glossary]
 }
 
 @glossary-entry["Procedure" 'basic]{
@@ -3203,7 +3205,7 @@ See also:
 
 @glossary-entry["Write" 'basic #:cross-reference? #t]{
 
-See @secref*["Display" 'glossary]
+See @secref*["Formatting_and_output" 'glossary]
 }
 
 @glossary-entry["Writer" 'advanced #:stub? #t]{
