@@ -306,7 +306,7 @@ reference in some other languages.
   (func a-box)
   (displayln (unbox a-box))]
 
-As you can see, using boxes is kind of awkward compared to passing arguments by
+In Racket, using boxes is kind of awkward compared to passing arguments by
 reference in other languages. However, in practice this isn't a problem since
 it's unidiomatic in Racket to use mutable values. Instead you usually transform
 immutable values to other immutable values.
