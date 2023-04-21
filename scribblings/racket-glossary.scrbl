@@ -236,9 +236,10 @@ However, in Racket and other functional languages, assignment is used much less
 than in imperative languages. The ``normal'' approach in functional languages
 is to transform immutable values to other immutable values.
 
-To change a value via assignment, you need a name (binding) and a storage
-location for it. Usually, the binding and location are created with
-@racket[define], but they can also be created by one of the @racket[let] forms.
+To change a value via assignment, you need a name (@inline-link["Binding"]) and
+a storage @inline-link["Location"] for it. Usually, the binding and location
+are created with @racket[define], but they can also be created by one of the
+@racket[let] forms.
 
 See also:
 @itemlist[
@@ -342,7 +343,8 @@ See @secref*["String_character_byte_string" 'glossary]
 
 @glossary-entry["Closure" 'basic]{
 
-A closure combines a function with environment data from a scope outside the
+A closure combines a @inline-link["Procedure"]{function} with
+@inline-link["Environment"] data from a @inline-link["Scope"] outside the
 function.
 
 @examples[
@@ -375,7 +377,8 @@ See also:
 
 In Racket, a comprehension is a form that maps one or more sequences to another
 sequence as described by an expression. Typically, this definition means the
-@code{for} forms that create sequences, like lists or vectors.
+@code{for} forms that create sequences, like @inline-link["List"]s or
+@inline-link["Vector"]s.
 
 For example, here's a simple list comprehension:
 @examples[
@@ -407,8 +410,9 @@ Here are two more examples to illustrate these criteria:
 
 A few more details:
 @itemize[
-  @item{There are a lot of sequences that can be iterated over,
-    for example, strings (iterating over characters) or ports (iterating over
+  @item{There are a lot of @inline-link["Sequence"]s that can be iterated over,
+    for example, @inline-link["String, character, byte string"]{string}s
+    (iterating over characters) or @inline-link["Port"]s (iterating over
     characters, bytes or lines).}
   @item{The ``loop body'' doesn't have to be single expression. See the examples
     in the Racket Guide.}
@@ -457,8 +461,8 @@ See @secref*["Partial_application_and_currying" 'glossary]
 
 @glossary-entry["Definition" 'basic]{
 
-A definition binds an expression result to a new name. In other words, a
-definition creates a binding.
+A definition binds an @inline-link["Expression"] result to a new name. In other
+words, a definition creates a @inline-link["Binding"].
 
 By far the two most used ways to define something use @racket[define], but in
 different ways.
@@ -476,15 +480,15 @@ evaluates the @racketvarfont{expression} and binds it to @racketvarfont{name}:
 
 Second,
 @specform[(define (name arguments) body)]{}
-creates a procedure with the name @racketvarfont{name}, arguments
-@racketvarfont{arguments} and the code to execute, @racketvarfont{body}.
+creates a @inline-link["Procedure"] with the name @racketvarfont{name},
+arguments @racketvarfont{arguments} and the code to execute,
+@racketvarfont{body}.
 @examples[
   #:eval helper-eval
   #:label "Example:"
   (define (hello who)
     (displayln (string-append "Hello, " who "!")))
   (hello "Mike")]
-See the @secref*["Procedure" 'glossary] entry for more.
 
 Apart from those two definition forms, there are many more. Here are a few
 examples:
@@ -547,13 +551,11 @@ equal:
       (equal? '(1 2 3) '(1 2 3))
       (equal? '(1 2 ("foo" 3)) '(1 2 ("foo" 3)))
       (equal? '(1 2 ("foo" 3)) '(1 2 ("bar" 3)))]}
-  @item{@racket[eq?] checks object identity, i.e. @racket[eq?] only returns
-    @racket[#t] if the two compared values are one and the same object. This is
-    especically important for mutable objects. For immutable values object
-    identity is less relevant.
-    @examples[
-      #:eval helper-eval
-      (code:comment "There's only one `#t` constant.")
+  @item{@racket[eq?] checks object @inline-link["Identity"], i.e. @racket[eq?]
+    only returns @racket[#t] if the two compared values are one and the same
+    object. This is especically important for mutable objects. For immutable
+    values object identity is less relevant. @examples[ #:eval helper-eval
+    (code:comment "There's only one `#t` constant.")
       (eq? #t #t)
       (code:comment "Compare with the same list object.")
       (define a-list '(1 2))
@@ -720,7 +722,8 @@ See also:
 
 @glossary-entry["Fold" 'basic]{
 
-Folding means taking a sequence and combining its elements into a new value.
+Folding means taking a @inline-link["Sequence"] and combining its elements into
+a new value.
 
 Racket provides the @racket[foldl] and @racket[foldr] functions for this. In
 Scheme implementations, these functions may be called differently. Both
@@ -877,8 +880,8 @@ interactive interpreter (REPL).
 On the other hand, the placeholder @tt{~s} is the counterpart of the
 @racket[read] function, which converts a string of Racket code, usually to an
 atomic value or a list of symbols. The following examples use a helper function
-@code{roundtrip} that uses the @tt{~v} from the previous paragraph to show the
-data returned by the @racket[read] function. The function
+@code{roundtrip} that uses the @tt{~v} placeholder from the previous paragraph
+to show the data returned by the @racket[read] function. The function
 @racket[open-input-string] is explained in the @secref*["Port" 'glossary]
 glossary entry.
 
@@ -1171,10 +1174,11 @@ Here's an example of an imperative update:
   (code:comment "that the hash is modified in-place.")
   (hash-set! imperative-hash 3 'c)
   imperative-hash]
-With an imperative update, every piece of code that has a binding to the hash
-will see any changes to the hash. Depending on your design, this can be good or
-bad. In any case you have to be careful that all locations where the hash is used
-are prepared for a change ``under their feet.''
+With an imperative update, every piece of code that has a
+@inline-link["Binding"] to the hash will ``see'' any changes to the hash.
+Depending on your design, this can be good or bad. In any case you have to be
+careful that all locations where the hash is used are prepared for a change
+``under their feet.''
 
 On the other hand, here's a corresponding functional update:
 @examples[
@@ -1244,8 +1248,8 @@ However, usually all keys are of the same type and all values are of the same
 type.
 
 The API for hashes in Racket is more complicated than for the other compound
-data structures like lists and vectors. Hashes can differ in the following
-criteria; all of the combinations are possible:
+data structures like @inline-link["List"]s and @inline-link["vector"]s. Hashes
+can differ in the following criteria; all of the combinations are possible:
 @itemize[
   @item{Comparison for keys: @racket[equal?], @racket[eq?], @racket[eqv?]}
   @item{Mutability: immutable, mutable@linebreak{}
@@ -1300,9 +1304,9 @@ arguments. For example, @racket[(hash)] creates an empty immutable hash with
 
 @smaller{(3)} Setting or updating a value in an immutable hash may sound
 contradictory. The solution is that @racket[hash-set] causes a so-called
-functional update. That is, it returns a new hash with the modification applied
-and leaves the @ti{hash} @italic{argument} unchanged. This is the same
-principle that @racket[cons] or @racket[struct-copy] use.
+@inline-link["Functional update"]. That is, it returns a new hash with the
+modification applied and leaves the @ti{hash} @italic{argument} unchanged. This
+is the same principle that @racket[cons] or @racket[struct-copy] use.
 
 @bold{Warnings:}
 @itemize[
@@ -1320,9 +1324,9 @@ See also:
 
 @glossary-entry["Higher-order function" 'basic]{
 
-A higher-order function is a function that takes a function as an argument
-and/or returns a function. This approach is very common in functional
-programming.
+A higher-order function is a @inline-link["Procedure"]{function} that takes a
+function as an argument and/or returns a function. This approach is very common
+in functional programming.
 
 Here are a few examples of higher-order functions:
 @itemize[
@@ -1346,9 +1350,10 @@ See also:
 
 @glossary-entry["Identifier" 'basic]{
 
-As in other programming languages, an identifier is a name assigned to a value
-(or a form). Compared to most languages, identifiers can contain a lot more
-characters. In Racket, all of the following identifier names are valid:
+As in other programming languages, an identifier is a name assigned to a
+@inline-link["Value"] (or a @inline-link["Form"]). Compared to most languages,
+identifiers can contain a lot more characters. In Racket, all of the following
+identifier names are valid:
 @examples[
   #:eval helper-eval
   #:label #f
@@ -1427,8 +1432,8 @@ See @secref*["Number" 'glossary]
 
 @glossary-entry["Keyword" 'basic]{
 
-Procedures can be defined and then called with positional arguments, but also
-with keyword arguments.
+@inline-link["Procedure"]{Procedure}s can be defined and then called with
+positional arguments, but also with keyword arguments.
 
 As an example, the following procedure takes a keyword argument to control
 whether an exclamation point should be added at the end of a greeting:
@@ -1691,12 +1696,12 @@ example is similar to the one in the @secref*["Closure" 'glossary] entry:
         (+ value increment))))
   (add3 5)]
 
-Here, @racket[let] creates the outer environent whereas @racket[lambda] defines
-the function using that environment.
+Here, @racket[let] creates the outer @inline-link["Environment"] whereas
+@racket[lambda] defines the function using that environment.
 
 See also:
 @itemize[
-  @item{@secref*['("Procedure" "Lambda" "Closure") 'glossary] @in-g}]
+  @item{@secref*['("Environment" "Procedure" "Lambda" "Closure") 'glossary] @in-g}]
 }
 
 @glossary-entry["List" 'basic]{
@@ -1706,9 +1711,9 @@ languages, including Scheme and Racket.
 
 Scheme and Racket lists are implemented as singly-linked lists (with the
 exception of the empty list, which is an atomic value). Singly-linked lists
-consist of pairs where the first value of a pair is a list item and the second
-value of the pair points to the next pair. The end of the list is denoted by an
-empty list as the second value of the last pair.
+consist of @inline-link["Pair"]s where the first value of a pair is a list item
+and the second value of the pair points to the next pair. The end of the list
+is denoted by an empty list as the second value of the last pair.
 
 For example, the list @racket['(1 2 3 4)] can be drawn as
 
@@ -1960,7 +1965,7 @@ The following diagram shows the relationships between the technical types.
 
 @entry-subsection{``Mathematical'' number types}
 
-Racket and many Scheme implementations have the predicates
+Racket and many Scheme implementations have the @inline-link["Predicate"]s
 @itemize[
   @item{@racket[integer?]}
   @item{@racket[rational?]}
@@ -2044,7 +2049,7 @@ if necessary (@racket[v] means ``value''):
     @examples[
       #:eval helper-eval
       (define one-sixth (/ 1.0 6.))
-      (code:comment "6 times 1/6 should be 1.")
+      (code:comment "6 times 1/6 should be 1, but it isn't, due to rounding errors.")
       @; This is supposed to be rendered as 0.9999999999999999.
       (+ one-sixth one-sixth one-sixth one-sixth one-sixth one-sixth)
       (code:comment "Overflow")
@@ -2152,8 +2157,9 @@ See also:
 
 @glossary-entry["Parameter" 'basic]{
 
-Apart from the meaning in function definitions, a Racket parameter is a
-thread-local variable. A few examples are @racket[current-output-port],
+Apart from the meaning in @inline-link["Procedure"]{function} definitions, a
+Racket parameter is a @inline-link["Thread"]-local variable. A few examples are
+@racket[current-output-port],
 @racket[current-command-line-arguments] and
 @racket[current-environment-variables].
 
@@ -2196,9 +2202,9 @@ See also:
 
 @glossary-entry["Partial application and currying" 'basic]{
 
-Partial application takes a function with some number of arguments and creates
-a new function that calls the original function while hard-coding some of the
-arguments.
+Partial application takes a @inline-link["Procedure"]{function} with some
+number of arguments and creates a new function that calls the original function
+while hard-coding some of the arguments.
 
 The following example defines a function @racket[draw-line] and a curried
 version @racket[draw-line-from-origin], which hard-codes the @racket[from-x] and
@@ -2282,7 +2288,8 @@ See also:
 
 @glossary-entry["Predicate" 'basic]{
 
-A predicate is a procedure that takes one argument and returns a boolean.
+A predicate is a @inline-link["Procedure"] that takes one argument and returns
+a boolean.
 
 Examples:
 @itemize[
@@ -2392,7 +2399,7 @@ greet someone:
 
 See also:
 @itemlist[
-  @item{@secref*['("Keyword" "Lambda") 'glossary] @in-g}
+  @item{@secref*['("Arity" "Keyword" "Lambda") 'glossary] @in-g}
   @item{@secref*["syntax-overview" 'guide] @in-rg}
   @item{@secref*["define" 'reference] @in-rr}]
 }
@@ -2420,7 +2427,7 @@ backtick, @tt{`}. At first sight, @racket[quasiquote] behaves exactly as
   `map]
 
 However, different from @racket[quote], you can use @racket[unquote], usually
-written as a comma, @tt{,}, inside @racket[quasiquote] to ``escape'' the
+written as a comma (@tt{,}) inside @racket[quasiquote] to ``escape'' the
 quoting. This is useful to write lists that include literals and expressions
 that should be evaluated:
 @examples[
@@ -2465,7 +2472,8 @@ values themselves:
   '#\space
   '#t]
 
-Typical use cases for quoting are writing symbols and lists of literals:
+Typical use cases for quoting are writing @inline-link["Symbol"]s and lists of
+literals:
 @examples[
   #:eval helper-eval
   #:label #f
@@ -2549,8 +2557,8 @@ See @secref*["Unsafe_operation" 'glossary]
 
 @glossary-entry["Shadowing" 'basic]{
 
-Shadowing means that a binding prevents access to another binding with the same
-name in an enclosing scope.
+Shadowing means that a @inline-link["Binding"] prevents access to another
+binding with the same name in an enclosing @inline-link["Scope"].
 
 For example, in
 @examples[
@@ -2565,7 +2573,7 @@ the inner @code{x} binding (value 3) shadows the outer @code{x} binding
 
 See also:
 @itemlist[
-  @item{@secref*["Binding" 'glossary] @in-g}]
+  @item{@secref*['("Binding" "Scope") 'glossary] @in-g}]
 }
 
 @glossary-entry["Splicing" 'basic #:stub? #t]{
@@ -2749,8 +2757,8 @@ type is using a @racket[struct] and functions related to it.
 Here, @racket[person] is the name of the struct and @racket[name] and
 @racket[age] are the @deftech{fields} of the struct.
 
-Creating a struct like above creates several bindings. One is for the
-name of the struct, which can be used to create instances of the
+Creating a struct like above creates several @inline-link["Binding"]s. One is
+for the name of the struct, which can be used to create instances of the
 struct:
 
 @examples[
@@ -2915,10 +2923,11 @@ See @secref*["Form" 'glossary]
 
 @glossary-entry["Thunk" 'basic]{
 
-A thunk is a function that takes no arguments. Thunks are typically used to
-evaluate some code conditionally or at a later time (``lazily''). For example,
-assume that we want a variant of the @racket[if] form that prints whether it
-evaluates the first or the second branch. Defining @code{verbose-if} like
+A thunk is a @inline-link["Procedure"]{function} that takes no arguments.
+Thunks are typically used to evaluate some code conditionally or at a later
+time (``lazily''). For example, assume that we want a variant of the
+@racket[if] form that prints whether it evaluates the first or the second
+branch. Defining @code{verbose-if} like
 
 @examples[
   #:eval helper-eval
@@ -3017,8 +3026,9 @@ See @secref*["Untrusted_code" 'glossary]
 
 @glossary-entry["Values" 'basic]{
 
-Different from most other languages, a function in Scheme and Racket can return
-multiple values. The most basic function that can do this is @racket[values]:
+Different from most other languages, a @inline-link["Procedure"]{function} in
+Scheme and Racket can return multiple values. The most basic function that can
+do this is @racket[values]:
 @examples[
   #:eval helper-eval
   #:label #f
