@@ -1137,12 +1137,12 @@ calculate the final result.
 @examples[
   #:eval helper-eval
   #:label #f
+  (define condition #t)
   (define my-function
     (if condition
         (lambda (x) (+ x 2))
         (lambda (x) (- x 3))))
   (my-function 3)]
-
 
 See also:
 @itemize[
