@@ -2416,7 +2416,7 @@ See also:
 @glossary-entry["Quasiquote and unquote" 'intermediate]{
 
 A variant of @racket[quote] is @racket[quasiquote], usually written as a
-backtick, @tt{`}. At first sight, @racket[quasiquote] behaves exactly as
+backtick (@literal{`}). At first sight, @racket[quasiquote] behaves exactly as
 @racket[quote]:
 @examples[
   #:eval helper-eval
