@@ -232,7 +232,7 @@ Done
 
 ## Form
 
-## Formatting (‘format‘, ‘~a‘ etc.)
+## Formatting and output
 
 - https://docs.racket-lang.org/guide/read-write.html has a comparison of
   `print`, `write` and `display` with examples.
