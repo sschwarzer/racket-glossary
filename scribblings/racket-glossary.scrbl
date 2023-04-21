@@ -1523,7 +1523,7 @@ and keyword arguments. For example, the following Python code is valid:
 @verbatim{
 def greeting(name, exclamation):
     suffix = "!" if exclamation else ""
-    return "Hello {name}{suffix}"
+    return f"Hello {name}{suffix}"
 
 greeting("Bob", exclamation=True)
 }}
