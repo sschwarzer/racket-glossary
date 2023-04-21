@@ -17,6 +17,7 @@
     racket/gui
     racket/list
     racket/runtime-path
+    racket/serialize
     racket/string
     racket/undefined
     racket/vector
@@ -817,9 +818,253 @@ See also:
 @glossary-entry["Form" 'basic #:stub? #t]{
 }
 
-@glossary-entry["Formatting" 'basic #:stub? #t]{
+@glossary-entry["Formatting and output" 'basic]{
 
-(`format`, `~a` etc.)
+@entry-subsection{Basics}
+
+You can print a string (or other data) with @racket[display]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (display "Hello world!")]
+
+A line break can be added with a following @racket[newline] call. The function
+@racket[displayln] combines @racket[display] and @racket[newline], that is, it
+prints the string and then a line break.
+
+All of these functions take an additional optional argument, which is the
+@inline-link{port} the string or newline should be sent to. By default, this
+is standard output.
+
+@entry-subsection{Formatting}
+
+A string argument for @racket[display] or @racket[displayln] can be built
+with any string functions, but often it's convenient to use the @racket[format]
+function. It takes a string template with placeholders and the values that
+should be inserted for these placeholders. Additionally, a few special
+placeholders, like @tt{~n} for a newline, are supported. The values after the
+template don't have to be strings.
+@examples[
+  #:eval helper-eval
+  (format "Hello world!")
+  (format "Hello ~a!~n" "world")
+  (format "First line~nSecond line~n")
+  (format "~a plus ~a is ~a" 2.5 3 5.5)
+  (code:comment "~x, ~o and ~b can only be used with exact numbers.")
+  (format "decimal: ~a, hexadecimal: ~x, octal: ~o, binary: ~b" 12 -12 13/10 12/7)]
+
+Note that using @tt{~n} is different from using the string @racketvalfont{"\n"}
+in that @tt{~n} will result in the character combination @racketvalfont{"\r\n"}
+on Windows.
+
+There are two placeholders, @tt{~v} and @tt{~s}, which are similar to @tt{~a},
+but behave differently for strings and compound data.
+
+The placeholder @tt{~v} formats values as if they would be output in an
+interactive interpreter (REPL).
+
+@examples[
+  #:eval helper-eval
+  (format "~v" 2)
+  (format "~v" 'abc)
+  (format "~v" "abc")
+  (format "~v" (list 1 2 3))
+  (format "~v" map)]
+
+On the other hand, the placeholder @tt{~s} is the counterpart of the
+@racket[read] function, which converts a string of Racket code, usually to an
+atomic value or a list of symbols. The following examples use a helper function
+@code{roundtrip} that uses the @tt{~v} from the previous paragraph to show the
+data returned by the @racket[read] function. The function
+@racket[open-input-string] is explained in the @secref*["Port" 'glossary]
+glossary entry.
+
+@examples[
+  #:eval helper-eval
+  (define (roundtrip str)
+    (define read-data
+      (read (open-input-string str)))
+    (displayln (format "~v" read-data))
+    (format "~s" read-data))
+  (roundtrip "2")
+  (roundtrip "map")
+  (roundtrip "\"abc\"")
+  (roundtrip "(+ 1 2)")]
+
+Note that the argument of @code{roundtrip} and the result from @racket[format]
+in the helper function are the same.
+
+Apart from using @racket[format], there's another approach to format values,
+the @italic{functions} @racket[~a], @racket[~v] and @racket[~s]. There's also a
+function @racket[~r] for detailed formatting of numbers. The first three
+functions can take multiple arguments, but the behavior may be surprising if
+used with keyword arguments for width and alignment (see below).
+
+@examples[
+  #:eval helper-eval
+  (code:comment "Use ~a, ~v and ~s on different types of values.")
+  (~a 2)
+  (~v 2)
+  (~s 2)
+  (~a "abc")
+  (~v "abc")
+  (~s "abc")
+  (~a '(+ 2 3))
+  (~v '(+ 2 3))
+  (~s '(+ 2 3))
+  (~a map)
+  (~v map)
+  (~s map)
+  (code:comment "`~a` doesn't insert spaces on its own, so you need to add them.")
+  (~a 2.5 " plus " 3 " is " 5.5)
+  (code:comment "Use keywords for alignment.")
+  (~a 1.23 #:width 10 #:align 'right)
+  (code:comment "But keywords are _not_ applied to _each_ of the arguments.")
+  (~a 1 2 3 #:width 10 #:align 'right)
+  (code:comment "Number formatting.")
+  (~r 12.3456 #:notation 'exponential #:precision 2 #:min-width 10)]
+
+@entry-subsection{Output}
+
+So far, we've only used @racket[display] and @racket[displayln] to actually
+output something as we'd do it in a program. Other outputs in the examples were
+formatted strings in the examples' REPL.
+
+Here are the functions @racket[printf], @racket[print] and @racket[write] that
+format @italic{and} output data:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "`printf` is like `display` and `format`.")
+  (display (format "~a and ~v" "foo" "foo"))
+  (printf "~a and ~v" "foo" "foo")
+  (code:comment "`print` is like `display` and `format` with ~v formatting.")
+  (display (format "~v" '(1 2 3)))
+  (display (~v '(1 2 3)))
+  (print '(1 2 3))
+  (code:comment "`write` is like `display` and `format` with ~s formatting.")
+  (display (format "~s" '(1 2 3)))
+  (display (~s '(1 2 3)))
+  (write '(1 2 3))]
+
+All of @racket[display], @racket[print], @racket[write] and their variants with
+an @tt{ln} suffix accept an optional @inline-link["Port"] argument, so you can
+write the data to a file or network socket, for example. There's also a
+function @racket[fprintf], which is like @racket[printf] but takes a port as
+@italic{first} argument.
+
+@entry-subsection{Serialization and deserialization}
+
+If you want to save a data structure and restore it later, you can use
+@racket[serialize] and @racket[write] to save the data and @racket[read] and
+@racket[deserialize] to restore it.
+
+@entry-subsection{Pretty-printing}
+
+Sometimes you may want to output a nested data structure for
+@inline-link["Debugging"]. You can use @racket[pretty-print] for this:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define data
+    '("This is an example line"
+      "Here's another one"
+      "And some nested data"
+      '(1 2 3)
+      "And some more text"))
+  (pretty-print data)]
+
+However, for ``short'' data, @racket[pretty-print] may insert fewer line breaks
+than you'd like, or none at all:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define data
+    '("foo"
+      '(1 2 3)
+      "bar"))
+  (pretty-print data)]
+
+A workaround is to reduce the line width by setting the
+@racket[pretty-print-columns] @inline-link["Parameter"]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define data
+    '("foo"
+      '(1 2 3)
+      "bar"))
+  (parameterize ([pretty-print-columns 10])
+    (pretty-print data))]
+
+In particular, setting @racket[pretty-print-columns] to 1 prints all items on
+individual lines:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define data
+    '("foo"
+      '(1 2 3)
+      "bar"))
+  (parameterize ([pretty-print-columns 1])
+    (pretty-print data))]
+
+@entry-subsection{Summary}
+
+The following table summarizes some of the previous information:
+
+@tabular[#:sep @hspace[1]
+         #:cell-properties '((baseline))
+  (list
+    (list @bold{Main purpose}
+          @bold{@racket[format]/@racket[printf] placeholder}
+          @bold{Formatting function}
+          @bold{Output functions})
+    (list @elem{Human-readable output, formatted string output}
+          @tt{~a}
+          @racket[~a]
+          @elem{@racket[display], @racket[displayln]})
+    (list @elem{REPL-like output}
+          @tt{~v}
+          @racket[~v]
+          @elem{@racket[print], @racket[println]})
+    (list @elem{Processing Racket code (usually used with @racket[read])}
+          @tt{~s}
+          @racket[~s]
+          @elem{@racket[write], @racket[writeln]})
+    (list @elem{Number formatting}
+          @elem{--}
+          @racket[~r]
+          @elem{--}))]
+
+As shown above, there are a lot of -- often redundant -- ways to format and
+output values. For a minimal and in most cases appropriate toolset, use
+@itemize[
+  @item{@racket[display] and @racket[displayln] and either the @racket[format]
+    function or the @racket[~a], @racket[~v], @racket[~s] and @racket[~r]
+    functions}
+  @item{@racket[printf]}]
+
+@examples[
+  #:eval helper-eval
+  (define first-name "Michael")
+  (define last-name "Miller")
+  (displayln (format "~a ~a" first-name last-name))
+  (displayln (~a first-name " " last-name))
+  (printf "~a ~a~n" first-name last-name)]
+
+If the placeholder handling in @racket[format] and @racket[printf] isn't
+enough, you can get more control over the formatting with the @racket[~a],
+@racket[~v], @racket[~s] and @racket[~r] functions, for example to set a width
+or alignment.
+
+See also:
+@itemize[
+  @item{@secref*['("Debugging" "Parameter" "Port" "Stream"
+                   "String_character_byte_string") 'glossary] @in-g}
+  @item{@secref*["read-write" 'guide] @in-rg}
+  @item{@secref*['("Reading" "Writing" "Additional_String_Functions" "serialization"
+                   "pretty-print" "reader" "printing") 'reference] @in-rr}]
 }
 
 @glossary-entry["Function" 'basic #:cross-reference? #t]{
@@ -2479,7 +2724,7 @@ normalizations.
 
 See also:
 @itemlist[
-  @item{@secref*['("Formatting" "Port") 'glossary] @in-g}
+  @item{@secref*['("Formatting_and_output" "Port") 'glossary] @in-g}
   @item{@secref*['("strings" "bytestrings") 'guide] @in-rg}
   @item{@secref*['("strings" "bytestrings" "characters" "encodings") 'reference] @in-rr}
   @item{@hyperlink["https://unicode.org/faq/normalization.html"]{Unicode normalization FAQ}}
