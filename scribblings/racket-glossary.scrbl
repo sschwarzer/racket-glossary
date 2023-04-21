@@ -262,7 +262,8 @@ expression itself.
 
 See also:
 @itemlist[
-  @item{@secref*["Binding" 'glossary] @in-rg}
+  @item{@secref*['("Binding" "Definition") 'glossary] @in-g}
+  @item{@secref*["Definitions" 'guide] @in-rg}
   @item{@secref*["id-model" 'reference] @in-rr}]
 }
 
