@@ -1034,7 +1034,7 @@ The following table summarizes some of the previous information:
           @tt{~a}
           @racket[~a]
           @elem{@racket[display], @racket[displayln]})
-    (list @elem{REPL-like output}
+    (list @elem{REPL, debugging}
           @tt{~v}
           @racket[~v]
           @elem{@racket[print], @racket[println]})
