@@ -1026,7 +1026,7 @@ The following table summarizes some of the previous information:
          #:cell-properties '((baseline))
          #:row-properties `((top-border bottom-border ,table-style-properties))
   (list
-    (list @bold{Main purpose}
+    (list @bold{Main purposes}
           @bold{@racket[format]/@racket[printf] placeholder}
           @bold{Formatting function}
           @bold{Output functions})
