@@ -1,9 +1,7 @@
 # Racket Glossary
 
-This project hopefully will result in a glossary to be included in the
-[Racket](https://racket-lang.org/) documentation to help primarily Racket
-beginners and intermediate users understand Racket concepts and interactions
-between them.
+This project is intended to help primarily Racket beginners and intermediate
+users understand Racket concepts and interactions between them.
 
 ## Purpose
 
