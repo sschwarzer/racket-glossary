@@ -1053,8 +1053,8 @@ output values. For a minimal and in most cases appropriate toolset, use
 
 @examples[
   #:eval helper-eval
-  (define first-name "Michael")
-  (define last-name "Miller")
+  (define first-name "Bilbo")
+  (define last-name "Baggins")
   (displayln (format "~a ~a" first-name last-name))
   (displayln (~a first-name " " last-name))
   (printf "~a ~a~n" first-name last-name)]
