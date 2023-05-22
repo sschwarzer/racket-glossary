@@ -687,7 +687,69 @@ Done
 
 - Like _file objects_ in "other" languages, but "port" is the common term for
   the concept in Scheme and Racket.
-- Ports don't need to belong to files, sockets are also possible. (Check this!)
+- Types of ports
+  - Files
+    - Output files
+      `open-output-port`
+        (needs `#:exists` if output path already exists)
+      `display` (or other output function)
+      `close-output-port`
+      - `#:exists` value to be used with stdin, stdout, stderr?
+      - Research and explain difference between `'truncate` and `'update`. Also
+        show examples
+    - Input files
+      `open-input-port`
+      `read-line`
+      `close-input-port`
+  - Strings
+    `open-output-string`
+    `get-output-string`
+    Can we close ports for output strings?
+    `open-input-string`
+    Can we close ports for input strings?
+  - What about byte strings?
+  - Sockets
+    `tcp-connect`
+    `tcp-listen`
+  - Subprocess pipes
+  - Internal pipes
+- Parameters
+  `current-input-port`
+  `current-output-port`
+  `current-error-port`
+  - Can be overwritten/shadowed with `parameterize`
+- Lower-level
+  `write-char` (code points, assuming UTF-8; one or more bytes)
+  `read-char` (code points, assuming UTF-8; one or more bytes)
+  `write-byte`
+  `read-byte`
+  - `reencode-input-port`
+  - `reencode-output-port`
+- I/O patterns (in Racket Guide)
+  `port->string`
+  `with-input-from-file`
+  `with-output-to-file`
+  `copy-port`
+- Caveats:
+  - `string-ci=?` is _not_ locale-sensitive, but `string-locale-ci=?` is.
+  - `call-with-input-file` and `call-with-output-file` do _not_ automatically
+    close a file on error (e.g. if an exception is raised). Use
+    `call-with-input-file*` and `call-with-output-file*` for that.
+  - `with-input-from-file` and `with-output-to-file` behave similar to
+    `call-with-input-file*` and `call-with-output-file*`, respectively.
+    However, the `thunk` argument doesn't get a port. Instead,
+    `current-input-port` or `current-output-port` are set to the file's port.
+  - Generally, all these `call-*`, `with-*` are utterly confusing. Try to give
+    recommendations on what to use.
+- Describe iterators for I/O
+- Useful tools in <https://docs.racket-lang.org/reference/port-lib.html>
+  `port->list`, `port->string`, `port->bytes`, `port->lines`, `port->bytes-lines`
+- See also
+  - "Formatting and output"
+  - "Streams" (maybe merge "Streams" into "Ports")
+  - "String, character, byte string"
+  - Racket Guide: <https://docs.racket-lang.org/guide/i_o.html>
+  - Racket Reference: <https://docs.racket-lang.org/reference/input-and-output.html>
 
 ## Predicate
 
