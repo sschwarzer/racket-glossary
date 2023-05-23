@@ -215,7 +215,7 @@ single number.
 Arity refers only to positional arguments, not keyword arguments.
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["Procedure" 'glossary] @in-g}
   @item{@secref*["Keywords_and_Arity" 'reference] @in-rr}]
 }
@@ -289,7 +289,7 @@ interpreted as true.
     (displayln (if value "true" "false")))]
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["booleans" 'reference] @in-rr}]
 }
 
@@ -316,7 +316,7 @@ it's unidiomatic in Racket to use mutable values. Instead you usually transform
 immutable values to other immutable values.
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["boxes" 'reference] @in-rr}]
 }
 
@@ -364,7 +364,7 @@ The return value of @racket[make-incrementer] is the closure. The
 from the scope outside the lambda expression.
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["Let_over_lambda" 'glossary] @in-g}
   @item{@hyperlink["https://en.wikipedia.org/wiki/Closure_(computer_programming)"]{Closure}
     Wikipedia article}]
@@ -391,7 +391,7 @@ For example, here's a simple list comprehension:
     (* 2 i))]
 
 The comprehension forms can be classified by two criteria:
-@itemize[
+@itemlist[
   @item{@bold{Type of the generated sequence}. For example, @racket[for/list]
     creates a list and @racket[for/vector] creates a vector.}
   @item{@bold{Parallel or nested iteration}. This is only relevant if the
@@ -412,7 +412,7 @@ Here are two more examples to illustrate these criteria:
     (format "~a ~a" color fruit))]
 
 A few more details:
-@itemize[
+@itemlist[
   @item{There are a lot of @inline-link["Sequence"]s that can be iterated over,
     for example, @inline-link["String, character, byte string"]{string}s
     (iterating over characters) or @inline-link["Port"]s (iterating over
@@ -431,7 +431,7 @@ A few more details:
 ]
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Form" "Sequence") 'glossary] @in-g}
   @item{@secref*["for" 'guide] @in-rg}
   @item{@secref*["for" 'reference] @in-rr}]
@@ -495,7 +495,7 @@ arguments @racketvarfont{arguments} and the code to execute,
 
 Apart from those two definition forms, there are many more. Here are a few
 examples:
-@itemize[
+@itemlist[
   @item{@racket[define-values] is similar to the first @racket[define] form
     above, but it can create several bindings at the same time in case a
     procedure returns more than one value.}
@@ -517,7 +517,7 @@ creates not only a constructor, but also accessor functions:
   point-y]
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Assignment" "Binding" "Form" "Let" "Procedure" "Struct" "Values")
                  'glossary] @in-g}
   @item{@secref*["define" 'guide] @in-rg}
@@ -542,7 +542,7 @@ See @secref*["Formatting_and_output" 'glossary]
 
 Scheme and Racket have three generic functions to determine if two values are
 equal:
-@itemize[
+@itemlist[
   @item{@racket[equal?] checks for value equality. Most of the time, this is the
     function you want. @racket[equal?] can also compare recursively, as long as
     the participating types support @racket[equal?] comparisons.
@@ -576,7 +576,7 @@ The Racket standard library also has many functions of the form
 @racketidfont{@italic{type}=?}, for example @racket[string=?]. Often these
 functions are equivalent to @racket[equal?] for the same arguments. However,
 using the @racketidfont{@italic{type}=?} functions has two advantages:
-@itemize[
+@itemlist[
   @item{The name makes it clear what's compared, without looking at surrounding
     code.}
   @item{Functions of this form provided by Racket check that the arguments
@@ -589,7 +589,7 @@ this name. (But probably you shouldn't.)
 The @racket[eq?] function behaves like the @tt{is} operator in Python.}
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["Procedure" 'glossary] @in-g}
   @item{@secref*["Equality" 'reference] @in-rr}]
 }
@@ -670,7 +670,7 @@ don't evaluate expressions if they may have ``dangerous'' side effects, like
 deleting a file (unless that's what you want, of course).
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Form" "Values") 'glossary] @in-g}
   @item{@secref*["eval-model" 'reference] @in-rr}]
 }
@@ -702,7 +702,7 @@ that all bits of a machine integer (for example with 64@|~|bits) are available
 for calculations (see above).}
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["Number" 'glossary] @in-g}
   @item{@secref*["fixnums+flonums" 'guide] @in-rg}
   @item{@secref*["fixnums" 'reference] @in-rr}]
@@ -717,7 +717,7 @@ A flonum is an IEEE 754 floating point value. In Racket, this is a value of the
 ``technical'' float type (see the @secref*["Number" 'glossary] entry).
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["Number" 'glossary] @in-g}
   @item{@secref*["fixnums+flonums" 'guide] @in-rg}
   @item{@secref*["flonums" 'reference] @in-rr}]
@@ -815,7 +815,7 @@ Note the @racket[reverse] call because the list is iterated over from left to
 right, as in @racket[foldl].
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["Comprehension" 'glossary] @in-g}
   @item{@racket[foldl], @racket[foldr] and @racket[for/fold] @in-rr}]
 }
@@ -1049,7 +1049,7 @@ The following table summarizes some of the previous information:
 
 As shown above, there are a lot of -- often redundant -- ways to format and
 output values. For a minimal and in most cases appropriate toolset, use
-@itemize[
+@itemlist[
   @item{@racket[display] and @racket[displayln] and either the @racket[format]
     function or the @racket[~a], @racket[~v], @racket[~s] and @racket[~r]
     functions}
@@ -1069,7 +1069,7 @@ enough, you can get more control over the formatting with the @racket[~a],
 or alignment.
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Debugging" "Parameter" "Port" "Stream"
                    "String_character_byte_string") 'glossary] @in-g}
   @item{@secref*["read-write" 'guide] @in-rg}
@@ -1152,7 +1152,7 @@ calculate the final result.
   (my-function 3)]
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Comprehension" "Fold" "Functional_update" "Higher_order_function" "Let")
                  'glossary] @in-g}
   @item{@hyperlink["https://en.wikipedia.org/wiki/Functional_programming"]{Functional
@@ -1207,7 +1207,7 @@ The concept of functional updates doesn't only apply to hashes, but is very
 common in Functional Programming in general.
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Binding" "Functional_programming_FP_" "Hash" "Naming_conventions")
                  'glossary] @in-g}]
 }
@@ -1254,7 +1254,7 @@ type.
 The API for hashes in Racket is more complicated than for the other compound
 data structures like @inline-link["List"]s and @inline-link["vector"]s. Hashes
 can differ in the following criteria; all of the combinations are possible:
-@itemize[
+@itemlist[
   @item{Comparison for keys: @racket[equal?], @racket[eq?], @racket[eqv?]}
   @item{Mutability: immutable, mutable@linebreak{}
     Mutability applies to the hash as a whole, not to the mutability of the
@@ -1263,7 +1263,7 @@ can differ in the following criteria; all of the combinations are possible:
     This influences when hash entries can be garbage-collected.}]
 These are 3×2×3 = 18 combinations, but in practice you can almost always get by
 with these four combinations:
-@itemize[
+@itemlist[
   @item{Comparison for keys: @racket[equal?], @racket[eq?]}
   @item{Mutability: immutable, mutable}
   @item{Strength: strong}]
@@ -1314,13 +1314,13 @@ modification applied and leaves the @ti{hash} @italic{argument} unchanged. This
 is the same principle that @racket[cons] or @racket[struct-copy] use.
 
 @bold{Warnings:}
-@itemize[
+@itemlist[
   @item{If a hash entry has a mutable key (for example a vector) don't change
     the key in-place.}
   @item{Don't change a hash while iterating over it.}]
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Collection" "Equality" "Functional_update" "List" "Pair"
                    "Struct" "Vector") 'glossary] @in-g}
   @item{@secref*["hash-tables" 'guide] @in-rg}
@@ -1334,7 +1334,7 @@ function as an argument and/or returns a function. This approach is very common
 in functional programming.
 
 Here are a few examples of higher-order functions:
-@itemize[
+@itemlist[
   @item{@racket[map] takes a function that transforms a list item to another
     item for the result list.}
   @item{@racket[filter] takes a predicate function that determines which list
@@ -1345,7 +1345,7 @@ Here are a few examples of higher-order functions:
     applies the functions one after another.}]
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Function" "Functional_programming_FP_" "Predicate" "Procedure")
                  'glossary] @in-g}]
 }
@@ -1370,7 +1370,7 @@ identifier names are valid:
   obscure-name-!$%^&*-_=+<.>/?]
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Binding" "Form" "Naming_conventions") 'glossary] @in-g}
   @item{@secref*["Identifiers" 'guide] @in-rg}]
 }
@@ -1668,7 +1668,7 @@ with the exception that for the named let form the @code{factorial} function is
 no longer accessible after the expression is calculated.
 
 Here's a summary of the different @code{let} forms:
-@itemize[
+@itemlist[
   @item{@racket[let] creates ``parallel'' bindings, i.e. the bindings can't
     refer to each other.}
   @item{@racket[let*] creates nested bindings, i.e. later bindings can refer
@@ -1682,7 +1682,7 @@ Racket has a few more @code{let} forms, in particular for handling multiple
 values. See the below sections in the Racket Guide and the Racket Reference.
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Binding" "Location") 'glossary] @in-g}
   @item{@secref*["let" 'guide] @in-rg}
   @item{@secref*["let" 'reference] @in-rr}]
@@ -1705,7 +1705,7 @@ Here, @racket[let] creates the outer @inline-link["Environment"] whereas
 @racket[lambda] defines the function using that environment.
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Environment" "Procedure" "Lambda" "Closure") 'glossary] @in-g}]
 }
 
@@ -1788,7 +1788,7 @@ vectors (see @racket[gvector]). However, Racket lists are the idiomatic
 approach for most list processing, so use them if you can.}
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Collection" "Functional_update" "Pair") 'glossary] @in-g}
   @item{@secref*["pairs" 'guide] @in-rg}
   @item{@secref*["pairs" 'reference] @in-rr}]
@@ -1918,7 +1918,7 @@ Additionally, there are some widely-used naming patterns:
 predicate, using prefixes like ``is-'', ``has-'' etc. is redundant.
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Contract" "Functional_update" "Predicate" "Struct") 'glossary] @in-g}
   @item{@hyperlink["https://docs.racket-lang.org/style/"]{Racket Style Guide}
   for other Racket coding conventions}]
@@ -1927,7 +1927,7 @@ See also:
 @glossary-entry["Number" 'basic]{
 
 Racket and most Scheme implementations have the following number types:
-@itemize[
+@itemlist[
   @item{integer}
   @item{rational}
   @item{real}
@@ -1938,7 +1938,7 @@ understand the differences, it's useful to view the number types under a
 
 @entry-subsection{``Technical'' number types}
 
-@itemize[
+@itemlist[
   @item{An ``integer'' is an integer number with arbitrarily many digits.
     Examples: @racket[-123], @racket[0], @racket[2], @racket[12345],
     @racket[26525285981219105863630848].}
@@ -1972,7 +1972,7 @@ The following diagram shows the relationships between the technical types.
 @entry-subsection{``Mathematical'' number types}
 
 Racket and many Scheme implementations have the @inline-link["Predicate"]s
-@itemize[
+@itemlist[
   @item{@racket[integer?]}
   @item{@racket[rational?]}
   @item{@racket[real?]}
@@ -2033,7 +2033,7 @@ if necessary (@racket[v] means ``value''):
 
 @entry-subsection{Tips and gotchas}
 
-@itemize[
+@itemlist[
   @item{Use exact integers for counts, or indices for lists and vectors.
     Actually, there's a special predicate @racket[exact-nonnegative-integer?]
     to check for numbers that can be used as an index.}
@@ -2100,7 +2100,7 @@ if necessary (@racket[v] means ``value''):
   float instead.}]
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Fixnum" "Flonum" "Numeric_tower") 'glossary] @in-g}
   @item{@secref*["numbers" 'guide] @in-rg}
   @item{@secref*["numbers" 'reference] @in-rr}]
@@ -2121,7 +2121,7 @@ You could add ``number'' as the bottom of the tower, but at least in Racket,
 @racket[number?] is equivalent to @racket[complex?].
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["Number" 'glossary] @in-g}
   @item{@hyperlink["https://en.wikipedia.org/wiki/Numerical_tower"]{Numerical tower}
         Wikipedia article}]
@@ -2299,7 +2299,7 @@ A predicate is a @inline-link["Procedure"] that takes one argument and returns
 a boolean.
 
 Examples:
-@itemize[
+@itemlist[
   @item{Checking for a type: @racket[procedure?], @racket[string?],
     @racket[symbol?], ...}
   @item{Checking properties: @racket[even?], @racket[immutable?],
@@ -2694,7 +2694,7 @@ The previous paragraphs explained how the string and character data types in
 Racket are related. However, for most text processing you'll be fine with
 functions that operate on strings. Here are a few of these functions (but also
 check out the others in @secref*["strings" 'reference] @in-rr).
-@itemize[
+@itemlist[
   @item{@racket[string-length]}
   @item{@racket[string-ref]}
   @item{@racket[substring]}
@@ -2710,7 +2710,7 @@ check out the others in @secref*["strings" 'reference] @in-rr).
 As mentioned above, strings consist of unicode code points. Unicode is rather
 complex and subtle, so the following caveats are shared by programming
 languages whose strings consist of code points:
-@itemize[
+@itemlist[
   @item{The term ``character'' is ambiguous in the unicode context. It can
     mean a code point (as in Racket), but also a symbol on the screen that's
     perceived as self-contained. The second meaning is sometimes called a
@@ -2871,7 +2871,7 @@ Symbols are similar to strings:
   'a-symbol]
 
 There are several differences, though:
-@itemize[
+@itemlist[
   @item{Symbols are idiomatically used for enumeration values. See the
     @racket[open-output-file] function for an example, which uses symbols for
     the @racketkeywordfont{mode} and @racketkeywordfont{exists} keyword
@@ -3098,7 +3098,7 @@ print(result[0])     # 1
 print(result[1])     # 2}}
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Definition" "Let") 'glossary] @in-g}]
 }
 
@@ -3164,7 +3164,7 @@ to a list with @racket[vector->list], process the list with list functions and
 finally convert the list back to a vector with @racket[list->vector].
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*['("Collection" "List") 'glossary] @in-g}
   @item{@secref*["vectors" 'guide] @in-rg}
   @item{@secref*["vectors" 'reference] @in-rr}]
@@ -3216,7 +3216,7 @@ That said, it's fine to use @racket[(void)] as default and check the argument
 with @racket[void?] if @racket[#f] could be an actual value for the argument.}
 
 See also:
-@itemize[
+@itemlist[
   @item{@secref*["Boolean" 'glossary] @in-g}
   @item{@secref*["void" 'reference] @in-rr}]
 }
