@@ -1,7 +1,7 @@
 # Racket Glossary
 
-This project is intended to help primarily Racket beginners and intermediate
-users understand Racket concepts and interactions between them.
+This project intends to help primarily Racket beginners and intermediate users
+understand Racket concepts and interactions between them.
 
 ## Purpose
 
