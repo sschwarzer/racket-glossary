@@ -57,6 +57,12 @@
                                    margin-top: 1em;
                                    font-size: 1.4rem;"))))))
 
+@(define center-style
+   (make-style
+     #f
+     (list (attributes '((style . "display: block;
+                                   text-align: center;"))))))
+
 @(define table-style-properties
    (attributes '((style . "border-color: gray;"))))
 
@@ -2290,7 +2296,270 @@ See also:
 @; rarely used, compare with other languages; see also generic code
 }
 
-@glossary-entry["Port" 'basic #:stub? #t]{
+@glossary-entry["Port" 'basic]{
+
+@entry-subsection{Basics}
+
+A port represents an input or output channel; ports correspond to file handles
+or file objects in other programming languages.
+
+Using a port typically involves three steps:
+@itemlist[
+  @item{Create a port for input or output.}
+  @item{Read data from the port or write data to the port, depending on whether
+    the port was created for input or output. You can read or write data as
+    strings, characters or bytes or a mixture of them, regardless of how you
+    created the port.}
+  @item{Close the port.}
+  #:style 'ordered]
+
+The ports for standard input, standard output or standard error already exist
+on program start, so there's no need to create them. Also, you shouldn't close
+any of these ports.
+
+How do you use these special ports? Normally, you don't need to specify them
+since they're the default port arguments of functions like @racket[display] or
+@racket[read-line].
+
+To read data from a file in one go, you can use
+@codeblock{
+(define input-port (open-input-port "data.txt"))
+(define content (port->string input-port))
+(close-input-file)
+}
+
+If the file is large and therefore you want to read line by line, use
+@codeblock{
+(define input-port (open-input-port "data.txt"))
+(for [line (in-lines input-port)]
+  (work-with line))
+(close-input-file)
+}
+
+To write a string to a file, use
+@codeblock{
+(define output-port (open-output-port "data.txt"))
+(display content output-port)
+(close-output-file)
+}
+
+The examples above describe only the basic use cases. Racket has many
+more functions to read and write data as
+@inline-link["String_character_byte_string" "strings, characters or bytes"].
+More on that below.
+
+There are also a few functions that implicitly close the port. For
+example, the first code snippet could be written as
+@codeblock{
+(call-with-input-file*
+  "data.txt"
+  (lambda (input-port)
+    (port->string input-port)))
+}
+The function @racket[call-with-input-file*] implicitly closes the
+input port, even if an exception occurs in the @racket[lambda].
+
+@entry-subsection{Port types}
+
+The most important port types are
+@itemlist[
+  @item{@bold{File ports}. These are created by functions like
+    @racket[open-input-file] and @racket[open-output-file].}
+  @item{@bold{String ports}. These are created by
+    @racket[open-input-string] and @racket[open-output-string].
+    They're useful if an API requires a port, but you already have the
+    data in memory instead of a file, for example. If necessary, you
+    can read the data accumulated in the output string with
+    @racket[get-output-string].}
+  @item{@bold{TCP connections}. These are used for network connections.
+    For example, @racket[tcp-connect] connects to a host and port
+    and returns an input and an output port.}
+  @item{@bold{Process pipes}. For example, the @racket[subprocess]
+    function can create ports for communication with its launched
+    process.}]
+
+You might also see the term ``file stream ports.'' It refers to both
+file ports and process pipes.
+
+@entry-subsection{Port parameters}
+
+Racket provides the @inline-link["Parameter"]{parameters}
+@racket[current-input-port], @racket[current-output-port] and
+@racket[current-error-port]. At program start, these parameters
+correspond to standard input, standard output and standard error,
+respectively.
+
+As usual with parameters, you can change them temporarily with
+@racket[parameterize], so the following example would write the output
+to an output file instead of to the terminal:
+@codeblock{
+(parameterize ([current-output-port (open-output-port "data.txt")])
+  (displayln "This goes to the file."))
+}
+This works because @racket[displayln] outputs to
+@racket[current-output-port] by default.
+
+@entry-subsection{Function overview}
+
+Here's an overview of some Racket functions that work with input and
+output ports.
+
+@bold{Creating ports}
+
+@tabular[#:sep @hspace[1]
+         #:cell-properties '((baseline))
+         #:row-properties `((top-border bottom-border ,table-style-properties))
+  (list
+    (list @bold{Port type}
+          @bold{Input}
+          @bold{Output})
+    (list "File"
+          @racket[open-input-file]
+          @racket[open-output-file])
+    (list ""
+          @elem[#:style center-style]{@racket[open-input-output-file]}
+          'cont)
+    (list ""
+          @elem{@racket[with-input-from-file] @smaller{(1)}}
+          @elem{@racket[with-output-to-file] @smaller{(2)}})
+    (list "String port"
+          @racket[open-input-string]
+          @elem{@racket[open-output-string] @smaller{(3)}})
+    (list "TCP connection"
+          @elem[#:style center-style]{@racket[tcp-connect] @smaller{(4)}}
+          'cont)
+    (list ""
+          @elem[#:style center-style]{@racket[tcp-accept] @smaller{(5)}}
+          'cont)
+    (list "Process pipe"
+          @elem[#:style center-style]{@racket[subprocess] @smaller{(6)}}
+          'cont)
+  )
+]
+
+@smaller{(1)} After opening the file, the port is installed as
+@racket[current-input-port]. After executing the thunk argument, the
+file is closed, even if there was an exception in the thunk.
+
+@smaller{(2)} After opening the file, the port is installed as
+@racket[current-output-port]. After executing the thunk argument, the
+file is closed, even if there was an exception in the thunk.
+
+@smaller{(3)} The current string value can be queried with
+@racket[get-output-string].
+
+@smaller{(4)} For network clients. Returns an input and an output port
+as two values.
+
+@smaller{(5)} For network servers. Returns an input and an output port
+as two values. Used with @racket[tcp-listen].
+
+@smaller{(6)} If the arguments @code{stdin}, @code{stdout} and
+@code{stderr} are passed as @racket[#f], @racket[subprocess] creates
+and returns these input and output ports.
+
+@bold{Reading from and writing to ports}
+
+@tabular[#:sep @hspace[1]
+         #:cell-properties '((baseline))
+         #:row-properties `((top-border bottom-border ,table-style-properties))
+  (list
+    (list @bold{Data type}
+          @bold{Input}
+          @bold{Output})
+    (list "String"
+          @racket[read-string]
+          @racket[write-string])
+    (list ""
+          @racket[read-line]
+          @racket[displayln])
+    (list ""
+          @elem{@racket[in-lines] @smaller{(1)}}
+          "")
+    (list ""
+          @racket[port->string]
+          "")
+    (list ""
+          @racket[port->lines]
+          "")
+    (list "Char"
+          @racket[read-char]
+          @racket[write-char])
+    (list "Byte string"
+          @racket[read-bytes-line]
+          @racket[write-bytes])
+    (list ""
+          @elem{@racket[in-bytes-lines] @smaller{(2)}}
+          "")
+    (list "Byte"
+          @racket[read-byte]
+          @racket[write-byte])
+  )
+]
+
+@smaller{(1)} Generates a sequence of strings (see
+@secref*["Comprehension" 'glossary])
+
+@smaller{(2)} Generates a sequence of byte strings (see
+@secref*["Comprehension" 'glossary])
+
+@bold{Closing ports}
+
+@tabular[#:sep @hspace[1]
+         #:cell-properties '((baseline))
+         #:row-properties `((top-border bottom-border ,table-style-properties))
+  (list
+    (list @bold{Input}
+          @bold{Output})
+    (list @racket[close-input-port]
+          @racket[close-output-port])
+  )
+]
+
+
+@entry-subsection{Tips and gotchas}
+
+@itemlist[
+  @item{If an input port runs out of data, read operations return the
+    special value @racket[eof], which you can check with
+    @racket[eof-object?].}
+  @item{If you try to open a file for writing and the file already
+    exists, you'll get an exception. Use the @code{#:exists} keyword
+    to deal with this situation.}
+  @item{The @code{#:exists} values @racketvalfont{'truncate} and
+    @racketvalfont{'update} seem very similar. However, there's an
+    important difference: @racketvalfont{'truncate'} starts the new
+    file as an empty file. On the other hand, @racketvalfont{'update}
+    overwrites existing content in the file, but leaves everything
+    outside the new content intact. Hence you could accidentally
+    distribute data that you thought to be overwritten. If in doubt,
+    use @racketvalfont{'truncate}.}
+  @item{You can read strings, chars, byte strings and bytes, but most
+    of the time, you likely want to process the contents as strings.}
+  @item{If you're sure that a file is small, you can use
+    @racket[port->string] to read it in one go. If the file may be
+    larger, read and process it line by line so you don't need to
+    keep the whole content in memory.}
+  @item{Usually, you don't want to close @racket[current-output-port]
+    or @racket[current-error-port] if they refer to a terminal. You
+    can use the @inline-link["Predicate"]{predicates}
+    @racket[output-port?] and @racket[terminal-port?] to check for
+    this situation.}
+  @item{You can use @racket[port-copy] to copy data from one port
+    to another.}
+  @item{This glossary entry lists a lot of APIs, but they're still
+    only a small part of the existing port-related APIs. So if you
+    miss something, check the
+    @hyperlink["https://docs.racket-lang.org/reference/"]{Racket
+    Reference}.}
+]
+
+See also:
+@itemlist[
+  @item{@secref*['("Formatting_and_output" "Parameter" "Stream"
+                   "String_character_byte_string" "Thunk" "Values") 'glossary] @in-g}
+  @item{@secref*["i/o" 'guide] @in-rg}
+  @item{@secref*["input-and-output" 'reference] @in-rr}]
 }
 
 @glossary-entry["Predicate" 'basic]{
