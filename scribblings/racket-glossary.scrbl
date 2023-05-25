@@ -2332,22 +2332,19 @@ Here are a few useful applications of the above three steps:
     @codeblock{
     (define input-port (open-input-port "data.txt"))
     (define content (port->string input-port))
-    (close-input-port)
-  }}
+    (close-input-port)}}
   @item{If the file is large and therefore you want to read line by
     line, use
     @codeblock{
     (define input-port (open-input-port "data.txt"))
     (for [line (in-lines input-port)]
       (work-with line))
-    (close-input-port)
-    }}
+    (close-input-port)}}
   @item{To write a string to a file, use
     @codeblock{
     (define output-port (open-output-port "data.txt"))
     (display content output-port)
-    (close-output-port)
-    }}]
+    (close-output-port)}}]
 
 The examples above describe only the basic use cases. Racket has many
 more functions to read and write data as
@@ -2360,8 +2357,7 @@ example, the first code snippet could be written as
 (call-with-input-file*
   "data.txt"
   (lambda (input-port)
-    (port->string input-port)))
-}
+    (port->string input-port)))}
 The function @racket[call-with-input-file*] implicitly closes the
 input port, even if an exception occurs in the @racket[lambda].
 
@@ -2399,8 +2395,7 @@ As usual with parameters, you can change them temporarily with
 to an output file instead of to the terminal:
 @codeblock{
 (parameterize ([current-output-port (open-output-port "data.txt")])
-  (displayln "This goes to the file."))
-}
+  (displayln "This goes to the file."))}
 This works because @racket[displayln] outputs to
 @racket[current-output-port] by default.
 
@@ -2555,8 +2550,7 @@ corresponding input and output ports.
     only a small part of the existing port-related APIs. So if you
     miss something, check the
     @hyperlink["https://docs.racket-lang.org/reference/"]{Racket
-    Reference}.}
-]
+    Reference}.}]
 
 See also:
 @itemlist[
