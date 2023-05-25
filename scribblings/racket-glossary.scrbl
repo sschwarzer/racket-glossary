@@ -142,6 +142,10 @@
 @; Less clear, but shorter.
 @(define inline-link glossary-inline-link)
 
+@; The string can contain more than one number, e.g. `@note-number{1, 2}`.
+@(define (note-number numbers-string)
+   (smaller "(" numbers-string ")"))
+
 @(define (other-languages . content)
    @nested[#:style 'inset]{@paragraph[plain @bold{Other languages}] @content})
 
@@ -1281,8 +1285,8 @@ equality/mutability combinations:
          #:row-properties `((top-border bottom-border ,table-style-properties))
   (list
     (list @bold{Combination}
-          @nonbreaking{@bold{Construction} @smaller{(1, 2)}}
-          @nonbreaking{@bold{Set or update value} @smaller{(3)}}
+          @nonbreaking{@bold{Construction} @note-number{1, 2}}
+          @nonbreaking{@bold{Set or update value} @note-number{3}}
           @bold{Get value})
     (list @elem{@racket[equal?]/immutable}
           @elem{@tt{(@racket[hash] @ti{key1 value1 key2 value2} ...)}
@@ -1305,15 +1309,15 @@ equality/mutability combinations:
           @tt{(@racket[hash-set!] @ti{hash key value})}
           @tt{(@racket[hash-ref] @ti{hash key})}))]
 
-@smaller{(1)} You can create empty hashes by calling the constructor without
+@note-number{1} You can create empty hashes by calling the constructor without
 arguments. For example, @racket[(hash)] creates an empty immutable hash with
 @racket[equal?] key comparison.
 
-@smaller{(2)} A @italic{pair} here is a regular Scheme/Racket pair, for example
-@racket[(cons 1 'a)]. Pairs that contain only literals can also be written as
-@racket['(1 . a)].
+@note-number{2} A @italic{pair} here is a regular Scheme/Racket pair, for
+example @racket[(cons 1 'a)]. Pairs that contain only literals can also be
+written as @racket['(1 . a)].
 
-@smaller{(3)} Setting or updating a value in an immutable hash may sound
+@note-number{3} Setting or updating a value in an immutable hash may sound
 contradictory. The solution is that @racket[hash-set] causes a so-called
 @inline-link["Functional update"]. That is, it returns a new hash with the
 modification applied and leaves the @ti{hash} @italic{argument} unchanged. This
@@ -1886,13 +1890,13 @@ Additionally, there are some widely-used naming patterns:
           @bold{Meaning}
           @bold{Examples})
     (list @tt{@ti{name}?}
-          @elem{Predicate @smaller{(1)}}
+          @elem{Predicate @note-number{1}}
           @elem{@racket[string?], @racket[null?]})
     (list @tt{@ti{name}=?}
-          @elem{Comparison predicate @smaller{(1)}}
+          @elem{Comparison predicate @note-number{1}}
           @racket[string=?])
     (list @tt{@ti{name}/c}
-          @elem{Contract predicate @smaller{(1)}}
+          @elem{Contract predicate @note-number{1}}
           @elem{@racket[or/c], @racket[one-of/c]})
     (list @tt{@ti{name}!}
           "Mutation"
@@ -1920,7 +1924,7 @@ Additionally, there are some widely-used naming patterns:
           "Create new value of type"
           @elem{@racket[make-base-namespace], @racket[make-channel]}))]
 
-@smaller{(1)} Since the @tt{?} or @tt{/c} suffix already identifies a
+@note-number{1} Since the @tt{?} or @tt{/c} suffix already identifies a
 predicate, using prefixes like ``is-'', ``has-'' etc. is redundant.
 
 See also:
@@ -2420,43 +2424,43 @@ Here are some Racket functions that work with input and output ports.
           @elem[#:style center-style]{@racket[open-input-output-file]}
           'cont)
     (list ""
-          @elem{@racket[with-input-from-file] @smaller{(1)}}
-          @elem{@racket[with-output-to-file] @smaller{(2)}})
+          @elem{@racket[with-input-from-file] @note-number{1}}
+          @elem{@racket[with-output-to-file] @note-number{2}})
     (list "String port"
           @racket[open-input-string]
-          @elem{@racket[open-output-string] @smaller{(3)}})
+          @elem{@racket[open-output-string] @note-number{3}})
     (list "TCP connection"
-          @elem[#:style center-style]{@racket[tcp-connect] @smaller{(4)}}
+          @elem[#:style center-style]{@racket[tcp-connect] @note-number{4}}
           'cont)
     (list ""
-          @elem[#:style center-style]{@racket[tcp-accept] @smaller{(5)}}
+          @elem[#:style center-style]{@racket[tcp-accept] @note-number{5}}
           'cont)
     (list "Process pipe"
-          @elem[#:style center-style]{@racket[subprocess] @smaller{(6)}}
+          @elem[#:style center-style]{@racket[subprocess] @note-number{6}}
           'cont)
   )
 ]
 
-@smaller{(1)} After opening the file, the port is installed as
-@racket[current-input-port]. After executing the thunk argument, the
-file is closed, even if there was an exception in the thunk.
+@note-number{1} After opening the file, the port is installed as
+@racket[current-input-port]. After executing the thunk argument, the file is
+closed, even if there was an exception in the thunk.
 
-@smaller{(2)} After opening the file, the port is installed as
-@racket[current-output-port]. After executing the thunk argument, the
-file is closed, even if there was an exception in the thunk.
+@note-number{2} After opening the file, the port is installed as
+@racket[current-output-port]. After executing the thunk argument, the file is
+closed, even if there was an exception in the thunk.
 
-@smaller{(3)} The current string value can be queried with
+@note-number{3} The current string value can be queried with
 @racket[get-output-string].
 
-@smaller{(4)} For network clients. Returns an input port and an output
-port as two values.
+@note-number{4} For network clients. Returns an input port and an output port
+as two values.
 
-@smaller{(5)} For network servers. Returns an input port and an output
-port as two values. Used with @racket[tcp-listen].
+@note-number{5} For network servers. Returns an input port and an output port
+as two values. Used with @racket[tcp-listen].
 
-@smaller{(6)} If the arguments @code{stdin}, @code{stdout} and
-@code{stderr} are passed as @racket[#f], @racket[subprocess] creates
-and returns new corresponding input and output ports.
+@note-number{6} If the arguments @code{stdin}, @code{stdout} and @code{stderr}
+are passed as @racket[#f], @racket[subprocess] creates and returns new
+corresponding input and output ports.
 
 @bold{Reading from and writing to ports}
 
@@ -2474,7 +2478,7 @@ and returns new corresponding input and output ports.
           @racket[read-line]
           @racket[displayln])
     (list ""
-          @elem{@racket[in-lines] @smaller{(1)}}
+          @elem{@racket[in-lines] @note-number{1}}
           "")
     (list ""
           @racket[port->string]
@@ -2489,7 +2493,7 @@ and returns new corresponding input and output ports.
           @racket[read-bytes-line]
           @racket[write-bytes])
     (list ""
-          @elem{@racket[in-bytes-lines] @smaller{(2)}}
+          @elem{@racket[in-bytes-lines] @note-number{2}}
           "")
     (list "Byte"
           @racket[read-byte]
@@ -2497,10 +2501,10 @@ and returns new corresponding input and output ports.
   )
 ]
 
-@smaller{(1)} Generates a sequence of strings (see
+@note-number{1} Generates a sequence of strings (see
 @secref*["Comprehension" 'glossary])
 
-@smaller{(2)} Generates a sequence of byte strings (see
+@note-number{2} Generates a sequence of byte strings (see
 @secref*["Comprehension" 'glossary])
 
 @bold{Closing ports}
