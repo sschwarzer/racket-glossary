@@ -695,8 +695,8 @@ Done
       `display` (or other output function)
       `close-output-port`
       - `#:exists` value to be used with stdin, stdout, stderr?
-      - Research and explain difference between `'truncate` and `'update`. Also
-        show examples
+      - Explain difference between `'truncate` and `'update`. Also show
+        examples.
     - Input files
       `open-input-port`
       `read-line`
@@ -704,20 +704,30 @@ Done
   - Strings
     `open-output-string`
     `get-output-string`
-    Can we close ports for output strings?
+    Can we close ports for output strings? yes
     `open-input-string`
-    Can we close ports for input strings?
+    Can we close ports for input strings? yes
   - What about byte strings?
+    `write-byte`, `read-byte`
   - Sockets
     `tcp-connect`
     `tcp-listen`
   - Subprocess pipes
   - Internal pipes
+    `make-pipe` to create an in/out pair
 - Parameters
   `current-input-port`
   `current-output-port`
   `current-error-port`
   - Can be overwritten/shadowed with `parameterize`
+- Predicates
+  `port?`
+  `input-port?`
+  `output-port?`
+  `file-stream-port?`
+  `terminal-port?`
+  `string-port?`
+  `port-closed?`
 - Lower-level
   `write-char` (code points, assuming UTF-8; one or more bytes)
   `read-char` (code points, assuming UTF-8; one or more bytes)
@@ -741,11 +751,15 @@ Done
     `current-input-port` or `current-output-port` are set to the file's port.
   - Generally, all these `call-*`, `with-*` are utterly confusing. Try to give
     recommendations on what to use.
+  - `close-output-port` and `close-input-port` can be used repeatedly without
+    an error. Think of the functions as "make sure the port is closed."
 - Describe iterators for I/O
+  `in-lines`
 - Useful tools in <https://docs.racket-lang.org/reference/port-lib.html>
   `port->list`, `port->string`, `port->bytes`, `port->lines`, `port->bytes-lines`
 - See also
   - "Formatting and output"
+  - "Parameter"
   - "Streams" (maybe merge "Streams" into "Ports")
   - "String, character, byte string"
   - Racket Guide: <https://docs.racket-lang.org/guide/i_o.html>
