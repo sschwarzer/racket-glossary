@@ -2432,9 +2432,7 @@ Here are some Racket functions that work with input and output ports.
           'cont)
     (list "Process pipe"
           @elem[#:style center-style]{@racket[subprocess] @note-number{6}}
-          'cont)
-  )
-]
+          'cont))]
 
 @note-number{1} After opening the file, the port is installed as
 @racket[current-input-port]. After executing the thunk argument, the file is
@@ -2492,9 +2490,7 @@ corresponding input and output ports.
           "")
     (list "Byte"
           @racket[read-byte]
-          @racket[write-byte])
-  )
-]
+          @racket[write-byte]))]
 
 @note-number{1} Generates a sequence of strings (see
 @secref*["Comprehension" 'glossary])
@@ -2511,10 +2507,7 @@ corresponding input and output ports.
     (list @bold{Input}
           @bold{Output})
     (list @racket[close-input-port]
-          @racket[close-output-port])
-  )
-]
-
+          @racket[close-output-port]))]
 
 @entry-subsection{Tips and gotchas}
 
