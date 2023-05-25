@@ -2532,6 +2532,11 @@ corresponding input and output ports.
     outside the new content intact. Hence you could accidentally keep
     data you thought to be overwritten. So if in doubt, use
     @racketvalfont{'truncate}.}
+  @item{Functions like @racket[with-input-from-file] and
+    @racket[with-output-to-file] implicitly close the ports they create, even
+    in case of an exception. Therefore, such functions are more robust and
+    hence preferable over explicit calls of @racket[close-input-port] and
+    @racket[close-output-port].}
   @item{Usually, you don't want to close @racket[current-output-port]
     or @racket[current-error-port] if they refer to a terminal. You
     can use the @inline-link["Predicate"]{predicates}
