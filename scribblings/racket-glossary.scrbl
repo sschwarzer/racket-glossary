@@ -2419,39 +2419,46 @@ Here are some Racket functions that work with input and output ports.
           @elem[#:style center-style]{@racket[open-input-output-file]}
           'cont)
     (list ""
-          @elem{@racket[with-input-from-file] @note-number{1}}
-          @elem{@racket[with-output-to-file] @note-number{2}})
+          @elem{@racket[call-with-input-file*] @note-number{1}}
+          @elem{@racket[call-with-output-file*] @note-number{1}})
+    (list ""
+          @elem{@racket[with-input-from-file] @note-number{2}}
+          @elem{@racket[with-output-to-file] @note-number{3}})
     (list "String port"
           @racket[open-input-string]
-          @elem{@racket[open-output-string] @note-number{3}})
+          @elem{@racket[open-output-string] @note-number{4}})
     (list "TCP connection"
-          @elem[#:style center-style]{@racket[tcp-connect] @note-number{4}}
+          @elem[#:style center-style]{@racket[tcp-connect] @note-number{5}}
           'cont)
     (list ""
-          @elem[#:style center-style]{@racket[tcp-accept] @note-number{5}}
+          @elem[#:style center-style]{@racket[tcp-accept] @note-number{6}}
           'cont)
     (list "Process pipe"
-          @elem[#:style center-style]{@racket[subprocess] @note-number{6}}
+          @elem[#:style center-style]{@racket[subprocess] @note-number{7}}
           'cont))]
 
-@note-number{1} After opening the file, the port is installed as
-@racket[current-input-port]. After executing the thunk argument, the file is
-closed, even if there was an exception in the thunk.
+@note-number{1} The created port is passed to the @code{proc} argument.
+After executing @code{proc}, the file is closed, even if there was an exception
+in the @code{proc}.
 
-@note-number{2} After opening the file, the port is installed as
-@racket[current-output-port]. After executing the thunk argument, the file is
-closed, even if there was an exception in the thunk.
+@note-number{2} The created port is installed as @racket[current-input-port].
+After executing the thunk argument, the file is closed, even if there was an
+exception in the thunk.
 
-@note-number{3} The current string value can be queried with
+@note-number{3} The created port is installed as @racket[current-output-port].
+After executing the thunk argument, the file is closed, even if there was an
+exception in the thunk.
+
+@note-number{4} The current string value can be queried with
 @racket[get-output-string].
 
-@note-number{4} For network clients. Returns an input port and an output port
+@note-number{5} For network clients. Returns an input port and an output port
 as two values.
 
-@note-number{5} For network servers. Returns an input port and an output port
+@note-number{6} For network servers. Returns an input port and an output port
 as two values. Used with @racket[tcp-listen].
 
-@note-number{6} If the arguments @code{stdin}, @code{stdout} and @code{stderr}
+@note-number{7} If the arguments @code{stdin}, @code{stdout} and @code{stderr}
 are passed as @racket[#f], @racket[subprocess] creates and returns new
 corresponding input and output ports.
 
