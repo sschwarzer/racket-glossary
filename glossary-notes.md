@@ -844,6 +844,9 @@ See "Module"?
 
 ## Sequence
 
+- Rename this entry to "Sequence and stream" (or similar). "Sequences and
+  streams" would sound more natural, but I tried to use singular names for
+  concepts in the glossary.
 - Lazy evaluation, it's not necessary to build intermediate lists (compared to,
   say, `map`).
 - Usually used implicitly in `for` forms.
@@ -853,6 +856,14 @@ See "Module"?
   detail? Generators seem to be used much(?) less than sequences or streams.
 - <https://docs.racket-lang.org/guide/for.html#%28part._sequences%29>
 - <https://docs.racket-lang.org/reference/sequences_streams.html>
+- See also <https://racket.discourse.group/t/sequences-vs-streams/1987>
+- Potential confusion with "sequence" in the sense of linear containers like
+  lists and vectors. Try to find a definition of "sequence" with this meaning.
+- Is it of any help to refer to
+  [SRFI-41](https://srfi.schemers.org/srfi-41/srfi-41.html) and
+  [SRFI-127](https://srfi.schemers.org/srfi-127/srfi-127.html)? At the moment,
+  I don't think they help me understand the sequences vs. streams in Racket any
+  better.
 
 ## Set
 
