@@ -840,6 +840,8 @@ See also
 - Refer to converters between sequences and streams.
 - Mention generators? They're related, but maybe this goes into too much
   detail? Generators seem to be used much(?) less than sequences or streams.
+- <https://docs.racket-lang.org/guide/for.html#%28part._sequences%29>
+- <https://docs.racket-lang.org/reference/sequences_streams.html>
 
 ## Set
 
