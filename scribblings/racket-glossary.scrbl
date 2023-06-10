@@ -98,7 +98,10 @@
        (subsection
          #:tag (title->tag title-text)
          #:style 'unnumbered title-text)
-       (paragraph plain (elem (bold "Level: ") (symbol->string level)))
+       (paragraph
+         plain
+         (elem (bold "Level: ")
+         (symbol->string level)))
        text)))
 
 @(define (entry-subsection text)
