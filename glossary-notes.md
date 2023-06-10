@@ -518,6 +518,13 @@ Done
 
 ## Module
 
+- I'm still not sure whether I should have a single "Module" entry or "Require"
+  and "Provide" as distinct entries. The reason for having them separate would be
+  that beginning Racket programmers will much more often `require` modules (e.g.
+  from the standard library) than `provide` bindings from own libraries.
+- Discuss convention of `private` directories. These are supposed to define
+  internal stuff that user code shouldn't rely on.
+
 ## Named let
 
 -> Let
@@ -789,6 +796,8 @@ Done
 
 ## Provide
 
+See "Module"?
+
 ## Quasiquote and unquote
 
 - `quasiquote` = backtick
@@ -820,6 +829,8 @@ See also
 ## Record
 
 ## Require
+
+See "Module"?
 
 ## Rule (in macros; probably other uses, which ones?)
 
