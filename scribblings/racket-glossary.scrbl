@@ -1917,7 +1917,7 @@ Additionally, there are some widely-used naming patterns:
           "Class name"
           @racket[frame%])
     (list @tt{@ti{part}/@ti{part}}
-          @elem{``for`` or ``with``}
+          @elem{``for'' or ``with''}
           @elem{@racket[call/cc], @racket[define/match],@linebreak[]
                 @racket[for/fold/derived]})
     (list @tt{@ti{type}->@ti{other-type}}
