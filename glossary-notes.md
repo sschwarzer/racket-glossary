@@ -315,6 +315,8 @@ Done
 
 ## Generator
 
+-> Sequence, stream, generator
+
 ## Generic API
 
 ## GUI programming
