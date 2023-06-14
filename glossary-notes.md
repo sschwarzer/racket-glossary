@@ -913,7 +913,8 @@ See "Module"?
 ## Stream
 
 - Overlap with sequences (see also there).
-- Usually used with files.
+- Usually used with files. Not exactly true: "file streams" actually aren't
+  streams. 8-)
 
 ## String / byte string / character
 
