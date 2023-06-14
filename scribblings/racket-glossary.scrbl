@@ -6,6 +6,7 @@
   racket/list
   racket/match
   racket/runtime-path
+  racket/stream
   scribble/core
   scribble/example
   scribble/html-properties
@@ -14,11 +15,12 @@
     racket/file
     racket/format
     racket/function
-    racket/gui
+    racket/generator
     racket/list
     racket/runtime-path
     racket/serialize
     racket/string
+    racket/stream
     racket/undefined
     racket/vector
     rackunit
@@ -39,8 +41,10 @@
   (require
     racket/format
     racket/function
+    racket/generator
     racket/list
     racket/pretty
+    racket/stream
     racket/string)]
 
 @(define in-g "in this glossary")
@@ -426,8 +430,9 @@ Here are two more examples to illustrate these criteria:
 
 A few more details:
 @itemlist[
-  @item{There are a lot of @inline-link["Sequence"]s that can be iterated over,
-    for example, @inline-link["String, character, byte string"]{string}s
+  @item{There are a lot of
+  @inline-link["Sequence_stream_generator"]{sequences} that can be iterated
+    over, for example, @inline-link["String, character, byte string"]{string}s
     (iterating over characters) or @inline-link["Port"]s (iterating over
     characters, bytes or lines).}
   @item{The ``loop body'' doesn't have to be single expression. See the examples
@@ -445,7 +450,7 @@ A few more details:
 
 See also:
 @itemlist[
-  @item{@secref*['("Form" "Sequence") 'glossary] @in-g}
+  @item{@secref*['("Form" "Sequence_stream_generator") 'glossary] @in-g}
   @item{@secref*["for" 'guide] @in-rg}
   @item{@secref*["for" 'reference] @in-rr}]
 }
@@ -738,8 +743,8 @@ See also:
 
 @glossary-entry["Fold" 'basic]{
 
-Folding means taking a @inline-link["Sequence"] and combining its elements into
-a new value.
+Folding means taking a data structure and combining its elements into a new
+value.
 
 Racket provides the @racket[foldl] and @racket[foldr] functions for this. In
 Scheme implementations, these functions may be called differently. Both
@@ -1228,7 +1233,8 @@ See also:
 @glossary-entry["Future" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Generator" 'advanced #:stub? #t]{
+@glossary-entry["Generator" 'intermediate]{
+  See @secref*["Sequence_stream_generator" 'glossary]
 }
 
 @glossary-entry["Generic API" 'advanced #:stub? #t]{
@@ -2831,7 +2837,235 @@ See @secref*["Unsafe_operation" 'glossary]
 @glossary-entry["Scribble" 'intermediate #:stub? #t]{
 }
 
-@glossary-entry["Sequence" 'intermediate #:stub? #t]{
+@glossary-entry["Sequence, stream, generator" 'intermediate]{
+
+@entry-subsection{Sequences}
+
+A sequence is a value that can be iterated over in a
+@inline-link["Comprehension"] (or other @code{for} @inline-link["Form"]). For
+example, @inline-link["List"]s and @inline-link["Hash"]es are sequences:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (for/list ([item '(1 2 3)])
+    item)
+  (for/list ([(key value) (hash 'a 1 'b 2)])
+    (cons key value))]
+
+Sequences don't have to be fixed-size containers. It's also possible to create
+values on the fly, like with @racket[in-range],
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (for/list ([item (in-range 2 5)])
+    item)]
+and even create values infinitely, like with @racket[in-naturals]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (code:comment "Limit the iterated-over values with a sequence of limited length,")
+  (code:comment "otherwise `for/list` would never finish.")
+  (for/list ([unused '(a b c d e)]
+             [item (in-naturals)])
+    item)]
+
+You can use @racket[sequence?] to check whether a value is a sequence:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (sequence? '(1 2 3))
+  (sequence? (hash 'a 1 'b 2))
+  (sequence? (in-range 2 5))
+  (sequence? (in-naturals))
+  (code:comment "An integer n is equivalent to `(in-range n)`")
+  (sequence? 5)]
+
+A useful feature of sequences as used in @code{for} forms, is that they're
+@; Is "visible" an appropriate word here?
+evaluated on demand (``lazily''). This is especially visible in
+@racket[in-naturals], which would never finish if it was fully evaluated and
+@emph{then} iterated over. (The iteration would never happen because the
+evaluation would take infinite time.)
+
+@entry-subsection{Streams}
+
+In case you want to implement a lazy or even infinite sequence, the easiest
+approach often is a stream.
+
+Stream operations are very similar to list operations:
+@tabular[#:sep @hspace[1]
+         #:cell-properties '((baseline))
+         #:row-properties `((top-border bottom-border ,table-style-properties))
+  (list
+    (list @bold{List operation}
+          @bold{Stream operation}
+          @bold{Purpose of stream operation})
+    (list @racket[list]
+          @racket[stream]
+          @elem{Create stream from the given items (which aren't evaluated by default)})
+    (list @elem{@racket['()] = @racket[null] = @racket[empty]}
+          @racket[empty-stream]
+          @elem{Create empty stream})
+    (list @elem{@racket[null?] = @racket[empty?]}
+          @racket[stream-empty?]
+          @elem{Check if stream is empty})
+    (list @racket[cons]
+          @racket[stream-cons]
+          @elem{Create stream from first item and another stream})
+    (list @elem{@racket[car] = @racket[first]}
+          @racket[stream-first]
+          @elem{Evaluate and return first item of stream})
+    (list @elem{@racket[cdr] = @racket[rest]}
+          @racket[stream-rest]
+          @elem{Return stream with all items but the first})
+    (list @elem{@racket[map], @racket[filter], ...}
+          @elem{@racket[stream-map], @racket[stream-filter], ...}
+          @elem{Higher-level operations (not all list operations
+                have a corresponding stream operation)}))]
+
+The functions @racket[stream] and @racket[stream-cons] are lazy, that is,
+they don't evaluate their arguments immediately. The evaluation only happens
+when individual items are retrieved from the stream:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define a-stream
+    (stream
+      (begin (displayln "one") 1)
+      (begin (displayln "two") 2)
+      (begin (displayln "three") 3)))
+  (code:comment "Implicit evaluation by `stream-first`")
+  (stream-first a-stream)
+  (code:comment "No evaluation by `stream-rest`")
+  (stream-rest a-stream)
+  (code:comment "The result of an evaluation is cached, so this call")
+  (code:comment "does _not_ display \"one\".")
+  (stream-first a-stream)]
+
+Since stream APIs are very similar to list APIs, you can easily convert many
+list algorithms to corresponding stream algorithms. For example, assume we
+want a function that returns an infinite stream of the squares of the natural
+numbers. Let's start with a function that returns a @emph{list} of squares.
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (squares-list)
+    (let loop ([i 0])
+      (if (> i 10)
+          '()
+          (cons (* i i) (loop (add1 i))))))
+  (squares-list)]
+Note that we use a hardcoded upper limit. We'll remove it later, but if we
+didn't have the check in this list algorithm, @code{squares-list} would never
+finish.
+
+Now change @racket['()] to @racket[empty-stream] and @racket[cons] to
+@racket[stream-cons]. These are the only list functions to convert in this
+example.
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (squares-stream)
+    (let loop ([i 0])
+      (if (> i 10)
+          empty-stream
+          (stream-cons (* i i) (loop (add1 i))))))
+  (squares-stream)
+  (stream->list (squares-stream))]
+
+Since we want an infinite stream, remove the condition:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define (squares-stream)
+    (let loop ([i 0])
+      (stream-cons (* i i) (loop (add1 i)))))
+  (squares-stream)
+  (code:comment "Since the stream is infinite, use `stream-take` to limit")
+  (code:comment "the evaluation to the first 11 items.")
+  (stream->list (stream-take (squares-stream) 11))]
+
+Streams are also sequences, so they can be used as-is in comprehensions:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (sequence? (squares-stream))
+  (code:comment "Use a parallel `in-range` to limit the generated items.")
+  (for/list ([unused (in-range 11)]
+             [item (squares-stream)])
+    item)]
+
+@entry-subsection{Generators}
+
+Another approach for getting a lazy and potentially infinite sequence is a
+generator. A generator definition looks similar to a @racket[lambda]
+definition, but a @racket[yield] call in a generator yields an item to the
+caller of the generator. When the next item is requested, the generator
+continues the execution after the latest @racket[yield]. There can be any
+number of @racket[yield]s in a generator.
+@examples[
+  #:eval helper-eval
+  #:label "Example:"
+  (define a-generator
+    (generator ()
+      (yield 1)
+      (yield 2)
+      (yield 3)))
+  (code:comment "Three items from the `yield`s.")
+  (a-generator)
+  (a-generator)
+  (a-generator)
+  (code:comment "After that, the generator yields `(values)`.")
+  (a-generator)
+  (a-generator)
+  (code:comment "This can be checked with `call-with-values`.")
+  (call-with-values a-generator list)]
+
+If you want to base a sequence on a generator, you can return a stop value
+after the @racket[yield]s and use @racket[in-producer]:
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define a-generator
+    (generator ()
+      (yield 1)
+      (yield 2)
+      (yield 3)
+      (code:comment "Stop signal")
+      #f))
+  (for/list ([item (in-producer a-generator #f)])
+    item)]
+
+Similarly, for our infinite squares sequence we could use
+@examples[
+  #:eval helper-eval
+  #:label #f
+  (define squares-generator
+    (generator ()
+      (for ([i (in-naturals)])
+        (yield (* i i)))))
+  (sequence? (in-producer squares-generator #f))
+  (code:comment "Use a parallel `in-range` to limit the generated items.")
+  (for/list ([unused (in-range 11)]
+             (code:comment "No stop value since we want an infinite sequence")
+             [item (in-producer squares-generator)])
+    item)]
+
+@other-languages{
+  @itemlist[
+    @item{Some Scheme implementations also have stream and/or sequence
+      concepts, but the APIs and semantics may differ from Racket's.}
+    @item{Racket generators are similar to Python's generator functions, but
+      there are a few differences. See the section
+      @secref*["Generators" 'reference] @in-rr for details.}]}
+
+See also:
+@itemlist[
+  @item{@secref*['("Comprehension" "Form" "Hash" "Lambda" "Values") 'glossary] @in-g}
+  @item{@secref*["sequences" 'guide] @in-rg}
+  @item{@secref*["sequences+streams" 'reference] @in-rr}
+  @item{Structure and interpretation of computer programs,
+        @hyperlink["https://sarabander.github.io/sicp/html/3_002e5.xhtml#g_t3_002e5"]{section ``Streams''}}]
 }
 
 @glossary-entry["Set" 'intermediate #:stub? #t]{
@@ -2882,7 +3116,8 @@ See also:
     package}}]
 }
 
-@glossary-entry["Stream" 'basic #:stub? #t]{
+@glossary-entry["Stream" 'intermediate]{
+  See @secref*["Sequence_stream_generator" 'glossary]
 }
 
 @glossary-entry["String, character, byte string" 'basic]{
