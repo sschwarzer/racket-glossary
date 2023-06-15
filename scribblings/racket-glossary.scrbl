@@ -2698,7 +2698,9 @@ See also:
 @glossary-entry["Prompt" 'advanced #:stub? #t]{
 }
 
-@glossary-entry["Provide" 'intermediate #:stub? #t]{
+@glossary-entry["Provide" 'intermediate #:cross-reference? #t]{
+
+See @secref*["Module" 'glossary]
 }
 
 @glossary-entry["Quasiquote and unquote" 'intermediate]{
@@ -2817,7 +2819,9 @@ See also:
 See @secref*["Struct" 'glossary]
 }
 
-@glossary-entry["Require" 'basic #:stub? #t]{
+@glossary-entry["Require" 'basic #:cross-reference? #t]{
+
+See @secref*["Module" 'glossary]
 }
 
 @glossary-entry["Rule (in macros; probably other uses, which ones?)" 'intermediate #:stub? #t]{
