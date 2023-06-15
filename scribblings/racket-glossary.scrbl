@@ -339,12 +339,12 @@ See also:
 
 @glossary-entry["Byte string" 'basic #:cross-reference? #t]{
 
-See @secref*["String_character_byte_string" 'glossary]
+  See @secref*["String_character_byte_string" 'glossary]
 }
 
 @glossary-entry["Call" 'basic #:cross-reference? #t]{
 
-See @secref*["Procedure" 'glossary]
+  See @secref*["Procedure" 'glossary]
 }
 
 @glossary-entry["Channel" 'intermediate #:stub? #t]{
@@ -355,7 +355,7 @@ See @secref*["Procedure" 'glossary]
 
 @glossary-entry["Character" 'basic #:cross-reference? #t]{
 
-See @secref*["String_character_byte_string" 'glossary]
+  See @secref*["String_character_byte_string" 'glossary]
 }
 
 @glossary-entry["Class" 'intermediate #:stub? #t]{
@@ -457,7 +457,7 @@ See also:
 
 @glossary-entry["Cons cell" 'basic #:cross-reference? #t]{
 
-See @secref*["Pair" 'glossary]
+  See @secref*["Pair" 'glossary]
 }
 
 @glossary-entry["Continuation" 'advanced #:stub? #t]{
@@ -471,7 +471,7 @@ See @secref*["Pair" 'glossary]
 
 @glossary-entry["Currying" 'basic #:cross-reference? #t]{
 
-See @secref*["Partial_application_and_currying" 'glossary]
+  See @secref*["Partial_application_and_currying" 'glossary]
 }
 
 @glossary-entry["Custodian" 'advanced #:stub? #t]{
@@ -544,7 +544,7 @@ See also:
 
 @glossary-entry["Display" 'basic #:cross-reference? #t]{
 
-See @secref*["Formatting_and_output" 'glossary]
+  See @secref*["Formatting_and_output" 'glossary]
 }
 
 @glossary-entry["DrRacket" 'basic #:stub? #t]{
@@ -614,7 +614,7 @@ See also:
 
 @glossary-entry["Exact number" 'basic #:cross-reference? #t]{
 
-See @secref*["Number" 'glossary]
+  See @secref*["Number" 'glossary]
 }
 
 @glossary-entry["Executor" 'advanced #:stub? #t]{
@@ -695,7 +695,7 @@ See also:
 
 @glossary-entry["Field" 'basic #:cross-reference? #t]{
 
-See @secref*["Struct" 'glossary]
+  See @secref*["Struct" 'glossary]
 }
 
 @glossary-entry["Fixnum" 'intermediate]{
@@ -1097,7 +1097,7 @@ See also:
 
 @glossary-entry["Function" 'basic #:cross-reference? #t]{
 
-See @secref*["Procedure" 'glossary]
+  See @secref*["Procedure" 'glossary]
 }
 
 @glossary-entry["Functional programming (FP)" 'basic]{
@@ -1234,6 +1234,7 @@ See also:
 }
 
 @glossary-entry["Generator" 'intermediate]{
+
   See @secref*["Sequence_stream_generator" 'glossary]
 }
 
@@ -1441,7 +1442,7 @@ visible in any other references to the same object:
 
 @glossary-entry["Inexact number" 'basic #:cross-reference? #t]{
 
-See @secref*["Number" 'glossary]
+  See @secref*["Number" 'glossary]
 }
 
 @glossary-entry["Inspector" 'advanced #:stub? #t]{
@@ -1843,7 +1844,7 @@ However, usually you should avoid mutation in functional programming.
 @; Intermediate or advanced?
 @glossary-entry["Macro" 'intermediate #:cross-reference? #t]{
 
-See @secref*["Form" 'glossary]
+  See @secref*["Form" 'glossary]
 }
 
 @glossary-entry["Match" 'intermediate #:stub? #t]{
@@ -1860,7 +1861,7 @@ See @secref*["Form" 'glossary]
 
 @glossary-entry["Named let" 'basic #:cross-reference? #t]{
 
-See @secref*["Let" 'glossary]
+  See @secref*["Let" 'glossary]
 }
 
 @glossary-entry["Namespace" 'intermediate #:stub? #t]{
@@ -2148,7 +2149,7 @@ See also:
 
 @glossary-entry["Opaque" 'intermediate #:cross-reference? #t]{
 
-See @secref*["Struct" 'glossary]
+  See @secref*["Struct" 'glossary]
 }
 
 @glossary-entry["Package" 'intermediate #:stub? #t]{
@@ -2617,7 +2618,7 @@ See also:
 
 @glossary-entry["Print" 'basic #:cross-reference? #t]{
 
-See @secref*["Formatting_and_output" 'glossary]
+  See @secref*["Formatting_and_output" 'glossary]
 }
 
 @glossary-entry["Procedure" 'basic]{
@@ -2700,7 +2701,7 @@ See also:
 
 @glossary-entry["Provide" 'intermediate #:cross-reference? #t]{
 
-See @secref*["Module" 'glossary]
+  See @secref*["Module" 'glossary]
 }
 
 @glossary-entry["Quasiquote and unquote" 'intermediate]{
@@ -2816,12 +2817,12 @@ See also:
 
 @glossary-entry["Record" 'basic #:cross-reference? #t]{
 
-See @secref*["Struct" 'glossary]
+  See @secref*["Struct" 'glossary]
 }
 
 @glossary-entry["Require" 'basic #:cross-reference? #t]{
 
-See @secref*["Module" 'glossary]
+  See @secref*["Module" 'glossary]
 }
 
 @glossary-entry["Rule (in macros; probably other uses, which ones?)" 'intermediate #:stub? #t]{
@@ -2829,7 +2830,7 @@ See @secref*["Module" 'glossary]
 
 @glossary-entry["Safe operation" 'intermediate #:cross-reference? #t]{
 
-See @secref*["Unsafe_operation" 'glossary]
+  See @secref*["Unsafe_operation" 'glossary]
 }
 
 @glossary-entry["Scheme" 'basic #:stub? #t]{
@@ -3121,6 +3122,7 @@ See also:
 }
 
 @glossary-entry["Stream" 'intermediate]{
+
   See @secref*["Sequence_stream_generator" 'glossary]
 }
 
@@ -3422,7 +3424,7 @@ See also:
 
 @glossary-entry["Syntactic form" 'basic #:cross-reference? #t]{
 
-See @secref*["Form" 'glossary]
+  See @secref*["Form" 'glossary]
 }
 
 @glossary-entry["Syntax (different meanings)" 'intermediate #:stub? #t]{
@@ -3430,7 +3432,7 @@ See @secref*["Form" 'glossary]
 
 @glossary-entry["Syntax transformer" 'intermediate #:cross-reference? #t]{
 
-See @secref*["Form" 'glossary]
+  See @secref*["Form" 'glossary]
 }
 
 @glossary-entry["Tail call" 'intermediate #:stub? #t]{
@@ -3517,7 +3519,7 @@ See also:
 
 @glossary-entry["Transparent" 'basic #:cross-reference? #t]{
 
-See @secref*["Struct" 'glossary]
+  See @secref*["Struct" 'glossary]
 }
 
 @glossary-entry["Trust level" 'advanced #:stub? #t]{
@@ -3525,7 +3527,7 @@ See @secref*["Struct" 'glossary]
 
 @glossary-entry["Trusted code" 'advanced #:cross-reference? #t]{
 
-See @secref*["Untrusted_code" 'glossary]
+  See @secref*["Untrusted_code" 'glossary]
 }
 
 @glossary-entry["Typed Racket" 'advanced #:stub? #t]{
@@ -3743,7 +3745,7 @@ See also:
 
 @glossary-entry["Write" 'basic #:cross-reference? #t]{
 
-See @secref*["Formatting_and_output" 'glossary]
+  See @secref*["Formatting_and_output" 'glossary]
 }
 
 @glossary-entry["Writer" 'advanced #:stub? #t]{
