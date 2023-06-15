@@ -2997,12 +2997,12 @@ Streams are also sequences, so they can be used as-is in comprehensions:
 
 @entry-subsection{Generators}
 
-Another approach for getting a lazy and potentially infinite sequence is a
-generator. A generator definition looks similar to a @racket[lambda]
-definition, but a @racket[yield] call in a generator yields an item to the
-caller of the generator. When the next item is requested, the generator
-continues the execution after the latest @racket[yield]. There can be any
-number of @racket[yield]s in a generator.
+Generators are another way to create lazy and potentially infinite sequences.
+A generator definition looks similar to a @racket[lambda] definition, but a
+@racket[yield] call in a generator yields an item to the caller of the
+generator. When the next item is requested, the generator continues the
+execution after the latest @racket[yield]. There can be any number of
+@racket[yield]s in a generator.
 @examples[
   #:eval helper-eval
   #:label "Example:"
