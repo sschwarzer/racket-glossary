@@ -3435,6 +3435,9 @@ See @secref*["Form" 'glossary]
 @glossary-entry["Tail position" 'intermediate #:stub? #t]{
 }
 
+@glossary-entry["Testing" 'basic #:stub? #t]{
+}
+
 @glossary-entry["Thread" 'intermediate #:stub? #t]{
 }
 
