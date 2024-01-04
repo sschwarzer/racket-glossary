@@ -794,6 +794,8 @@ Done
 
 ## Profiling
 
+- [Where to start with optimizing Racket programs?](https://racket.discourse.group/t/where-to-start-with-optimizing-racket-programs/2634/15)
+
 ## Prompt
 
 ## Provide
